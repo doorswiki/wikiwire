@@ -1,0 +1,28 @@
+name: WikiWire
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'modules/**'
+      - 'modules/*'
+      - 'templates/**'
+      - 'templates/*'
+      - 'mediawiki/**'
+      - 'mediawiki/*'
+  workflow_dispatch:
+  
+jobs:
+  wikiwire:
+    runs-on: ubuntu-latest
+    name: Sync files to production MediaWiki
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: whostacking/doors-wikiwire@main
+        with:
+          sync_all: override
+          username: DoorsWiki@WikiWire
+          password: ${{ secrets.WIKI_PASSWORD }}  

@@ -1,0 +1,15 @@
+# This is a global WikiWire configuration file, a CI action which automatically syncs and uploads modules and templates from a Git repo towards a production or upstream MediaWiki instance via bot passwords and the MediaWiki Action API.
+# Learn more: https://github.com/obbywiki/wikiwire
+
+version = 1
+shared = true
+
+[[sites]]
+id = "en"
+host = "doorsgame.wiki"
+api = "https://doorsgame.wiki/w/api.php"
+
+[[sites]]
+id = "zh"
+host = "zh.doorsgame.wiki"
+api = "https://doorsgame.wiki/w/api.php"
