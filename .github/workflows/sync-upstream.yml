@@ -1,24 +1,12 @@
-name: WikiWire
+name: Sync Upstream MediaWiki Pages
 
 on:
-  schedule:
-    # Runs every 4 hours
-    - cron: '0 */4 * * *'
-  push:
-    branches: [main]
-    paths:
-      - 'modules/**'
-      - 'modules/*'
-      - 'templates/**'
-      - 'templates/*'
-      - 'mediawiki/**'
-      - 'mediawiki/*'
   workflow_dispatch:
 
 jobs:
-  wikiwire:
+  sync:
     runs-on: ubuntu-latest
-    name: Sync upstream MediaWiki and deploy to production wikis
+    name: Sync upstream MediaWiki pages to repo
     permissions:
       contents: write
     steps:
@@ -39,15 +27,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add modules/ templates/ mediawiki/
           if git diff --staged --quiet; then
-            echo "No upstream changes detected in repository."
+            echo "No changes detected."
           else
             git commit -m "chore(sync): update upstream modules, templates, and mediawiki pages"
             git push
           fi
-
-      - name: Sync files to production MediaWiki
-        uses: doorswiki/wikiwire@main
-        with:
-          sync_all: override
-          username: DoorsWiki@WikiWire
-          password: ${{ secrets.WIKI_PASSWORD }}
