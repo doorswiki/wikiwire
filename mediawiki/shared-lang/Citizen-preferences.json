@@ -47,8 +47,8 @@
 				}
 			],
 			"default": "0",
-			"label": "Mood",
-			"description": "Select a floor background"
+			"labelMsg": "doorswiki-mood-label",
+			"descriptionMsg": "doorswiki-mood-description"
 		},
 		"citizen-feature-pure-black": null
 	}
