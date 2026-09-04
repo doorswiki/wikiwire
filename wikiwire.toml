@@ -11,6 +11,6 @@ api = "https://doorsgame.wiki/w/api.php"
 
 [[sites]]
 id = "zh"
-host = "zh.doorsgame.wiki"
-api = "https://doorsgame.wiki/w/api.php"
+host = "zhdoors.miraheze.org"
+api = "https://zhdoors.miraheze.org/w/api.php"
 shared_groups = ["lang"]
