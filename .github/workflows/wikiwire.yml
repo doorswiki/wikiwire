@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - uses: whostacking/doors-wikiwire@main
+      - uses: doorswiki/wikiwire@main
         with:
           sync_all: override
           username: DoorsWiki@WikiWire
