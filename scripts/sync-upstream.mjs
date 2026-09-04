@@ -13,6 +13,7 @@ const PAGES = {
   'MediaWiki:Gadget-SpoilersByDefault': 'mediawiki/shared-lang/Gadget-SpoilersByDefault',
   'MediaWiki:Gadget-SpoilersByDefault.js': 'mediawiki/shared-lang/Gadget-SpoilersByDefault.js',
   'MediaWiki:Gadgets-definition': 'mediawiki/shared-lang/Gadgets-definition',
+  'MediaWiki:Main page.js': 'mediawiki/shared-lang/Main page.js',
   'MediaWiki:Welcome-enabled': 'mediawiki/shared-lang/Welcome-enabled',
   'MediaWiki:Welcome-user-page': 'mediawiki/shared-lang/Welcome-user-page',
   'MediaWiki:Welcome-user': 'mediawiki/shared-lang/Welcome-user',
