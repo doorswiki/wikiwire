@@ -1,0 +1,6 @@
+[[File:FihRender.png|200px|center]]
+<div style="display: flex; justify-content: center; text-align: center; align-items: center">
+<h2>Welcome to the DOORS Wiki account! {{Icons|Hiding}}</div>
+<div style="text-align: center">Please contact us via the [https://discord.gg/SpKAgJDuVn DOORS Wiki Discord server] or [https://twitter.com/DoorsWiki @DoorsWiki on Twitter].<br>This account is used for automated mass edits; '''support is not provided here'''.</div>
+</div>
+__NOEDITSECTION__ __NOTOC__
