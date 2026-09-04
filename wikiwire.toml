@@ -13,3 +13,4 @@ api = "https://doorsgame.wiki/w/api.php"
 id = "zh"
 host = "zh.doorsgame.wiki"
 api = "https://doorsgame.wiki/w/api.php"
+shared_groups = ["international"]
