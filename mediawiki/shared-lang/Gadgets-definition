@@ -1,0 +1,14 @@
+== utilities ==
+* BetterUpload[ResourceLoader|type=general|default]|BetterUpload.js
+* RefRevision[ResourceLoader|type=general]|RefRevision.js
+== visual ==
+<!-- Disabled until fixed: * BetterReflist[ResourceLoader|type=styles|default]|BetterReflist.css-->
+* NoEditSections[ResourceLoader|type=styles]|NoEditSections.css
+* OswaldFont[ResouceLoader|type=styles]|OswaldFont.css
+* RecentChangesModern[ResourceLoader|type=styles]|RecentChangesModern.css
+* StaffColors[ResourceLoader|type=styles|default]|StaffColors.css
+* ContribColors[ResourceLoader|type=styles|default]|ContribColors.css
+* SpoilersByDefault[ResourceLoader|type=general|default|skins=citizen]|SpoilersByDefault.js
+
+== staff ==
+* StaffJS[ResourceLoader|type=general|rights=block|dependencies=mediawiki.util,mediawiki.api,mediawiki.user|default]|Staff.js

@@ -1,0 +1,873 @@
+/* TOC: Table of Contents 
+
+You can use CTRL + F to look for the CSS' corresponding snippet (Just make sure to turn on
+	case sensitive search if available). To find a class when customizing the site's CSS, use inspect element.
+	
+VAR: Set variables for the wikis dark/light themes.
+SCI: Script Imports (Local and Global)
+
+01/ToC: ToC (Table of Contents)
+02/ART: Article Tables
+03/POI: Portable Infoboxes
+
+04/COP: Community Page
+05/COM: Comments Design
+06/HOI: Hover Images
+
+07/ACH: Achievements (Template)
+08/SCR: Scrollbar
+09/MBX: Mbox (Message Box)
+
+10/CDE: <code> CSS
+11/AFP: Audio file player
+12/PGS: Page Shadow
+
+13/CNT: Controls Table (Template)
+14/DSW: Discord Widget (Template)
+15/MDS: Medals Script (Template)
+
+16/TND: Top Navigation Dropdown
+17/RIT: ROBLOX Interwiki (Template)
+18/MDF: Modifiers (Template)
+
+MISC: Miscellaneous CSS
+
+/* SCI - Script Imports (Local/Global) */
+/** Local Imports **/
+@import url("/load.php?mode=articles&articles=MediaWiki:Profiles.css|MediaWiki:FD_Mbox.css&only=styles");
+
+/** Font Imports **/
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* thank you Ethan_DOORSWiki https://da.gd/SSxyUN */
+@font-face {
+  font-family: 'doorsfont';
+  src: url('https://static.wikitide.net/stackdwiki/0/0c/DOORSRemake-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* VAR - Variable Root Colors */
+:root {
+	--doors-dark-text: rgb(58,58,58); /* #3A3A3A */
+	--doors-light-text: rgb(230,230,230); /* #E6E6E6 */
+	--doors-dark-accent-original: rgb(208,174,130); /* #D0AE82 */
+	--doors-light-accent-original: rgb(112,71,56); /* #704738 */
+	--doors-dark-accent: var(--doors-dark-accent-original);
+	--doors-light-accent: var(--doors-light-accent-original);
+	--doors-dark-background: rgb(47,27,21); /* #2F1B15 */
+	--doors-dark-background-2: rgb(73,50,43); /* #49322B */
+	--doors-dark-background-3: rgba(0,0,0,.3); /* #0000004D */
+	--doors-dark-background-4: rgba(47,27,21,.3); /* #2F1B154D */
+	--doors-light-background: rgb(231,219,200); /* #E7DBC8 *//*
+	--doors-light-background: rgb(246,238,225); /* #F6EEE1 */
+	--doors-light-background-2: rgb(234,226,214); /* #EAE2D6 */
+	--doors-light-background-3: rgba(255,255,255,.3); /* #FFFFFF4D */
+	--doors-light-background-4: rgba(231,219,200,.3); /* #E7DBC84D */
+}
+
+/* Font Classes */
+.oswald-font {
+	font-family: "Oswald", var(--font-family-base),rubik,helvetica,arial,sans-serif;
+}
+.inconsolata-font {
+	font-family: "Inconsolata", var(--font-family-base),rubik,helvetica,arial,sans-serif;
+}
+
+.doors-font {
+	font-family: 'doorsfont', var(--font-family-base), rubik, helvetica, arial, sans-serif;
+	font-weight: normal!important;
+}
+
+/* MediaWiki CSS/JS Page <pre> */
+/** Dark Theme **//*
+.skin-theme-clientpref-night .page-content pre {
+	background-color: var(--doors-dark-background-2);
+}*/
+/** Light Theme **//*
+.skin-theme-clientpref-day .page-content pre {
+	background-color: var(--doors-light-background-2);
+}*/
+
+/* ToC - Table of Contents */
+.toc {
+	border-color: var(--pi-secondary-background);
+	border-radius: 10px;
+	border-width: 2px;
+}
+.skin-theme-clientpref-night .page-content #toc,
+.skin-theme-clientpref-black .page-content #toc {
+	background-color: rgba(0,0,0,.3) !important;
+	border: 2px solid var(--doors-dark-accent) !important;
+}
+.skin-theme-clientpref-day .page-content #toc {
+	background-color: var(--doors-background-3) !important;
+	border: 2px solid var(--doors-light-accent) !important;
+}
+
+/* ART - Article Tables */
+
+/* POI - Portable Infobox */
+.skin-theme-clientpref-night .pi-background,
+.skin-theme-clientpref-black .pi-background {
+	background-color: var(--doors-dark-background-3);
+}
+.skin-theme-clientpref-day .pi-background {
+	background-color: var(--doors-light-background-3);
+}
+.portable-infobox {
+	border-color: var(--pi-secondary-background);
+	border-radius: 10px;
+	border-width: 2px;
+}
+.page-content .portable-infobox .pi-header,
+.page-content .portable-infobox .pi-title {
+	margin: 5px;
+	border-radius: 5px;
+}
+
+/* HOI - Hover Images */
+.hoverimg img,
+.hoverimg-achievements img,
+.hoverimg-interlanguage img {
+	opacity: .875;
+	transition: .15s ease;
+	transition-property: transform, opacity;
+	margin: 0 auto;
+}
+.hoverimg-dim img {
+   opacity: 1;
+   transition: all .4s ease;
+}
+/** Max Widths **/
+.hoverimg img {
+	max-width: 150px;
+	max-height: 150px;
+}
+.hoverimg-achievements img {
+	max-width: 120px;
+	max-height: 120px;
+}
+.hoverimg-interlanguage img {
+	max-width: 200px;
+	max-height: 100px;
+}
+/** Hover Events **/
+.hoverimg img:hover,
+.hoverimg-achievements img:hover,
+.hoverimg-interlanguage img:hover {
+	opacity: 1;
+	transform: scale(1.04); /* (104% zoom on hover) */
+}
+.hoverimg-dim img:hover {
+   filter: alpha(opacity=50);
+   opacity: .5;
+}
+.hoverimg img:active,
+.hoverimg-achievements img:active,
+.hoverimg-interlanguage img:active {
+	transform: scale(1); /* (100% zoom on click) */
+	transition-duration: .01s;
+}
+.hoverimg-dim img:active {
+	filter: brightness(110%); /* (110% brightness on click) */
+	transition-duration: .2s;
+}
+
+/* ACH - Achievements Template */
+table.doors-achievement.table {
+	border: .4em solid var(--border-color-accent);
+	background: var(--doors-light-background);
+	
+	.skin-theme-clientpref-night &,
+	.skin-theme-clientpref-black & {
+		background: var(--doors-dark-background-3);
+		
+		.doors-achievement__title b {
+			color: #F8DDC0;
+		}
+		
+		.doors-achievement__text,
+		.doors-achievement__text2 {
+			color: #D5B49D;
+		}
+	}
+}
+
+a.tag {
+	color: inherit;
+}
+
+/* Mbox (Message Box) */
+.mbox {
+	--type-important: rgba(200,0,0,.8);
+	--type-moderate: rgba(233,124,47,.8);
+	--type-minor: rgba(241,197,37,.8);
+	
+	display: flex;
+	position: relative;
+	background-color: var(--custom-mbox-bg);
+	border: 1px solid #D6D6D6;
+	border-left-width: 8px;
+	border-left-color: #D6D6D6;
+	border-radius: 3px;
+	margin-bottom: 5px;
+	min-height: 32px;
+}
+.mbox.mbox-type-important {
+	border-left-color: var(--type-important);
+}
+.mbox.mbox-type-moderate {
+	border-left-color: var(--type-moderate);
+}
+.mbox.mbox-type-minor {
+	border-left-color: var(--type-minor);
+}
+.mbox__content {
+	display: table;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 8px 15px;
+}
+.mbox__content__image {
+	display: table-cell;
+	width: 40px;
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+	padding-right: 15px;
+}
+.mbox__content__wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+.mbox__content__header {
+	display: block;
+	font-weight: bold;
+}
+.mbox__content__text {
+	display: block;
+}
+.mbox__content__text__comment {
+	font-size: small;
+}
+.mbox__content__aside {
+	display: table-cell;
+	width: 100px;
+	vertical-align: middle;
+	text-align: center;
+	padding-left: 15px;
+	border-left: 1px solid #D6D6D6;
+}
+.mbox__close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 2px 7px;
+	font-weight: bold;
+	font-size: 16px;
+	color: #BBB;
+	cursor: pointer;
+	transition: all .15s ease-in;
+	
+	&:hover {
+		color: #777;
+	}
+	
+	&::after {
+		content: "×";
+	}
+}
+
+.mw-collapsed + .mbox__close {
+	transform: rotate(45deg);
+	padding: 4px 7px 5px 2px;
+}
+
+/* Remove accessibility feature for mbox toggle */
+.mw-customtoggle-mbox {
+	outline: none;
+}
+
+/* Making <code> more prominent */
+/* code {
+	background-color: var(--theme-page-background-color--secondary);
+	border: 1px solid var(--theme-border-color);
+	border-radius: 5px;
+	padding: 1px 4px;
+}
+code code {
+	border: unset;
+	padding: unset;
+} */
+
+/* Downsizes audio file player */
+audio {
+	width: 245px !important; 
+	height: 35px !important;
+}
+
+/* Page Shadow */
+.page {
+	box-shadow: 0 0 18px 6px rgba(0,0,0,.6);
+}
+
+/* Controls Table */
+table.pc-controls,
+table.xbox-controls {
+	text-align: center;
+	font-size: 15px;
+}
+
+table.pc-controls > tbody {
+	> tr > th {
+		width: 20%;
+		background-color: var(--color-surface-2);
+	}
+	
+	> tbody > tr > td {
+		width: 20%;
+		background-color: var(--color-surface-1);
+	}
+}
+
+/*** Xbox Controls Table ***/
+table.xbox-controls {
+	> tbody > tr > th {
+		width: 25%;
+		background-color: var(--color-surface-2);
+	}
+	
+	> tbody > tr > td {
+		width: 25%;
+		background-color: var(--color-surface-1);
+	}
+}
+
+/* MDF - Modifiers Templates */
+table.doors-modifier.table {
+	display: grid;
+	grid-template-areas: "main side";
+	grid-template-columns: auto 100px;
+	grid-template-rows: auto;
+	border-width: .2em;
+	border-style: solid;
+	border-radius: 4em;
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+/** Modifier Class Colors **/
+.doors-modifier__accent { /* default modifier class */
+	border-color: #D5B49D;
+	background-color: #3A3A3A;
+	color: #D5B49D;
+}
+.doors-modifier__blue {
+	border-color: #BFBBD4;
+	background-color: #292021;
+	color: #BFBBD4;
+}
+.doors-modifier__pink {
+	border-color: #FFA0B8;
+	background-color: #301C1F;
+	color: #FFA0B8;
+}
+.doors-modifier__lightred {
+	border-color: #FF7386;
+	background-color: #30191A;
+	color: #FF7386;
+}
+.doors-modifier__red {
+	border-color: #FF566F;
+	background-color: #301518;
+	color: #FF566F;
+}
+.doors-modifier__lightgreen {
+	border-color: #F9FFB8;
+	background-color: #2F261F;
+	color: #F9FFB8;
+}
+/** Knob Classes **/
+.doors-modifier__moreknobs { /* god forgive me for this */
+	grid-area: side;
+	justify-self: end;
+	border: 0 solid;
+    border-radius: 2em;
+    background: #684A3F;
+    padding: 15px 5px 15px 5px;
+}
+.doors-modifier__lessknobs {
+    grid-area: side;
+    justify-self: end;
+    border: 0 solid;
+    border-radius: 2em;
+    background: #662929;
+    padding: 15px 5px 15px 5px;
+}
+/** bottom padding fix **/
+.doors-modifier p {
+	margin: 0;
+}
+
+/* MISC - Miscellaneous CSS */
+/*** Fix PhotoGallery gradient to match custom right rail background colour ***/
+:root .carouselContainer {
+	--carouselShadowBg: var(--right-rail-background-color);
+}
+
+/** Bold Page Headers **/
+.page__main h2 {
+	font-weight: bold !important;
+}
+
+/** Template:Log CSS **/
+.doors-log {
+	background: var(--doors-light-background);
+	border: .5px solid var(--doors-dark-accent);
+	border-left: 10px solid var(--doors-dark-accent);
+	color: #3A3A3A;
+	margin-right: 5px;
+	
+	.skin-theme-clientpref-night &,
+	.skin-theme-clientpref-black & {
+		background: var(--doors-dark-background-3);
+		border: .5px solid #483431;
+		border-left: 10px solid #483431;
+		color: #FFF;
+	}
+}
+
+/** Template:Description CSS **/
+.description-template {
+	border: 1.5px solid var(--border-color-accent);
+	background: var(--doors-light-background);
+	
+	.skin-theme-clientpref-night &,
+	.skin-theme-clientpref-black & {
+		background: var(--doors-dark-background-3);
+	}
+}
+
+/** Gradient Box **/
+/*** Dark Theme ***/
+.skin-theme-clientpref-night .gradient-box,
+.skin-theme-clientpref-black .gradient-box {
+	background: -webkit-linear-gradient(90deg, #37201B, #53332B, #5F4038);
+}
+/*** Light Theme ***/
+.skin-theme-clientpref-day .gradient-box {
+	background: -webkit-linear-gradient(90deg, #BF9D73, #E6BD8A, #FFCE91);
+}
+
+/* Fixes for the new Diff3 comparison buttons */
+.mw-diff-inline-legend-ins {
+	background:var(--theme-success-color) !important;
+}
+.mw-diff-inline-legend-del {
+	background:var(--theme-alert-color) !important;
+}
+table.diff [class*="mw-diff-inline-"] {
+	ins { background: var(--theme-success-color); }
+	del { background: var(--theme-alert-color); }
+}
+
+/* Fixes for tables on mobile */
+/** Fixes half-sized tables on mobile **/
+@media (max-width: 639px) {
+	.mw-parser-output table {
+		display: table;
+	}
+}
+/** For missing borders on mobile **/
+.article-table-wrapper tr > td,
+.article-table-wrapper tr > th {
+	border: 1px solid var(--theme-border-color);
+}
+
+/* Fixing the text colour on dark more for the template data second parameter entry */
+.skin-theme-clientpref-night .mw-templatedata-doc-param-alias,
+.skin-theme-clientpref-black .mw-templatedata-doc-param-alias {
+	color: #E6E6E6;
+}
+
+/* Template:Notice CSS */
+.notice-template {
+	border-radius: var(--border-radius-medium);
+	box-shadow: 0 4px 6px rgba(0,0,0,.4);
+	margin: 10px 5px 15px 5px; 
+	text-align: center;
+	padding: var(--space-xs, 5px);
+	text-shadow: 0 2px 4px rgba(0,0,0,.16), 0 2px 4px rgba(0,0,0,.25);
+	color: var(--color-emphasized);
+}
+
+.wds-button:not(:has(> a)), 
+.wds-button:has(> a) > a,
+.doors-button:not(:has(> a)), 
+.doors-button:has(> a) > a {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius-medium);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: var(--font-size-small);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--doors-dark-accent);
+    transition: .25s border-color;
+
+	&:hover {
+    	border-color: var(--doors-light-accent);
+	}
+}
+
+/*** convert mastoblox section to roblox users. that's fun ***/
+/* https://dev.miraheze.org/wiki/bloxshare */
+.profile-externalLinks {
+    .external-link.tooltip,
+	> a[href^="https://www.roblox.com"],
+    > a[href^="https://x.com"] {
+        &:hover::after {
+            font-size: var(--font-size-small);
+            margin-top: .25rem;
+        }
+    }
+	
+	> a[href^="https://www.roblox.com"]:hover::after,
+	> a[href^="https://x.com"]:hover::after {
+	    position: absolute;
+	    padding: 5px;
+	    border-radius: 3px;
+	    white-space: nowrap;
+	    z-index: 1000;
+	    transform: translate(-50%, 100%);
+	}
+	
+	> a[href^="https://x.com"],
+	> a[href^="https://www.roblox.com"],
+	> span[title="Discord"] {
+        position: relative;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--color-base);
+            mask-size: 24px auto;
+            mask-position: center;
+            mask-repeat: no-repeat;
+        }
+	}
+	
+	> a[href^="https://x.com"]::before {
+	    mask-image: url(https://static.wikitide.net/utgwiki/b/ba/Social_icon_Twitter.png)
+	}
+	
+	> a[href^="https://www.roblox.com"]::before {
+	    mask-image: url(https://static.wikitide.net/utgwiki/c/c0/Social_icon_Roblox.svg)
+	}
+	
+	> span[title="Discord"]::before {
+	    mask-image: url(https://static.wikitide.net/utgwiki/7/72/Social_icon_Discord.svg);
+	}
+	
+	svg,
+	> a[href^="https://mastodon.social"] {
+		visibility: hidden
+	}
+}
+
+/* original idea from m6ga on discord. tabber styling */
+.tabber {
+    .tabber__header {
+        box-shadow: none;
+    }
+
+    .tabber__tabs {
+        border: 1px solid;
+        border-color: transparent;
+        border-radius: 3px;
+        
+        @media screen and (min-width: 1119px) {
+        	flex-wrap: wrap!important;
+        }
+    }
+
+    .tabber__tab {
+        --tabber-accent: transparent;
+        position: relative;
+        transition: .25s ease-in-out;
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            opacity: 0;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                var(--tabber-accent) 35%,
+                var(--tabber-accent) 65%,
+                transparent 100%
+            );
+            transition: .1s ease-in-out;
+        }
+
+        &:hover:not([aria-selected="true"]) {
+            box-shadow: none;
+            color: var(--color-link);
+            --tabber-accent: var(--color-link);
+
+            &:before {
+                opacity: 1;
+            }
+        }
+
+        &[aria-selected="true"] {
+            box-shadow: none;
+            font-weight: bold;
+            --tabber-accent: var(--color-progressive);
+
+            &:before {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+/* text gradient styles; requested by m6ga on discord */
+/* Given a "--gradient" variable containing a valid gradient,
+clips the element's background image to the text. */
+.background-clip-text {
+    background-image: var(--gradient);
+    background-clip: text;
+    color: var(--color, transparent);
+}
+
+/* Given a "--gradient" variable containing a valid gradient,
+clips the element's background image to the text's stroke. */
+.background-clip-stroke {
+    background-image: var(--gradient);
+    background-clip: text;
+    -webkit-text-stroke: 0.2em transparent;
+    padding: 0.05em;
+}
+
+/* Given "--gradient" and "--gradient2" variables containing valid gradients,
+clips "--gradient" to the text itself and "--gradient2" to the text's stroke.
+Requires a "data-text" attribute containing the element's text. */
+.text-double-gradient {
+    color: transparent;
+    position: relative;
+    display: inline-block;
+    padding: 0.05em;
+    font-weight: bold;
+    background-image: var(--gradient2);
+    background-clip: text;
+    -webkit-text-stroke: 0.2em transparent;
+    
+    &:after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0.05em;
+        top: 0.05em;
+        background-image: var(--gradient);
+        background-clip: text;
+        -webkit-text-stroke: 0;
+    }
+}
+
+/* Infobox Carousel Styles */
+.infobox__carousel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+    user-select: none;
+}
+
+.infobox__carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    border-radius: var(--border-radius-base, 2px);
+    position: relative;
+}
+
+.infobox__carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, var(--color-surface-0));
+    z-index: 1;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.infobox__carousel:hover .infobox__carousel-wrapper::after {
+    opacity: 0.2;
+}
+
+.infobox__carousel-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+
+.infobox__carousel-item {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.infobox__item--alt-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-xs) var(--space-md) 25px;
+    z-index: 4;
+    text-align: center;
+    opacity: 0;
+    font-weight: bold;
+    color: var(--color-emphasized);
+    transition: opacity .25s;
+}
+
+.infobox__carousel:hover .infobox__item--alt-content {
+    opacity: 1;
+    backdrop-filter: blur(15px) brightness(.75);
+    
+    .skin-theme-clientpref-day & {
+        backdrop-filter: blur(15px) brightness(2);
+    }
+}
+
+.infobox__carousel-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    user-drag: none;
+}
+
+.infobox__carousel-btn {
+    position: absolute;
+    top: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    z-index: 2;
+    border-radius: var(--border-radius-base, 2px);
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s ease, transform var(--transition-duration-base) ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.infobox__carousel:hover .infobox__carousel-btn {
+    opacity: 1;
+}
+
+.infobox__carousel-btn:hover {
+    background: var(--background-color-progressive, #00aff0);
+    transform: scale(1.1);
+    color: #fff;
+}
+
+.infobox__carousel-prev {
+    left: 8px;
+}
+
+.infobox__carousel-next {
+    right: 8px;
+}
+
+.infobox__carousel-indicators {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    z-index: 2;
+    padding: 8px 0;
+    background-image: linear-gradient(to bottom, transparent, var(--color-surface-0) 100%);
+}
+
+.infobox__carousel-dot {
+    width: 32px;
+    height: 4px;
+    border-radius: var(--border-radius-base, 2px);
+    background: rgb(from var(--color-emphasized) r g b / 0.2);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.infobox__carousel-dot.active {
+    background: rgb(from var(--color-emphasized) r g b / 0.6);
+}
+
+.infobox__carousel-dot.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-progressive);
+    transform: translateX(-100%);
+    animation: carousel-progress 5s linear forwards;
+}
+
+.infobox__carousel:hover .infobox__carousel-dot.active::after {
+    animation-play-state: paused;
+}
+
+@keyframes carousel-progress {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.infobox__carousel-wrapper.is-dragging {
+    cursor: grabbing;
+}
+
+.infobox__image:has(> .infobox__carousel) {
+    margin-bottom: -0.5rem!important;
+}
+
+.copy-button {
+    color: var(--color-progressive); 
+    border-bottom: var(--border-width-base) dashed;
+    cursor: pointer;
+}
+
+.mw-collapsible[hidden='until-found'], .mw-collapsible [hidden='until-found'] {
+    display: none;
+}

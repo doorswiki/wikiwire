@@ -1,0 +1,55 @@
+{
+	"preferences": {
+		"skin-theme": {
+			"options": [
+				{
+					"value": "day",
+					"labelMsg": "citizen-theme-day-label"
+				},
+				{
+					"value": "night",
+					"labelMsg": "citizen-theme-night-label"
+				},
+				{
+					"value": "black",
+					"labelMsg": "citizen-theme-black-label"
+				}
+			],
+			"columns": 3
+		},
+		"doorswiki-mood": {
+			"section": "appearance",
+			"type": "select",
+			"options": [
+				{
+					"value": 0,
+					"label": "Default"
+				},
+				{
+					"value": 1,
+					"label": "Mines"
+				},
+				{
+					"value": 2,
+					"label": "Outdoors"
+				},
+				{
+					"value": 3,
+					"label": "Backdoor"
+				},
+				{
+					"value": 4,
+					"label": "Archives"
+				},
+				{
+					"value": 5,
+					"label": "Stairwell"
+				}
+			],
+			"default": "0",
+			"label": "Mood",
+			"description": "Select a floor background"
+		},
+		"citizen-feature-pure-black": null
+	}
+}

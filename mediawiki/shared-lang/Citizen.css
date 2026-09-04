@@ -1,0 +1,770 @@
+/* All CSS here will be loaded for users of the Citizen skin */
+:root {
+    --font-family-citizen-base: "Rubik";
+    --font-family-citizen-serif: "Work Sans", "Rubik";
+}
+
+:root.skin-theme-clientpref-day {
+	--color-progressive-oklch__h: 73.62;
+	
+    --doorswiki-surface-1: rgb(231,219,200); /* #E7DBC8 */
+	--doorswiki-surface-2: rgb(234,226,214); /* #EAE2D6 */
+	--doorswiki-surface-3: rgba(255,255,255,.3); /* #FFFFFF4D */
+	--doorswiki-surface-4: rgba(231,219,200,.3); /* #E7DBC84D */
+	
+	--color-surface-1: var(--doorswiki-surface-1);
+	--color-surface-2: var(--doorswiki-surface-2);
+	--color-surface-3: var(--doorswiki-surface-3);
+	--color-surface-4: var(--doorswiki-surface-4);
+    
+    --doors-light-background: var(--color-surface-1);
+    --doors-light-background-2: var(--color-surface-2);
+    --doors-light-background-3: var(--color-surface-3);
+    --doors-light-background-4: var(--color-surface-4);
+    
+    --doorswiki-container-color-original: rgba(246,238,225,.9);
+    --doorswiki-container-color: var(--doorswiki-container-color-original);
+    
+    --color-link-original: #623e31;
+    --color-link: var(--color-link-original);
+    --border-color-accent: var(--doors-light-accent);
+    
+    --bg: url(https://static.wikitide.net/doorswiki/b/be/Rooms_Hallway1.png);
+}
+
+:root.skin-theme-clientpref-night,
+:root.skin-theme-clientpref-black {
+    --doors-dark-background: var(--color-surface-1);
+    --doors-dark-background-2: var(--color-surface-2);
+    --doors-dark-background-3: var(--color-surface-3);
+    --doors-dark-background-4: var(--color-surface-4);
+}
+
+:root.skin-theme-clientpref-night {
+	--color-progressive-oklch__h: 73.62;
+	
+	--doorswiki-surface-1: rgb(47,27,21); /* #2F1B15 */
+	--doorswiki-surface-2: rgb(73,50,43); /* #49322B */
+	--doorswiki-surface-3: rgba(0,0,0,.3); /* #0000004D */
+	--doorswiki-surface-4: rgba(47,27,21,.3); /* #2F1B154D */
+	
+	--color-surface-1: var(--doorswiki-surface-1);
+	--color-surface-2: var(--doorswiki-surface-2);
+	--color-surface-3: var(--doorswiki-surface-3);
+	--color-surface-4: var(--doorswiki-surface-4);
+	
+	--doorswiki-container-color-original: rgba(46,27,21,.6);
+	--doorswiki-container-color: var(--doorswiki-container-color-original);
+	
+	--color-link-original: #e8bb81;   
+	--color-link: var(--color-link-original);
+    --border-color-accent: var(--doors-dark-accent);
+    
+	--bg: url(https://static.wikitide.net/stackdwiki/5/5a/DOORS_Site-background-dark.webp);
+}
+
+:root.skin-theme-clientpref-black {
+    --delta-lightness-surface-base: 2%;
+    --color-progressive-oklch__l: 60%;
+    --color-progressive-hsl__l: 60%;
+    --color-emphasized-oklch__l: 93%;
+    --color-base-oklch__l: 80%;
+    --color-subtle-oklch__l: 70%;
+    --color-placeholder-oklch__l: 60%;
+    --color-disabled-oklch__l: 50%;
+    --color-emphasized-hsl__l: 95%;
+    --color-base-hsl__l: 85%;
+    --color-subtle-hsl__l: 70%;
+    --color-placeholder-hsl__l: 60%;
+    --color-disabled-hsl__l: 50%;
+    --color-destructive__l: 50%;
+    --color-success__l: 35%;
+    --color-warning__l: 60%;
+    --background-color-subtle__s: 85%;
+    --background-color-subtle__l: 5%;
+    --color-syntax-red: #f07178;
+    --color-syntax-orange: #f78c6c;
+    --color-syntax-yellow: #ffcb6b;
+    --color-syntax-green: #c3e88d;
+    --color-syntax-cyan: #89ddff;
+    --color-syntax-blue: #82aaff;
+    --color-syntax-paleblue: #b2ccd6;
+    --color-syntax-purple: #c792ea;
+    --color-syntax-brown: #916b53;
+    --color-syntax-pink: #ff9cac;
+    --color-syntax-violet: #bb80b3;
+    --color-syntax-gray: #676E95;
+    --background-color-button-quiet--hover: rgba(255, 255, 255, 0.04);
+    --background-color-button-quiet--active: rgba(255, 255, 255, 0.08);
+    --background-color-icon: rgba( 255, 255, 255, var( --opacity-icon-base ) );
+    --background-color-icon--hover: rgba( 255, 255, 255, var( --opacity-icon-base--hover ) );
+    --background-color-icon--active: rgba( 255, 255, 255, var( --opacity-icon-base--active ) );
+    --color-disabled-emphasized: var(--color-placeholder);
+    --mix-blend-mode-blend: screen;
+    --opacity-glass: 0.8;
+    --shadow-color-oklch__l: 6%;
+    --shadow-color-hsl__l: 3%;
+    --shadow-opacity: 0.44;
+    --filter-invert: invert(1) hue-rotate(180deg);
+    --font-grade: 0;
+    color-scheme: dark;
+
+    --color-surface-0-oklch__l: 0%;
+    --color-surface-0-oklch__c: 0;
+    --color-surface-1-oklch__c: 0;
+    --color-surface-2-oklch__c: 0;
+    --color-surface-3-oklch__c: 0;
+    --color-surface-4-oklch__c: 0;
+    --color-surface-0-hsl__l: 0%;
+    --color-surface-0-hsl__s: 0%;
+    --color-surface-1-hsl__s: 0%;
+    --color-surface-2-hsl__s: 0%;
+    --color-surface-3-hsl__s: 0%;
+    --color-surface-4-hsl__s: 0%;
+    --color-emphasized-oklch__c: 0;
+    --color-base-oklch__c: 0;
+    --color-subtle-oklch__c: 0;
+    --color-placeholder-oklch__c: 0;
+    --color-emphasized-hsl__s: 0%;
+    --color-base-hsl__s: 0%;
+    --color-subtle-hsl__s: 0%;
+    --color-placeholder-hsl__s: 0%;
+    --border-color-base: rgba(255, 255, 255, 0.1);
+    --border-color-subtle: rgba(255, 255, 255, 0.05);
+    --border-color-interactive: rgba(255, 255, 255, 0.15);
+    --border-color-interactive--hover: rgba(255, 255, 255, 0.25);
+    --border-color-interactive--active: rgba(255, 255, 255, 0.35);
+    --color-neutral-50: oklch(98% 0 var(--color-primary-oklch__h));
+    --color-neutral-100: oklch(94% 0 var(--color-primary-oklch__h));
+    --color-neutral-200: oklch(90% 0 var(--color-primary-oklch__h));
+    --color-neutral-300: oklch(84% 0 var(--color-primary-oklch__h));
+    --color-neutral-400: oklch(73% 0 var(--color-primary-oklch__h));
+    --color-neutral-500: oklch(51% 0 var(--color-primary-oklch__h));
+    --color-neutral-600: oklch(39% 0 var(--color-primary-oklch__h));
+    --color-neutral-700: oklch(30% 0 var(--color-primary-oklch__h));
+    --color-neutral-800: oklch(22% 0 var(--color-primary-oklch__h));
+    --color-neutral-900: oklch(17% 0 var(--color-primary-oklch__h));
+    --color-neutral-1000: oklch(0% 0 var(--color-primary-oklch__h));
+    
+	--doorswiki-container-color-original: rgba(0, 0, 0, 0.6);
+	--doorswiki-container-color: var(--doorswiki-container-color-original);
+	--bg: url(https://static.wikitide.net/doorswiki/8/81/Chasm_up.png);
+    --border-color-accent: var(--border-color-subtle);
+}
+
+:root.client-js.doorswiki-mood-clientpref-0:has(> body.page-DOORS_Wiki) {
+    --bg: url(https://static.wikitide.net/doorswiki/a/a0/Hotel_Start.png);
+}
+
+#skin-client-prefs-skin-theme {
+    order: -2;
+}
+
+#skin-client-prefs-doorswiki-mood {
+    order: -1;
+}
+
+html:not(.doorswiki-mood-clientpref-0) {
+	body::before {
+    	filter: blur(6px);
+	}
+	
+	/* &.skin-theme-clientpref-day {
+        --doorswiki-brightasf: oklch(from var(--color-progressive) .5 .4 h);
+    }
+    
+    &.skin-theme-clientpref-night {
+        --doorswiki-brightasf: oklch(from var(--color-progressive) .6 .3 h)
+    } */
+    
+    &.skin-theme-clientpref-black {
+    	.mw-logo-icon {
+    		filter: grayscale(1);
+    	}
+    }
+    
+    /* &:not(.skin-theme-clientpref-black) {
+    	.mw-logo {
+	        position: relative;
+	        
+	        &::after {
+	            content: '';
+	            position: absolute;
+	            inset: 0;
+	            z-index: 2;
+	            mask-image: url(https://static.wikitide.net/doorswiki/e/e6/Site-logo.png);
+	            mask-size: 32px;
+	            mask-repeat: no-repeat;
+	            mask-position: center;
+	            background: var(--doorswiki-brightasf);
+	            transition-duration: .5s;
+	            transition-property: color, transform, opacity;
+	        }
+	        
+	        &:hover:has(> .mw-logo-icon)::after {
+	            transition-duration: var(--transition-duration-medium);
+	            transform: rotate(360deg);
+	            opacity: 0;
+	        }
+	        
+	        .mw-logo-icon {
+	            opacity: 0;
+	        }
+	        
+	        &.citizen-drawer__logo::after {
+	            mask-size: 80px!important;
+	        }
+    	}
+    } */
+}
+
+:root:not(.doorswiki-mood-clientpref-0)[class*="skin-theme-clientpref-"] {
+	&:not(.skin-theme-clientpref-black) {
+	    --color-surface-1: oklch(from var(--doorswiki-surface-1) l c var(--color-progressive-oklch__h));
+	    --color-surface-2: oklch(from var(--doorswiki-surface-2) l c var(--color-progressive-oklch__h));
+	    --color-surface-3: oklch(from var(--doorswiki-surface-3) l c var(--color-progressive-oklch__h));
+	    --color-surface-4: oklch(from var(--doorswiki-surface-4) l c var(--color-progressive-oklch__h));
+	    
+	    &:not(.doorswiki-mood-clientpref-3) {
+	    	--color-link: oklch(from var(--color-link-original) calc(l + 0.1) calc(c + 0.1) calc(var(--color-progressive-oklch__h) - 15));
+	    }
+	}
+    
+    --doorswiki-container-color: oklch(from var(--doorswiki-container-color-original) l c var(--color-progressive-oklch__h));
+    --doors-dark-accent: oklch(from var(--doors-dark-accent-original) l c var(--color-progressive-oklch__h));
+    --doors-light-accent: oklch(from var(--doors-light-accent-original) l c var(--color-progressive-oklch__h));
+}
+
+/* The Mines theme */
+:root.doorswiki-mood-clientpref-1 {
+    &[class*="skin-theme-clientpref-"] {
+        --color-progressive-oklch__h: 240;
+    }
+    
+    &.skin-theme-clientpref-day {
+        --bg: url(https://static.wikitide.net/doorswiki/6/64/LotusSpawnMINESB.png);
+    }
+    
+    &.skin-theme-clientpref-night {
+        --bg: url(https://static.wikitide.net/doorswiki/6/63/Mines_Flooded1.png);
+    }
+    
+    &.skin-theme-clientpref-black {
+        --bg: url(https://static.wikitide.net/doorswiki/8/8a/Mines_MTHallway1.png);
+    }
+}
+
+/* The Outdoors theme */
+:root.doorswiki-mood-clientpref-2 {
+    &[class*="skin-theme-clientpref-"] {
+        --color-progressive-oklch__h: 140;
+    }
+    
+    &.skin-theme-clientpref-day {
+        --bg: url(https://static.wikitide.net/doorswiki/c/c6/Garden_Straight1.png);
+    }
+    
+    &.skin-theme-clientpref-night {
+        --bg: url(https://static.wikitide.net/doorswiki/5/5c/Gardenentrance.png);
+    }
+    
+    &.skin-theme-clientpref-black {
+        --bg: url(https://static.wikitide.net/doorswiki/b/b3/Garden_WaterTower.png);
+    }
+}
+
+/* The Backdoor theme */
+:root.doorswiki-mood-clientpref-3 {
+    &.skin-theme-clientpref-day {
+        --bg: url(https://static.wikitide.net/doorswiki/c/cc/The_Backdoor.png);
+    }
+    
+    &.skin-theme-clientpref-night {
+        --bg: url(https://static.wikitide.net/doorswiki/5/5e/The_BackDoor_Final.png);
+    }
+    
+    &.skin-theme-clientpref-black {
+        --bg: url(https://static.wikitide.net/doorswiki/c/c2/The_Several_Gates_Room.png);
+    }
+}
+
+/* The Archives theme */
+:root.doorswiki-mood-clientpref-4 {
+    &[class*="skin-theme-clientpref-"] {
+        --color-progressive-oklch__h: 190;
+    }
+    
+    &.skin-theme-clientpref-day {
+        --bg: url(https://static.wikitide.net/doorswiki/f/fb/TheArchivesFirstPreview.png);
+    }
+    
+    &.skin-theme-clientpref-night {
+        --bg: url(https://static.wikitide.net/doorswiki/1/1f/ArchivesIconGame.webp);
+    }
+    
+    &.skin-theme-clientpref-black {
+        --bg: url(https://static.wikitide.net/doorswiki/1/1f/ArchivesIconGame.webp);
+        
+        > body::before {
+        	opacity: 0.4;
+        }
+    }
+}
+
+/* The Stairwell theme */
+:root.doorswiki-mood-clientpref-5 {
+    &[class*="skin-theme-clientpref-"] {
+        --color-progressive-oklch__h: 260;
+    }
+    
+    &.skin-theme-clientpref-day {
+        --bg: url(https://static.wikitide.net/doorswiki/6/64/The_Stairwell_screengrab_2.jpg);
+    }
+    
+    &.skin-theme-clientpref-night {
+        --bg: url(https://static.wikitide.net/doorswiki/b/b2/The_Stairwell_screengrab_1.jpg);
+    }
+    
+    &.skin-theme-clientpref-black {
+        --bg: url(https://static.wikitide.net/doorswiki/1/16/StairwellThumbnail2.png);
+    }
+}
+
+html {
+	scrollbar-color: var(--border-color-accent) var(--color-surface-1);
+    /*scrollbar-color: #D0AE82 #4E3D38;*/
+}
+
+body {
+    &::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background: var(--bg);
+        background-size: cover;
+        background-position: center;
+        transition: .25s background;
+    }
+    
+    .skin-theme-clientpref-day &::before {
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+    }
+    
+    .skin-theme-clientpref-night.citizen-feature-pure-black-clientpref-1 &::before {
+    	opacity: .6;
+    }
+}
+
+body.page-DOORS_Wiki {
+	&::before {
+	    filter: blur(6px);
+	    opacity: .6;
+	}
+	
+	.skin-theme-clientpref-day &::before {
+	    filter: invert(1) blur(6px);
+	}
+	
+	@media screen and (min-width: 1119px) {
+	    .citizen-body {
+	        background: transparent;
+	        box-shadow: unset;
+	    }
+	}
+}
+
+.mw-heading {
+    font-family: "Work Sans", var(--font-family-citizen-serif);
+}
+
+@media screen and (min-width: 1119px) {
+	.citizen-body,
+	.citizen-page-footer,
+	.citizen-toc,
+	.citizen-page-sidebar > * {
+	    background-color: var(--doorswiki-container-color);
+	    border-radius: 3px;
+	    box-shadow: 0 0 18px 6px rgba(0, 0, 0, .6);
+	    
+	    .skin-theme-clientpref-night & {
+	        border:none;
+	        border-radius:3px;
+	    }
+	}
+	
+	.citizen-body,
+	.citizen-page-footer {
+	    padding: 24px 36px;
+	}
+}
+
+@media screen and (max-width: 1119px) {
+	body {
+		&::after {
+			content: '';
+	        position: fixed;
+	        inset: 0;
+	        z-index: -1;
+	        pointer-events: none;
+			background-color: var(--doorswiki-container-color);
+		}
+	}
+}
+
+.citizen-page-sidebar {
+    margin-top: unset;
+    
+    > * {
+        padding: var(--space-md);
+    }
+}
+
+/* who added this!?!? */
+/*.mw-collapsible {*/
+/*    border-top: 3px solid ;*/
+/*    border-left: 3px solid ;*/
+/*    border-right: 3px solid ;*/
+/*    border-bottom: 3px solid;*/
+/*    background: #a52a2a36;*/
+/*}*/
+
+.page-actions .mw-list-item:not(#ca-edit) {
+    background-color: rgba(246,238,225,.9);
+    border-radius:10px
+} 
+
+.citizen-ui-icon.mw-ui-icon-speechBubbles::before,
+.citizen-ui-icon.mw-ui-icon-userTalk::before {
+    mask-image: url(https://static.wikitide.net/stackdwiki/5/55/ezgif-6614f64cdeb42c58.png);
+}
+
+.citizen-ui-icon.mw-ui-icon-eye::before {
+    mask-image: url(https://static.wikitide.net/stackdwiki/1/1e/OVERVIEW1.webp);
+}
+
+#mw-indicator-mw-helplink a .mw-helplink-icon,
+.citizen-ui-icon.mw-ui-icon-help::before {
+    mask-image: url(https://static.wikitide.net/stackdwiki/2/25/PUZZLES2.webp);
+}
+
+.citizen-ui-icon.mw-ui-icon-logOut::before {
+    mask-image: url(https://static.wikitide.net/doorswiki/3/33/HIDING.png);
+}
+
+/*.citizen-ui-icon.mw-ui-icon-wikimedia-userAvatar::before {*/
+/*    mask-image: url(https://static.wikitide.net/stackdwiki/9/99/PLAYER_%281%29.png);*/
+/*}*/
+
+.citizen-ui-icon.mw-ui-icon-home::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/8/89/DoorsWikiUI_Home.svg);
+}
+
+.citizen-ui-icon.mw-ui-icon-recentChanges::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/8/8a/DoorsWikiUI_Recent.svg);
+}
+
+.citizen-ui-icon.mw-ui-icon-die::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/4/43/DoorsWikiUI_Random.svg);
+}
+
+.citizen-ui-icon.mw-ui-icon-upload::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/1/10/DoorsWikiUI_Upload.svg);
+}
+
+.citizen-ui-icon.mw-ui-icon-article::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/6/61/DoorsWikiUI_Article.svg);
+}
+
+.citizen-ui-icon.mw-ui-icon-image::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/6/6b/DoorsWikiUI_Media.svg);
+}
+
+.citizen-ui-icon.mw-ui-icon-wikimedia-bell::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/5/51/DoorsWikiUI_Bell.svg);
+}
+
+.citizen-ui-icon.mw-ui-icon-wikimedia-configure::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/6/60/DoorsWikiUI_Preferences.svg);
+}
+
+.citizen-preferences-dropdown summary .citizen-ui-icon::before {
+    mask-image: url(https://static.wikitide.net/doorswiki/b/b7/DoorsWikiUI_Paintbrush.svg);
+	mask-size: 100%;
+}
+
+.citizen-search {
+	.citizen-dropdown-details[open] .citizen-dropdown-summary {
+		svg {
+			opacity: 1;
+		}
+		
+		&::before {
+			opacity: 0;
+		}
+	}
+	
+	.citizen-dropdown-summary {
+		position: relative;
+		
+		svg {
+			opacity: 0;
+			transition: .25s opacity;
+		}
+		
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: currentcolor;
+			mask-image: url(https://static.wikitide.net/doorswiki/9/92/HISTORY.png);
+			mask-size: 20px 20px;
+			mask-position: center;
+			mask-repeat: no-repeat;
+			opacity: 1;
+			transition: .25s opacity;
+		}
+	}
+}
+
+.citizen-header__logo {
+    /*.citizen-ui-icon.mw-ui-icon-home {*/
+    /*    width: 80%;*/
+    /*    height: 80%;*/
+
+    /*    &::before {*/
+    /*        mask-image: url(https://static.wikitide.net/stackdwiki/1/1b/DOORS_Site-logo.webp);*/
+    /*    }*/
+    /*}*/
+    
+    .mw-logo-icon, .citizen-ui-icon {
+        transition-duration: .5s;
+    }
+}
+
+.citizen-preferences-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    .citizen-preferences-card__preview {
+        aspect-ratio: unset;
+        width: auto;
+        border-bottom: unset;
+    
+        .cdx-icon {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}
+
+.citizen-preferences-radio {
+    .cdx-radio__wrapper:has(input.cdx-radio__input[value="day"][name="skin-theme"]),
+    .cdx-radio__wrapper:has(input.cdx-radio__input[value="night"][name="skin-theme"]) {
+        .citizen-preferences-card__preview .cdx-icon {
+            background: var(--icon-image);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: var(--filter-invert);
+    
+            svg {
+                display: none;
+            }
+        }
+    }
+    
+    .cdx-radio__wrapper:has(input.cdx-radio__input[value="day"][name="skin-theme"]) {
+        --icon-image: url(https://upload.wikimedia.org/wikipedia/commons/1/15/OOjs_UI_icon_bright.svg);
+    }
+    
+    .cdx-radio__wrapper:has(input.cdx-radio__input[value="night"][name="skin-theme"]) {
+        --icon-image: url(https://upload.wikimedia.org/wikipedia/commons/7/7c/OOjs_UI_icon_moon.svg);
+    }
+}
+
+.citizen-footer {
+	background-color: color-mix(in oklch,var(--color-surface-1) calc(var(--opacity-glass) * 100%),transparent);
+	backdrop-filter: var(--backdrop-filter-frosted-glass);
+}
+
+/* wooden texture */
+.citizen-sitenotice-container,
+.citizen-footer {
+	position: relative;
+	
+	&::before {
+		z-index: -1!important;
+	}
+}
+
+.citizen-sitenotice-container,
+.citizen-drawer__card,
+.citizen-header .citizen-menu__card,
+.citizen-command-palette,
+.citizen-footer {
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background: url(https://static.wikitide.net/doorswiki/b/b7/Wooden_texture_overlay.png);
+        background-size: 50% auto;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+        user-select: none;
+    }
+    
+    .skin-theme-clientpref-night &::before {
+        filter: brightness(.5);
+        opacity: .5;
+    }
+}
+
+/**
+ * Rich format menu
+ * @see https://starcitizen.tools/MediaWiki:Common.css
+ */
+/* Remove bottom spacing as it is handled in footer portlet */
+.citizen-drawer__menu {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+.mw-portlet-External {
+	position: sticky;
+	bottom: 0;
+	margin-top: var(--space-md);
+	margin-inline: calc(var(--space-xs) * -1);
+	padding: var(--space-xs);
+	border-top: var(--border-base);
+	backdrop-filter: var(--backdrop-filter-frosted-glass);
+	font-size: var(--font-size-x-small);
+	grid-column: 1 / -1;
+	white-space: nowrap
+}
+.mw-portlet-External .citizen-menu__heading {
+	display: none;
+}
+.mw-portlet-External ul {
+	display: flex;
+	overflow: auto;
+}
+.mw-portlet-External .mw-list-item a {
+	gap: 0;
+}
+.citizen-drawer__menu [id^="n-sidebar-label-"] a {
+	pointer-events: none;
+	margin-left: var(--space-xs);
+	padding-left: var(--space-md);
+	padding-right: var(--space-xs);
+	border-left: 1px solid var(--border-color-base);
+	border-radius: 0;
+	letter-spacing: .05em;
+	font-weight: var(--font-weight-normal);
+	color: var(--color-subtle) !important
+}
+.citizen-drawer__menu [id^="n-sidebar-icon-"] a {
+	font-size: 0;
+	content-visibility: auto;
+}
+.citizen-drawer__menu [id^="n-sidebar-icon-"] a::before {
+	display: block;
+	content: "";
+	width: var(--size-icon);
+	height: var(--size-icon);
+	background-color: currentColor;
+	mask-size: contain;
+	mask-repeat: no-repeat;
+	mask-position: center;
+}
+#n-sidebar-icon-discord a::before {
+	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/7/77/Discord_-_Simple_Icons.svg");
+			mask-image: url("https://static.wikitide.net/doorswiki/7/77/Discord_-_Simple_Icons.svg");
+}
+#n-sidebar-icon-twitter a::before {
+	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/6/6a/Twitter_-_Simple_Icons.svg");
+			mask-image: url("https://static.wikitide.net/doorswiki/6/6a/Twitter_-_Simple_Icons.svg");
+}
+#n-sidebar-icon-bluesky a::before {
+	-webkit-mask-image: url("https://static.wikitide.net/utgwiki/2/2f/Social_icon_Bluesky.svg");
+			mask-image: url("https://static.wikitide.net/utgwiki/2/2f/Social_icon_Bluesky.svg");
+}
+#n-sidebar-icon-github a::before {
+	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/d/dd/GitHub_-_Simple_Icons.svg");
+			mask-image: url("https://static.wikitide.net/doorswiki/d/dd/GitHub_-_Simple_Icons.svg");
+}
+#n-sidebar-icon-reddit a::before {
+	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/e/e8/Reddit_-_Simple_Icons.svg");
+			mask-image: url("https://static.wikitide.net/doorswiki/e/e8/Reddit_-_Simple_Icons.svg");
+}
+#n-sidebar-icon-roblox a::before {
+	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/3/3c/Roblox_-_Simple_Icons.svg");
+			mask-image: url("https://static.wikitide.net/doorswiki/3/3c/Roblox_-_Simple_Icons.svg");
+}
+#p-managewiki-sidebar-header {
+	display: none;
+}
+
+.page-DOORS_Wiki {
+    .citizen-page-footer {
+        display: none;
+    }
+    
+    .citizen-page-header {
+        margin-top: var(--space-md)!important;
+        
+        .citizen-page-header-inner {
+            border-top: unset!important;
+        }
+    }
+}
+
+.skin-theme-clientpref-day .invert-light,
+.skin-theme-clientpref-day .invertinvert {
+	filter: invert(1) hue-rotate(180deg);
+}
+
+.invert {
+	filter: invert(1) hue-rotate(180deg);
+	
+	.skin-theme-clientpref-day & {
+		filter: unset!important;
+	}
+}
+
+.ns-talk #ca-edit { display: none }
+.ns-talk #ca-addsection { order: 1 }
+.ns-talk #ca-addsection a:not(:hover) { background: var(--color-surface-2); border-radius: var(--border-radius-medium) }
+
+@media screen and (min-width: 1119px) {
+    .mw-heading2 ~ .citizen-section {
+        margin-left: 2rem;
+    }
+
+    .citizen-section > .citizen-section {
+        margin-left: 2rem;
+    }
+}
+
+.citizen-command-palette {
+	.cdx-thumbnail__image,
+    .cdx-thumbnail__placeholder {
+        background-color: var(--color-surface-2);
+    }
+}
+
+/* indicator dot for logged out users */
+.citizen-userMenu:has(#p-personal #pt-login) .citizen-dropdown-summary::after {
+    position: absolute;
+    top: var(--space-xxs);
+    right: var(--space-xxs);
+    box-sizing: content-box;
+    width: 0.5rem;
+    height: 0.5rem;
+    content: '';
+    background: var(--color-progressive);
+    border: 4px solid var(--color-surface-0);
+    border-radius: var(--border-radius-circle);
+}
