@@ -4,7 +4,6 @@
 == visual ==
 <!-- Disabled until fixed: * BetterReflist[ResourceLoader|type=styles|default]|BetterReflist.css-->
 * NoEditSections[ResourceLoader|type=styles]|NoEditSections.css
-* OswaldFont[ResouceLoader|type=styles]|OswaldFont.css
 * RecentChangesModern[ResourceLoader|type=styles]|RecentChangesModern.css
 * StaffColors[ResourceLoader|type=styles|default]|StaffColors.css
 * ContribColors[ResourceLoader|type=styles|default]|ContribColors.css

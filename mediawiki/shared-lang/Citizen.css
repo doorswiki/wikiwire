@@ -441,16 +441,16 @@ body.page-DOORS_Wiki {
 }
 
 .citizen-ui-icon.mw-ui-icon-eye::before {
-    mask-image: url(https://static.wikitide.net/stackdwiki/1/1e/OVERVIEW1.webp);
+    mask-image: url(https://static.wikitide.net/doorswiki/e/ed/Eye_icon.png);
 }
 
 #mw-indicator-mw-helplink a .mw-helplink-icon,
 .citizen-ui-icon.mw-ui-icon-help::before {
-    mask-image: url(https://static.wikitide.net/stackdwiki/2/25/PUZZLES2.webp);
+    mask-image: url(https://static.wikitide.net/doorswiki/d/d0/Question_icon.png);
 }
 
 .citizen-ui-icon.mw-ui-icon-logOut::before {
-    mask-image: url(https://static.wikitide.net/doorswiki/3/33/HIDING.png);
+    mask-image: url(https://static.wikitide.net/doorswiki/f/f1/Hiding_icon.png);
 }
 
 /*.citizen-ui-icon.mw-ui-icon-wikimedia-userAvatar::before {*/
@@ -518,7 +518,7 @@ body.page-DOORS_Wiki {
 			position: absolute;
 			inset: 0;
 			background: currentcolor;
-			mask-image: url(https://static.wikitide.net/doorswiki/9/92/HISTORY.png);
+			mask-image: url(https://static.wikitide.net/doorswiki/9/9f/Magnifier_icon.png);
 			mask-size: 20px 20px;
 			mask-position: center;
 			mask-repeat: no-repeat;
