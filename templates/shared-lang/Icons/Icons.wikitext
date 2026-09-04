@@ -1,0 +1,24 @@
+<includeonly>[[File:{{#switch:{{lc:{{{1|}}}}}
+| achievement = Achievements icon.svg
+| behavior    = Skull icon, monochrome.png
+| bugs        = Bug icon.svg
+| currency    = Currency icon, monochrome.png
+| crucifix    = Crucifix icon.png
+| damage      = Damage icon, simplified.png
+| door        = Doors icon, no tilt.png
+| gallery     = Gallery icon.png
+| health      = Health icon.png
+| hiding      = Hiding icon.png
+| history     = Magnifier icon.png
+| instakill   = Instakill icon.png
+| interact    = Interact icon.png
+| negative    = Negative icon.png
+| overview    = Eye icon.png
+| player      = Player icon.png
+| positive    = Positive icon.png
+| puzzles     = Puzzle icon.svg
+| speech      = Speech icon.png
+| trivia      = Bulb icon.png
+| usage       = Lighter icon.png
+| journal     = Journal icon.svg
+| modifiers   = Modifiers icon, monochrome.png}}|class=invertinvert|{{{size|24x24px}}}|link={{{link|}}}|{{{caption|}}}]]</includeonly><noinclude>{{Documentation}}</noinclude>

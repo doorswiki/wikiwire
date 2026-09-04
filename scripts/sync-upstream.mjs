@@ -35,6 +35,9 @@ const PAGES = {
   'Template:Username': 'templates/shared-lang/Username/Username.wikitext',
   'Template:USERNAME/doc': 'templates/shared-lang/USERNAME/doc.wikitext',
   'Template:DOORSWiki userpage': 'templates/shared-lang/DOORSWiki userpage/DOORSWiki userpage.wikitext',
+  'Template:Hoverimg': 'templates/shared-lang/Hoverimg/Hoverimg.wikitext',
+  'Template:Icons': 'templates/shared-lang/Icons/Icons.wikitext',
+  'Template:DOORS Wiki/styles.css': 'templates/shared-lang/DOORS Wiki/styles.css',
 };
 
 // Myers LCS algorithm

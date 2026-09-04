@@ -1,0 +1,304 @@
+.doors-gridlayout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
+.doors-gridlayout > * {
+	flex: 1;
+}
+
+.home-container {
+    width:100%; 
+    border-radius: var(--border-radius-large); 
+    text-align: center; 
+    padding: var(--space-md); 
+}
+
+.home-nav {
+    border-radius: var(--border-radius-large); 
+    text-align:center; 
+    padding: var(--space-md); 
+    width: 100%;
+}
+
+.home-nav::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+@media screen and (max-width: 800px) {
+	.home-nav-details {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.home-nav-details img {
+		width: 100%!important;
+		height: auto!important;
+	}
+}
+
+.home-nav,
+.home-container,
+.doorswiki-spotlight {
+	border: var(--border-width-thick, .4em) solid var(--border-color-accent);
+	background: var(--color-surface-3);
+	margin: 1rem 0;
+}
+
+@media screen and (max-width: 800px) {
+	.home-nav,
+	.home-container,
+	.doorswiki-spotlight {
+		border-color: oklch(from var(--border-color-accent) l c h / 0.8);
+	}
+}
+
+.doorswiki-logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+    .doorswiki-logo-container img {
+        width: 100%!important;
+        height: auto!important;
+    }
+}
+
+.doorswiki-searchbar-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem 0;
+	gap: 1rem;
+}
+
+.doorswiki-searchbar {
+    background-color: var(--color-surface-2);
+    padding: var(--space-sm) var(--space-lg);
+    display: inline-flex;
+    gap: 1rem;
+    border: var(--border-base);
+    cursor: pointer;
+    border-radius: var(--border-radius-medium);
+    position: relative;
+    width: 20vw;
+    color: oklch(from var(--color-emphasized) l c h / 0.8);
+    transition: .25s padding, .25s border-radius, .25s font-weight;
+}
+
+@media screen and (max-width: 800px) {
+	.doorswiki-searchbar {
+		width: 80vw;
+	}
+}
+
+.doorswiki-searchbar:hover {
+    border-radius: var(--border-radius-large);
+    background-color: oklch(from var(--color-surface-4) l c h / 0.8);
+    padding: var(--space-sm) var(--space-xxl);
+    color: var(--color-emphasized);
+    font-weight: bold;
+}
+
+.doorswiki-searchbar:hover::before {
+	opacity: 0.4;
+	clip-path: inset(0 0 0 0);
+}
+
+.doorswiki-searchbar::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url(https://static.wikitide.net/doorswiki/4/4a/Eyes_Eyes.png);
+    background-size: 100% auto;
+    background-position: center;
+    opacity: 0;
+    clip-path: inset(50% 0 50% 0);
+    transition: .25s opacity, .25s clip-path;
+    z-index: -1;
+}
+
+.doorswiki-searchbar:hover img {
+    opacity: 1;
+}
+    
+.doorswiki-searchbar img {
+    opacity: .8;
+}
+
+.doorswiki-editors {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem 3rem;
+    padding: 2rem!important;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.doorswiki-editors .doorswiki-editors-heading {
+    flex: 1;
+    font-size: var(--font-size-xx-large);
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+
+.doorswiki-editors .doorswiki-stat-container {
+    text-align: center;
+}
+
+.doorswiki-editors .doorswiki-stat-container > div {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    margin-bottom: -5px;
+}
+
+.doorswiki-editors .doorswiki-editors-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2rem;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .doorswiki-editors {
+        justify-content: center;
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+    }
+}
+
+.doorswiki-socials-container {
+    display: flex; 
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+    .doorswiki-socials-container {
+        justify-content: center;
+        gap: 3rem;
+    }
+    
+    .doorswiki-socials {
+        justify-content: center;
+    }
+    
+    .doorswiki-socials-heading {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.doorswiki-socials {
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center;
+    gap: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+    .doorswiki-socials-heading {
+        width: calc(20% + var(--space-lg));
+    }
+}
+
+@media screen and (max-width: 800px) {
+	.doorswiki-floors {
+		display: grid!important;
+    	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	}
+	
+	.doorswiki-floors-floor {
+		min-width: unset!important;
+	}
+	
+	.doorswiki-floors-floor .doorswiki-floors-floor--logo {
+		width: calc(80% - 1rem)!important;
+	}
+	
+	.doorswiki-floors-floor .doorswiki-floors-floor--logo img {
+		width: 100%!important;
+		height: auto!important;
+	}
+}
+
+.doorswiki-floors-container {
+	border: unset!important;
+	padding: unset!important;
+	background: unset!important;
+}
+
+.doorswiki-floors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(1rem + var(--border-width-thick, .4em));
+    margin: 1rem 0;
+}
+
+.doorswiki-floors:first-of-type {
+	margin-top: unset;
+}
+
+.doorswiki-floors:last-of-type {
+    margin-bottom: unset;
+}
+
+.doorswiki-floors-floor {
+    display: flex;
+    min-width: 200px;
+    height: 130px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-medium);
+    color: #eee;
+    outline: var(--border-width-thick, .4em) solid var(--floor-border-color, var(--border-color-accent));
+    outline-offset: 0px;
+    transition-property: outline-offset;
+    transition-duration: .25s;
+}
+
+.doorswiki-floors-floor .doorswiki-floors-floor--image,
+.doorswiki-floors-floor .doorswiki-floors-floor--image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition-property: filter, opacity, transform;
+    transition-duration: .25s;
+}
+
+.doorswiki-floors-floor .doorswiki-floors-floor--logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.25);
+    pointer-events: none;
+    transition: .25s transform;
+}
+
+.doorswiki-floors-floor:hover {
+    outline-offset: 6px;
+}
+
+.doorswiki-floors-floor:hover .doorswiki-floors-floor--image {
+    filter: blur(3px) saturate(1.5);
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.doorswiki-floors-floor:hover .doorswiki-floors-floor--logo {
+    transform: translate(-50%, -50%) scale(1.15);
+    filter: drop-shadow(0 0 5px black);
+}
