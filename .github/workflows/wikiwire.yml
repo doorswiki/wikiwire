@@ -31,6 +31,9 @@ jobs:
           node-version: 20
 
       - name: Fetch and apply upstream pages
+        env:
+          WIKI_USERNAME: DoorsWiki@WikiWire
+          WIKI_PASSWORD: ${{ secrets.WIKI_PASSWORD }}
         run: node scripts/sync-upstream.mjs
 
       - name: Commit and push changes

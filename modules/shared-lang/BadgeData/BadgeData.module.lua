@@ -13,6 +13,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127715318',
 },
 {
@@ -26,6 +27,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965744',
 },
 {
@@ -39,6 +41,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127964863',
 },
 {
@@ -52,6 +55,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965819',
 },
 {
@@ -65,6 +69,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2133600691',
 	olderVersions = {
 		{
@@ -94,6 +99,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965852',
 },
 {
@@ -107,6 +113,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '545021187316849',
 },
 {
@@ -122,6 +129,7 @@ General = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2639935491453645',
 },
 {
@@ -137,6 +145,7 @@ General = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '3037366308820165',
 },
 {
@@ -150,6 +159,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2133601126',
 },
 {
@@ -163,6 +173,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2917258128600674',
 },
 {
@@ -176,6 +187,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2133601772',
 	olderVersions = {
 		{
@@ -205,6 +217,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2127966117',
 },
 {
@@ -218,6 +231,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '96598251144845',
 },
 {
@@ -231,6 +245,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2301707323598858',
 },
 {
@@ -244,6 +259,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '789272246312597',
 },
 {
@@ -257,6 +273,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2817127966247970',
 },
 {
@@ -270,6 +287,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2791673925795977',
 },
 {
@@ -283,6 +301,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965664',
 },
 {
@@ -296,6 +315,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965803',
 },
 {
@@ -309,6 +329,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965866',
 },
 {
@@ -322,6 +343,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965910',
 },
 {
@@ -335,6 +357,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '4383194222748587',
 },
 {
@@ -348,6 +371,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '136346866966212',
 },
 {
@@ -361,6 +385,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '3898604792955769',
 	olderVersions = {
 		{
@@ -390,6 +415,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '3444580067085575',
 },
 {
@@ -403,6 +429,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1888162062641412',
 },
 {
@@ -416,6 +443,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1382129123162095',
 },
 {
@@ -429,6 +457,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1685221277396553',
 },
 {
@@ -442,6 +471,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '736781288900578',
 },
 {
@@ -455,6 +485,7 @@ General = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '4026679950625439',
 },
 {
@@ -468,6 +499,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = true, 
 	id = '3012969357151434',
 },
 {
@@ -481,6 +513,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = true, 
 	id = '2358674839516376',
 },
 {
@@ -494,6 +527,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = nil,
 	olderVersions = {
 		{
@@ -523,6 +557,7 @@ General = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = nil,
 },
 
@@ -541,6 +576,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965932',
 },
 {
@@ -554,6 +590,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965951',
 },
 {
@@ -567,6 +604,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127966064',
 },
 {
@@ -580,6 +618,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2133599061',
 },
 {
@@ -593,6 +632,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127966055',
 },
 {
@@ -606,6 +646,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127965976',
 },
 {
@@ -619,6 +660,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '1653840661375503',
 },
 {
@@ -632,6 +674,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127966009',
 },
 {
@@ -645,6 +688,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127966037',
 },
 {
@@ -658,6 +702,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '3997925777959907',
 },
 {
@@ -671,6 +716,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '1233383417912691',
 },
 {
@@ -684,6 +730,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '70842463964644',
 },
 {
@@ -697,6 +744,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1296279037717778',
 },
 {
@@ -710,6 +758,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '779526452946763',
 },
 {
@@ -723,6 +772,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '504590930650992',
 },
 {
@@ -736,6 +786,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2127966083',
 },
 {
@@ -749,6 +800,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2133601267',
 },
 {
@@ -762,6 +814,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2133601671',
 },
 {
@@ -775,6 +828,7 @@ Entities = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2133601025',
 },
 {
@@ -788,6 +842,7 @@ Entities = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2127966127',
 },
 {
@@ -801,6 +856,7 @@ Entities = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2127966150',
 	olderVersions = {
 		{
@@ -829,6 +885,7 @@ Entities = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2127966139',
 },
 {
@@ -842,6 +899,7 @@ Entities = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '3994503755162324',
 	olderVersions = {
 		{
@@ -885,6 +943,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2497010549297194',
 },
 {
@@ -898,6 +957,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '4257243908647728',
 },
 {
@@ -911,6 +971,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1825827269518621',
 },
 {
@@ -924,6 +985,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1183008252654332',
 },
 {
@@ -937,6 +999,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2320470442709029',
 },
 {
@@ -950,6 +1013,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '4303360565813809',
 },
 {
@@ -963,6 +1027,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '424937220656075',
 },
 {
@@ -976,6 +1041,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2710257537947291',
 },
 {
@@ -989,6 +1055,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '1532549276977461',
 },
 {
@@ -1002,6 +1069,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '1578884729090131',
 },
 {
@@ -1015,6 +1083,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2234293480928638',
 },
 {
@@ -1028,6 +1097,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '3631975811926772',
 },
 {
@@ -1041,6 +1111,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '3810629024141890',
 },
 {
@@ -1054,6 +1125,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '531943390393359',
 },
 {
@@ -1067,6 +1139,7 @@ Entities = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1788726061198232',
 },
 {
@@ -1080,6 +1153,7 @@ Entities = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '1458783363273047',
 },
 
@@ -1098,6 +1172,7 @@ Items = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '1903857672180839',
 },
 {
@@ -1111,6 +1186,7 @@ Items = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '501147464076214',
 },
 {
@@ -1124,6 +1200,7 @@ Items = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2781303681587901',
 },
 {
@@ -1137,6 +1214,7 @@ Items = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1068615445673226',
 },
 {
@@ -1150,6 +1228,7 @@ Items = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '3628997062689887',
 },
 
@@ -1172,6 +1251,7 @@ Floors = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2133603375',
 	olderVersions = {
 		{
@@ -1202,6 +1282,7 @@ Floors = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2542480544292225',
 	olderVersions = {
 		{
@@ -1232,6 +1313,7 @@ Floors = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '4490354459349084',
 },
 {
@@ -1248,6 +1330,7 @@ Floors = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1414411336451656',
 },
 {
@@ -1265,6 +1348,7 @@ Floors = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '1901113756549798',
 },
 {
@@ -1278,6 +1362,7 @@ Floors = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1596799052460247',
 },
 {
@@ -1295,6 +1380,7 @@ Floors = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '702005650312417',
 },
 {
@@ -1308,6 +1394,7 @@ Floors = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1605225638107350',
 },
 {
@@ -1321,6 +1408,7 @@ Floors = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '4197825594002432',
 },
 {
@@ -1334,6 +1422,7 @@ Floors = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '197352446440105',
 },
 {
@@ -1347,6 +1436,7 @@ Floors = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '419100379409312',
 },
 {
@@ -1360,6 +1450,7 @@ Floors = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '4422865120861029',
 },
 
@@ -1378,6 +1469,7 @@ Crucifix = {
 	rewards = nil,
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2133599257',
 },
 {
@@ -1391,6 +1483,7 @@ Crucifix = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2133599454',
 },
 {
@@ -1404,6 +1497,7 @@ Crucifix = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2133599605',
 },
 {
@@ -1417,6 +1511,7 @@ Crucifix = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2133599708',
 },
 {
@@ -1430,6 +1525,7 @@ Crucifix = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2133599910',
 },
 {
@@ -1443,6 +1539,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2133600212',
 	olderVersions = {
 		{
@@ -1471,6 +1568,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2133600344',
 },
 {
@@ -1484,6 +1582,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2133600441',
 },
 {
@@ -1497,6 +1596,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2133600538',
 },
 {
@@ -1510,6 +1610,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2256123875769776',
 },
 {
@@ -1523,6 +1624,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '970904917647070',
 },
 {
@@ -1536,6 +1638,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '3046781795217624',
 },
 {
@@ -1549,6 +1652,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '308664585505076',
 },
 {
@@ -1562,6 +1666,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '4169257199436991',
 },
 {
@@ -1575,6 +1680,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2474397632616922',
 },
 {
@@ -1588,6 +1694,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '1389171401301189',
 },
 {
@@ -1601,6 +1708,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '3613633701310583',
 	olderVersions = {
 		{
@@ -1629,6 +1737,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '1316767412265996',
 },
 {
@@ -1642,6 +1751,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '544848033735346',
 },
 {
@@ -1655,6 +1765,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2100206745698733',
 },
 {
@@ -1668,6 +1779,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2834228082428209',
 },
 {
@@ -1681,6 +1793,7 @@ Crucifix = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2785202765244841',
 },
 {
@@ -1694,6 +1807,7 @@ Crucifix = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1244961294717639',
 },
 
@@ -1716,6 +1830,7 @@ Challenges = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2151004633',
 },
 {
@@ -1733,6 +1848,7 @@ Challenges = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2151004643',
 },
 {
@@ -1750,6 +1866,7 @@ Challenges = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1852452263373089',
 },
 {
@@ -1767,6 +1884,7 @@ Challenges = {
 	},
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '820874253830339',
 },
 {
@@ -1780,6 +1898,7 @@ Challenges = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '2112578033808227',
 },
 {
@@ -1793,6 +1912,7 @@ Challenges = {
 	rewards = nil,
 	secret = false,
 	hidden = true,
+	obtainable = true, 
 	id = '1616003504792374',
 },
 
@@ -1813,6 +1933,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '1381568812418413',
 },
 {
@@ -1828,6 +1949,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1843,6 +1965,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 	olderVersions = {
 		{
@@ -1875,6 +1998,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '261059343299567',
 },
 {
@@ -1890,6 +2014,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1905,6 +2030,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1920,6 +2046,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1935,6 +2062,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1950,6 +2078,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1965,6 +2094,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1980,6 +2110,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 {
@@ -1995,6 +2126,7 @@ Battle = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = nil,
 },
 
@@ -2015,6 +2147,7 @@ Visions = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2636238145372790',
 },
 {
@@ -2030,6 +2163,7 @@ Visions = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '1063845873279495',
 },
 {
@@ -2045,6 +2179,7 @@ Visions = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2770087226375143',
 },
 {
@@ -2060,6 +2195,7 @@ Visions = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '338904710825126',
 	olderVersions = {
 		{
@@ -2092,6 +2228,7 @@ Visions = {
 	},
 	secret = false,
 	hidden = false,
+	obtainable = true, 
 	id = '2867925373582154',
 },
 {
@@ -2108,6 +2245,7 @@ Visions = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '1226198493522527',
 	olderVersions = {
 		{
@@ -2147,6 +2285,7 @@ Collab = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '1812889797307008',
 	olderVersions = {
 		{
@@ -2181,6 +2320,7 @@ Collab = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2346123842218276',
 },
 {
@@ -2197,6 +2337,7 @@ Collab = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2148287434',
 	olderVersions = {
 		{
@@ -2230,6 +2371,7 @@ Collab = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2144511356',
 	olderVersions = {
 		{
@@ -2264,6 +2406,7 @@ Collab = {
 	},
 	secret = true,
 	hidden = false,
+	obtainable = true, 
 	id = '2148807102',
 	olderVersions = {
 		{
@@ -2298,6 +2441,7 @@ Collab = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2148807104',
 },
 {
@@ -2314,6 +2458,7 @@ Collab = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = true, 
 	id = '2539945838342832',
 },
 
@@ -2332,6 +2477,7 @@ Events = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
+	obtainable = false, 
 	id = '2004308386837501',
 },
 {
@@ -2348,6 +2494,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '1561848305836932',
 	olderVersions = {
 		{
@@ -2379,6 +2526,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '2373489378718790',
 	olderVersions = {
 		{
@@ -2411,6 +2559,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '1669355231823766',
 },
 {
@@ -2427,6 +2576,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '2167171038640571',
 },
 {
@@ -2443,6 +2593,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '817945551063050',
 },
 {
@@ -2460,6 +2611,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '4188765071147357',
 },
 {
@@ -2477,6 +2629,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = nil,
 },
 {
@@ -2490,6 +2643,7 @@ Events = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '1226198493522527',
 	olderVersions = {
 		{
@@ -2534,6 +2688,7 @@ Events = {
 	},
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '446899243741856',
 },
 {
@@ -2547,6 +2702,7 @@ Events = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '2583617475301475',
 	olderVersions = {
 		{
@@ -2575,6 +2731,7 @@ Events = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '2143218889',
 },
 {
@@ -2588,6 +2745,7 @@ Events = {
 	rewards = nil,
 	secret = true,
 	hidden = true,
+	obtainable = false, 
 	id = '1318507127292914',
 	olderVersions = {
 		{
@@ -2621,6 +2779,7 @@ Legacy = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = false, 
 	id = '2753079656503998',
 },
 
@@ -2635,6 +2794,7 @@ Legacy = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = false, 
 	id = '3564553785088385',
 },
 
@@ -2649,6 +2809,7 @@ Legacy = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = false, 
 	id = '2810652516854730',
 },
 
@@ -2663,6 +2824,7 @@ Legacy = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = false, 
 	id = '2133601870',
 },
 
@@ -2677,6 +2839,7 @@ Legacy = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = false, 
 	id = '2133603021',
 },
 
@@ -2691,9 +2854,101 @@ Legacy = {
 	rewards = nil,
 	secret = true,
 	hidden = nil,
+	obtainable = false, 
 	id = '2133603122',
 },
 
 },
+
+Unlisted = {
+	
+{
+	title = 'Rock Bottom (Before HOTEL+)',
+	text = 'This was only obtainable before [[The Hotel+ Update|the HOTEL+ update]]!',
+	directions = 'Escape The Hotel.',
+	tutorial = nil,
+	references = nil,
+	color = 'Escape',
+	image = 'Rock Bottom Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = false,
+	obtainable = false, 
+	id = '2127966163',
+},
+{
+	title = 'Detour',
+	text = 'I think I\'m lost.',
+	directions = 'Enter a subfloor. Recieve their acknowledgment.',
+	tutorial = nil,
+	references = nil,
+	color = 'Unique',
+	image = 'Detour Badge Old.png',
+	rewards = {
+		Stardust = 20,
+	},
+	secret = true,
+	hidden = true,
+	obtainable = false, 
+	id = '2133601870',
+},
+{
+	title = 'THE TAKEOVER: NOOB',
+	text = 'N/A',
+	directions = 'Gain 500 points in a [[Battle Mode]] round.',
+	tutorial = nil,
+	references = nil,
+	color = 'Default',
+	image = 'THE TAKEOVER NOOB Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = nil,
+	obtainable = false, 
+	id = '1785779318159197',
+},	
+{
+	title = 'THE TAKEOVER: PRO',
+	text = 'N/A',
+	directions = 'Gain 1000 points in a [[Battle Mode]] round.',
+	tutorial = nil,
+	references = nil,
+	color = 'Default',
+	image = 'THE TAKEOVER PRO Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = nil,
+	obtainable = false, 
+	id = '4311630881057246',
+},	
+{
+	title = 'THE TAKEOVER: MASTER',
+	text = 'N/A',
+	directions = 'Eliminate 3 players in a [[Battle Mode]] round.',
+	tutorial = nil,
+	references = nil,
+	color = 'Default',
+	image = 'THE TAKEOVER MASTER Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = nil,
+	obtainable = false, 
+	id = '3167463644564167',
+},	
+{
+	title = 'THE TAKEOVER: EXTREME',
+	text = 'N/A',
+	directions = 'Win a [[Battle Mode]] round without hiding.',
+	tutorial = nil,
+	references = nil,
+	color = 'Default',
+	image = 'THE TAKEOVER EXTREME Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = nil,
+	obtainable = false, 
+	id = '2043344896372907',
+},
+
+}
 
 }

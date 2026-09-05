@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const UPSTREAM_API = 'https://doorsgame.wiki/w/api.php';
 const LANG_API = 'https://zh.doorsgame.wiki/w/api.php';
+const WIKIWIRE_UA = 'WikiWire/1.0';
 
 const PAGES = {
   // MediaWiki namespace
@@ -13,7 +14,6 @@ const PAGES = {
   'MediaWiki:Gadget-SpoilersByDefault': 'mediawiki/shared-lang/Gadget-SpoilersByDefault',
   'MediaWiki:Gadget-SpoilersByDefault.js': 'mediawiki/shared-lang/Gadget-SpoilersByDefault.js',
   'MediaWiki:Gadgets-definition': 'mediawiki/shared-lang/Gadgets-definition',
-  'MediaWiki:Main page.js': 'mediawiki/shared-lang/Main page.js',
   'MediaWiki:Welcome-enabled': 'mediawiki/shared-lang/Welcome-enabled',
   'MediaWiki:Welcome-user-page': 'mediawiki/shared-lang/Welcome-user-page',
   'MediaWiki:Welcome-user': 'mediawiki/shared-lang/Welcome-user',
@@ -40,6 +40,115 @@ const PAGES = {
   'Template:Icons': 'templates/shared-lang/Icons/Icons.wikitext',
   'Template:DOORS Wiki/styles.css': 'templates/shared-lang/DOORS Wiki/styles.css',
 };
+
+class MediaWikiClient {
+  constructor(apiUrl, username = '', password = '') {
+    this.apiUrl = apiUrl;
+    this.username = username;
+    this.password = password;
+    this.cookies = new Map();
+  }
+
+  mergeCookies(headers) {
+    const list = typeof headers.getSetCookie === 'function'
+      ? headers.getSetCookie()
+      : (headers.get('set-cookie') ? [headers.get('set-cookie')] : []);
+
+    for (const item of list) {
+      for (const line of item.split(/,(?=[^;]+?=)/)) {
+        const nv = line.split(';')[0].trim();
+        const eq = nv.indexOf('=');
+        if (eq !== -1) {
+          this.cookies.set(nv.slice(0, eq).trim(), nv.slice(eq + 1).trim());
+        }
+      }
+    }
+  }
+
+  getCookieHeader() {
+    if (this.cookies.size === 0) return {};
+    return {
+      Cookie: [...this.cookies.entries()].map(([k, v]) => `${k}=${v}`).join('; '),
+    };
+  }
+
+  async post(params) {
+    const body = new URLSearchParams({
+      format: 'json',
+      formatversion: '2',
+      ...params,
+    });
+
+    const res = await fetch(this.apiUrl, {
+      method: 'POST',
+      headers: {
+        'User-Agent': WIKIWIRE_UA,
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+        ...this.getCookieHeader(),
+      },
+      body,
+    });
+
+    this.mergeCookies(res.headers);
+
+    if (!res.ok) {
+      const detail = await res.text();
+      const cfRay = res.headers.get('cf-ray');
+      throw new Error(
+        `Failed to fetch from ${this.apiUrl} (HTTP ${res.status} ${res.statusText}${cfRay ? `; cf-ray=${cfRay}` : ''}): ${detail.slice(0, 300)}`
+      );
+    }
+
+    return res.json();
+  }
+
+  async login() {
+    if (!this.username || !this.password) return;
+    try {
+      const tokenRes = await this.post({
+        action: 'query',
+        meta: 'tokens',
+        type: 'login',
+      });
+      const loginToken = tokenRes.query?.tokens?.logintoken;
+      if (!loginToken) return;
+
+      const loginRes = await this.post({
+        action: 'login',
+        lgname: this.username,
+        lgpassword: this.password,
+        lgtoken: loginToken,
+      });
+
+      if (loginRes.login?.result === 'Success') {
+        console.log(`[AUTH] Logged in to ${this.apiUrl} as ${this.username}`);
+      } else {
+        console.warn(`[WARN] Login to ${this.apiUrl} returned: ${loginRes.login?.reason ?? loginRes.login?.result}`);
+      }
+    } catch (err) {
+      console.warn(`[WARN] Login attempt to ${this.apiUrl} failed: ${err.message}`);
+    }
+  }
+
+  async fetchPages(titles) {
+    const data = await this.post({
+      action: 'query',
+      prop: 'revisions',
+      titles,
+      rvprop: 'content',
+      rvslots: '*',
+    });
+
+    const map = {};
+    for (const page of data.query?.pages ?? []) {
+      if (!page.missing) {
+        map[page.title] = page.revisions?.[0]?.slots?.main?.content ?? page.revisions?.[0]?.content ?? '';
+      }
+    }
+    return map;
+  }
+}
 
 // Myers LCS algorithm
 function getLCS(a, b) {
@@ -117,10 +226,8 @@ function mergePreservingLang(upstreamText, langText) {
       result.push(chunk.line);
     } else {
       if (chunk.b.length > 0) {
-        // Language wiki has changed/added lines: preserve them
         result.push(...chunk.b);
       } else if (chunk.a.length > 0) {
-        // Upstream has new additions: incorporate them
         result.push(...chunk.a);
       }
     }
@@ -128,42 +235,24 @@ function mergePreservingLang(upstreamText, langText) {
   return result.join('\n');
 }
 
-async function fetchWikiPages(apiUrl, titles) {
-  const params = new URLSearchParams({
-    action: 'query',
-    prop: 'revisions',
-    titles,
-    rvprop: 'content',
-    rvslots: '*',
-    format: 'json',
-    formatversion: '2',
-  });
-
-  const res = await fetch(`${apiUrl}?${params.toString()}`, {
-    headers: { 'User-Agent': 'WikiWire-Sync/1.0' },
-  });
-
-  if (!res.ok) {
-    throw new Error(`Failed to fetch from ${apiUrl}: ${res.status} ${res.statusText}`);
-  }
-
-  const data = await res.json();
-  const map = {};
-  for (const page of data.query?.pages ?? []) {
-    if (!page.missing) {
-      map[page.title] = page.revisions?.[0]?.slots?.main?.content ?? page.revisions?.[0]?.content ?? '';
-    }
-  }
-  return map;
-}
-
 async function main() {
   const titles = Object.keys(PAGES).join('|');
+  const username = process.env.WIKI_USERNAME || '';
+  const password = process.env.WIKI_PASSWORD || '';
 
-  console.log('Fetching upstream pages from doorsgame.wiki and language wiki...');
+  const upstreamClient = new MediaWikiClient(UPSTREAM_API, username, password);
+  const langClient = new MediaWikiClient(LANG_API, username, password);
+
+  console.log('Connecting to upstream and language wikis...');
+  await Promise.all([
+    upstreamClient.login(),
+    langClient.login(),
+  ]);
+
+  console.log('Fetching pages...');
   const [upstreamPages, langPages] = await Promise.all([
-    fetchWikiPages(UPSTREAM_API, titles),
-    fetchWikiPages(LANG_API, titles).catch((err) => {
+    upstreamClient.fetchPages(titles),
+    langClient.fetchPages(titles).catch((err) => {
       console.warn(`[WARN] Could not fetch from language wiki: ${err.message}`);
       return {};
     }),

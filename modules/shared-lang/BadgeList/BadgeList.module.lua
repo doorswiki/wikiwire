@@ -3,12 +3,15 @@
 -- Used for:
 -- generating complete per-type badges list tabber on [[Achievements]] & [[Achievement/List]]
 -- extracting individual badge counts, used via [[Template:BadgeCount]]
+-- extracting individual badge reward counts, used via [[Template:BadgeRewardsCount]]
+-- generating individual badge lists, used via [[Template:BadgeAuto]]
 
 -- Operates completely under [[Module:BadgeData]]
 
 -- Styles found at
 -- [[Template:Badge/styles.css]]
 -- [[Template:Color/styles.css]]
+
 local p = {}
 
 -- Imports
@@ -29,6 +32,10 @@ local order = {
 	'Legacy'
 }
 
+local formatnum = function(number)
+	return mw.language.getContentLanguage():formatNum(number)
+end
+
 local function buildBadge(badge)
 	local tags = {}
 	if badge.secret then tags[#tags+1] = 'SECRET' end
@@ -40,6 +47,7 @@ local function buildBadge(badge)
 		local rewards = {
 			'<div class="badge-rewards">'
 		}
+
 		for key, value in pairs(badge.rewards) do
 			if type(value) == 'number' then
 				rewards[#rewards+1] = '<span class="badge-rewards-item"><span class="badge-rewards-item-key">[[File:' .. key .. ' icon.png|60px]]</span><span class="badge-rewards-item-value">' .. value .. '</span></span>'
@@ -47,6 +55,7 @@ local function buildBadge(badge)
 				rewards[#rewards+1] = '<span class="badge-rewards-item">[[File:' .. value .. '|60px]]</span>'
 			end
 		end
+
 		rewards[#rewards+1] = '</div>'
 		rewardsHtml = table.concat(rewards)
 	end
@@ -104,6 +113,7 @@ local function buildBadge(badge)
 		buttons[#buttons+1] = '<div class="badge-tutorial-button badge-button">[[File:Bulb icon.png|40px|link=]]</div>'
 		buttons[#buttons+1] = '<div class="badge-tutorial-container badge-button-container"><div class="badge-info-box"><div class="badge-info-title">TUTORIAL</div>' .. badge.tutorial .. '</div></div>'
 	end
+
 	if badge.references then
 		buttons[#buttons+1] = '<div class="badge-references-button badge-button">[[File:Hiding icon.png|40px|link=]]</div>'
 		buttons[#buttons+1] = '<div class="badge-references-container badge-button-container"><div class="badge-info-box"><div class="badge-info-title">REFERENCES</div>' .. badge.references .. '</div></div>'
@@ -116,6 +126,8 @@ local function buildBadge(badge)
 		end
 		buttons[#buttons+1] = '<div class="badge-oldversions-container badge-button-container"><div class="badge-info-box"><div class="badge-info-title">OLDER VERSIONS</div>' .. oldContent .. '</div></div>'
 	end
+
+	local buttonsHtml = ''
 	if #buttons > 0 then
 		out[#out+1] = '<div class="badge-buttons">' .. table.concat(buttons) .. '</div>'
 	end
@@ -210,6 +222,18 @@ local function countBadgeType(t)
 		for _, badgeType in ipairs(order) do
 			for _, badge in ipairs(badgeData[badgeType]) do
 				if badge.hidden then
+					total = total + 1
+				end
+			end
+		end
+		return total
+	end
+	
+	if t == 'Unobtainable' then
+		local total = 0
+		for _, badgeType in ipairs(order) do
+			for _, badge in ipairs(badgeData[badgeType] or {}) do
+				if not badge.obtainable then
 					total = total + 1
 				end
 			end
