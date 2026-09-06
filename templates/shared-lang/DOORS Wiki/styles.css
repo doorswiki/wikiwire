@@ -7,6 +7,14 @@
 
 .doors-gridlayout > * {
 	flex: 1;
+	margin-top: unset!important;
+	margin-bottom: unset!important;
+}
+
+@media screen and (max-width: 1119px) {
+	.doors-gridlayout {
+		flex-direction: column!important;
+	}
 }
 
 .home-container {
