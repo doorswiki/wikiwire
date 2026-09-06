@@ -673,6 +673,26 @@ clips the element's background image to the text's stroke. */
     padding: 0.05em;
 }
 
+/* Given "--stroke" variable containing a valid color,
+applies it to the text's stroke.
+Requires a "data-text" attribute containing the element's text.
+Compatible with .background-clip-text. */
+.text-stroke-color {
+    position: relative;
+    font-weight: bold;
+    
+    &:before {
+        content: attr(data-text);
+        position: absolute;
+        z-index: -1;
+        -webkit-text-stroke: 0.2em var(--stroke);
+    }
+    
+    & > b {
+        font-weight: inherit;
+    }    
+}
+
 /* Given "--gradient" and "--gradient2" variables containing valid gradients,
 clips "--gradient" to the text itself and "--gradient2" to the text's stroke.
 Requires a "data-text" attribute containing the element's text. */
@@ -680,10 +700,13 @@ Requires a "data-text" attribute containing the element's text. */
     color: transparent;
     position: relative;
     display: inline-block;
+    position: relative;
     padding: 0.05em;
     font-weight: bold;
     background-image: var(--gradient2);
     background-clip: text;
+    color: transparent;
+    font-weight: bold;
     -webkit-text-stroke: 0.2em transparent;
     
     &:after {

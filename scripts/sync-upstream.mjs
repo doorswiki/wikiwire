@@ -108,11 +108,11 @@ class MediaWikiClient {
       const isCfChallenge = detail.includes('Checking your connection') || detail.includes('Just a moment') || detail.includes('cf-mitigated') || detail.includes('unusual activity');
       if (isCfChallenge) {
         throw new Error(
-          `Cloudflare Bot Challenge triggered on ${this.apiUrl} (HTTP ${res.status}${cfRay ? `; cf-ray=${cfRay}` : ''}).`
+          `Cloudflare Bot Challenge (HTTP ${res.status}${cfRay ? `; cf-ray=${cfRay}` : ''})`
         );
       }
       throw new Error(
-        `Failed to fetch from ${this.apiUrl} (HTTP ${res.status} ${res.statusText}${cfRay ? `; cf-ray=${cfRay}` : ''}): ${detail.slice(0, 300)}`
+        `HTTP ${res.status} ${res.statusText}${cfRay ? `; cf-ray=${cfRay}` : ''}: ${detail.slice(0, 150)}`
       );
     }
 
@@ -256,56 +256,55 @@ function mergePreservingLocalEdits(upstreamText, localText) {
 }
 
 async function main() {
-  const titles = Object.keys(PAGES).join('|');
   const username = process.env.WIKI_USERNAME || '';
   const password = process.env.WIKI_PASSWORD || '';
 
   const upstreamClient = new MediaWikiClient(UPSTREAM_API, username, password);
 
   console.log(`Connecting to English upstream wiki (${UPSTREAM_API})...`);
+  console.log(`User-Agent: ${WIKIWIRE_UA}`);
   await upstreamClient.login();
 
-  console.log('Fetching English upstream pages...');
-  let upstreamPages = {};
-
-  try {
-    upstreamPages = await upstreamClient.fetchPages(titles);
-  } catch (err) {
-    console.warn(`[WARN] Could not fetch from upstream English wiki (${UPSTREAM_API}): ${err.message}`);
-    console.warn('[WARN] Continuing with existing repository files...');
-  }
+  console.log(`Querying all ${Object.keys(PAGES).length} pages individually...`);
 
   let updatedCount = 0;
   for (const [title, relPath] of Object.entries(PAGES)) {
-    const upstreamContent = upstreamPages[title];
-    if (upstreamContent === undefined) {
-      continue;
-    }
+    try {
+      const pageMap = await upstreamClient.fetchPages(title);
+      const upstreamContent = pageMap[title];
+      if (upstreamContent === undefined) {
+        console.warn(`[WARN] Page not found upstream: ${title}`);
+        continue;
+      }
 
-    // Check existing content in local repository
-    let existingContent = null;
-    if (fs.existsSync(relPath)) {
-      existingContent = fs.readFileSync(relPath, 'utf8');
-    }
+      // Check existing content in local repository
+      let existingContent = null;
+      if (fs.existsSync(relPath)) {
+        existingContent = fs.readFileSync(relPath, 'utf8');
+      }
 
-    // Merge English upstream with local edits (keep local lines if modified, override if no diff)
-    const finalContent = mergePreservingLocalEdits(upstreamContent, existingContent);
+      // Merge English upstream with local edits
+      const finalContent = mergePreservingLocalEdits(upstreamContent, existingContent);
 
-    const dir = path.dirname(relPath);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(relPath, finalContent, 'utf8');
-    updatedCount++;
+      const dir = path.dirname(relPath);
+      fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(relPath, finalContent, 'utf8');
+      updatedCount++;
 
-    if (existingContent && existingContent !== upstreamContent) {
-      console.log(`[SYNCED (MERGED)] ${title} -> ${relPath} (preserved local modifications)`);
-    } else {
-      console.log(`[SYNCED] ${title} -> ${relPath} (${Buffer.byteLength(finalContent, 'utf8')} bytes)`);
+      if (existingContent && existingContent !== upstreamContent) {
+        console.log(`[SYNCED (MERGED)] ${title} -> ${relPath} (preserved local modifications)`);
+      } else {
+        console.log(`[SYNCED] ${title} -> ${relPath} (${Buffer.byteLength(finalContent, 'utf8')} bytes)`);
+      }
+    } catch (err) {
+      console.warn(`[REQUEST FAILED] ${title}: ${err.message}`);
+      // Continue without stopping!
     }
   }
 
-  console.log(`Synchronization finished (${updatedCount}/${Object.keys(PAGES).length} pages processed).`);
+  console.log(`Completed requests across all pages (${updatedCount}/${Object.keys(PAGES).length} succeeded).`);
 }
 
 main().catch((err) => {
-  console.warn(`[WARN] Upstream sync encountered an issue but continuing: ${err.message}`);
+  console.warn(`[WARN] Process finished: ${err.message}`);
 });
