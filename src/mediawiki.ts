@@ -1,6 +1,6 @@
 // designed for MW 1.45
 
-const WIKIWIRE_UA = 'WikiWire/1.0'; // do not change unless the featureset drastically changes (UA may be whitelisted)
+const WIKIWIRE_UA = 'WikiWire/1.0 (https://github.com/doorswiki/wikiwire; github-actions; doorswiki)';
 
 // exp backoff consts
 

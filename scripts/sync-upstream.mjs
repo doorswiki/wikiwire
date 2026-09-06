@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const UPSTREAM_API = 'https://doorsgame.wiki/w/api.php';
 const LANG_API = 'https://zh.doorsgame.wiki/w/api.php';
-const WIKIWIRE_UA = 'WikiWire/1.0';
+const WIKIWIRE_UA = 'WikiWire/1.0 (https://github.com/doorswiki/wikiwire; github-actions; doorswiki)';
 
 const PAGES = {
   // MediaWiki namespace
@@ -95,6 +95,12 @@ class MediaWikiClient {
     if (!res.ok) {
       const detail = await res.text();
       const cfRay = res.headers.get('cf-ray');
+      const isCfChallenge = detail.includes('Checking your connection') || detail.includes('Just a moment') || detail.includes('cf-mitigated') || detail.includes('unusual activity');
+      if (isCfChallenge) {
+        throw new Error(
+          `Cloudflare Bot Challenge triggered on ${this.apiUrl} (HTTP ${res.status}${cfRay ? `; cf-ray=${cfRay}` : ''}). Cloudflare Bot Fight Mode is blocking GitHub Actions runner datacenter IPs.`
+        );
+      }
       throw new Error(
         `Failed to fetch from ${this.apiUrl} (HTTP ${res.status} ${res.statusText}${cfRay ? `; cf-ray=${cfRay}` : ''}): ${detail.slice(0, 300)}`
       );
