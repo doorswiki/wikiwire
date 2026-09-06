@@ -550,6 +550,10 @@ table.diff [class*="mw-diff-inline-"] {
 	> a[href^="https://www.roblox.com"],
 	> span[title="Discord"] {
         position: relative;
+        display: inline-block;
+        aspect-ratio: 1;
+        height: 100%;
+        width: auto!important;
         
         &::before {
             content: '';
