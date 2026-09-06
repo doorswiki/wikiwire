@@ -612,6 +612,40 @@ export class mw_session {
         return Boolean(page && !page.missing);
     };
 
+    async get_page_content(title : string) : Promise<string | null> {
+        const data = await this._authed_post({
+            action: 'query',
+            titles: title,
+            prop: 'revisions',
+            rvprop: 'content',
+            rvslots: '*',
+        });
+
+        const pages = data.query?.pages;
+        if (!pages) return null;
+
+        const page = Object.values(pages)[0] as {
+            missing ?: boolean;
+            revisions ?: Array<{
+                content ?: string;
+                slots ?: {
+                    main ?: {
+                        content ?: string;
+                        '*' ?: string;
+                    };
+                };
+                '*' ?: string;
+            }>;
+        } | undefined;
+
+        if (!page || page.missing) return null;
+
+        const rev = page.revisions?.[0];
+        if (!rev) return null;
+
+        return rev.slots?.main?.content ?? rev.slots?.main?.['*'] ?? rev.content ?? rev['*'] ?? null;
+    };
+
     async _edit_once(params : Record<string, string>) : Promise<mw_api_res> {
         const data = await this._authed_post(params);
 

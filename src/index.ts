@@ -8,6 +8,7 @@ import { load_config, type site_config } from './config';
 import { map_repo_path, parse_shared_path_segment, type mapped_path } from './paths';
 import { mw_page_error, mw_session, type existence_hint } from './mediawiki';
 import { parse_site_credentials } from './site_credentials';
+import { merge_preserving_wiki_edits } from './diff';
 
 import type { Ignore } from 'ignore';
 
@@ -472,9 +473,25 @@ async function run() : Promise<void> {
                 sync_begin(`syncing ${job_index + 1}/${jobs.length} edit ${job.mapped.title} on ${job.site_cfg.id}`);
 
                 const session = await get_session(job.site_cfg.id);
-                const text = fs.readFileSync(path.join(workspace, job.file), 'utf8');
+                let text = fs.readFileSync(path.join(workspace, job.file), 'utf8');
 
-                const result = await session.edit( job.mapped.title, text, change_summary('edit', job.file, attribution), job.mapped.content_model, existence );
+                let page_exists_on_wiki = false;
+                try {
+                    const remote_content = await session.get_page_content(job.mapped.title);
+                    if (remote_content !== null) {
+                        page_exists_on_wiki = true;
+                        const merged_text = merge_preserving_wiki_edits(text, remote_content);
+                        if (merged_text !== text) {
+                            sync_log(`merged line-by-line with ${job.site_cfg.id} (preserved wiki modifications/additions)`);
+                        };
+                        text = merged_text;
+                    };
+                } catch (fetch_err : unknown) {
+                    sync_log(`could not fetch remote content for merge check; proceeding with direct edit: ${fetch_err instanceof Error ? fetch_err.message : String(fetch_err)}`);
+                };
+
+                const edit_existence = page_exists_on_wiki ? 'assume_exists' : existence;
+                const result = await session.edit( job.mapped.title, text, change_summary('edit', job.file, attribution), job.mapped.content_model, edit_existence );
 
                 if (result.fallback) { sync_log( `existence inference missed for ${job.mapped.title} on ${job.site_cfg.id} (git_status=${job.git_status}); retried successfully` ); };
 
