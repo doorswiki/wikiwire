@@ -89,8 +89,10 @@ function push_attribution_suffix() : string {
 };
 
 function change_summary(kind : 'edit' | 'delete', file : string, attribution : string) : string {
-    const verb = kind === 'delete' ? 'delete' : 'sync';
-    return `WikiWire: ${verb} ${file}${attribution}`;
+    if (kind === 'delete') {
+        return `WikiWire: delete ${file}${attribution}`;
+    };
+    return 'sync with english DOORS Wiki (doorsgame.wiki) verbatim';
 };
 
 let sync_grouping = false;
