@@ -92,7 +92,7 @@ function change_summary(kind : 'edit' | 'delete', file : string, attribution : s
     if (kind === 'delete') {
         return `WikiWire: delete ${file}${attribution}`;
     };
-    return 'sync with english DOORS Wiki (doorsgame.wiki) verbatim';
+    return 'sync with english DOORS Wiki (doorsgame.wiki)';
 };
 
 let sync_grouping = false;
