@@ -1,0 +1,184 @@
+<!--
+- Documentation template
+- A template used to show the contents of a documentation subpage
+- Note: Comments (<!-- --.>) are often used to avoid unnecessary line breaks or spaces.
+-->
+<!--
+- Pre-defined variables
+--><!--
+-->{{#vardefine: base page |
+  {{{page|
+    {{#ifeq: {{SUBPAGENAME}} | sandbox
+    | {{NAMESPACE}}:{{BASEPAGENAME}}
+    | {{FULLPAGENAME}}
+    }}
+  }}}
+}}<!--
+
+-->{{#vardefine: current page | {{FULLPAGENAME}}}}<!--
+
+-->{{#vardefine: doc page |
+  {{#if: {{{page|}}}
+  | {{{page}}}/doc
+  | {{#if: {{{1|}}}
+    | {{{1}}}
+    | {{#var: base page}}/doc
+    }}
+  }}
+}}<!--
+
+-->{{#vardefine: namespace |
+  {{{demospace|{{#ifeq: {{NAMESPACE}} | {{TALKSPACE}}
+  | {{SUBJECTSPACE}}
+  | {{NAMESPACE}}
+  }}}}}
+}}<!--
+
+-->{{#vardefine: preload | 
+  {{{preload|Template:Documentation/preload}}}&summary={{urlencode:Create /doc subpage for [[{{#var: base page}}]]}}&editintro=Template:Documentation/editintro-doc
+}}<!--
+
+-->{{#vardefine: preload-sandbox | 
+  {{{preload-sandbox|Template:Documentation/preload-sandbox}}}&summary={{urlencode:Create sandbox subpage for experimenting on template [[{{#var: base page}}]]}}
+}}<!--
+
+-->{{#vardefine: sandbox |
+  {{#if: {{{page|}}}
+  | {{{page}}}/sandbox
+  | {{{sandbox|{{#var: base page}}/sandbox}}}
+  }}
+}}<!--
+
+-->{{#vardefine: page text | 
+  {{#switch: {{#var: namespace}}
+  | {{ns:Template}} = template
+  | {{ns:Module}} = module
+  | #default = page
+  }}
+}}<!--
+
+-->{{#vardefine: doc image |
+  {{#ifeq: {{{heading|a}}} | <!-- null -->
+  | <!-- heading is specified but empty, don't show image -->
+  | [[File:{{#if: {{{content|}}} 
+    | Documentation_icon 
+    | {{#ifexist: {{#var: doc page}}
+      | Documentation_icon
+      | No Documentation_icon
+      }}
+    }}.svg|70px|link=|alt=|class=nomobile]]&nbsp;
+  }}
+}}<!--
+-
+- Sandbox header
+-
+-->{{#ifeq: {{SUBPAGENAMEE}} | sandbox
+   | <div class="article-table documentation"
+style="padding:1.5em; margin:auto; border:1px solid #5556; border-bottom:1px solid #5556; width:75%"><!--
+  -->This is a template sandbox subpage for [[{{#var: base page}}]]. <!--
+ --></div>
+}}<!--
+
+--><div class="template-documentation" style="clear:both; border:1px solid #5556; margin:1em"><!--
+-
+- Documentation Header
+-
+--><div class="article-table documentation" style="padding:1em; margin:0; border-bottom:1px solid #5556"><!--
+  --><span style="font-size:1.5em">{{#var: doc image }}'''{{{heading|{{ucfirst: {{#var: page text}} }} Documentation}}}'''</span><!--
+-
+- Documentation page tools
+-
+--><span style="float: right">&#x5b;{{#if: {{{content|}}}
+   | <!---->[[Special:EditPage/{{#var: current page}}|edit]] &#124; [[Special:Purge/{{#var: current page}}|purge]]
+   | {{#ifexist: {{#var: doc page}}
+     | <!--
+     -->[[{{#var: doc page}}|view]] &#124; [[Special:EditPage/{{#var: doc page}}|edit]] &#124; [[Special:PageHistory/{{#var: doc page}}|history]] &#124; [[Special:Purge/{{#var: current page}}|purge]]
+     | <!--
+       -->[{{fullurl:{{FULLPAGENAMEE:{{#var: doc page}}}}|action=edit&preload={{#var: preload}} }} create] &#124; [[Special:Purge/{{#var: current page}}|purge]]
+     }}
+   }}]</span><!--
+
+--></div><!--
+-
+- Documentation blurb
+-
+--><div style="padding:1em; padding-bottom:0; margin:0">
+
+{{#ifeq: {{{content|a}}} | {{{content}}} | <!-- do nothing -->
+| {{#ifexist: {{#var: doc page}}
+  | {{<!---->{{#var:doc page}}}}
+  | The [[w:Help:Template documentation|documentation]] for this {{#var: page text}} does not exist. Create it at [{{fullurl:{{FULLPAGENAMEE:{{#var: doc page}}}}|action=edit&preload={{#var: preload}} }} {{#var: doc page}}].
+  }}
+}}<!--
+-
+-->{{{content|}}}
+
+</div><!--
+-
+- End blurb
+-
+-->{{#if: {{{nofooter|}}} | |
+<div class="article-table documentation" style="clear:both; padding:.5em; margin:0; border-top:1px solid #5556"><!--
+-
+- The above [documentation] is …
+-
+-->{{#if: {{{content|}}}
+   | <!-- do not show -->
+   | {{#ifexist: {{#var: doc page}}
+     | {{#ifeq: {{SUBPAGENAME}} | sandbox
+       | This is the sandbox subpage of [[{{#var: base page}}]];
+       | The above
+       }}&nbsp;[[w:Help:Template documentation|documentation]] is [[mw:Help:Transclusion|transcluded]] from [[{{#var: doc page}}]]. <small>([[Special:EditPage/{{#var: doc page}}|edit]] &#124; [[Special:PageHistory/{{#var: doc page}}|history]])</small><br/>
+   
+     | {{#ifeq: {{#var: namespace}} | {{ns:Module}}
+       | You might want to [{{fullurl:{{FULLPAGENAMEE:{{#var: doc page}}}}|action=edit&preload={{#var: preload}} }} create documentation] for this [[w:Help:Lua|Scribuntu module]]. <br/>
+       | [{{fullurl:{{FULLPAGENAMEE:{{#var: doc page}}}}|action=edit&preload={{#var: preload}} }} Create documentation] for this template. <br/>
+       }}
+     }}
+   }}<!--
+   -
+   - Sandboxes.
+   -
+   - NOTE: THIS WILL CREATE MANY (yes, MANY) REDLINKS (IF YOU DIDN'T MAKE THE /sandbox PAGE). IF YOU DONT WANT THE LINKS, PLEASE REPLACE THE CODE BELOW WITH:
+   <
+     Editors can experiment in the page's [{{fullurl: {{#var: sandbox}}}} sandbox] page.
+   >
+   -
+   --><!--
+--><!-- CHANGE START --><!--
+-->Editors can experiment in this {{#var: page text}}'s <!--
+   -
+-->{{#ifexist: {{#var: sandbox}}
+   | [[{{#var: sandbox}}|sandbox]] <!--
+   --><small>(<!--
+     -->[[Special:EditPage/{{#var: sandbox}}|edit]] &#124; <!--
+     -->[{{fullurl: Special:ComparePages
+         | page1={{FULLPAGENAMEE:{{#var: base page}}}}&page2={{FULLPAGENAMEE:{{#var: current page}}}}
+         }} diff]<!--
+   -->)</small>
+      
+   | sandbox <small>(<!--
+   -->[{{fullurl: {{FULLPAGENAMEE:{{#var: sandbox}}}}
+     | action=edit&preload={{#var: preload-sandbox}}
+     }} create] &#124; [{{fullurl: {{FULLPAGENAMEE:{{#var: sandbox}}}}
+     | action=edit&preload={{FULLPAGENAMEE:{{#var: base page}}}}
+     }} mirror]<!--
+   -->)</small>
+   
+   }}<!--
+   --> page.<br/><!--
+   --><!-- CHANGE END --><!--
+   -
+   - Category addition text & subpages text.
+   -
+   -->{{#if: {{{content|{{{1|}}}}}}
+      | <!-- Do NOT show cat text *if* documentation is inline or transcluded from a different page. -->
+      | {{#ifexist: {{#var: doc page}}
+        | Add [[w:Help:categories|categories]] and [[w:Help:interwiki links|interwikis]] to the [[{{#var: doc page}}|/doc]] subpage.&nbsp;
+        }}
+      }}<!--
+      -
+      -->[[Special:PrefixIndex/{{#var: current page}}|Subpages of this {{#var: page text}}]].
+</div>
+}}
+</div>

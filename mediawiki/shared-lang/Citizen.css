@@ -295,15 +295,15 @@ html:not(.doorswiki-mood-clientpref-0) {
     }
     
     &.skin-theme-clientpref-day {
-        --bg: url(https://static.wikitide.net/doorswiki/f/fb/TheArchivesFirstPreview.png);
+        --bg: url(https://static.wikitide.net/doorswiki/2/27/Z50ArchivesExit.png);
     }
     
     &.skin-theme-clientpref-night {
-        --bg: url(https://static.wikitide.net/doorswiki/1/1f/ArchivesIconGame.webp);
+        --bg: url(https://static.wikitide.net/doorswiki/6/6d/StairwellEntrance.png);
     }
     
     &.skin-theme-clientpref-black {
-        --bg: url(https://static.wikitide.net/doorswiki/1/1f/ArchivesIconGame.webp);
+        --bg: url(https://static.wikitide.net/doorswiki/4/4d/Z50ArchivesDoor.png);
         
         > body::before {
         	opacity: 0.4;

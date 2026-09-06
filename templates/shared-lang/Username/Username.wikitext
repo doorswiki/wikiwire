@@ -1,1 +1,0 @@
-<includeonly>{{tooltip|{{currentloggeduser}}|这就是你！}}</includeonly><noinclude>{{Documentation}}</noinclude>

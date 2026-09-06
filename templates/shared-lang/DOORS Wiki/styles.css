@@ -87,7 +87,8 @@
     cursor: pointer;
     border-radius: var(--border-radius-medium);
     position: relative;
-    width: 20vw;
+    width: max-content;
+    min-width: 20vw;
     color: oklch(from var(--color-emphasized) l c h / 0.8);
     transition: .25s padding, .25s border-radius, .25s font-weight;
 }

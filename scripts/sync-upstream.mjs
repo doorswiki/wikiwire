@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const UPSTREAM_API = 'https://doorsgame.wiki/w/api.php';
-const LANG_API = 'https://zh.doorsgame.wiki/w/api.php';
 const WIKIWIRE_UA = 'WikiWire/1.0 (https://github.com/doorswiki/wikiwire; github-actions; doorswiki)';
 
 const PAGES = {
@@ -39,6 +38,17 @@ const PAGES = {
   'Template:Hoverimg': 'templates/shared-lang/Hoverimg/Hoverimg.wikitext',
   'Template:Icons': 'templates/shared-lang/Icons/Icons.wikitext',
   'Template:DOORS Wiki/styles.css': 'templates/shared-lang/DOORS Wiki/styles.css',
+  'Template:Documentation': 'templates/shared-lang/Documentation/Documentation.wikitext',
+  'Template:Documentation/doc': 'templates/shared-lang/Documentation/doc.wikitext',
+
+  // Main / Article namespace
+  'DOORS Wiki': 'pages/shared-lang/DOORS Wiki/DOORS Wiki.wikitext',
+
+  // User namespace
+  'User:DoorsWiki': 'users/shared-lang/DoorsWiki/DoorsWiki.wikitext',
+
+  // User talk namespace
+  'User talk:DoorsWiki': 'user_talk/shared-lang/DoorsWiki/DoorsWiki.wikitext',
 };
 
 class MediaWikiClient {
@@ -217,25 +227,27 @@ function diffLines(a, b) {
 }
 
 /**
- * Merge upstream content with language wiki / local content.
- * Any line changed by the language wiki or in the local repo is preserved.
+ * Merge upstream English content with local repository content.
+ * Checks for line-by-line differences:
+ * - If a line was modified in the local repo, keep it (do not touch).
+ * - If there are no differences or upstream has new lines, apply upstream.
  */
-function mergePreservingLang(upstreamText, langText) {
-  if (!langText || langText === upstreamText) return upstreamText;
+function mergePreservingLocalEdits(upstreamText, localText) {
+  if (!localText || localText === upstreamText) return upstreamText;
   const upstreamLines = upstreamText.split('\n');
-  const langLines = langText.split('\n');
+  const localLines = localText.split('\n');
 
-  const chunks = diffLines(upstreamLines, langLines);
+  const chunks = diffLines(upstreamLines, localLines);
   const result = [];
   for (const chunk of chunks) {
     if (chunk.type === 'equal') {
       result.push(chunk.line);
     } else {
       if (chunk.b.length > 0) {
-        // Language wiki has changed/added lines: preserve them
+        // Local repo has customized lines: preserve them
         result.push(...chunk.b);
       } else if (chunk.a.length > 0) {
-        // Upstream has new additions: incorporate them
+        // Upstream has additions: incorporate them
         result.push(...chunk.a);
       }
     }
@@ -249,29 +261,18 @@ async function main() {
   const password = process.env.WIKI_PASSWORD || '';
 
   const upstreamClient = new MediaWikiClient(UPSTREAM_API, username, password);
-  const langClient = new MediaWikiClient(LANG_API, username, password);
 
-  console.log('Connecting to upstream and language wikis...');
-  await Promise.all([
-    upstreamClient.login(),
-    langClient.login(),
-  ]);
+  console.log(`Connecting to English upstream wiki (${UPSTREAM_API})...`);
+  await upstreamClient.login();
 
-  console.log('Fetching pages...');
+  console.log('Fetching English upstream pages...');
   let upstreamPages = {};
-  let langPages = {};
 
   try {
     upstreamPages = await upstreamClient.fetchPages(titles);
   } catch (err) {
     console.warn(`[WARN] Could not fetch from upstream English wiki (${UPSTREAM_API}): ${err.message}`);
     console.warn('[WARN] Continuing with existing repository files...');
-  }
-
-  try {
-    langPages = await langClient.fetchPages(titles);
-  } catch (err) {
-    console.warn(`[WARN] Could not fetch from language wiki (${LANG_API}): ${err.message}`);
   }
 
   let updatedCount = 0;
@@ -281,16 +282,14 @@ async function main() {
       continue;
     }
 
-    // Check existing content: local disk file first, then language wiki
+    // Check existing content in local repository
     let existingContent = null;
     if (fs.existsSync(relPath)) {
       existingContent = fs.readFileSync(relPath, 'utf8');
-    } else if (langPages[title] !== undefined) {
-      existingContent = langPages[title];
     }
 
-    // Merge upstream with existing language modifications
-    const finalContent = mergePreservingLang(upstreamContent, existingContent);
+    // Merge English upstream with local edits (keep local lines if modified, override if no diff)
+    const finalContent = mergePreservingLocalEdits(upstreamContent, existingContent);
 
     const dir = path.dirname(relPath);
     fs.mkdirSync(dir, { recursive: true });
@@ -298,7 +297,7 @@ async function main() {
     updatedCount++;
 
     if (existingContent && existingContent !== upstreamContent) {
-      console.log(`[SYNCED (MERGED)] ${title} -> ${relPath} (preserved language modifications)`);
+      console.log(`[SYNCED (MERGED)] ${title} -> ${relPath} (preserved local modifications)`);
     } else {
       console.log(`[SYNCED] ${title} -> ${relPath} (${Buffer.byteLength(finalContent, 'utf8')} bytes)`);
     }

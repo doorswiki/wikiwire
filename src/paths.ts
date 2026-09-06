@@ -2,14 +2,14 @@ export type mapped_shared = {
     is_shared : true;
     title : string;
     content_model : string;
-    kind : 'module' | 'template' | 'mediawiki';
+    kind : 'module' | 'template' | 'mediawiki' | 'page' | 'user' | 'user_talk';
 };
 
 export type mapped_site = {
     is_shared : false;
     title : string;
     content_model : string;
-    kind : 'module' | 'template' | 'mediawiki';
+    kind : 'module' | 'template' | 'mediawiki' | 'page' | 'user' | 'user_talk';
 };
 
 export type mapped_path = mapped_shared | mapped_site;
@@ -227,7 +227,7 @@ export function map_repo_path(relative_path : string, options: { css_content_mod
     if (parts.length === 0) { return null };
 
     const root = parts[0];
-    if (root !== 'modules' && root !== 'templates' && root !== 'mediawiki') { return null };
+    if (root !== 'modules' && root !== 'templates' && root !== 'mediawiki' && root !== 'pages' && root !== 'users' && root !== 'user' && root !== 'user_talk' && root !== 'user-talk') { return null };
 
     const path_segment = parts[1];
     const is_shared = parse_shared_path_segment(path_segment) !== null;
@@ -247,6 +247,57 @@ export function map_repo_path(relative_path : string, options: { css_content_mod
     const wiki_name = wiki_name_from_root(root_name);
     const rest = parts.slice(3);
     const rel_under_root = rest.join('/');
+
+    if (root === 'pages') {
+        const content_model = content_model_for_repo_subfile(rel_under_root, css_content_model, {
+            allow_scribunto: false,
+            ignore_content_model_errors,
+        });
+
+        if (content_model === null) { return null };
+
+        const title_rel = title_path_under_root(rel_under_root, wiki_name);
+        const title = title_rel.length === 0 ? wiki_name : `${wiki_name}/${title_rel}`;
+
+        return {
+            is_shared,
+            title,
+            content_model,
+            kind: 'page',
+        };
+    };
+
+    if (root === 'users' || root === 'user') {
+        const content_model = content_model_for_repo_subfile(rel_under_root, css_content_model, {
+            allow_scribunto: false,
+            ignore_content_model_errors,
+        });
+
+        if (content_model === null) { return null };
+
+        return {
+            is_shared,
+            title: namespace_title('User', wiki_name, title_path_under_root(rel_under_root, wiki_name)),
+            content_model,
+            kind: 'user',
+        };
+    };
+
+    if (root === 'user_talk' || root === 'user-talk') {
+        const content_model = content_model_for_repo_subfile(rel_under_root, css_content_model, {
+            allow_scribunto: false,
+            ignore_content_model_errors,
+        });
+
+        if (content_model === null) { return null };
+
+        return {
+            is_shared,
+            title: namespace_title('User talk', wiki_name, title_path_under_root(rel_under_root, wiki_name)),
+            content_model,
+            kind: 'user_talk',
+        };
+    };
 
     if (root === 'modules') {
         if (rel_under_root.endsWith('.template.wikitext')) {

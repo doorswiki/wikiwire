@@ -1,4 +1,6 @@
-importScript('MediaWiki:Main page.js');
+if ( mw.config.get( 'wgIsMainPage' ) ) {
+    importScript( 'MediaWiki:Main page.js' );
+}
 
 if (mw.config.get('wgCanonicalNamespace') == 'User') {
 	mw.loader.load('https://dev.miraheze.org/w/index.php?title=User:Splatched/mastoblox.js&action=raw&ctype=text/javascript');

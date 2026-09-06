@@ -1,0 +1,104 @@
+<div class="doorswiki-logo-container">[[File:DOORS Wiki.png|500px|link=|class=doorswiki-logo]]</div>
+<div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History}} Search...</div> {{Hoverimg|[[File:Roblox_Beige Logo.png|50px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
+{{#invoke:AboutDoors|main
+ | title1       = [[File:DOORS Logo.png|100px|link=DOORS]]
+ | description1 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].
+ | image1       = Hotel_Backroom5.png
+ | url1         = DOORS
+
+ | title2       = <span class="doors-font">[[Entities|ENTITIES]]</span>
+ | description2 = While exploring different rooms, look out for entities. Many of them attempt to kill players, аnd they must be faced in order to advance.
+ | image2       = AmbushComintoYourFace.png
+ | url2         = Entities
+
+ | title3       = <span class="doors-font">[[Items|ITEMS]]</span>
+ | description3 = Items are useful tools found throughout any run of any floor. They do not save the next time you enter a run.
+ | image3       = JeffShopHotelPlate.png
+ | url3         = Items
+
+ | title4       = <span class="doors-font">[[Floors|FLOORS]]</span>
+ | description4 = Floors are areas that players progress the story in, serving as the 'chapters' for the game. These floors may contain different items and entities from the previous floor, along with brand-new locations.
+ | image4       = Gardenentrance.png
+ | url4         = Floors
+
+ <!-- |title3=Rush Mode Update
+ |description3=Another featured article.
+ |image3=Untitled_-2_Thumbnail.jpg
+ |url3=DOORS -->
+}}<!--
+
+--><div class="home-container doorswiki-floors-container"><!--
+--><div class="doorswiki-floors"><!--
+
+--><div class="doorswiki-floors-floor" style="--floor-border-color: #BDAA96">
+<div class="doorswiki-floors-floor--image">[[File:Hotel Background.png|200px|link=The Hotel]]</div>
+<div class="doorswiki-floors-floor--logo">[[File:The Hotel wordmark.png|150px|link=]]</div>
+</div><!--
+
+--><div class="doorswiki-floors-floor" style="--floor-border-color: #C3C4CD">
+<div class="doorswiki-floors-floor--image">[[File:Mines_Background.png|200px|link=The Mines]]</div>
+<div class="doorswiki-floors-floor--logo">[[File:The Mines wordmark.png|150px|link=]]</div>
+</div><!--
+
+--></div><div class="doorswiki-floors"><!--
+
+--><div class="doorswiki-floors-floor" style="--floor-border-color: #E9D99C">
+<div class="doorswiki-floors-floor--image">[[File:Backdoor_Background.png|200px|link=The Backdoor]]</div>
+<div class="doorswiki-floors-floor--logo">[[File:The Backdoor wordmark.png|150px|link=]]</div>
+</div><!--
+
+--><div class="doorswiki-floors-floor">
+<div class="doorswiki-floors-floor--image">[[File:ArchivesIconGame.webp|200px|link=The Archives]]</div>
+<div class="doorswiki-floors-floor--logo">[[File:The Archives wordmark.png|150px|link=]]</div>
+</div><!--
+
+--><div class="doorswiki-floors-floor" style="--floor-border-color: #BBCEAA">
+<div class="doorswiki-floors-floor--image">[[File:Outdoors_Background.png|200px|link=The Outdoors]]</div>
+<div class="doorswiki-floors-floor--logo">[[File:The Outdoors wordmark.png|150px|link=]]</div>
+</div><!--
+
+--><div class="doorswiki-floors-floor">
+<div class="doorswiki-floors-floor--image">[[File:StairwellThumbnail2.png|200px|link=The Stairwell]]</div>
+<div class="doorswiki-floors-floor--logo">[[File:The Stairwell wordmark.png|150px|link=]]</div>
+</div><!--
+
+--></div>
+</div><!--
+-->{{DOORS Wiki/Home Navigation}}
+
+<div class="doors-gridlayout" style="margin-top: -1rem; margin-bottom: -1rem">
+<!--{{DOORS Wiki/Container
+|title = Discord
+|body = {{DiscordWidget
+|id = 1018420500839530536
+|invite = https://discord.gg/SpKAgJDuVn
+|theme = dark
+|width = 260px
+|height = 430px}}}}-->
+{{DOORS Wiki/Featured Articles}}
+{{DOORS Wiki/Fun Facts}}
+{{DOORS Wiki/Partners}}
+</div><!--
+
+-->{{DOORS Wiki/Socials}}<!--
+
+--><div class="home-container doorswiki-editors"><div><div class="doorswiki-editors-heading">Come edit the DOORS Wiki!</div>The wiki is made possible with your help and contributions.</div><!--
+
+--><div class="doorswiki-stat-container"><div>{{NUMBEROFACTIVEUSERS}}</div>active users</div><!--
+--><div class="doorswiki-stat-container"><div>{{NUMBEROFEDITS}}</div>total edits</div><!--
+--><div class="doorswiki-stat-container"><div>{{NUMBEROFFILES}}</div>files</div><!--
+
+--><div class="doorswiki-editors-links">[[Project:Rules|Wiki Rules]][[Project:Manual of Style|Manual of Style]][[Project:Policies|Wiki Policies]]</div><!--
+--></div>
+
+<!-- [[w:Help:Magic words]] -->
+__NOTOC__
+__NOEDITSECTION__
+<!-- Categories -->
+[[Category:DOORS Wiki]]
+<templatestyles src="DOORS Wiki/styles.css"/>{{#seo:
+| title = Official DOORS Wiki
+| image = DOORS_2025_Thumbnail_6.png
+| keywords = DOORS, doors, doors wiki, doors wiki, doors roblox, doors roblox, ROBLOX, wiki, Fandom, Miraheze, Wikia, MediaWiki, Roblox, doors codes roblox, doors roblox, doors plushie, all badges in doors, doors ost, doors ost, doors wiki, doors ost, doors soundtracks, doors soundtracks, doors tracks, doors tracks, doors music, doors music, doors recode, doors recode, doors wiki, doors roblox ost, silvagunner doors, doors silvagunner, doors sound, doors sound, doors fandom, doors fandom
+| description = The official wiki for DOORS, the Roblox horror game by LSPLASH and RediblesQW.
+}}
