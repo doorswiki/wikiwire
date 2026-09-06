@@ -550,6 +550,10 @@ table.diff [class*="mw-diff-inline-"] {
 	> a[href^="https://www.roblox.com"],
 	> span[title="Discord"] {
         position: relative;
+        display: inline-block;
+        aspect-ratio: 1;
+        height: 100%;
+        width: auto!important;
         
         &::before {
             content: '';
@@ -578,6 +582,14 @@ table.diff [class*="mw-diff-inline-"] {
 	> a[href^="https://mastodon.social"] {
 		visibility: hidden
 	}
+}
+
+.profile-avatar-edit-button {
+    background: var(--color-progressive, #333)!important;
+}
+
+.profile-avatar-edit-action svg {
+    filter: invert(1)!important;
 }
 
 /* original idea from m6ga on discord. tabber styling */
@@ -870,4 +882,10 @@ Requires a "data-text" attribute containing the element's text. */
 
 .mw-collapsible[hidden='until-found'], .mw-collapsible [hidden='until-found'] {
     display: none;
+}
+
+.wikihatnote {
+    font-style: italic;
+    padding-left: 2rem;
+    margin: .5rem
 }

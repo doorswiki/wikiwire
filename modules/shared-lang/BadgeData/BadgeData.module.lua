@@ -2842,6 +2842,36 @@ Legacy = {
 },
 
 {
+	title = 'Rock Bottom (Before HOTEL+)',
+	text = 'This was only obtainable before the HOTEL+ update!',
+	directions = 'Escape The Hotel.',
+	tutorial = nil,
+	references = nil,
+	color = 'Escape',
+	image = 'Rock Bottom Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = true,
+	obtainable = false, 
+	id = '2127966163',
+},
+
+{
+	title = 'Detour (Before The Outdoors)',
+	text = 'This was only obtainable before The Great Outdoors update!',
+	directions = 'Enter a subfloor. Receive their acknowledgement.',
+	tutorial = nil,
+	references = nil,
+	color = 'Unique',
+	image = 'Roomy Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = true,
+	obtainable = false, 
+	id = '2133601870',
+},
+
+{
 	title = 'Roomy',
 	text = 'How gloomy!',
 	directions = 'Enter [[The Rooms]].',

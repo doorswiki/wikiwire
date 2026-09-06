@@ -14,3 +14,9 @@ id = "zh"
 host = "zh.doorsgame.wiki"
 api = "https://zh.doorsgame.wiki/w/api.php"
 shared_groups = ["lang"]
+
+[[sites]]
+id = "ptbr"
+host = "pt-br.doorsgame.wiki"
+api = "https://pt-br.doorsgame.wiki/w/api.php"
+shared_groups = ["lang"]

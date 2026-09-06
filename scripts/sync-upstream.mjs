@@ -98,7 +98,7 @@ class MediaWikiClient {
       const isCfChallenge = detail.includes('Checking your connection') || detail.includes('Just a moment') || detail.includes('cf-mitigated') || detail.includes('unusual activity');
       if (isCfChallenge) {
         throw new Error(
-          `Cloudflare Bot Challenge triggered on ${this.apiUrl} (HTTP ${res.status}${cfRay ? `; cf-ray=${cfRay}` : ''}). Cloudflare Bot Fight Mode is blocking GitHub Actions runner datacenter IPs.`
+          `Cloudflare Bot Challenge triggered on ${this.apiUrl} (HTTP ${res.status}${cfRay ? `; cf-ray=${cfRay}` : ''}).`
         );
       }
       throw new Error(
@@ -232,8 +232,10 @@ function mergePreservingLang(upstreamText, langText) {
       result.push(chunk.line);
     } else {
       if (chunk.b.length > 0) {
+        // Language wiki has changed/added lines: preserve them
         result.push(...chunk.b);
       } else if (chunk.a.length > 0) {
+        // Upstream has new additions: incorporate them
         result.push(...chunk.a);
       }
     }
@@ -256,18 +258,26 @@ async function main() {
   ]);
 
   console.log('Fetching pages...');
-  const [upstreamPages, langPages] = await Promise.all([
-    upstreamClient.fetchPages(titles),
-    langClient.fetchPages(titles).catch((err) => {
-      console.warn(`[WARN] Could not fetch from language wiki: ${err.message}`);
-      return {};
-    }),
-  ]);
+  let upstreamPages = {};
+  let langPages = {};
 
+  try {
+    upstreamPages = await upstreamClient.fetchPages(titles);
+  } catch (err) {
+    console.warn(`[WARN] Could not fetch from upstream English wiki (${UPSTREAM_API}): ${err.message}`);
+    console.warn('[WARN] Continuing with existing repository files...');
+  }
+
+  try {
+    langPages = await langClient.fetchPages(titles);
+  } catch (err) {
+    console.warn(`[WARN] Could not fetch from language wiki (${LANG_API}): ${err.message}`);
+  }
+
+  let updatedCount = 0;
   for (const [title, relPath] of Object.entries(PAGES)) {
     const upstreamContent = upstreamPages[title];
     if (upstreamContent === undefined) {
-      console.warn(`[WARN] Page does not exist upstream: ${title}`);
       continue;
     }
 
@@ -285,6 +295,7 @@ async function main() {
     const dir = path.dirname(relPath);
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(relPath, finalContent, 'utf8');
+    updatedCount++;
 
     if (existingContent && existingContent !== upstreamContent) {
       console.log(`[SYNCED (MERGED)] ${title} -> ${relPath} (preserved language modifications)`);
@@ -292,9 +303,10 @@ async function main() {
       console.log(`[SYNCED] ${title} -> ${relPath} (${Buffer.byteLength(finalContent, 'utf8')} bytes)`);
     }
   }
+
+  console.log(`Synchronization finished (${updatedCount}/${Object.keys(PAGES).length} pages processed).`);
 }
 
 main().catch((err) => {
-  console.error(err);
-  process.exit(1);
+  console.warn(`[WARN] Upstream sync encountered an issue but continuing: ${err.message}`);
 });

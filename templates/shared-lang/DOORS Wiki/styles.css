@@ -302,3 +302,35 @@
     transform: translate(-50%, -50%) scale(1.15);
     filter: drop-shadow(0 0 5px black);
 }
+
+.doors-featured {
+    overflow: hidden;
+}
+
+.imagecard {
+	mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%); 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%; 
+	overflow: hidden
+}
+
+.imagecard img { object-fit: cover; object-position: 75%; width: 100%; height: 100% }
+
+.imagecard img { transition: .25s transform }
+.imagecard img:hover { transform: scale(1.2); }
+
+.home-card__label {
+    color: var(--color-base);
+    opacity: 90%;
+    font-size: var(--font-size-small);
+}
+
+.home-card__header {
+    color: var(--color-emphasized);
+    font-size: var(--font-size-x-large);
+    font-weight: 600;
+    line-height: var(--line-height-xs);
+}
