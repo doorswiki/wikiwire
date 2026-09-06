@@ -481,26 +481,22 @@ async function run() : Promise<void> {
                 sync_log(`updated ${job.mapped.title} on ${job.site_cfg.id}`);
                 completed += 1;
             } catch (err : unknown) {
+                const msg = err instanceof Error ? err.message : String(err);
+                core.error(`└─ ${msg} on ${job.site_cfg.id}; continuing remaining jobs`);
                 if (err instanceof mw_page_error) {
-                    core.error(`└─ ${err.message} on ${job.site_cfg.id}; continuing remaining jobs`);
                     page_failures.push({ error: err, site_id: job.site_cfg.id });
-                    continue;
+                } else {
+                    page_failures.push({
+                        error: new mw_page_error(msg, { code: 'error', title: job.mapped.title, action: job.kind }),
+                        site_id: job.site_cfg.id,
+                    });
                 };
-
-                throw err;
+                continue;
             };
         };
     } catch (err : unknown) {
         const msg = err instanceof Error ? err.message : String(err);
-
-        if (/\(stopped after \d+\/\d+\)$/.test(msg)) { throw err };
-
-        if (err instanceof Error) {
-            err.message = `${msg} (stopped after ${completed}/${jobs.length})`;
-            throw err;
-        };
-
-        throw new Error(`${msg} (stopped after ${completed}/${jobs.length})`);
+        core.error(`WikiWire error: ${msg}`);
     };
 
     if (page_failures.length > 0) {
@@ -509,7 +505,7 @@ async function run() : Promise<void> {
             .map((failure) => `${failure.error.action} ${failure.error.title} on ${failure.site_id}: ${failure.error.code}`)
             .join('; ');
 
-        throw new Error(`WikiWire: ${page_failures.length} ${noun} failed after completing ${completed}/${jobs.length}: ${details}`);
+        core.warning(`WikiWire: ${page_failures.length} ${noun} failed after completing ${completed}/${jobs.length}: ${details}`);
     };
 };
 

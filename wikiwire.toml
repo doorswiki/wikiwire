@@ -20,3 +20,9 @@ id = "ptbr"
 host = "pt-br.doorsgame.wiki"
 api = "https://pt-br.doorsgame.wiki/w/api.php"
 shared_groups = ["lang"]
+
+[[sites]]
+id = "fr"
+host = "fr.doorsgame.wiki"
+api = "https://fr.doorsgame.wiki/w/api.php"
+shared_groups = ["lang"]
