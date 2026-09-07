@@ -1,0 +1,49 @@
+{{DOORS Wiki/Container|title=<span>Socials</span>|body=
+<div class="doorswiki-socials-container">
+<div class="doorswiki-socials">
+<div class="doorswiki-socials-heading">[[File:Smalllogo doors.png|class=invertinvert|150px|link=DOORS]]</div>
+
+{{Hoverimg|[[File:Roblox_Beige Logo.png|class=invertinvert|50px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game]]}}
+{{Hoverimg|[[File:Twitter_Beige Logo.png|class=invertinvert|50px|link=https://twitter.com/@DoorsRoblox|Twitter|alt=DOORS Twitter]]}}
+</div>
+
+<div class="doorswiki-socials">
+<div class="doorswiki-socials-heading">[[File:DOORS Wiki.png|class=invertinvert|150px|link=DOORS]]</div>
+
+{{Hoverimg|[[File:Discord_Beige Logo.png|class=invertinvert|50px|link=https://discord.gg/SpKAgJDuVn|Discord|alt=Discord]]}}
+{{Hoverimg|[[File:Twitter_Beige Logo.png|class=invertinvert|50px|link=https://twitter.com/@DoorsWiki|Twitter|alt=DOORS Wiki Twitter]]}}
+{{Hoverimg|[[File:Github Biege.svg|class=invertinvert|50px|link=https://github.com/doorswiki|GitHub|alt=DOORS Wiki GitHub]]}}
+</div>
+
+<!--<div class="doorswiki-socials">
+<div class="doorswiki-socials-heading">[[File:LSPLASH Text.png|class=invertinvert|200px|link=Lightning_Splash]]</div>
+
+{{Hoverimg|[[File:Roblox_Beige Logo.png|class=invertinvert|50px|link=https://www.roblox.com/users/8645047/profile|Roblox Profile]]}}
+{{Hoverimg|[[File:Twitter Beige Logo.png|class=invertinvert|50px|link=https://x.com/LightningSplash|Twitter]]}}
+{{Hoverimg|[[File:Discord_Beige Logo.png|class=invertinvert|50px|link=https://discord.com/users/172434833107058688|Discord Account]]}}
+{{Hoverimg|[[File:TikTok DOORS Styled Icon.png|class=invertinvert|50px|link=https://www.tiktok.com/@lsplash|TikTok]]}}
+{{Hoverimg|[[File:Spotify_Beige Logo.png|class=invertinvert|50px|link=http://sptfy.com/lsplash|Spotify]]}}
+{{Hoverimg|[[File:Soundcloud_Beige Logo.png|class=invertinvert|50px|link=https://soundcloud.com/lightningsplash|Soundcloud]]}}
+{{Hoverimg|[[File:Roblox_Beige Logo.png|class=invertinvert|50px|link=https://www.roblox.com/groups/3049798|Roblox Group]]}}
+{{Hoverimg|[[File:Discord_Beige Logo.png|class=invertinvert|50px|link=https://discord.gg/lsplash|Discord Server]]}}
+{{Hoverimg|[[File:YouTube Beige Logo.png|class=invertinvert|50px|link=https://www.youtube.com/@LSPLASH|YouTube Channel]]}}
+{{Hoverimg|[[File:Link Beige Icon.png|class=invertinvert|50px|link=https://www.lsplash.com]]}}
+{{Hoverimg|[[File:Newgrounds Icon DOORS Styled.png|class=invert|50px|link=https://lightningsplash.newgrounds.com/]]}}
+</div>
+
+<div class="doorswiki-socials">
+<div class="doorswiki-socials-heading">[[File:Redibles Text.png|class=invertinvert|175px|link=RediblesQW]]</div>
+
+{{Hoverimg|[[File:Roblox_Beige Logo.png|class=invertinvert|50px|link=https://www.roblox.com/users/41767201/profile|Roblox Profile]] }}
+{{Hoverimg|[[File:Twitter_Beige Logo.png|class=invertinvert|50px|link=https://twitter.com/@RediblesQW|Twitter]]}}
+{{Hoverimg|[[File:Bluesky_Beige Logo.png|class=invertinvert|50px|link=https://bsky.app/profile/redibles.bsky.social|Bluesky]]}}
+{{Hoverimg|[[File:Discord_Beige Logo.png|class=invertinvert|50px|link=https://discord.com/users/270338600032403466|Discord Account]]}}
+{{Hoverimg|[[File:Instagram_Beige Logo.png|class=invertinvert|50px|link=https://www.instagram.com/seth.redibles/|Instagram]]}}
+{{Hoverimg|[[File:Twitch_Beige Logo.png|class=invertinvert|50px|link=https://twitch.tv/rediblesqw|Twitch]]}}
+{{Hoverimg|[[File:YouTube_Beige Logo.png|class=invertinvert|50px|link=https://www.youtube.com/@RediblesQW|YouTube Channel]]}}
+{{Hoverimg|[[File:TikTok DOORS Styled Icon.png|class=invertinvert|50px|link=https://tiktok.com/@redibles_qw|TikTok]]}}
+{{Hoverimg|[[File:Linktree_Beige Logo.png|class=invertinvert|50px|link=https://linktr.ee/redibles|Linktree]]}}
+</div>-->
+
+</div>
+}}<noinclude><templatestyles src="DOORS Wiki/styles.css"/>

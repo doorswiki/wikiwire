@@ -1,0 +1,84 @@
+{| class="table home-container"
+| <div style="display:flex; flex-wrap:wrap; justify-content:center; gap: 20px; padding:10px">
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Doors icon, monochrome.png
+|link=DOORS
+|label=[[DOORS|DOORS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Entities icon.png
+|link=List of Entities
+|label=[[Entities|ENTITIES]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Items icon.svg
+|link=Items
+|label=[[Items|ITEMS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=DoorsWikiUI Stair.png
+|link=Floors
+|label=[[Floors|FLOORS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Modifiers icon, monochrome.png
+|link=Modifiers
+|label=[[Modifiers|MODIFIERS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Achievements_icon.svg
+|link=Achievements
+|label=[[Achievements|ACHIEVEMENTS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Ladder icon.png
+|link=Game Mechanics
+|label=[[Game Mechanics|MECHANICS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Events icon.png
+|link=List of Events
+|label=[[List of Events|EVENTS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Journal_icon.svg
+|link=The Journal
+|label=[[Journal|JOURNAL]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Headphones icon.png
+|link=Soundtracks
+|label=[[Soundtracks|SOUNDTRACKS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Shops icon.png
+|link=Shops
+|label=[[Shops|SHOPS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Codes icon.png
+|link=Codes
+|label=[[Codes|CODES]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Upcoming icon.png
+|link=Upcoming Content
+|label=[[Upcoming|UPCOMING]]
+}}
+
+</div>
+|}
+<noinclude>{{Documentation}}[[Category:Main page templates]]<templatestyles src="DOORS Wiki/styles.css"/></noinclude>

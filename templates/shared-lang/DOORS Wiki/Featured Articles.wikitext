@@ -1,0 +1,18 @@
+<choose>
+<option>{{#vardefine: doorsfeatured-image | Hotel Image1.png}} {{#vardefine:doorsfeatured-link | Hotel}}</option>
+<option>{{#vardefine: doorsfeatured-image | TheMinesFeaturedArticles.png}} {{#vardefine:doorsfeatured-link | The Mines}}</option>
+<option>{{#vardefine: doorsfeatured-image | Entityicon.png}} {{#vardefine:doorsfeatured-link | List of Entities}}</option>
+<option>{{#vardefine: doorsfeatured-image | Dresser.png}} {{#vardefine:doorsfeatured-link | Containers}}</option>
+<option>{{#vardefine: doorsfeatured-image | LSPLASH Icon.png}} {{#vardefine:doorsfeatured-link | LSPLASH}}</option>
+<option>{{#vardefine: doorsfeatured-image | Doors Soundtrack.jpg}} {{#vardefine:doorsfeatured-link | Soundtrack}}</option>
+<option>{{#vardefine: doorsfeatured-image | Items icon.svg}} {{#vardefine:doorsfeatured-link | Items}}</option>
+<option>{{#vardefine: doorsfeatured-image | Crucifiximage.png}} {{#vardefine:doorsfeatured-link | Crucifix}}</option>
+</choose><!--
+
+--><div class="home-container doors-featured" style="position: relative; min-height: 200px">
+<div class="imagecard">[[File:{{#var:doorsfeatured-image}}|600px|link={{#var:doorsfeatured-link}}|class=featuredimg|alt=Featured image]]</div>
+<div style="position: absolute; top: 15px; text-align: left">
+<div class="home-card__label">Highlighted article</div>
+<div class="home-card__header">{{#var:doorsfeatured-link}}</div>
+</div>
+</div><noinclude><templatestyles src="DOORS Wiki/styles.css"/></noinclude>

@@ -38,6 +38,10 @@ const PAGES = {
   'Template:Hoverimg': 'templates/shared-lang/Hoverimg/Hoverimg.wikitext',
   'Template:Icons': 'templates/shared-lang/Icons/Icons.wikitext',
   'Template:DOORS Wiki/styles.css': 'templates/shared-lang/DOORS Wiki/styles.css',
+  'Template:DOORS Wiki/Home Navigation': 'templates/shared-lang/DOORS Wiki/Home Navigation.wikitext',
+  'Template:DOORS Wiki/Featured Articles': 'templates/shared-lang/DOORS Wiki/Featured Articles.wikitext',
+  'Template:DOORS Wiki/Fun Facts': 'templates/shared-lang/DOORS Wiki/Fun Facts.wikitext',
+  'Template:DOORS Wiki/Socials': 'templates/shared-lang/DOORS Wiki/Socials.wikitext',
   'Template:Documentation': 'templates/shared-lang/Documentation/Documentation.wikitext',
   'Template:Documentation/doc': 'templates/shared-lang/Documentation/doc.wikitext',
 

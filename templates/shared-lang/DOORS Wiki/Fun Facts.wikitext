@@ -1,0 +1,210 @@
+<!-- Only make changes to this template if you know what you're doing! Also, for the sake of common sense (although this isn't an official rule, and you won't be punished for it) please don't add lore-based fun facts! -->
+{{DOORS Wiki/Container
+| style = flex: 3;
+|title=<span>Fun Facts</span>
+|body=<includeonly><choose uncached></includeonly><span>
+<option>
+[[File:Rushvnew.webp|250px|center|link=Rush|class=notpageimage|Rush]]
+[[Ambush]] is not the only entity capable of rebounding, [[Rush]] will rebound when it enters a room with a blocked/locked door, this will catch most [[Player|players]] off-guard, make sure to take care when exiting a [[Hiding|hiding]] space around Rush.
+</option>
+
+<option>
+[[File:Ambush2.png|250px|center|link=Ambush|class=notpageimage|Ambush]]
+[[Ambush]] is a very persistent [[List of Entities|entity]], unlike [[Rush]], if it encounters a room with a blocked/locked door it will phase through the door, nothing can stop the power of Ambush tripping up the [[player]], take care.
+</option>
+
+<option>
+[[File:TimothyRender2.0.png|250px|center|link=Timothy|class=notpageimage|Timothy]]
+[[Timothy]] is the smallest [[List of Entities|entity]] within ''[[DOORS]]'', due to its size it is smaller than every furniture item within the game, which allows it to hide in [[containers]] among [[Gold]] and [[items]].
+</option>
+
+<option>
+[[File:DOORS Icon.png|250px|center|link=DOORS|class=notpageimage|DOORS]]
+During the initial release of ''[[DOORS]]'' the game played an animation for [[Player|players]] crawling under furniture during [[Seek]]'s chase sequences, this was removed due to players with bad latency and terrible internet dying due to the animation failing to load or loading too late.
+</option>
+
+<option>
+[[File:Jacky.webp|250px|center|link=Jack|class=notpageimage|Jack]]
+[[Jack]] can not only appear in the [[Hiding|closets]] scattered across various rooms in [[The Hotel]], it is also known to make an appearance behind recently opened doors. When this occurs, the room will receive a blood-red tone. This effect also applies to the rain if it is present outside.
+</option>
+
+<option>
+[[File:Old Seek.png|200px|center|link=Seek|class=notpageimage]]
+[[Seek]] was the first [[List of Entities|entity]], being added in-game before the rest. It also had a very different design than what it is now, appearing much more limp and having a different facial structure.</option>
+
+<option>
+[[File:Eyeopt2.webp|250px|center|link=Eyes|class=notpageimage]]
+The [[Eyes]] are known to be able to spawn in certain rooms that none of the other [[List of Entities|entities]] can. Such rooms can include [[The Courtyard]] and [[The Dining Room]]. However, that is not to say that entities are physically limited from The Courtyard, as [[Rush]] and [[Ambush]] can pass through if they happen to be activated in the succeeding area.
+</option>
+
+<option>
+[[File:Screech2.png|250px|center|link=Screech|class=notpageimage]]
+The 'Psst!' sound [[Screech]] vocalizes does not indicate its appearance in the room, but rather when it will attack a [[player]]. Also, some instances of this sound may be falsified, being played solely to startle the player. Pay attention to the volume, as the fake one is quieter.
+</option>
+
+<option>
+[[File:OldyFiguor.png|250px|center|link=Figure|class=notpageimage]]
+This was one of [[Figure]]'s earliest models, during the game's early development stages. Yes, the design has changed a lot! Another fact about Figure is that the name 'Figure' was actually the placeholder name for this entity during the game's development. Before release, the developers actually liked the name 'Figure', so they made it official. 
+</option>
+
+<option>
+[[File:GLITCH11.png|250px|center|link=Glitch|class=notpageimage]]
+[[Glitch]] is a canon [[List of Entities|entity]], meaning it has a role in the lore. During the initial release, it solely appeared to prey on stray wanderers that were too far from their group ahead. However, it currently exists as a failsafe for faulty room generation with the previously mentioned mechanic being given to [[Void]].
+</option>
+
+<option>
+[[File:Goblinov3.png|250px|center|link=El Goblino|class=notpageimage]]
+[[El Goblino]] is the [[List of Entities|entity]] responsible for generating various ambient noises by thumping on walls and doors in [[The Hotel]]. It does this in order to scare humans for its own amusement, though it does not mean any harm as seen with its amiable behavior.
+</option>
+
+<option>
+[[File:The_Rooms_Fixed.PNG|250px|center|link=The Rooms|class=notpageimage]]
+[[The Rooms]] is a modified [[Floors|floor]] that originates from one of the games that inspired ''[[DOORS]]''' creation, simply known as [https://r-rooms.fandom.com/wiki/Roblox_ROOMS_Wiki Rooms]. Its existence in ''DOORS'' is an official collaboration with its creator, [https://r-rooms.fandom.com/wiki/Nicorocks5555 nicorocks5555].
+</option>
+
+<option>
+[[File:Snareoutline3.png|250px|center|link=Snare|class=notpageimage]]
+[[Snare]] is one of the only [[List of Entities|entities]] that is capable of harming [[Player|players]], but isn't capable of killing them on its own. The only other entities that does this is [[Timothy]] and [[Sally]].
+</option>
+
+<option>
+[[File:GreedNDepth.png|250px|center|link=Greed|class=notpageimage]]
+The ''[[DOORS]]'' community has made countless fanmade [[List of Entities|entities]], although only two have made a complete appearance in-game. These entities would be [[Greed]], which only appears in the [[2023 April Fools Event|SUPER HARD MODE!!]] as an entity that attacks [[Player|players]] who loot [[Gold]] too often, and [[2023 April Fools Event#Rush Clones|Depth]] who is just a reskin of [[Rush]].
+</option>
+
+<option>
+[[File:Crucifix_&_Skeleton_Key_Icons.png|250px|center|link=Items|class=notpageimage]]
+The [[Crucifix]] and [[Skeleton Key]] were both initially intended to be added in ''[[DOORS]]''' initial release, but were scrapped for unknown reasons. They were reimplemented in [[The Hotel+ Update]] as rare, but incredibly useful [[items]].
+</option>
+
+<option>
+[[File:Herbwitoutout.png|200px|center|link=Green_Herb|class=notpageimage]]
+The [[Green Herb]] is the first object in the game to give [[Player|players]] a passive [[Status Effects|effect]] upon interacting with it, however, players who are lucky enough to obtain the Green Herb and still have the ability to enter [[The Rooms]] will sadly lose their passive effect when they enter The Rooms.
+</option>
+
+<option>
+[[File:NewBob.png|200px|center|link=Bob|class=notpageimage]]
+It is heavily implied that [[Bob]] isn't alive, and is just a pile of bones. [[El Goblino]] has mentioned that Bob got in a fight with [[Rush]] after accidentally stepping on [[Snare]], which is implied lead to his death. El Goblino also implies that Bob has recently died of starvation, mentioning that he looks like a "...real bag of bones."
+</option>
+
+<option>
+[[File:VoidRenderReal.png|200px|center|link=Void|class=notpageimage]]
+When [[The Hotel+ Update]] released, [[Void]] was used to replace [[Glitch]]'s function to teleport [[Player|player]]s ahead when they were left behind in an unloading room and Glitch was changed to only be a failsafe but  in [[The Rooms]] Glitch still carries its old function due to Void being absent.
+</option>
+
+<option>
+[[File:GuidingLightRender3.png|250px|center|link=Guiding Light|class=notpageimage]]
+[[Guiding Light]] is present throughout the majority of ''[[DOORS]]'', assisting the [[player]] in several different ways, however, in [[The Rooms]] the Guiding Light is completely absent and its related [[items]] don't function, supposedly feeling "lighter" than usual when held.
+</option>
+
+<option>
+[[File:CuriousLightRender3.png|250px|center|link=The Rooms|class=notpageimage]] [[File:The Rooms.mp3|250px|center]]
+Upon entering [[The Rooms]] a special sound effect is heard that sounds like wind blowing. This is a reference to [https://r-rooms.fandom.com/wiki/Roblox_ROOMS_Wiki nicorocks' Rooms], in which [https://r-rooms.fandom.com/wiki/A-200 A-200's] despawn sound effect which plays upon joining the game and sounds like a distinct "whooshing" noise.
+</option>
+
+<option>
+[[File:A-60_DOORS.png|250px|center|link=A-60|class=notpageimage]]
+[[A-60]] is the first [[List of Entities|entity]] in ''[[DOORS]]'' to make an appearance before officially being implemented into the game, as during one of [https://www.youtube.com/c/KreekCraft KreekCraft's] streams before the [[Update Logs|Hotel+ Update]] released a variant of [[A-60]] was activated as a troll entity to mess with Kreek.
+</option>
+
+<option>
+[[File:RushNSnareNew.png|250px|center|link=List_of_Entities|class=notpageimage]]
+Sometimes, if a player is temporarily caught in a [[Snare]] trap in [[The Greenhouse]], there is a chance that [[Rush]] can also be coming through the room at the same time, this ends up becoming a combo kill against the player. These two [[List of Entities|entities]] do not work together to achieve this outcome, it is simply a coincidence. Be sure to take extra care the next time you're in [[The Greenhouse]] to avoid this deadly combo when it arises.
+</option>
+
+<option>
+[[File:Dreadd.webp|250px|center|link=Dread|class=notpageimage]]
+[[Dread]] was previously secret [[List of Entities|entity]] that could be encountered after one hour had passed (at midnight in-game). Secondly, Door 13 had to be opened, whilst Door 14 remained unopened. When these requirements were met Dread would spawn behaving as it does currently.
+</option>
+
+<option>
+[[File:Lookman with eyes.png|250px|center|link=The_Backdoor#The_Lookman|class=notpageimage]]
+[[The_Backdoor#The_Lookman|The Lookman]] is similar to [[Eyes]] in several ways, as not only does it hurt you when looked at but its name is the previous name of Eyes, along with aspects of its design such as its glowing eyes, resembling Eyes' old design!
+</option>
+
+<option>
+[[File:Haste1.png|250px|center|link=The Backdoor#Haste|class=notpageimage]]
+[[The_Backdoor#Haste|Haste]] is a direct reference to [https://spookys-jump-scare-mansion.fandom.com/wiki/Specimen_9 Specimen 9] from [https://spookys-jump-scare-mansion.fandom.com/wiki/Spooky%27s_Jump_Scare_Mansion_Wiki Spooky's Jumpscare Mansion], both having similar appearances and death screens with repeating mantras, Haste's being "NO TIME LEFT" and Specimen 9's being "TO TAKE THE DEAD".
+</option>
+<option>
+[[File:ShearsIcon.webp|250px|center|link=Shears|class=notpageimage]]
+The [[Shears]]' original function was cutting vine-covered [[Containers|chests]] in [[The Greenhouse]], but it felt like another [[Lockpick]], and it was unusual for an [[Items|item]] to only be useful in about 10 rooms in the entire [[Floors|floor]], so the item was shelved for future use. This idea was reimplemented into [[The Mines]], with vines reappearing throughout the floor.</option>
+
+<option>
+[[File:hasol.webp|250px|center|link=The Backdoor#Haste|class=notpageimage]] [[The Backdoor#Haste|Haste]] was originally planned to be in [[The Hotel]] rather than The Backdoor. Originally, if a [[player]] stalled in a room for too long, Haste would chase down the player and force them to [[Hiding|hide]]. The developers didn't like this mechanic, so Haste was scrapped and would be re-introduced with a new and better mechanic the following year.
+</option>
+
+<option>
+[[File:Eyemodifier.png|250px|center|link=Modifiers#Scrapped|class=notpageimage]] 
+[[Eyes]] has multiple [[modifiers]] to its name, but one was scrapped. This modifier was called "Sightseeing", and it simply gave Eyes the ability to teleport, providing more of a challenge. This modifier was scrapped, and Eyes' ability to teleport was added to its [[The Mines|Mines]] upgrade.
+</option>
+
+<option>
+[[File:NewQueenGrumbleRender.webp|250px|center|link=Queen Grumble|class=notpageimage]] 
+Unlike normal [[Grumbles]], the [[Queen Grumble]] has extra buffs. Her movement speed is faster than any other Grumble, making her difficult to outrun. The [[Spotlight]] can still blind her, but she can still catch up to [[Player|players]] easily. She doesn't laugh, making it harder for players to sense if she is coming. She is slightly paler and larger than the other Grumbles. She appears at the end of the first [[Seek]] chase in [[The Mines]], and chases you once the bridge has been powered. 
+</option>
+
+<option>
+[[File:NewGloom2.png|250px|link=Gloombats|center|class=notpageimage]] 
+[[Gloombats]] have eggs, stepping on them causes another Gloombat to spawn, if a [[player]] dies, Gloombats will lay eggs on their body.
+</option>
+
+<option>
+[[File:ScreechPileRender2.png|250px|link=Screech|center|class=notpageimage]]
+It's heavily implied there are multiple [[Screech|Screeches]]. There's multiple dead Screech piles in [[The Nest]]. This doesn't mean that nearly the entire Screech species is gone, though, as [[El Goblino]] has stated multiple times that he's seen more than one Screech.
+</option>
+
+<option>
+[[File:A690new.png|250px|center|link=The Rooms|center|class=notpageimage]]
+A-60 is the fastest entity in [[DOORS]] when A-90 does not show up, even faster than Ambush; when A-90 does show up however, it slows A-60 to around the same speed of [[The Backdoor#Blitz|Blitz]].
+</option>
+
+<option>
+[[File:SLEEPA-60 DOORS.png|250px|center|link=The Rooms|center|class=notpageimage]]
+[[The Rooms#A-60|A-60]] has received minor sound and visual effect changes throughout several updates. When the Hotel+ update first released, when A-60 spawned, its far sound was a quiet crackling, it didn't cause screen-shake and opened the next door, which may cause another A-60 to spawn on rare occasions. However, when The Mines update rolled out, its spawn sound was made louder and more distorted, it shook the screen a bit, its nearby sound was changed slightly and its ability to open the next door was removed. However, after the Content Update, its spawn sound was reverted to its initial sound, but all the other changes were not reverted.
+
+The sound for when A-60 would spawn during [[The Hotel+ Update]] and [[The Content Update]] sounds like this:[[File:RumbleA60.mp3]]
+
+The sound for when A-60 would spawn when [[The Mines Update]] released and Before The Content Update sounded like this: 
+[[File:DistantA60.mp3]]
+
+The reason for the sound changes is because, when The Mines Update released, the DOORS developers recoded The Rooms; which made A-60 have several features that Rush uses, as both entities both shake the screen the same amount, use the same pathfinding, and despawn the same way.
+</option>
+
+<option>
+[[File:Seek2.png|250px|center|link=The Rooms|center|class=notpageimage]]
+As confirmed by developers, most entities where named by the player, rather then having their own names. Though, this does not include subfloor entities or [[Jeff Shop]] trio entities. This may also not include Louie and Sally. 
+</option>
+
+<option>
+[[File:RushImgSpr.png|250px|center|link=List of Entities|center|class=notpageimage]]
+[[Player|Players]] are able to obtain the [[Achievements|"In Plain Sight"]] badge through [[Rush]] and [[Ambush]]. However, they aren't able to obtain it through [[The Backdoor#Blitz|Blitz]], [[The Rooms#A-60|A-60]] and [[The Rooms#A-120|A-120]]. This is likely an oversight by the [[:Category:Developers|developers]].
+</option>
+
+<option>
+[[File:A-120 IDLE.png|250px|center|link=The Rooms|center|class=notpageimage]]
+Sometimes, A-120 will rebound, so make sure to listen carefully and [[Hiding|hide]] whenever this happens!
+</option>
+
+<option>
+[[File:Jeffy.png|250px|center|link=2023 April Fools Event|center|class=notpageimage]]
+In [[2023 April Fools Event|SUPER HARD MODE!!!]], players needed to collect 15 books in [[The Library]]. This caused [[Figure]] to move much faster than usual. Figure could also have been killed by a [[Holy Hand Grenade]], which would produce this sound:<br>[[File:FigDeath in-game fixed.mp3]]<small>(Warning: LOUD)</small>
+</option>
+
+<option>
+[[File:Visions text2.png|250px|center|link=Visions|center|class=notpageimage]]
+Before getting their '''official name''', Visions used to be listed in a floor category called "EVENT". This was however changed to be "Visions" as of the [[Cringle's Workshop Event|Cringle's Workshop]] Event.</small>
+</option>
+
+<option>
+[[File:Shadowoutlined.png|250x250px|center|link=Shadow|center|class=notpageimage]]
+[[Shadow]] is the most unknown [[List of Entities|entity]] in [[DOORS]]. Unlike other entities, it cannot be spawned through the [[Admin Panel|admin panel]] and doesn't have any death message from both [[The Three Architects|architects]]. The only information known about it is its appearance and that it jumpscares the player whenever it appears.</small>
+</option>
+
+<option>
+[[File:The Archives Update Icon.png|250x250px|center|link=The Archives Update|center|class=notpageimage]]
+The [[The Archives Update|Archives update]] was the first [[Update Logs|update]] to remove a [[Floors|subfloor]]. Additionally, it was also the first one to add two subfloors.
+</option>
+
+</span><includeonly></choose></includeonly>
+}}<noinclude>[[Category:Main page templates]]</noinclude>
