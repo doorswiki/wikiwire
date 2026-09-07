@@ -1,0 +1,3 @@
+<includeonly><div style="display:inline-flex; flex-direction:column; align-items:center; gap: 5px; flex: 1">
+{{Hoverimg|[[File:{{{image}}}|100px|class=invertinvert|link={{{link}}}]]}}'''{{{label}}}'''
+</div></includeonly>
