@@ -16,6 +16,9 @@ local p = {}
 
 -- Imports
 local badgeData = require('Module:BadgeData')
+local obj       = require('Module:Object').build
+local color     = require('Module:Color').render
+local img       = require('Module:Image').image
 
 -- Locals
 local order = {
@@ -103,6 +106,7 @@ local function buildBadge(badge)
 		borderClass = borderClass .. ' badge-border-secret'
 	end
 
+	local colorClass = ' color-template_' .. string.lower(badge.color)
 	local imageHtml =
 		'<div class="badge-image">' ..
 			'<div class="' .. borderClass .. colorClass .. '"></div>' ..
