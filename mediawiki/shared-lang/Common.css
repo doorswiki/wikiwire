@@ -678,6 +678,7 @@ applies it to the text's stroke.
 Requires a "data-text" attribute containing the element's text.
 Compatible with .background-clip-text. */
 .text-stroke-color {
+	display: inline-block;
     position: relative;
     font-weight: bold;
     
