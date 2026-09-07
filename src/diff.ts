@@ -105,3 +105,95 @@ export function merge_preserving_wiki_edits(repo_text : string, wiki_text : stri
 
     return result.join('\n');
 };
+
+export function normalize_site_key(key : string) : string {
+    return key.toLowerCase().replace(/[-_]/g, '').trim();
+};
+
+export function matches_site_id(prefix : string, site_id : string, site_host ?: string) : boolean {
+    const p = normalize_site_key(prefix);
+    const s = normalize_site_key(site_id);
+    if (p === s || prefix.toLowerCase().trim() === site_id.toLowerCase().trim()) return true;
+
+    if (site_host) {
+        const host_sub = normalize_site_key(site_host.split('.')[0]);
+        if (p === host_sub) return true;
+    };
+    return false;
+};
+
+/**
+ * Transform interwiki / internationalisation tags in wikitext:
+ * - Checks tags directly against the site IDs and hosts configured in wikiwire.toml.
+ * - Prepends [[en:PAGEHERE]] before all tags (since English is the original version).
+ * - Checks the target site ID in wikiwire config and removes self-referential tags (e.g. [[zh:...]] for zh).
+ */
+export function transform_interwiki_tags(
+    content : string,
+    target_site_id : string,
+    target_site_host ?: string,
+    known_site_ids ?: Iterable<string>
+) : string {
+    const INTERWIKI_TAG_REGEX = /\[\[([a-zA-Z0-9_-]+):([^\]|\n]+)(?:\|[^\]\n]*)?\]\]/g;
+
+    const site_keys = new Set<string>(['en']);
+    if (known_site_ids) {
+        for (const id of known_site_ids) {
+            site_keys.add(normalize_site_key(id));
+            site_keys.add(id.toLowerCase().trim());
+        };
+    } else {
+        site_keys.add(normalize_site_key(target_site_id));
+        site_keys.add(target_site_id.toLowerCase().trim());
+        if (target_site_host) {
+            site_keys.add(normalize_site_key(target_site_host.split('.')[0]));
+        };
+    };
+
+    const matches : Array<{
+        full_match : string;
+        prefix : string;
+        title : string;
+        index : number;
+        length : number;
+    }> = [];
+
+    let match : RegExpExecArray | null;
+    while ((match = INTERWIKI_TAG_REGEX.exec(content)) !== null) {
+        const prefix = match[1];
+        const normalized = normalize_site_key(prefix);
+        if (site_keys.has(normalized) || site_keys.has(prefix.toLowerCase().trim())) {
+            matches.push({
+                full_match : match[0],
+                prefix : match[1],
+                title : match[2].trim(),
+                index : match.index,
+                length : match[0].length,
+            });
+        };
+    };
+
+    if (matches.length === 0) return content;
+
+    const first_match = matches[0];
+    const last_match = matches[matches.length - 1];
+    const page_title = matches[0].title;
+
+    const is_target_en = matches_site_id('en', target_site_id, target_site_host);
+
+    const remaining_tags : string[] = [];
+    if (!is_target_en) {
+        remaining_tags.push(`[[en:${page_title}]]`);
+    };
+
+    for (const m of matches) {
+        if (matches_site_id(m.prefix, target_site_id, target_site_host)) continue;
+        if (matches_site_id(m.prefix, 'en')) continue;
+        remaining_tags.push(`[[${m.prefix}:${m.title}]]`);
+    };
+
+    const start_pos = first_match.index;
+    const end_pos = last_match.index + last_match.length;
+
+    return content.slice(0, start_pos) + remaining_tags.join('\n') + content.slice(end_pos);
+};

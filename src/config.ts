@@ -4,6 +4,7 @@ import TOML from '@iarna/toml';
 export type site_config = {
   id : string;
   api : string;
+  host : string;
   dry_run : boolean;
 
   default_branch : string | null;
@@ -78,6 +79,7 @@ export function load_config(config_path : string) : { schema_version : number; s
         const local_site_config : site_config = {
             id : s.id,
             api : s.api.trim(),
+            host : typeof s.host === 'string' ? s.host.trim() : '',
 
             default_branch: typeof s.default_branch === 'string' ? s.default_branch : null,
             css_content_model: typeof s.css_content_model === 'string' ? s.css_content_model : 'sanitized-css',

@@ -8,7 +8,7 @@ import { load_config, type site_config } from './config';
 import { map_repo_path, parse_shared_path_segment, type mapped_path } from './paths';
 import { mw_page_error, mw_session, type existence_hint } from './mediawiki';
 import { parse_site_credentials } from './site_credentials';
-import { merge_preserving_wiki_edits } from './diff';
+import { merge_preserving_wiki_edits, transform_interwiki_tags } from './diff';
 
 import type { Ignore } from 'ignore';
 
@@ -435,6 +435,8 @@ async function run() : Promise<void> {
     let completed = 0;
     const page_failures : { error : mw_page_error; site_id : string }[] = [];
 
+    const all_site_keys = Array.from(sites.values()).flatMap((s) => [s.id, s.host.split('.')[0]]);
+
     try {
         for (let job_index = 0; job_index < jobs.length; job_index++) {
             const job = jobs[job_index];
@@ -476,6 +478,11 @@ async function run() : Promise<void> {
 
                 const session = await get_session(job.site_cfg.id);
                 let text = fs.readFileSync(path.join(workspace, job.file), 'utf8');
+
+                // Transform interwiki tags for the target site (add [[en:...]] first, remove self-links)
+                if (job.mapped.content_model === 'wikitext') {
+                    text = transform_interwiki_tags(text, job.site_cfg.id, job.site_cfg.host, all_site_keys);
+                };
 
                 let page_exists_on_wiki = false;
                 try {
