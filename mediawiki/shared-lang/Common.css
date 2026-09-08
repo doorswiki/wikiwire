@@ -698,23 +698,18 @@ Compatible with .background-clip-text. */
 clips "--gradient" to the text itself and "--gradient2" to the text's stroke.
 Requires a "data-text" attribute containing the element's text. */
 .text-double-gradient {
-    color: transparent;
-    position: relative;
     display: inline-block;
     position: relative;
     padding: 0.05em;
-    font-weight: bold;
     background-image: var(--gradient2);
     background-clip: text;
     color: transparent;
     font-weight: bold;
     -webkit-text-stroke: 0.2em transparent;
     
-    &:after {
+    &:before {
         content: attr(data-text);
         position: absolute;
-        left: 0.05em;
-        top: 0.05em;
         background-image: var(--gradient);
         background-clip: text;
         -webkit-text-stroke: 0;
@@ -722,7 +717,7 @@ Requires a "data-text" attribute containing the element's text. */
     
     & > b {
         font-weight: inherit;
-    }
+    }    
 }
 
 /* Infobox Carousel Styles */

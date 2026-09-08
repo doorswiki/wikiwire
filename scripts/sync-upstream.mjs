@@ -172,95 +172,6 @@ class MediaWikiClient {
   }
 }
 
-// Myers LCS algorithm
-function getLCS(a, b) {
-  const m = a.length;
-  const n = b.length;
-  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      if (a[i - 1] === b[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1] + 1;
-      } else {
-        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-      }
-    }
-  }
-  let i = m, j = n;
-  const matches = [];
-  while (i > 0 && j > 0) {
-    if (a[i - 1] === b[j - 1]) {
-      matches.unshift({ aIndex: i - 1, bIndex: j - 1 });
-      i--;
-      j--;
-    } else if (dp[i - 1][j] >= dp[i][j - 1]) {
-      i--;
-    } else {
-      j--;
-    }
-  }
-  return matches;
-}
-
-// Diff lines between a and b
-function diffLines(a, b) {
-  const matches = getLCS(a, b);
-  const chunks = [];
-  let aPos = 0, bPos = 0;
-  for (const m of matches) {
-    if (aPos < m.aIndex || bPos < m.bIndex) {
-      chunks.push({
-        type: 'change',
-        a: a.slice(aPos, m.aIndex),
-        b: b.slice(bPos, m.bIndex),
-      });
-    }
-    chunks.push({
-      type: 'equal',
-      line: a[m.aIndex],
-    });
-    aPos = m.aIndex + 1;
-    bPos = m.bIndex + 1;
-  }
-  if (aPos < a.length || bPos < b.length) {
-    chunks.push({
-      type: 'change',
-      a: a.slice(aPos),
-      b: b.slice(bPos),
-    });
-  }
-  return chunks;
-}
-
-/**
- * Merge upstream English content with local repository content.
- * Checks for line-by-line differences:
- * - If a line was modified in the local repo, keep it (do not touch).
- * - If there are no differences or upstream has new lines, apply upstream.
- */
-function mergePreservingLocalEdits(upstreamText, localText) {
-  if (!localText || localText === upstreamText) return upstreamText;
-  const upstreamLines = upstreamText.split('\n');
-  const localLines = localText.split('\n');
-
-  const chunks = diffLines(upstreamLines, localLines);
-  const result = [];
-  for (const chunk of chunks) {
-    if (chunk.type === 'equal') {
-      result.push(chunk.line);
-    } else {
-      if (chunk.b.length > 0) {
-        // Local repo has customized lines: preserve them
-        result.push(...chunk.b);
-      } else if (chunk.a.length > 0) {
-        // Upstream has additions: incorporate them
-        result.push(...chunk.a);
-      }
-    }
-  }
-  return result.join('\n');
-}
-
 async function main() {
   const username = process.env.WIKI_USERNAME || '';
   const password = process.env.WIKI_PASSWORD || '';
@@ -283,25 +194,12 @@ async function main() {
         continue;
       }
 
-      // Check existing content in local repository
-      let existingContent = null;
-      if (fs.existsSync(relPath)) {
-        existingContent = fs.readFileSync(relPath, 'utf8');
-      }
-
-      // Merge English upstream with local edits
-      const finalContent = mergePreservingLocalEdits(upstreamContent, existingContent);
-
       const dir = path.dirname(relPath);
       fs.mkdirSync(dir, { recursive: true });
-      fs.writeFileSync(relPath, finalContent, 'utf8');
+      fs.writeFileSync(relPath, upstreamContent, 'utf8');
       updatedCount++;
 
-      if (existingContent && existingContent !== upstreamContent) {
-        console.log(`[SYNCED (MERGED)] ${title} -> ${relPath} (preserved local modifications)`);
-      } else {
-        console.log(`[SYNCED] ${title} -> ${relPath} (${Buffer.byteLength(finalContent, 'utf8')} bytes)`);
-      }
+      console.log(`[SYNCED] ${title} -> ${relPath} (${Buffer.byteLength(upstreamContent, 'utf8')} bytes)`);
     } catch (err) {
       console.warn(`[REQUEST FAILED] ${title}: ${err.message}`);
       // Continue without stopping!

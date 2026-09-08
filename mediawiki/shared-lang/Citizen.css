@@ -291,7 +291,7 @@ html:not(.doorswiki-mood-clientpref-0) {
 /* The Archives theme */
 :root.doorswiki-mood-clientpref-4 {
     &[class*="skin-theme-clientpref-"] {
-        --color-progressive-oklch__h: 190;
+        --color-progressive-oklch__h: 280;
     }
     
     &.skin-theme-clientpref-day {
@@ -299,11 +299,11 @@ html:not(.doorswiki-mood-clientpref-0) {
     }
     
     &.skin-theme-clientpref-night {
-        --bg: url(https://static.wikitide.net/doorswiki/6/6d/StairwellEntrance.png);
+        --bg: url(https://static.wikitide.net/doorswiki/0/02/MailRoom2.png);
     }
     
     &.skin-theme-clientpref-black {
-        --bg: url(https://static.wikitide.net/doorswiki/4/4d/Z50ArchivesDoor.png);
+        --bg: url(https://static.wikitide.net/doorswiki/6/6d/StairwellEntrance.png);
         
         > body::before {
         	opacity: 0.4;
@@ -416,8 +416,10 @@ body.page-DOORS_Wiki {
 .citizen-page-sidebar {
     margin-top: unset;
     
-    > * {
-        padding: var(--space-md);
+    @media screen and (min-width: 1119px) {
+	    > * {
+	        padding: var(--space-md);
+	    }
     }
 }
 
@@ -703,8 +705,36 @@ body.page-DOORS_Wiki {
 	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/3/3c/Roblox_-_Simple_Icons.svg");
 			mask-image: url("https://static.wikitide.net/doorswiki/3/3c/Roblox_-_Simple_Icons.svg");
 }
-#p-managewiki-sidebar-header {
-	display: none;
+
+/* fixes */
+.tool.tool-element[rel="msupload"]:hover {
+    background: var(--background-color-button-quiet--hover)!important;
+}
+
+#msupload-select {
+    background: transparent;
+    
+    .oo-ui-iconElement-icon {
+        filter: unset!important;
+        left: 0!important;
+        width: 100%!important;
+        height: 100%!important;
+        background-size: 24px;
+        background-position: center;
+    }
+}
+
+#footer-icons a {
+    background-color: var(--color-surface-2);
+    transition: unset;
+    
+    .skin-theme-clientpref-day & img {
+    	filter: invert(1) hue-rotate(180deg);
+    }
+}
+
+.citizen-toc .citizen-toc-card {
+    backdrop-filter: unset;
 }
 
 /*#p-managewiki-sidebar-header {*/
@@ -740,7 +770,11 @@ body.page-DOORS_Wiki {
 	}
 }
 
-.ns-talk #ca-edit { display: none }
+.ns-talk #ca-edit,
+.ns-talk #ca-edit-sticky-header,
+.ns-talk #ca-talk-sticky-header {
+    display: none;
+}
 .ns-talk #ca-addsection { order: 1 }
 .ns-talk #ca-addsection a:not(:hover) { background: var(--color-surface-2); border-radius: var(--border-radius-medium) }
 

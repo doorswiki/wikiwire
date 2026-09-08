@@ -61,12 +61,12 @@ local function buildBadge(badge)
 			if type(value) == 'number' then
 				rewards[#rewards+1] =
 					'<span class="badge-rewards-item">' ..
-						'<span class="badge-rewards-item-key">[[File:' .. key .. ' icon.png|60px]]</span>' ..
-						'<span class="badge-rewards-item-value">' .. value .. '</span>' ..
+						'<span class="badge-rewards-item-key">' .. img(key, '60') .. '</span>' ..
+						'<span class="badge-rewards-item-value">' .. color(key, {text=value}) .. '</span>' ..
 					'</span>'
 			else
 				rewards[#rewards+1] =
-					'<span class="badge-rewards-item">[[File:' .. value .. '|60px]]</span>'
+					'<span class="badge-rewards-item">' .. img(value, '60') .. '</span>'
 			end
 		end
 
@@ -84,22 +84,12 @@ local function buildBadge(badge)
 		ownerHtml = '<span class="badge-owners">No Badge</span>'
 	end
 
-	local colorClass = ' color-template_' .. string.lower(badge.color)
 
-	local titleHtml
-	if badge.id then
-		titleHtml =
-			'[https://www.roblox.com/badges/' .. badge.id .. ' ' ..
-				'<span style="background-clip: text;" class="badge-title' .. colorClass .. '">' ..
-					badge.title ..
-				'</span>' ..
-			']'
-	else
-		titleHtml =
-			'<span style="background-clip: text;" class="badge-title' .. colorClass .. '">' ..
-				badge.title ..
+	local link = badge.id and 'https://www.roblox.com/badges/' .. badge.id or false
+	local titleHtml =
+			'<span class="badge-title">' ..
+				color(badge.title, {link=link}) ..
 			'</span>'
-	end
 
 	local borderClass = 'badge-border'
 	if badge.secret then
@@ -206,7 +196,7 @@ end
 
 local function generateBadgeList()
 	local out = {
-'<templatestyles src="Color/styles.css" /><templatestyles src="Badge/styles.css" />',
+'<templatestyles src="Badge/styles.css" />',
 '<div class="badge-list-wrapper">',
 	'<div class="badge-list">',
 		'<span class="badge-list-page-actions">',
@@ -214,7 +204,7 @@ local function generateBadgeList()
 		'</span>',
 		'<div class="badge-list-header">',
 			'<div class="badge-list-header-title">',
-				'[[File:Achievements_icon.svg|40px|link=]] Achievements',
+				obj('Achievements', { size=35 }),
 			'</div>',
 			'<div class="badge-list-header-subtitle">',
 				'Below is a list of all current listed and unlisted \'\'achievements\'\'',
@@ -390,7 +380,7 @@ local function countBadgeRewards(rewardType, unobtainable)
 				local rewards = badge.rewards
 				if rewards then
 					if rewardType == 'Knob' then
-						total = total + (rewards.Knobs or 0)
+						total = total + (rewards.Knob or 0)
 
 					elseif rewardType == 'Stardust' then
 						total = total + (rewards.Stardust or 0)
