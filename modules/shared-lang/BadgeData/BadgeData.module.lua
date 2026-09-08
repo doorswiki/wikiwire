@@ -483,6 +483,20 @@ General = {
 	hidden = true,
 	obtainable = true, 
 	id = '4026679950625439',
+		oldVersions = {
+		{
+			title = 'REDACTED',
+			text = 'REDACTED',
+			directions = 'Watch, and create a new entity.',
+			tutorial = nil,
+			references = nil,
+			color = 'Stairwell',
+			image = 'Archives Placeholder Badge.png',
+			rewards = nil,
+			secret = false,
+			hidden = true,
+		}
+	},
 },
 {
 	title = 'Patience',
@@ -1872,6 +1886,20 @@ Challenges = {
 	hidden = true,
 	obtainable = true, 
 	id = '1616003504792374',
+	oldVersions = {
+		{
+			title = 'Storage Wars',
+			text = 'A thousand is the best I can do.',
+			directions = 'Make 1000+ Gold at a [[Depot]] in just one deposit.',
+			tutorial = nil,
+			references = nil,
+			color = 'Stairwell',
+			image = 'Archives Placeholder Badge.png',
+			rewards = nil,
+			secret = false,
+			hidden = true,
+		}
+	},
 },
 
 },
@@ -1912,7 +1940,7 @@ Battle = {
 },
 {
 	title = 'In Plain Sight 2',
-	text = 'Smile, your death will be on camera.',
+	text = 'We didn\'t playtest this to make sure this was possible',
 	directions = 'Win a round of BATTLE Mode while never hiding at all.',
 	tutorial = 'To get this badge, you need to win in 1st place in a [[Battle Mode]] round with at least a player in your round while never [[Hiding]] ([[Battle_Mode#Hiding_Box|Hiding Boxes]] also count as hiding).',
 	references = 'Old achievement\'s description was a reference to "We Didn\'t Playtest To Make Sure This Was Possible", a Pressure badge. Achievement\'s name might be a reference to [https://ips2.fandom.com/wiki In Plain Sight 2], due to sharing the names, and is a callback to "In Plain Sight" achievement.',
@@ -1926,6 +1954,20 @@ Battle = {
 	obtainable = true, 
 	id = nil,
 	oldVersions = {
+		{
+			title = 'In Plain Sight 2',
+			text = 'Smile, your death will be on camera.',
+			directions = 'Win a round of BATTLE Mode while never hiding at all.',
+			tutorial = nil,
+			references = nil,
+			color = 'BattleCool',
+			image = nil,
+			rewards = {
+				Knob = 100,
+			},
+			secret = true,
+			hidden = false,
+		},
 		{
 			title = 'In Plain Sight 2',
 			text = 'We didn\'t playtest this to make sure this was possible',
@@ -2584,46 +2626,6 @@ Events = {
 	id = nil,
 },
 {
-	title = 'BLOXFEST: Double Feature',
-	text = 'TEMPORARY. WILL BE SHORTLY REMOVED!',
-	directions = 'Escape Hotel & Mines with some restrictions.',
-	tutorial = 'The easiest way to get this badge is to start with [[The Hotel]]. Loot until you have at least 300 [[gold]]. Get yourself to the [[Jeff Shop]] (around door 55) and buy the [[Skeleton Key]]. Then, continue to The Courtyard (door 89) and look around to find the [[Shears]]. In the next room, cut the vines on the door with the shears and unlock the door behind with the [[Skeleton Key]]. You\'ll get the first part of the badge here. (25 minutes)\n\nNow, you have two choices:\n* Continue the run: Make your way through [[The Outdoors]]. Once you complete this subfloor, you\'ll get a shortcut to [[The Mines]] Jeff Shop (door 152). Note: In the Outdoors, only one player has to complete the floor. Everyone else will be revived in the Mines and can still earn the badge. (30-35 minutes)\n* Return to the [[Lobby]]: Create an elevator for [[The Mines]] and survive the first 50–60 doors until you reach the Jeff Shop, including [[The Nest]] and the first [[Seek]] chase. (30-40 minutes)\n\nOnce you are at [[The Mines]] Jeff Shop (around door 155), continue until door 200, beat [[Seek]] in [[The Dam]], and complete the floor. (20 minutes)\n\n=== Retries ===\n* If you die in [[The Hotel]], you can simply replay the floor.\n* If you die in [[The Outdoors]], return to the Lobby and create an elevator for either [[The Outdoors]] again or try beating [[The Mines]] from the beginning.\n* If you die in [[The Mines]], you can either retry the floor or return to the Lobby and try taking the shortcut to door 152 from [[The Outdoors]].\n\n=== Recommendations ===\n* Play with others! It is easier with a team.\n* If you get stuck at any point, watching a walkthrough might be very helpful.\n\n=== Conditions ===\n* Don\'t use any [[Modifiers|modifiers]].\n* Don\'t use [[revives]].\n* Don\'t use a [[lotus]].\n* Don\'t use any [[Saves|saves]].\n* Don\'t use any [[Rift|rifts]].',
-	references = 'Achievement\'s name is most likely a reference to one of the [https://deltarune.wiki/w/Tenna Mr. "Ant" Tenna]\'s lines in [https://deltarune.wiki/w/Deltarune Deltarune].',
-	color = 'GlitchPurple',
-	image = 'BLOXFEST Double Feature Badge.png',
-	rewards = nil,
-	secret = true,
-	hidden = true,
-	obtainable = false, 
-	id = '1226198493522527',
-	oldVersions = {
-		{
-			title = '[Bloxfest] Double Feature',
-			text = 'TEMPORARY. REMOVED AFTER THE TWITCH BLOXFEST EVENT!!',
-			directions = 'Escape Hotel & Mines. Outdoors detours count! NO MODIFIERS/REVIVES/LOTUS/SAVES. NOBODY CAN USE RIFT.',
-			tutorial = nil,
-			references = nil,
-			color = 'GlitchPurple',
-			image = 'BLOXFEST Double Feature Badge.png',
-			rewards = nil,
-			secret = true,
-			hidden = false,
-		},
-		{
-			title = 'Double Feature',
-			text = 'Intended for the Twitch Bloxfest event. Will be removed soon after the event.',
-			directions = 'Escape Hotel & Mines. Outdoors detours count! NO MODIFIERS/REVIVES/LOTUS/SAVES. NOBODY CAN USE RIFT.',
-			tutorial = nil,
-			references = nil,
-			color = 'GlitchPurple',
-			image = 'BLOXFEST Double Feature Badge.png',
-			rewards = nil,
-			secret = true,
-			hidden = false,
-		},
-	},
-},
-{
 	title = 'Hardstuck',
 	text = 'So... this is ELO hell.',
 	directions = 'Reach STARTER Rank in [[2025 April Fools Event|RANKED]]! Displays your actual rank.',
@@ -2832,7 +2834,46 @@ Legacy = {
 
 Unlisted = {
 	
-	
+{
+	title = 'BLOXFEST: Double Feature',
+	text = 'TEMPORARY. WILL BE SHORTLY REMOVED!',
+	directions = 'Escape Hotel & Mines with some restrictions.',
+	tutorial = 'The easiest way to get this badge is to start with [[The Hotel]]. Loot until you have at least 300 [[gold]]. Get yourself to the [[Jeff Shop]] (around door 55) and buy the [[Skeleton Key]]. Then, continue to The Courtyard (door 89) and look around to find the [[Shears]]. In the next room, cut the vines on the door with the shears and unlock the door behind with the [[Skeleton Key]]. You\'ll get the first part of the badge here. (25 minutes)\n\nNow, you have two choices:\n* Continue the run: Make your way through [[The Outdoors]]. Once you complete this subfloor, you\'ll get a shortcut to [[The Mines]] Jeff Shop (door 152). Note: In the Outdoors, only one player has to complete the floor. Everyone else will be revived in the Mines and can still earn the badge. (30-35 minutes)\n* Return to the [[Lobby]]: Create an elevator for [[The Mines]] and survive the first 50–60 doors until you reach the Jeff Shop, including [[The Nest]] and the first [[Seek]] chase. (30-40 minutes)\n\nOnce you are at [[The Mines]] Jeff Shop (around door 155), continue until door 200, beat [[Seek]] in [[The Dam]], and complete the floor. (20 minutes)\n\n=== Retries ===\n* If you die in [[The Hotel]], you can simply replay the floor.\n* If you die in [[The Outdoors]], return to the Lobby and create an elevator for either [[The Outdoors]] again or try beating [[The Mines]] from the beginning.\n* If you die in [[The Mines]], you can either retry the floor or return to the Lobby and try taking the shortcut to door 152 from [[The Outdoors]].\n\n=== Recommendations ===\n* Play with others! It is easier with a team.\n* If you get stuck at any point, watching a walkthrough might be very helpful.\n\n=== Conditions ===\n* Don\'t use any [[Modifiers|modifiers]].\n* Don\'t use [[revives]].\n* Don\'t use a [[lotus]].\n* Don\'t use any [[Saves|saves]].\n* Don\'t use any [[Rift|rifts]].',
+	references = 'Achievement\'s name is most likely a reference to one of the [https://deltarune.wiki/w/Tenna Mr. "Ant" Tenna]\'s lines in [https://deltarune.wiki/w/Deltarune Deltarune].',
+	color = 'GlitchPurple',
+	image = 'BLOXFEST Double Feature Badge.png',
+	rewards = nil,
+	secret = true,
+	hidden = true,
+	obtainable = false, 
+	id = '1226198493522527',
+	oldVersions = {
+		{
+			title = '[Bloxfest] Double Feature',
+			text = 'TEMPORARY. REMOVED AFTER THE TWITCH BLOXFEST EVENT!!',
+			directions = 'Escape Hotel & Mines. Outdoors detours count! NO MODIFIERS/REVIVES/LOTUS/SAVES. NOBODY CAN USE RIFT.',
+			tutorial = nil,
+			references = nil,
+			color = 'GlitchPurple',
+			image = 'BLOXFEST Double Feature Badge.png',
+			rewards = nil,
+			secret = true,
+			hidden = false,
+		},
+		{
+			title = 'Double Feature',
+			text = 'Intended for the Twitch Bloxfest event. Will be removed soon after the event.',
+			directions = 'Escape Hotel & Mines. Outdoors detours count! NO MODIFIERS/REVIVES/LOTUS/SAVES. NOBODY CAN USE RIFT.',
+			tutorial = nil,
+			references = nil,
+			color = 'GlitchPurple',
+			image = 'BLOXFEST Double Feature Badge.png',
+			rewards = nil,
+			secret = true,
+			hidden = false,
+		},
+	},
+},	
 {
 	title = 'THE TAKEOVER: NOOB',
 	text = 'N/A',
