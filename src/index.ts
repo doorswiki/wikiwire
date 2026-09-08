@@ -479,6 +479,20 @@ async function run() : Promise<void> {
                 const session = await get_session(job.site_cfg.id);
                 let text = fs.readFileSync(path.join(workspace, job.file), 'utf8');
 
+                // If this is a non‑English language wiki, first pull the English version and use it as the base
+                if (job.site_cfg.id !== 'en' && job.site_cfg.shared_groups.has('lang')) {
+                    try {
+                        const enSession = await get_session('en');
+                        const enContent = await enSession.get_page_content(job.mapped.title);
+                        if (enContent !== null) {
+                            sync_log(`overriding ${job.mapped.title} from English wiki for ${job.site_cfg.id}`);
+                            text = enContent;
+                        }
+                    } catch (e : unknown) {
+                        sync_log(`failed to fetch English content for ${job.mapped.title}: ${e instanceof Error ? e.message : String(e)}`);
+                    }
+                }
+
                 // Transform interwiki tags for the target site (add [[en:...]] first, remove self-links)
                 if (job.mapped.content_model === 'wikitext') {
                     text = transform_interwiki_tags(text, job.site_cfg.id, job.site_cfg.host, all_site_keys);
