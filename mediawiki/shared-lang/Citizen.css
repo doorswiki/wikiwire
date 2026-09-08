@@ -706,10 +706,12 @@ body.page-DOORS_Wiki {
 #p-managewiki-sidebar-header {
 	display: none;
 }
+
 /*#p-managewiki-sidebar-header {*/
 /*	display: none;*/
 /*}*/
 
+/* main page stuff */
 .page-DOORS_Wiki {
     .citizen-page-footer {
         display: none;
@@ -724,6 +726,7 @@ body.page-DOORS_Wiki {
     }
 }
 
+/* utility classes */
 .skin-theme-clientpref-day .invert-light,
 .skin-theme-clientpref-day .invertinvert {
 	filter: invert(1) hue-rotate(180deg);

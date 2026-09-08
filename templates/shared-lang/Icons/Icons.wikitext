@@ -21,4 +21,5 @@
 | trivia      = Bulb icon.png
 | usage       = Lighter icon.png
 | journal     = Journal icon.svg
+| hazards     = Hazards icon.png
 | modifiers   = Modifiers icon, monochrome.png}}|class=invertinvert|{{{size|24x24px}}}|link={{{link|}}}|{{{caption|}}}]]</includeonly><noinclude>{{Documentation}}</noinclude>
