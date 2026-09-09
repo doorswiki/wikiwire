@@ -25,7 +25,7 @@
 }
 
 .home-container--title {
-	font-size: var(--font-size-large); 
+	font-size: var(--font-size-x-large); 
 	text-transform: uppercase;
 	font-weight: bold;
 	margin: 0 auto 
@@ -349,4 +349,20 @@
     font-size: var(--font-size-x-large);
     font-weight: 600;
     line-height: var(--line-height-xs);
+}
+
+.home-container--partners-details {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	justify-content: center;
+	margin-top: var(--space-md);
+	position: sticky;
+	top: calc(var(--height-sticky-header) + 1rem)
+}
+
+.home-container--partners-details > div {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
 }

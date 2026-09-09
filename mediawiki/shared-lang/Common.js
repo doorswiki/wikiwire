@@ -19,6 +19,21 @@ $(".copy-button").click(function(e) {
     mw.notify(`Copied ${copyContent} to clipboard!`);
 });
 
+/* content warning */
+mw.hook('wikipage.content').add(function () {
+	var warning = document.querySelector('.content-warning');
+
+	if (!warning) {
+		return;
+	}
+
+	document.body.appendChild(warning);
+
+	warning.addEventListener('click', function () {
+		warning.classList.add('content-warning-hidden');
+	});
+});
+
 /* Infobox Carousel & Gallery Conversion Logic */
 function resizeMediaWikiThumbnail(url, width) {
 	if (!url) return url;
