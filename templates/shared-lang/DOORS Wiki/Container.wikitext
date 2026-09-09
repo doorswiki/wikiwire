@@ -1,2 +1,2 @@
-<includeonly><div class="home-container {{#if:{{{class|}}}|{{{class}}}|}}" style="{{{style|}}}">{{#if:{{{title|}}}|<div style="font-size:150%; text-transform:uppercase; font-weight:700; margin:0 auto {{#if:{{{body|}}}|6px|}}">{{{title}}}</div>}}
-<div style="{{#if:{{{height|}}}|height:{{{height}}}|}}">{{{body|}}}</div></div></includeonly><noinclude>{{Documentation}}</noinclude>
+<includeonly><div class="home-container {{#if:{{{class|}}}|{{{class}}}|}}" style="{{{style|}}}">{{#if:{{{title|}}}|<div class="home-container--title" style="{{#if:{{{body|}}}|6px|}}">{{{title}}}</div>}}
+<div style="{{#if:{{{height|}}}|height:{{{height}}}|}}">{{{body|}}}</div></div></includeonly><noinclude>{{Documentation}}<templatestyles src="DOORS Wiki/styles.css"/></noinclude>

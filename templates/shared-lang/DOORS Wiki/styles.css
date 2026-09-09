@@ -24,6 +24,13 @@
     padding: var(--space-md); 
 }
 
+.home-container--title {
+	font-size: var(--font-size-large); 
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 0 auto 
+}
+
 .home-nav {
     border-radius: var(--border-radius-large); 
     text-align:center; 
