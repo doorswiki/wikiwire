@@ -1771,7 +1771,7 @@ Crucifix = {
 {
 	title = 'Annihilation',
 	text = 'It reacted to me...',
-	directions = 'Banish [[Portrait]] with a Crucifix',
+	directions = 'Banish [[Portrait]] with a [[Crucifix]]',
 	tutorial = 'Go to [[The Archives]] and summon [[Portrait]] by looking at a mirror for a while. When the cutscene ends, escape [[The Archives]] by going trough an Emegergency Exit or by using the exit at Z-50. After that, when you see [[Portrait]], give it a [[Crucifix]]. Note that [[Portrait]] does not have a 100% chance of spawning.',
 	references = nil,
 	color = 'CrucifixRare',
@@ -1808,7 +1808,7 @@ Challenges = {
 {
 	title = 'Hotel Hell',
 	text = 'This is the worst hotel I\'ve ever stayed at.',
-	directions = 'Escape [[The Hotel]] with at least a 150% bonus using Modifiers.',
+	directions = 'Escape [[The Hotel]] with at least a 150% bonus using [[Modifiers]].',
 	tutorial = 'Wait for the ending cutscene to finish with atleast a 150% [[Modifiers|modifier]] bonus in [[The Hotel]].',
 	references = nil,
 	color = 'EscapeInsane',
@@ -1826,7 +1826,7 @@ Challenges = {
 {
 	title = 'Rocky Road',
 	text = 'I think I\'m good with vanilla.',
-	directions = 'Escape [[The Mines]] with at least a 50% bonus using Modifiers.',
+	directions = 'Escape [[The Mines]] with at least a 50% bonus using [[Modifiers]].',
 	tutorial = 'Wait for the ending cutscene to finish with atleast a 50% [[Modifiers|modifier]] bonus in [[The Mines]].',
 	references = 'Both the name and the description have 2 meanings, the first being "Rocky Road" - something being rocky implies the challenge was difficult, "I think I\'m good with vanilla" - vanilla in this context means "without modifiers". The second meaning being "Rocky Road" - [https://en.wikipedia.org/wiki/Rocky_road_(ice_cream) Rocky Road ice cream] (chocolate), "I think I\'m good with vanilla" - Vanilla ice cream.',
 	color = 'EscapeUnique',
@@ -1844,7 +1844,7 @@ Challenges = {
 {
 	title = 'A Hard Place',
 	text = 'And a rock!',
-	directions = 'Escape [[The Mines]] with at least a 150% bonus using Modifiers.',
+	directions = 'Escape [[The Mines]] with at least a 150% bonus using [[Modifiers]].',
 	tutorial = 'Wait for the ending cutscene to finish with atleast a 150% [[Modifiers|modifier]] bonus in [[The Mines]].',
 	references = 'Both the name and the description are most likely a reference to the phrase "\'\'\'between a rock and a hard place\'\'\'" which is an idiom that describes being in a difficult situation with no good options, forcing a choice between two equally unpleasant or undesirable alternatives.',
 	color = 'EscapeInsane',
@@ -2592,7 +2592,7 @@ Events = {
 {
 	title = 'Silent Night',
 	text = 'What a fright!',
-	directions = 'Complete the Vision of Cringle\'s Workshop during the 2025 holidays.',
+	directions = 'Complete the Vision of [[Cringle\'s Workshop Event|Cringle\'s Workshop]] during the 2025 holidays.',
 	tutorial = nil,
 	references = 'Achievement\'s name might be a reference to the \'\'achievement\'\' of the same name from [https://tagging.wiki/wiki/Untitled_Tag_Game untitled tag game].',
 	color = 'Holiday',
@@ -2645,7 +2645,7 @@ Events = {
 {
 	title = 'THE HUNT: First Edition',
 	text = 'Obtained during Roblox\'s THE HUNT: First Edition!',
-	directions = 'Escape The Backdoor during THE HUNT: First Edition.',
+	directions = 'Escape [[The Backdoor]] during THE HUNT: First Edition.',
 	tutorial = nil,
 	references = nil,
 	color = 'EscapeBlue',
