@@ -53,7 +53,7 @@
 	--color-surface-3: var(--doorswiki-surface-3);
 	--color-surface-4: var(--doorswiki-surface-4);
 	
-	--doorswiki-container-color-original: rgba(46,27,21,.6);
+	--doorswiki-container-color-original: rgba(46,27,21,.8);
 	--doorswiki-container-color: var(--doorswiki-container-color-original);
 	
 	--color-link-original: #e8bb81;   
@@ -621,7 +621,7 @@ body.page-DOORS_Wiki {
     
     .skin-theme-clientpref-night &::before {
         filter: brightness(.5);
-        opacity: .5;
+        opacity: .3;
     }
 }
 

@@ -40,10 +40,18 @@ MISC: Miscellaneous CSS
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* thank you Ethan_DOORSWiki https://da.gd/SSxyUN */
+/* thank you Cool Leaf https://da.gd/3Wjbx */
 @font-face {
   font-family: 'doorsfont';
-  src: url('https://static.wikitide.net/stackdwiki/0/0c/DOORSRemake-Regular.woff2') format('woff2');
+  src: url('https://static.wikitide.net/stackdwiki/c/ce/Doors-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'cobblerfont';
+  src: url('https://static.wikitide.net/stackdwiki/5/5d/Cobblish-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -72,12 +80,18 @@ MISC: Miscellaneous CSS
 .oswald-font {
 	font-family: "Oswald", var(--font-family-base),rubik,helvetica,arial,sans-serif;
 }
+
 .inconsolata-font {
 	font-family: "Inconsolata", var(--font-family-base),rubik,helvetica,arial,sans-serif;
 }
 
 .doors-font {
 	font-family: 'doorsfont', var(--font-family-base), rubik, helvetica, arial, sans-serif;
+	font-weight: normal!important;
+}
+
+.cobbler-font {
+	font-family: 'cobblerfont', 'doorsfont', var(--font-family-base), rubik, helvetica, arial, sans-serif;
 	font-weight: normal!important;
 }
 
@@ -927,9 +941,7 @@ Requires a "data-text" attribute containing the element's text. */
 }
 
 .content-warning-content {
-	max-width: 500px;
-	padding: 30px;
-
+	padding: var(--space-lg);
 	text-align: center;
     display: flex;
     flex-direction: column;

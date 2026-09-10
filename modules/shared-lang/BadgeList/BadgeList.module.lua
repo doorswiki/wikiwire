@@ -200,7 +200,7 @@ local function generateBadgeList()
 '<div class="badge-list-wrapper">',
 	'<div class="badge-list">',
 		'<span class="badge-list-page-actions">',
-			'[[Achievements/List|view]] • [[Talk:Achievements/List|talk]] • [https://doorsgame.wiki/wiki/Module:BadgeList?action=edit edit] • [https://doorsgame.wiki/wiki/Module:BadgeData?action=edit edit data]',
+			'[[Achievements/List|view]] • [[Talk:Achievements/List|talk]] • [https://doorsgame.wiki/wiki/Module:BadgeList?action=edit Edit] • [https://doorsgame.wiki/wiki/Module:BadgeData?action=edit Edit Data]',
 		'</span>',
 		'<div class="badge-list-header">',
 			'<div class="badge-list-header-title">',
@@ -363,7 +363,7 @@ local function generateBadgeAuto(frame)
 		'</div>' ..
 	'</div>' ..
 	'<div class="badge-auto-options">' ..
-		'[https://doorsgame.wiki/wiki/Module:BadgeData?action=edit edit data]' ..
+		'[https://doorsgame.wiki/wiki/Module:BadgeData?action=edit Edit Data]' ..
 	'</div>' ..
 '</div>'
 

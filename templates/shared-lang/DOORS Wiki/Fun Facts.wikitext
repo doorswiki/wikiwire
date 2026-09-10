@@ -94,7 +94,7 @@ When [[The Hotel+ Update]] released, [[Void]] was used to replace [[Glitch]]'s f
 
 <option>
 [[File:GuidingLightRender3.png|250px|center|link=Guiding Light|class=notpageimage]]
-[[Guiding Light]] is present throughout the majority of ''[[DOORS]]'', assisting the [[player]] in several different ways, however, in [[The Rooms]] the Guiding Light is completely absent and its related [[items]] don't function, supposedly feeling "lighter" than usual when held.
+[[Guiding Light]] (or Moonlight) is present throughout the majority of ''[[DOORS]]'', assisting the [[player]] in several different ways, however, in [[The Archives]], [[The Backdoor]], [[The Outdoors]] and the [[The Stairwell]], the Guiding Light is completely absent and its related [[items]] don't function, supposedly feeling "lighter" than usual when held. [[Curious Light]] (Or Starlight) takes her place in these subfloors.
 </option>
 
 <option>
@@ -146,17 +146,12 @@ Unlike normal [[Grumbles]], the [[Queen Grumble]] has extra buffs. Her movement 
 
 <option>
 [[File:NewGloom2.png|250px|link=Gloombats|center|class=notpageimage]] 
-[[Gloombats]] have eggs, stepping on them causes another Gloombat to spawn, if a [[player]] dies, Gloombats will lay eggs on their body.
+[[Gloombats]] have eggs, and when stepped on, more Gloombats will spawn. If a [[player]] dies by the Gloombats, they will lay eggs on the corpse.
 </option>
 
 <option>
 [[File:ScreechPileRender2.png|250px|link=Screech|center|class=notpageimage]]
 It's heavily implied there are multiple [[Screech|Screeches]]. There's multiple dead Screech piles in [[The Nest]]. This doesn't mean that nearly the entire Screech species is gone, though, as [[El Goblino]] has stated multiple times that he's seen more than one Screech.
-</option>
-
-<option>
-[[File:A690new.png|250px|center|link=The Rooms|center|class=notpageimage]]
-A-60 is the fastest entity in [[DOORS]] when A-90 does not show up, even faster than Ambush; when A-90 does show up however, it slows A-60 to around the same speed of [[The Backdoor#Blitz|Blitz]].
 </option>
 
 <option>
@@ -178,7 +173,7 @@ As confirmed by developers, most entities where named by the player, rather then
 
 <option>
 [[File:RushImgSpr.png|250px|center|link=List of Entities|center|class=notpageimage]]
-[[Player|Players]] are able to obtain the [[Achievements|"In Plain Sight"]] badge through [[Rush]] and [[Ambush]]. However, they aren't able to obtain it through [[The Backdoor#Blitz|Blitz]], [[The Rooms#A-60|A-60]] and [[The Rooms#A-120|A-120]]. This is likely an oversight by the [[:Category:Developers|developers]].
+[[Player|Players]] are able to obtain the [[Achievements|"In Plain Sight"]] badge through [[Rush]] and [[Ambush]]. However, they aren't able to obtain it through other Rush-like counterparts, being [[The Backdoor#Blitz|Blitz]], [Surge], [[Bash]], [[Scribbles]] or [[Drones|a Drone Stampede]]. This is likely an oversight by the [[:Category:Developers|developers]].
 </option>
 
 <option>
