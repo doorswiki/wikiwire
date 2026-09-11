@@ -770,6 +770,13 @@ body.page-DOORS_Wiki {
 	}
 }
 
+@media screen and (min-width: 1119px) {
+    .badge-list-badges-wrapper {
+        overflow: auto;
+        scrollbar-gutter: stable;
+    }
+}
+
 .ns-talk #ca-edit,
 .ns-talk #ca-edit-sticky-header,
 .ns-talk #ca-talk-sticky-header {
