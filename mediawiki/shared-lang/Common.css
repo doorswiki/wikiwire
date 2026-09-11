@@ -37,8 +37,7 @@ MISC: Miscellaneous CSS
 @import url("/load.php?mode=articles&articles=MediaWiki:Profiles.css|MediaWiki:FD_Mbox.css&only=styles");
 
 /** Font Imports **/
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Yellowtail&display=swap");
 
 /* thank you Cool Leaf https://da.gd/3Wjbx */
 @font-face {
@@ -78,21 +77,26 @@ MISC: Miscellaneous CSS
 
 /* Font Classes */
 .oswald-font {
-	font-family: "Oswald", var(--font-family-base),rubik,helvetica,arial,sans-serif;
-}
-
-.inconsolata-font {
-	font-family: "Inconsolata", var(--font-family-base),rubik,helvetica,arial,sans-serif;
+	font-family: "Oswald", var(--font-family-base);
 }
 
 .doors-font {
-	font-family: 'doorsfont', var(--font-family-base), rubik, helvetica, arial, sans-serif;
+	font-family: 'doorsfont', var(--font-family-base);
 	font-weight: normal!important;
 }
 
 .cobbler-font {
-	font-family: 'cobblerfont', 'doorsfont', var(--font-family-base), rubik, helvetica, arial, sans-serif;
+	font-family: 'cobblerfont', 'doorsfont', var(--font-family-base);
 	font-weight: normal!important;
+}
+
+.yellowtail-font, .journal-title-font {
+	font-family: "Yellowtail", var(--font-family-base);
+	font-weight: 400!important;
+}
+
+.caveat-font, .journal-desc-font {
+	font-family: "Caveat", var(--font-family-base);
 }
 
 /* MediaWiki CSS/JS Page <pre> */

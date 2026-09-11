@@ -6,6 +6,9 @@ if (mw.config.get('wgCanonicalNamespace') == 'User') {
 	mw.loader.load('https://dev.miraheze.org/w/index.php?title=User:Splatched/mastoblox.js&action=raw&ctype=text/javascript');
 }
 
+const wikidbname = "doorswiki";
+mw.loader.load('https://dev.miraheze.org/w/index.php?title=User:Splatched/ShowYourV2Avatar.js&action=raw&ctype=text/javascript');
+
 $('p').each(function() {
     const $this = $(this);
     if($this.html().replace(/\s|<br>/g, '').length === 0)
@@ -18,6 +21,12 @@ $(".copy-button").click(function(e) {
     navigator.clipboard.writeText(copyContent);
     mw.notify(`Copied ${copyContent} to clipboard!`);
 });
+
+window.instantDiffs = window.instantDiffs || {};
+instantDiffs.settings = instantDiffs.settings || {};
+instantDiffs.settings.enableMobile = false;
+
+mw.loader.load( 'https://www.mediawiki.org/w/index.php?title=User:Serhio_Magpie/instantDiffs.js&action=raw&ctype=text/javascript' );
 
 /* content warning */
 mw.hook('wikipage.content').add(function () {
