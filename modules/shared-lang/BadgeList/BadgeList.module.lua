@@ -16,9 +16,9 @@ local p = {}
 
 -- Imports
 local badgeData = require('Module:BadgeData')
-local obj       = require('Module:Object').build
-local color     = require('Module:Color').render
 local img       = require('Module:Image').image
+local color     = require('Module:Color').render
+local obj       = require('Module:Object').build
 
 -- Locals
 local order = {
@@ -40,7 +40,7 @@ local formatnum = function(number)
 	return mw.language.getContentLanguage():formatNum(number)
 end
 
-local function buildBadge(badge)
+local function buildBadge(badge, currentTitle)
 	local tags = {}
 	if badge.secret then tags[#tags+1] = 'SECRET' end
 	if badge.hidden then tags[#tags+1] = 'HIDDEN' end
@@ -74,6 +74,10 @@ local function buildBadge(badge)
 		rewardsHtml = table.concat(rewards)
 	end
 
+	-- Wiki is limited to 99 'expensive parser function' calls 
+	-- Unfortunately only first 99 badges will have owners shown
+	-- The only thing remains is to wait for 'badges' api call to get added
+	-- Which would allow to grab all badges tied to a universe id in one call
 	local ownerHtml
 	if badge.id then
 		ownerHtml =
@@ -87,9 +91,9 @@ local function buildBadge(badge)
 
 	local link = badge.id and 'https://www.roblox.com/badges/' .. badge.id or false
 	local titleHtml =
-			'<span class="badge-title">' ..
-				color(badge.title, {link=link}) ..
-			'</span>'
+			'<div class="badge-title">' ..
+				color(currentTitle or badge.title, {text=badge.title, link=link}) ..
+			'</div>'
 
 	local borderClass = 'badge-border'
 	if badge.secret then
@@ -168,7 +172,7 @@ local function buildBadge(badge)
 
 		local oldContent = {}
 		for _, old in ipairs(badge.oldVersions) do
-			oldContent[#oldContent+1] = buildBadge(old)
+			oldContent[#oldContent+1] = buildBadge(old, badge.title)
 		end
 
 		buttons[#buttons+1] =
@@ -200,7 +204,7 @@ local function generateBadgeList()
 '<div class="badge-list-wrapper">',
 	'<div class="badge-list">',
 		'<span class="badge-list-page-actions">',
-			'[[Achievements/List|view]] • [[Talk:Achievements/List|talk]] • [https://doorsgame.wiki/wiki/Module:BadgeList?action=edit Edit] • [https://doorsgame.wiki/wiki/Module:BadgeData?action=edit Edit Data]',
+			'[[Achievements/List|view]] • [[Talk:Achievements/List|talk]] • [https://doorsgame.wiki/wiki/Module:BadgeList?action=edit edit] • [https://doorsgame.wiki/wiki/Module:BadgeData?action=edit edit data]',
 		'</span>',
 		'<div class="badge-list-header">',
 			'<div class="badge-list-header-title">',
@@ -341,7 +345,7 @@ local function generateBadgeAuto(frame)
 '<templatestyles src="Color/styles.css" /><templatestyles src="Badge/styles.css" />',
 '<div class="badge-list-wrapper">',
 	'<div class="badge-list">',
-		'<div class="badge-list-badges-wrapper badge-list-badges-wrapper-auto">',
+		'<div class="badge-list-badges-wrapper badge-list-badges-wrapper-auto max-height-remover">',
 			'<div class="badge-list-badges-type">'
 	}
 
