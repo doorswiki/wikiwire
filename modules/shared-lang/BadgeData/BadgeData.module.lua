@@ -2232,7 +2232,7 @@ Visions = {
 {
 	title = 'Everything Everywhere All At Once',
 	text = 'Random @#%!%*@# go!',
-	directions = 'Successfully escape The Hotel in the CHAOS Vision. If using livestream integration, requires at least 3 voters each poll.',
+	directions = 'Successfully escape The Hotel in the [[Chaos Mode|CHAOS Vision]]. If using livestream integration, requires at least 3 voters each poll.',
 	tutorial = 'Wait for the ending cutscene to finish with the CHAOS Vision. You can also use livestream integration, but it requires atleast 3 voters at each poll.',
 	references = 'Achievement\'s name is a direct reference to the [https://en.wikipedia.org/wiki/Everything_Everywhere_All_at_Once movie with the same name].',
 	color = 'GlitchPurple',
@@ -2720,7 +2720,7 @@ Legacy = {
 {
 	title = 'Red Mist',
 	text = 'DONT ASK WHO A-60 IS',
-	directions = 'Use a Crucifix against [[A-60]].',
+	directions = 'Use a [[Crucifix]] against [[A-60]].',
 	tutorial = nil,
 	references = nil,
 	color = 'CrucifixRare',
@@ -2734,7 +2734,7 @@ Legacy = {
 {
 	title = 'Stop Right There',
 	text = 'Imagine a blue stop sign instead. Simple, right?',
-	directions = 'Use a Crucifix against [[A-90]].',
+	directions = 'Use a [[Crucifix]] against [[A-90]].',
 	tutorial = nil,
 	references = nil,
 	color = 'CrucifixRare',
@@ -2748,7 +2748,7 @@ Legacy = {
 {
 	title = 'Grin Reaper',
 	text = 'Turn that frown upside down!',
-	directions = 'Use a Crucifix against [[A-120]].',
+	directions = 'Use a [[Crucifix]] against [[A-120]].',
 	tutorial = nil,
 	references = nil,
 	color = 'CrucifixRare',

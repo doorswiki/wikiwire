@@ -28,6 +28,17 @@ instantDiffs.settings.enableMobile = false;
 
 mw.loader.load( 'https://www.mediawiki.org/w/index.php?title=User:Serhio_Magpie/instantDiffs.js&action=raw&ctype=text/javascript' );
 
+// snippet from mezoga 
+// Allows for 'resize' to resize past 'max-height' if needed,
+// while allowing for 'height: fit-content' coexistence
+document.querySelectorAll('.max-height-remover').forEach(e => {
+    const maxHeight = getComputedStyle(e).maxHeight;
+    if (e.scrollHeight > parseFloat(maxHeight)) {
+        e.style.height = maxHeight;
+        e.style.maxHeight = 'none';
+    }
+});
+
 /* content warning */
 mw.hook('wikipage.content').add(function () {
 	var warning = document.querySelector('.content-warning');
