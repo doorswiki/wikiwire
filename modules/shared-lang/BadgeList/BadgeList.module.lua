@@ -1,7 +1,7 @@
 -- [[Module:BadgeList]]
 
 -- Used for:
--- generating complete per-type badges list tabber on [[Achievements]] & [[Achievement/List]]
+-- generating complete per-type badges list tabber on [[Achievements]] & [[Achievements/List]]
 -- extracting individual badge counts, used via [[Template:BadgeCount]]
 -- extracting individual badge reward counts, used via [[Template:BadgeRewardsCount]]
 -- generating individual badge lists, used via [[Template:BadgeAuto]]
@@ -15,10 +15,12 @@
 local p = {}
 
 -- Imports
-local badgeData = require('Module:BadgeData')
-local img       = require('Module:Image').image
-local color     = require('Module:Color').render
-local obj       = require('Module:Object').build
+local badgeData  = require('Module:BadgeData')
+local objectData = require('Module:ObjectData')
+local img        = require('Module:Image').image
+local color      = require('Module:Color').render
+local colorClass = require('Module:Color').colorClass
+local obj        = require('Module:Object').build
 
 -- Locals
 local order = {
@@ -41,14 +43,47 @@ local formatnum = function(number)
 end
 
 local function buildBadge(badge, currentTitle)
+	local object = objectData[badge.title] or {}
+	
+	local borderClass = 'badge-border '
+	if badge.secret then
+		borderClass = borderClass .. 'badge-border-secret '
+	end
+
+	local imageHtml =
+		'<div class="badge-image">' ..
+			'<div class="' .. borderClass .. colorClass(badge.color or object.color) .. '"></div>' ..
+			'[[File:' .. (badge.image or object.icon) .. '|140px]]' ..
+		'</div>'
+		
+	local link = badge.id and 'https://www.roblox.com/badges/' .. badge.id or false
+	local titleHtml =
+		'<div class="badge-title">' ..
+			color(currentTitle or badge.title, {text=badge.title, link=link}) ..
+		'</div>'
+		
 	local tags = {}
 	if badge.secret then tags[#tags+1] = 'SECRET' end
 	if badge.hidden then tags[#tags+1] = 'HIDDEN' end
 	if not badge.obtainable then tags[#tags+1] = 'UNOBTAINABLE' end
-
+	
 	local tagsHtml = ''
 	if #tags > 0 then
 		tagsHtml = '<div class="badge-tags">' .. table.concat(tags, ', ') .. '</div>'
+	end
+	
+	-- Wiki is limited to 99 'expensive parser function' calls
+	-- Unfortunately only first 99 badges will have owners shown
+	-- The only thing remains is to wait for 'badges' api call to get added
+	-- Which would allow to grab all badges tied to a universe id in one call
+	local ownerHtml
+	if badge.id then
+		ownerHtml =
+			'<span class="badge-owners">' ..
+				'Owners: {{formatnum:{{#robloxAPI: badgeInfo | ' .. badge.id .. ' | json_key=statistics->awardedCount}}}}' ..
+			'</span>'
+	else
+		ownerHtml = '<span class="badge-owners">No Badge</span>'
 	end
 
 	local rewardsHtml = ''
@@ -73,43 +108,6 @@ local function buildBadge(badge, currentTitle)
 		rewards[#rewards+1] = '</div>'
 		rewardsHtml = table.concat(rewards)
 	end
-
-	-- Wiki is limited to 99 'expensive parser function' calls 
-	-- Unfortunately only first 99 badges will have owners shown
-	-- The only thing remains is to wait for 'badges' api call to get added
-	-- Which would allow to grab all badges tied to a universe id in one call
-	local ownerHtml
-	if badge.id then
-		ownerHtml =
-			'<span class="badge-owners">' ..
-				'Owners: {{formatnum:{{#robloxAPI: badgeInfo | ' .. badge.id .. ' | json_key=statistics->awardedCount}}}}' ..
-			'</span>'
-	else
-		ownerHtml = '<span class="badge-owners">No Badge</span>'
-	end
-
-
-	local link = badge.id and 'https://www.roblox.com/badges/' .. badge.id or false
-	local titleHtml =
-			'<div class="badge-title">' ..
-				color(currentTitle or badge.title, {text=badge.title, link=link}) ..
-			'</div>'
-
-	local borderClass = 'badge-border'
-	if badge.secret then
-		borderClass = borderClass .. ' badge-border-secret'
-	end
-
-	local colorClass = ' color-template_' .. string.lower(badge.color)
-	local imageHtml =
-		'<div class="badge-image">' ..
-			'<div class="' .. borderClass .. colorClass .. '"></div>' ..
-			(
-				badge.image
-				and '[[File:' .. badge.image .. '|140px]]'
-				or '[[File:' .. badge.title .. ' Badge.png|140px]]'
-			) ..
-		'</div>'
 
 	local contentHtml =
 		'<div class="badge-content">' ..
@@ -191,18 +189,18 @@ local function buildBadge(badge, currentTitle)
 
 	return table.concat({
 		'<div class="badge">',
-			imageHtml,
-			contentHtml,
-			buttonsHtml,
+		imageHtml,
+		contentHtml,
+		buttonsHtml,
 		'</div>'
 	})
 end
 
 local function generateBadgeList()
 	local out = {
-'<templatestyles src="Badge/styles.css" />',
-'<div class="badge-list-wrapper">',
-	'<div class="badge-list">',
+		'<templatestyles src="Badge/styles.css" />',
+		'<div class="badge-list-wrapper">',
+		'<div class="badge-list">',
 		'<span class="badge-list-page-actions">',
 			'[[Achievements/List|view]] • [[Talk:Achievements/List|talk]] • [https://doorsgame.wiki/wiki/Module:BadgeList?action=edit edit] • [https://doorsgame.wiki/wiki/Module:BadgeData?action=edit edit data]',
 		'</span>',
@@ -244,20 +242,20 @@ local function generateBadgeList()
 	end
 
 	out[#out+1] =
-			'</tabber>' ..
+		'</tabber>' ..
 		'</div>' ..
-	'</div>' ..
-'</div>'
+		'</div>' ..
+	'</div>'
 
 	local totalsHtml =
-'<div class="badge-list-totals">' ..
-	'<span class="badge-list-total">' ..
-		'Total: \'\'\'' .. total .. '\'\'\'' ..
-	'</span>' ..
-	'<span class="badge-list-progression">' ..
-		'Progression: \'\'\'' .. progression .. '\'\'\'' ..
-	'</span>' ..
-'</div>'
+		'<div class="badge-list-totals">' ..
+		'<span class="badge-list-total">' ..
+			'Total: \'\'\'' .. total .. '\'\'\'' ..
+		'</span>' ..
+		'<span class="badge-list-progression">' ..
+			'Progression: \'\'\'' .. progression .. '\'\'\'' ..
+		'</span>' ..
+		'</div>'
 
 	table.insert(out, 2, totalsHtml)
 
@@ -266,7 +264,7 @@ end
 
 local function generateBadgeCount(frame)
 	local t = frame:getParent().args[1]
-	
+
 	if t == 'All' then
 		local total = 0
 		for _, badgeType in ipairs(order) do
@@ -310,7 +308,7 @@ local function generateBadgeCount(frame)
 		end
 		return total
 	end
-	
+
 	if t == 'Unobtainable' then
 		local total = 0
 		for _, badgeType in ipairs(order) do
@@ -342,11 +340,11 @@ local function generateBadgeAuto(frame)
 	local args = frame:getParent().args
 
 	local out = {
-'<templatestyles src="Color/styles.css" /><templatestyles src="Badge/styles.css" />',
-'<div class="badge-list-wrapper">',
-	'<div class="badge-list">',
+		'<templatestyles src="Color/styles.css" /><templatestyles src="Badge/styles.css" />',
+		'<div class="badge-list-wrapper">',
+		'<div class="badge-list">',
 		'<div class="badge-list-badges-wrapper badge-list-badges-wrapper-auto max-height-remover">',
-			'<div class="badge-list-badges-type">'
+		'<div class="badge-list-badges-type">'
 	}
 
 	local i = 1
@@ -363,13 +361,13 @@ local function generateBadgeAuto(frame)
 	end
 
 	out[#out+1] =
-			'</div>' ..
 		'</div>' ..
-	'</div>' ..
-	'<div class="badge-auto-options">' ..
-		'[https://doorsgame.wiki/wiki/Module:BadgeData?action=edit Edit Data]' ..
-	'</div>' ..
-'</div>'
+		'</div>' ..
+		'</div>' ..
+		'<div class="badge-auto-options">' ..
+			'[https://doorsgame.wiki/wiki/Module:BadgeData?action=edit Edit Data]' ..
+		'</div>' ..
+	'</div>'
 
 	return table.concat(out, '\n')
 end
@@ -415,12 +413,12 @@ local function generateBadgeRewardsCount(frame)
 
 	if rewardType == 'Skin' then
 		local total = countBadgeRewards('Skin', unobtainable)
-		return total .. ' Skins' 
-	else 
+		return total .. ' Skins'
+	else
 		local total = countBadgeRewards(rewardType, unobtainable)
 		return '[[File:' .. rewardType .. ' icon.png|25px|link=]] ' .. total
 	end
-		
+
 	return 'INVALID REWARD'
 end
 
