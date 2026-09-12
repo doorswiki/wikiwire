@@ -941,7 +941,7 @@ Entities = {
 {
 	title = 'Most Valuable Employee',
 	text = 'I hope I get a promotion!',
-	directions = 'Successfully organize the [[Mail Room]].',
+	directions = 'Successfully organize [[The Mail Room|the Mail Room]].',
 	tutorial = 'Survive an encounter with [[Honcho]] by organizing the [[Mail Room]] before it breaks in.',
 	references = nil,
 	color = 'EscapeBlue',
