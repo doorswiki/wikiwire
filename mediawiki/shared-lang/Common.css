@@ -673,7 +673,10 @@ table.diff [class*="mw-diff-inline-"] {
     }
 }
 
-/* text gradient styles; requested by m6ga on discord */
+/* [[Template:Color]] stylings */
+.color-template {
+	font-weight: bold;
+}
 /* Given a "--gradient" variable containing a valid gradient,
 clips the element's background image to the text. */
 .background-clip-text {
@@ -681,7 +684,6 @@ clips the element's background image to the text. */
     background-clip: text;
     color: var(--color, transparent);
 }
-
 /* Given a "--gradient" variable containing a valid gradient,
 clips the element's background image to the text's stroke. */
 .background-clip-stroke {
@@ -690,7 +692,6 @@ clips the element's background image to the text's stroke. */
     -webkit-text-stroke: 0.2em transparent;
     padding: 0.05em;
 }
-
 /* Given "--stroke" variable containing a valid color,
 applies it to the text's stroke.
 Requires a "data-text" attribute containing the element's text.
@@ -698,7 +699,6 @@ Compatible with .background-clip-text. */
 .text-stroke-color {
 	display: inline-block;
     position: relative;
-    font-weight: bold;
     
     &:before {
         content: attr(data-text);
@@ -706,12 +706,7 @@ Compatible with .background-clip-text. */
         z-index: -1;
         -webkit-text-stroke: 0.2em var(--stroke);
     }
-    
-    & > b {
-        font-weight: inherit;
-    }    
 }
-
 /* Given "--gradient" and "--gradient2" variables containing valid gradients,
 clips "--gradient" to the text itself and "--gradient2" to the text's stroke.
 Requires a "data-text" attribute containing the element's text. */
@@ -722,7 +717,6 @@ Requires a "data-text" attribute containing the element's text. */
     background-image: var(--gradient2);
     background-clip: text;
     color: transparent;
-    font-weight: bold;
     -webkit-text-stroke: 0.2em transparent;
     
     &:before {
@@ -731,11 +725,7 @@ Requires a "data-text" attribute containing the element's text. */
         background-image: var(--gradient);
         background-clip: text;
         -webkit-text-stroke: 0;
-    }
-    
-    & > b {
-        font-weight: inherit;
-    }    
+    }  
 }
 
 /* Infobox Carousel Styles */
