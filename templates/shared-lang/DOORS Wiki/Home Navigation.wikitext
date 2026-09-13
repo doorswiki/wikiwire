@@ -1,5 +1,4 @@
-{| class="table home-container"
-| <div style="display:flex; flex-wrap:wrap; justify-content:center; gap: 20px; padding:10px">
+<div class="home-container doors-navigation">
 
 {{DOORS_Wiki/Home_Navigation/item
 |image=Doors icon, monochrome.png
@@ -80,5 +79,4 @@
 }}
 
 </div>
-|}
 <noinclude>{{Documentation}}[[Category:Main page templates]]<templatestyles src="DOORS Wiki/styles.css"/></noinclude>

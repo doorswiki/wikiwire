@@ -4,18 +4,13 @@
 |title=<span>Fun Facts</span>
 |body=<includeonly><choose uncached></includeonly><span>
 <option>
-[[File:Rushvnew.webp|250px|center|link=Rush|class=notpageimage|Rush]]
-[[Ambush]] is not the only entity capable of rebounding, [[Rush]] will rebound when it enters a room with a blocked/locked door, this will catch most [[Player|players]] off-guard, make sure to take care when exiting a [[Hiding|hiding]] space around Rush.
-</option>
-
-<option>
 [[File:Ambush2.png|250px|center|link=Ambush|class=notpageimage|Ambush]]
 [[Ambush]] is a very persistent [[List of Entities|entity]], unlike [[Rush]], if it encounters a room with a blocked/locked door it will phase through the door, nothing can stop the power of Ambush tripping up the [[player]], take care.
 </option>
 
 <option>
 [[File:TimothyRender2.0.png|250px|center|link=Timothy|class=notpageimage|Timothy]]
-[[Timothy]] is the smallest [[List of Entities|entity]] within ''[[DOORS]]'', due to its size it is smaller than every furniture item within the game, which allows it to hide in [[containers]] among [[Gold]] and [[items]].
+[[Timothy]] is one of the smallest [[List of Entities|entities]] in ''[[DOORS]]'', due to its size it is smaller than every furniture item within the game, which allows it to hide in [[containers]] among [[Gold]] and [[items]].
 </option>
 
 <option>
@@ -59,7 +54,7 @@ This was one of [[Figure]]'s earliest models, during the game's early developmen
 
 <option>
 [[File:The_Rooms_Fixed.PNG|250px|center|link=The Rooms|class=notpageimage]]
-[[The Rooms]] is a modified [[Floors|floor]] that originates from one of the games that inspired ''[[DOORS]]''' creation, simply known as [https://r-rooms.fandom.com/wiki/Roblox_ROOMS_Wiki Rooms]. Its existence in ''DOORS'' is an official collaboration with its creator, [https://r-rooms.fandom.com/wiki/Nicorocks5555 nicorocks5555].
+Before it was replaced by [[The Archives]], [[The Rooms]] was a modified [[Floors|floor]] that originated from one of the games that inspired ''[[DOORS]]''' creation, simply known as [https://r-rooms.fandom.com/wiki/Roblox_ROOMS_Wiki Rooms]. Its existence in ''DOORS'' was an official collaboration with its creator, [https://r-rooms.fandom.com/wiki/Nicorocks5555 nicorocks5555].
 </option>
 
 <option>
@@ -79,32 +74,32 @@ The [[Crucifix]] and [[Skeleton Key]] were both initially intended to be added i
 
 <option>
 [[File:Herbwitoutout.png|200px|center|link=Green_Herb|class=notpageimage]]
-The [[Green Herb]] is the first object in the game to give [[Player|players]] a passive [[Status Effects|effect]] upon interacting with it, however, players who are lucky enough to obtain the Green Herb and still have the ability to enter [[The Rooms]] will sadly lose their passive effect when they enter The Rooms.
+The [[Green Herb]] is the first object in the game to give [[Player|players]] a passive [[Status Effects|effect]] upon interacting with it. Previously, interacting with it and entering a sub-floor (at the time only [[The Rooms]]) would remove this effect, but it has since been patched.
 </option>
 
 <option>
 [[File:NewBob.png|200px|center|link=Bob|class=notpageimage]]
-It is heavily implied that [[Bob]] isn't alive, and is just a pile of bones. [[El Goblino]] has mentioned that Bob got in a fight with [[Rush]] after accidentally stepping on [[Snare]], which is implied lead to his death. El Goblino also implies that Bob has recently died of starvation, mentioning that he looks like a "...real bag of bones."
+It is heavily implied that [[Bob]] isn't alive, and is just a pile of bones. [[El Goblino]] has mentioned that Bob got in a fight with [[Rush]] after accidentally stepping on [[Snare]], which is implied to have lead to his death. El Goblino also implies that Bob has recently died of starvation, mentioning that he looks like a "...real bag of bones."
 </option>
 
 <option>
 [[File:VoidRenderReal.png|200px|center|link=Void|class=notpageimage]]
-When [[The Hotel+ Update]] released, [[Void]] was used to replace [[Glitch]]'s function to teleport [[Player|player]]s ahead when they were left behind in an unloading room and Glitch was changed to only be a failsafe but  in [[The Rooms]] Glitch still carries its old function due to Void being absent.
+When [[The Hotel+ Update]] released, [[Void]] was used to replace [[Glitch]]'s function to teleport [[Player|players]] ahead when they were left behind in an unloading room and Glitch was changed to only be a failsafe, but in [[Floors#Subfloors|subfloors]] Glitch still carries its old function due to Void being absent.
 </option>
 
 <option>
 [[File:GuidingLightRender3.png|250px|center|link=Guiding Light|class=notpageimage]]
-[[Guiding Light]] (or Moonlight) is present throughout the majority of ''[[DOORS]]'', assisting the [[player]] in several different ways, however, in [[The Archives]], [[The Backdoor]], [[The Outdoors]] and the [[The Stairwell]], the Guiding Light is completely absent and its related [[items]] don't function, supposedly feeling "lighter" than usual when held. [[Curious Light]] (Or Starlight) takes her place in these subfloors.
+[[Moonlight]] is present throughout the majority of ''[[DOORS]]'', assisting the [[player]] in several different ways, however, in [[The Archives]], [[The Backdoor]], [[The Outdoors]] and the [[The Stairwell]], Moonlight is completely absent and its related [[items]] don't function, supposedly feeling "lighter" than usual when held. [[Starlight]] takes Moonlight's place in these subfloors, and is much less reliable than her.
 </option>
 
 <option>
 [[File:CuriousLightRender3.png|250px|center|link=The Rooms|class=notpageimage]] [[File:The Rooms.mp3|250px|center]]
-Upon entering [[The Rooms]] a special sound effect is heard that sounds like wind blowing. This is a reference to [https://r-rooms.fandom.com/wiki/Roblox_ROOMS_Wiki nicorocks' Rooms], in which [https://r-rooms.fandom.com/wiki/A-200 A-200's] despawn sound effect which plays upon joining the game and sounds like a distinct "whooshing" noise.
+While it was still available, entering [[The Rooms]] would play a special sound effect that sounds like wind blowing. This is a reference to [https://r-rooms.fandom.com/wiki/Roblox_ROOMS_Wiki nicorocks' Rooms], in which [https://r-rooms.fandom.com/wiki/A-200 A-200's] despawn sound effect plays upon joining the game, which is a much louder sound of wind blowing.
 </option>
 
 <option>
 [[File:A-60_DOORS.png|250px|center|link=A-60|class=notpageimage]]
-[[A-60]] is the first [[List of Entities|entity]] in ''[[DOORS]]'' to make an appearance before officially being implemented into the game, as during one of [https://www.youtube.com/c/KreekCraft KreekCraft's] streams before the [[Update Logs|Hotel+ Update]] released a variant of [[A-60]] was activated as a troll entity to mess with Kreek.
+[[A-60]] was the first [[List of Entities|entity]] in ''[[DOORS]]'' to make an appearance before officially being implemented into the game, as during one of [https://www.youtube.com/c/KreekCraft KreekCraft's] streams before the [[Update Logs|Hotel+ Update]] released a variant of [[A-60]] was activated as a troll entity to mess with Kreek.
 </option>
 
 <option>
@@ -114,18 +109,19 @@ Sometimes, if a player is temporarily caught in a [[Snare]] trap in [[The Greenh
 
 <option>
 [[File:Dreadd.webp|250px|center|link=Dread|class=notpageimage]]
-[[Dread]] was previously secret [[List of Entities|entity]] that could be encountered after one hour had passed (at midnight in-game). Secondly, Door 13 had to be opened, whilst Door 14 remained unopened. When these requirements were met Dread would spawn behaving as it does currently.
+[[Dread]] was previously a secret [[List of Entities|entity]] that could be encountered after one real-life hour had passed (at midnight in-game). Secondly, Door 13 had to be opened, whilst Door 14 remained unopened. When these requirements were met Dread would spawn, behaving as it does currently.
 </option>
 
 <option>
 [[File:Lookman with eyes.png|250px|center|link=The_Backdoor#The_Lookman|class=notpageimage]]
-[[The_Backdoor#The_Lookman|The Lookman]] is similar to [[Eyes]] in several ways, as not only does it hurt you when looked at but its name is the previous name of Eyes, along with aspects of its design such as its glowing eyes, resembling Eyes' old design!
+[[The_Backdoor#The_Lookman|The Lookman]] is similar to [[Eyes]] in several ways, as not only does it hurt you when looked at, but its name is the previous name of Eyes, along with aspects of its design, such as its glowing eyes, resembling Eyes' old design!
 </option>
 
 <option>
 [[File:Haste1.png|250px|center|link=The Backdoor#Haste|class=notpageimage]]
 [[The_Backdoor#Haste|Haste]] is a direct reference to [https://spookys-jump-scare-mansion.fandom.com/wiki/Specimen_9 Specimen 9] from [https://spookys-jump-scare-mansion.fandom.com/wiki/Spooky%27s_Jump_Scare_Mansion_Wiki Spooky's Jumpscare Mansion], both having similar appearances and death screens with repeating mantras, Haste's being "NO TIME LEFT" and Specimen 9's being "TO TAKE THE DEAD".
 </option>
+
 <option>
 [[File:ShearsIcon.webp|250px|center|link=Shears|class=notpageimage]]
 The [[Shears]]' original function was cutting vine-covered [[Containers|chests]] in [[The Greenhouse]], but it felt like another [[Lockpick]], and it was unusual for an [[Items|item]] to only be useful in about 10 rooms in the entire [[Floors|floor]], so the item was shelved for future use. This idea was reimplemented into [[The Mines]], with vines reappearing throughout the floor.</option>
@@ -136,27 +132,27 @@ The [[Shears]]' original function was cutting vine-covered [[Containers|chests]]
 
 <option>
 [[File:Eyemodifier.png|250px|center|link=Modifiers#Scrapped|class=notpageimage]] 
-[[Eyes]] has multiple [[modifiers]] to its name, but one was scrapped. This modifier was called "Sightseeing", and it simply gave Eyes the ability to teleport, providing more of a challenge. This modifier was scrapped, and Eyes' ability to teleport was added to its [[The Mines|Mines]] upgrade.
+[[Eyes]] has multiple [[modifiers]] to its name, but one was scrapped. This modifier was called "Sightseeing", and it simply gave Eyes the ability to teleport, providing more of a challenge. This modifier was scrapped, and Eyes' ability to teleport was added to its [[The Mines|Mines]] upgrade, as well as its equivelant modifier for [[The Hotel]].
 </option>
 
 <option>
 [[File:NewQueenGrumbleRender.webp|250px|center|link=Queen Grumble|class=notpageimage]] 
-Unlike normal [[Grumbles]], the [[Queen Grumble]] has extra buffs. Her movement speed is faster than any other Grumble, making her difficult to outrun. The [[Spotlight]] can still blind her, but she can still catch up to [[Player|players]] easily. She doesn't laugh, making it harder for players to sense if she is coming. She is slightly paler and larger than the other Grumbles. She appears at the end of the first [[Seek]] chase in [[The Mines]], and chases you once the bridge has been powered. 
+Unlike normal [[Grumbles]], the [[Queen Grumble]] has extra buffs. Her movement speed is faster than any other Grumble, making her difficult to outrun. The [[Bulklight]] can still blind her, but she can still catch up to [[Player|players]] easily. She doesn't laugh, making it harder for players to sense if she is coming. She is slightly paler and larger than the other Grumbles, and features a large scar on her forehead. She first appears at the end of the first [[Seek]] chase in [[The Mines]], and chases you once the bridge has been powered.
 </option>
 
 <option>
 [[File:NewGloom2.png|250px|link=Gloombats|center|class=notpageimage]] 
-[[Gloombats]] have eggs, and when stepped on, more Gloombats will spawn. If a [[player]] dies by the Gloombats, they will lay eggs on the corpse.
+[[Gloombats]] have eggs, and when stepped on, they will get hurt and more Gloombats will spawn. If a [[player]] dies by the Gloombats, they will lay eggs on the corpse.
 </option>
 
 <option>
 [[File:ScreechPileRender2.png|250px|link=Screech|center|class=notpageimage]]
-It's heavily implied there are multiple [[Screech|Screeches]]. There's multiple dead Screech piles in [[The Nest]]. This doesn't mean that nearly the entire Screech species is gone, though, as [[El Goblino]] has stated multiple times that he's seen more than one Screech.
+It's heavily implied there are multiple [[Screech|Screeches]]. There are multiple dead Screech piles found in [[The Nest]], and [[El Goblino]] states that he's seen more than one Screech.
 </option>
 
 <option>
 [[File:SLEEPA-60 DOORS.png|250px|center|link=The Rooms|center|class=notpageimage]]
-[[The Rooms#A-60|A-60]] has received minor sound and visual effect changes throughout several updates. When the Hotel+ update first released, when A-60 spawned, its far sound was a quiet crackling, it didn't cause screen-shake and opened the next door, which may cause another A-60 to spawn on rare occasions. However, when The Mines update rolled out, its spawn sound was made louder and more distorted, it shook the screen a bit, its nearby sound was changed slightly and its ability to open the next door was removed. However, after the Content Update, its spawn sound was reverted to its initial sound, but all the other changes were not reverted.
+Before its eventual removal, [[The Rooms#A-60|A-60]] from [[The Rooms]] has received minor sound and visual effect changes throughout several updates. When the Hotel+ update first released, when A-60 spawned, its far sound was a quiet crackling, it didn't cause screen-shake and opened the next door, which may cause another A-60 to spawn on rare occasions. However, when The Mines update rolled out, its spawn sound was made louder and more distorted, it shook the screen a bit, its nearby sound was changed slightly and its ability to open the next door was removed. However, after the Content Update, its spawn sound was reverted to its initial sound, but all the other changes were not reverted.
 
 The sound for when A-60 would spawn during [[The Hotel+ Update]] and [[The Content Update]] sounds like this:[[File:RumbleA60.mp3]]
 
@@ -168,7 +164,7 @@ The reason for the sound changes is because, when The Mines Update released, the
 
 <option>
 [[File:Seek2.png|250px|center|link=The Rooms|center|class=notpageimage]]
-As confirmed by developers, most entities where named by the player, rather then having their own names. Though, this does not include subfloor entities or [[Jeff Shop]] trio entities. This may also not include Louie and Sally. 
+Most entities were named by the player, rather then having their own names. Though, this does not include [[Moonlight]] and [[Starlight]], subfloor entities, the [[Jeff Shop]] trio entities, and [[Timothy]]. This may or may not include Louie or Sally. 
 </option>
 
 <option>
@@ -178,7 +174,7 @@ As confirmed by developers, most entities where named by the player, rather then
 
 <option>
 [[File:A-120 IDLE.png|250px|center|link=The Rooms|center|class=notpageimage]]
-Sometimes, A-120 will rebound, so make sure to listen carefully and [[Hiding|hide]] whenever this happens!
+Before its removal, [[A-120]] would sometimes rebound. This made it the second entity to (intentionally) rebound, with the first being [[Ambush]].
 </option>
 
 <option>
@@ -193,7 +189,7 @@ Before getting their '''official name''', Visions used to be listed in a floor c
 
 <option>
 [[File:Shadowoutlined.png|250x250px|center|link=Shadow|center|class=notpageimage]]
-[[Shadow]] is the most unknown [[List of Entities|entity]] in [[DOORS]]. Unlike other entities, it cannot be spawned through the [[Admin Panel|admin panel]] and doesn't have any death message from both [[The Three Architects|architects]]. The only information known about it is its appearance and that it jumpscares the player whenever it appears.</small>
+[[Weirdo]] is the most unknown [[List of Entities|entity]] in [[DOORS]]. Unlike other entities, it cannot be spawned through the [[Admin Panel|admin panel]] and doesn't have any death message from both [[The Three Architects|architects]]. The only information known about it is its appearance and that it jumpscares the player whenever it appears.</small>
 </option>
 
 <option>

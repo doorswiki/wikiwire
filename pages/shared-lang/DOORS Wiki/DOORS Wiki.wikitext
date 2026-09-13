@@ -1,5 +1,14 @@
-<div class="doorswiki-logo-container">[[File:DOORS Wiki.png|500px|link=|class=doorswiki-logo]]</div>
-<div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History}} Search...</div> {{Hoverimg|[[File:Roblox_Beige Logo.png|50px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
+{{#vardefine: doorswiki-banner| <choose>
+<option>[[File:Hotel_SeekChaseIntersectionAlt.png|500px|link=]]</option>
+<option>[[File:Hotel_Elevators1.png|500px|link=]]</option>
+<option>[[File:Hotel_Elevators3.png|500px|link=]]</option>
+</choose>}}<!--
+
+--><div class="doorswiki-start">
+<div class="doorswiki-start-image">{{#var: doorswiki-banner}}</div>
+<div class="doorswiki-logo-container">[[File:DOORS Wiki.png|300px|link=|class=doorswiki-logo]]</div>
+</div>
+<div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History}} Search...</div> {{Hoverimg|[[File:Roblox_Beige Logo.png|40px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
 {{#invoke:AboutDoors|main
  | title1       = [[File:DOORS Logo.png|100px|link=DOORS]]
  | description1 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].

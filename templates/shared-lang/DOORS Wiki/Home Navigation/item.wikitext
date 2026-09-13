@@ -1,3 +1,3 @@
-<includeonly><div style="display:inline-flex; flex-direction:column; align-items:center; gap: 5px; flex: 1">
-{{Hoverimg|[[File:{{{image}}}|100px|class=invertinvert|link={{{link}}}]]}}'''{{{label}}}'''
+<includeonly><div class="doors-navigation--item">
+{{Hoverimg|[[File:{{{image}}}|40px|class=invertinvert|link={{{link}}}]]}}'''{{{label}}}'''<!--<div class="doors-navigation--item--link">[[{{{link|}}}|<span class="doors-navigation-item--link-span"></span>]]</div>-->
 </div></includeonly>

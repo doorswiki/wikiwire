@@ -1,3 +1,34 @@
+.doorswiki-start {
+    position: relative;
+    padding: var(--space-xxl) var(--space-xxl) 3rem;
+    border-radius: var(--border-radius-medium);
+    margin-bottom: -3rem;
+    overflow: hidden;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.doorswiki-start-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    filter: brightness(1.2);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+html.skin-theme-clientpref-day .doorswiki-start-image {
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 80%, transparent 100%);
+}
+
+.doorswiki-start-image img {
+    width: 100%!important;
+    height: 100%!important;
+    object-fit: cover;
+    object-position: center;
+}
+
 .doors-gridlayout {
     display: flex;
     flex-wrap: wrap;
@@ -95,7 +126,7 @@
 
 .doorswiki-searchbar {
     background-color: var(--color-surface-2);
-    padding: var(--space-sm) var(--space-lg);
+    padding: var(--space-xs) var(--space-md);
     display: inline-flex;
     gap: 1rem;
     border: var(--border-base);
@@ -103,7 +134,7 @@
     border-radius: var(--border-radius-medium);
     position: relative;
     width: max-content;
-    min-width: 20vw;
+    min-width: 15vw;
     color: oklch(from var(--color-emphasized) l c h / 0.8);
     transition: .25s padding, .25s border-radius, .25s font-weight;
 }
@@ -117,7 +148,6 @@
 .doorswiki-searchbar:hover {
     border-radius: var(--border-radius-large);
     background-color: oklch(from var(--color-surface-4) l c h / 0.8);
-    padding: var(--space-sm) var(--space-xxl);
     color: var(--color-emphasized);
     font-weight: bold;
 }
@@ -365,4 +395,34 @@
 	display: flex;
 	flex-direction: column;
 	gap: .5rem;
+}
+
+.doors-navigation {
+    display: grid!important;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem 1rem!important;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.doors-navigation--item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background: var(--color-surface-2);
+    padding: var(--space-xs);
+    border: var(--border-base);
+    border-radius: var(--border-radius-medium); */
+    position: relative;
+}
+
+.doors-navigation--item a {
+    color: var(--color-emphasized);
+}
+
+.doors-navigation--item--link a {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
 }
