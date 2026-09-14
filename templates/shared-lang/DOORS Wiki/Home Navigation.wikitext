@@ -13,6 +13,11 @@
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
+|image=Hazards icon.png
+|link=List of Hazards
+|label=[[Hazards|HAZARDS]]
+}}
+{{DOORS_Wiki/Home_Navigation/item
 |image=Items icon.svg
 |link=Items
 |label=[[Items|ITEMS]]
