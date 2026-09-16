@@ -142,6 +142,7 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 @media screen and (max-width: 800px) {
 	.doorswiki-searchbar {
 		width: 80vw;
+		font-size: var(--font-size-small);
 	}
 }
 
