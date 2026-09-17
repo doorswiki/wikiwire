@@ -132,7 +132,7 @@ The [[Shears]]' original function was cutting vine-covered [[Containers|chests]]
 
 <option>
 [[File:Eyemodifier.png|250px|center|link=Modifiers#Scrapped|class=notpageimage]] 
-[[Eyes]] has multiple [[modifiers]] to its name, but one was scrapped. This modifier was called "Sightseeing", and it simply gave Eyes the ability to teleport, providing more of a challenge. This modifier was scrapped, and Eyes' ability to teleport was added to its [[The Mines|Mines]] upgrade, as well as its equivelant modifier for [[The Hotel]].
+[[Eyes]] have multiple [[modifiers]] to their name, but one was scrapped. This modifier was called "Sightseeing", and it simply gave Eyes the ability to teleport, providing more of a challenge. This modifier was scrapped, and Eyes' ability to teleport was added to its [[The Mines|Mines]] upgrade, as well as its equivelant modifier for [[The Hotel]].
 </option>
 
 <option>
@@ -169,7 +169,7 @@ Most entities were named by the player, rather then having their own names. Thou
 
 <option>
 [[File:RushImgSpr.png|250px|center|link=List of Entities|center|class=notpageimage]]
-[[Player|Players]] are able to obtain the [[Achievements|"In Plain Sight"]] badge through [[Rush]] and [[Ambush]]. However, they aren't able to obtain it through other Rush-like counterparts, being [[The Backdoor#Blitz|Blitz]], [Surge], [[Bash]], [[Scribbles]] or [[Drones|a Drone Stampede]]. This is likely an oversight by the [[:Category:Developers|developers]].
+[[Player|Players]] are able to obtain the [[Achievements|"In Plain Sight"]] badge through [[Rush]] and [[Ambush]]. However, they aren't able to obtain it through other Rush-like counterparts, like [[The Backdoor#Blitz|Blitz]], [[Surge]], [[Bash]], [[Scribbles]], [[AR0xMBUSH]], [[RNIUSHCg==]] and [[Drone|Drones Stampedes]]. This is likely an oversight by the [[:Category:Developers|developers]].
 </option>
 
 <option>
