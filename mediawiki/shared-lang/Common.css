@@ -34,8 +34,7 @@ MISC: Miscellaneous CSS
 
 /* SCI - Script Imports (Local/Global) */
 /** Local Imports **/
-@import url("/load.php?mode=articles&articles=MediaWiki:Profiles.css|MediaWiki:FD_Mbox.css&only=styles");
-
+@import url("https://doorsgame.wiki/w/index.php?title=MediaWiki:Profiles.css&action=raw&ctype=text/css");
 /** Font Imports **/
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Yellowtail&display=swap");
 
