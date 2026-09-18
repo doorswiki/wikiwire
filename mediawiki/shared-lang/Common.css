@@ -963,6 +963,53 @@ Requires a "data-text" attribute containing the element's text. */
 	pointer-events: none;
 }
 
+/* enhancements to sounds gallery */
+#tabber-Sounds .gallery {
+    .gallerybox {
+        --sound-gallery-width: 300px;
+        width: calc(var(--sound-gallery-width) + 5px)!important;
+        
+        .thumb {
+            width: var(--sound-gallery-width)!important;
+            height: 70px!important;
+        }
+    }
+}
+
+/* add navbox styling with citizen variables */
+.doors-navbox {
+    background: var(--color-surface-3);
+    border-radius: var(--border-radius-medium)!important;
+    border: var(--border-base)!important;
+    margin: var(--space-md) 0!important;
+    overflow: hidden;
+    transition: .25s padding;
+    
+    /* closed */
+    &.mw-collapsed {
+        border-collapse: collapse;
+    }
+    
+    /* open */
+    &:not(.mw-collapsed) {
+        padding: var(--space-xs)!important;
+    }
+    
+    .doors-navbox-header {
+        background: var(--color-surface-2);
+        padding: var(--space-sm);
+    }
+    
+    .doors-navbox-group {
+        background: var(--color-surface-1);
+        padding: var(--space-xs);
+    }
+    
+    .mw-collapsible td {
+        padding: var(--space-xs);
+    }
+}
+
 .copy-button {
     color: var(--color-progressive); 
     border-bottom: var(--border-width-base) dashed;
