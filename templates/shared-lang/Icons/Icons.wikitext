@@ -32,8 +32,10 @@
 | negative    = Negative icon.png
 | overview    = Eye icon.png
 | pencil      = PencilGrayscale.svg
+| placeholder = Placeholder.png
 | player      = Player icon.png
 | positive    = Positive icon.png
+| prosandcons = PROSANDCONS.png
 | puzzles     = Puzzle icon.svg
 | question    = QuestionMark.png
 | references  = REFERENCES.png
