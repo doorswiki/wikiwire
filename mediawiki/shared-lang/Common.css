@@ -1010,6 +1010,15 @@ Requires a "data-text" attribute containing the element's text. */
     }
 }
 
+/* make references wrap consistent with navbox design at least */
+.mw-references-wrap {
+    background: var(--color-surface-3);
+    border-radius: var(--border-radius-medium);
+    border: var(--border-base);
+    margin: var(--space-md) 0;
+    padding: var(--space-md);
+}
+
 .copy-button {
     color: var(--color-progressive); 
     border-bottom: var(--border-width-base) dashed;
