@@ -14,6 +14,7 @@
 | exclamation = SpoilersIcon.png
 | floor       = DoorsWikiUI Stair.png
 | gallery     = Gallery icon.png
+| gift        = Gifting icon.png
 | glitch      = Glitchicon.png
 | hazards     = Hazards icon.png
 | headphones  = Headphones icon.png
@@ -21,7 +22,7 @@
 | herb        = Herb Effect icon, monochrome.png
 | hiding      = Hiding icon.png
 | history     = Magnifier icon.png
-| instakill   = Instakill icon.png
+| instakill   = Skull icon, red.png
 | interact    = Interact icon.png
 | items       = Items icon.svg
 | journal     = Journal icon.svg
