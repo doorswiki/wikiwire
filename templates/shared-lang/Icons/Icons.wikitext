@@ -22,8 +22,8 @@
 | energy      = Icons energyicon.png
 | entities    = ENTITIES.png
 | events      = Events icon.png
-| exchange    = Exchange icon.png
-| exclamation = SpoilersIcon.png
+| exchange    = Exchange.png
+| exclamation = SpoilerIcon.png
 | exit        = MergeIcon.png
 | exploiting  = Doors exploiting icon.png
 | fire        = Fire icon.png
@@ -53,7 +53,7 @@
 | mines       = ICON MINES.svg
 | miscellaneous = Miscellaneous icon.png
 | modifiers   = Modifiers monochrome icon.png
-| moonlight   = MOONLIGHT.png
+| moonlight   = Moonlight monochrome icon.svg
 | negative    = Negative icon.png
 | outdoors    = Icon OUTDOORS.png
 | overview    = Eye icon.png
@@ -75,7 +75,7 @@
 | speed       = Speedboosticonicon.png
 | stairwell   = Icon STAIRWELL.png
 | star        = Star icon.png
-| starlight   = STARLIGHT.png
+| starlight   = Starlight monochrome icon.svg
 | trash       = IconUnused.png
 | trivia      = Bulb icon.png
 | trolley     = Trolley icon.svg
