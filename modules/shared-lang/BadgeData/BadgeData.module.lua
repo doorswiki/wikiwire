@@ -2137,7 +2137,7 @@ Collab = {
 {
 	title = 'Void Buster',
 	text = 'I ain\'t afraid of no Void!',
-	directions = 'Play the Tower Heroes X DOORS event and defeat Void.',
+	directions = 'Play the Tower Heroes x DOORS event and defeat Void.',
 	tutorial = nil,
 	references = 'Both achievement\'s name and description is a reference to the song "Ghostbusters" by Ray Parker Jr.',
 	rewards = {
