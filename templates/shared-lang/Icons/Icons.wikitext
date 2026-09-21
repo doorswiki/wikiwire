@@ -4,6 +4,7 @@
 | backdoor    = Icon BACKDOOR.png
 | backpack    = BackpackIcon.svg
 | behavior    = Skull icon, monochrome.png
+| bell        = DoorsWikiUI Bell.svg
 | bugs        = Bug icon.svg
 | chroma      = Chroma icon.svg
 | clock       = ClockIconTry2.svg
@@ -55,11 +56,13 @@
 | modifiers   = Modifiers monochrome icon.png
 | moonlight   = Moonlight monochrome icon.svg
 | negative    = Negative icon.png
+| options     = DoorsWikiUI Preferences.svg
 | outdoors    = Icon OUTDOORS.png
 | overview    = Eye icon.png
 | pencil      = PencilGrayscale.svg
 | placeholder = Placeholder.png
 | player      = Player icon.png
+| paintbrush  = Paintbrush monochrome icon.svg
 | positive    = Positive icon.png
 | prosandcons = PROSANDCONS.png
 | puzzles     = Puzzle icon.svg
