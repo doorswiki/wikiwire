@@ -47,10 +47,20 @@ mw.hook('wikipage.content').add(function () {
 		return;
 	}
 
+	// create unique key for current page
+	var key = 'content-warning-dismissed-' + mw.config.get('wgPageName');
+
+	// dont show the warning if it already dismissed
+	if (localStorage.getItem(key) === '1') {
+		warning.remove();
+		return;
+	}
+
 	document.body.appendChild(warning);
 
 	warning.addEventListener('click', function () {
 		warning.classList.add('content-warning-hidden');
+		localStorage.setItem(key, '1');
 	});
 });
 
@@ -466,4 +476,124 @@ mw.hook('wikipage.content').add(function ($content) {
 		updateCarousel();
 		startAutoplay();
 	});
+});
+
+// snippet from mezoga
+// Works under [[Template:Avatar]]
+mw.hook('wikipage.content').add(async function () {
+
+    const CACHE_KEY = 'wiki-avatar-urls';
+    const CACHE_TTL = 60 * 60 * 1000; // 1 hour cache time
+    const AVATAR_BASE = '//static.wikitide.net/doorswiki/upv2avatars/';
+
+    function getCached() {
+        try {
+            const raw = localStorage.getItem(CACHE_KEY);
+
+            if (!raw) {
+                return {};
+            }
+
+            const cache = JSON.parse(raw);
+
+            if (Date.now() - cache.time > CACHE_TTL) {
+                localStorage.removeItem(CACHE_KEY);
+                return {};
+            }
+
+            return cache.data || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function saveCached(cache) {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+            time: Date.now(),
+            data: cache
+        }));
+    }
+
+    const cache = getCached();
+    const api = new mw.Api();
+
+    async function getAvatar(username) {
+        try {
+            const data = await api.get({
+                action: 'query',
+                list: 'queryuserprofilev2',
+                user_name: username,
+                format: 'json'
+            });
+
+            if ( data.query && data.query[0] ) {
+                return data.query[0]['profile-avatar'];
+            }
+
+            return null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    // Get all templates
+    const elements = document.querySelectorAll('.wiki-user-avatar[data-user]');
+
+    // Get all unique usernames
+    const usernames = [...new Set(
+        [...elements]
+            .map(function (e) {
+                return e.dataset.user ? e.dataset.user.trim() : '';
+            })
+            .filter(Boolean)
+    )];
+
+    // Get all uncached avatar URLs
+    const uncached = usernames.filter(function (username) {
+        return !(username in cache);
+    });
+
+    await Promise.all(
+        uncached.map(async function (username) {
+            cache[username] = await getAvatar(username);
+        })
+    );
+
+    saveCached(cache);
+
+    for (const e of elements) {
+        const username = e.dataset.user ? e.dataset.user.trim() : '';
+
+        if (!username) {
+            continue;
+        }
+
+        // Get image dimensions
+        const size = e.dataset.size ? e.dataset.size.trim() : '';
+
+        // Create link & image
+        const link = document.createElement('a');
+        link.href = mw.util.getUrl('User:' + username);
+
+        const img = document.createElement('img');
+        img.className = 'wiki-user-avatar-image';
+        img.alt = username;
+        img.loading = 'lazy';
+        img.style.width = size;
+        img.style.height = size;
+
+        const avatarUrl = cache[username];
+
+        // If no avatar is set
+        if (!avatarUrl) {
+            // There is no default white avatar image
+            img.src = AVATAR_BASE + 'default.png';
+            img.style.setProperty('filter', 'invert(1)');
+        } else {
+            img.src = avatarUrl;
+        }
+
+        link.appendChild(img);
+        e.replaceChildren(link);
+    }
 });

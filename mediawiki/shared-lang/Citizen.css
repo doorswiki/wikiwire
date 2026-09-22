@@ -786,11 +786,7 @@ body.page-DOORS_Wiki {
 .ns-talk #ca-addsection a:not(:hover) { background: var(--color-surface-2); border-radius: var(--border-radius-medium) }
 
 @media screen and (min-width: 1119px) {
-    .mw-heading2 ~ .citizen-section {
-        margin-left: 2rem;
-    }
-
-    .citizen-section > .citizen-section {
+    .citizen-section-body > .citizen-section {
         margin-left: 2rem;
     }
 }
