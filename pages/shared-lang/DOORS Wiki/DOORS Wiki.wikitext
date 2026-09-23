@@ -106,7 +106,28 @@
 --><div class="doorswiki-stat-container"><div>{{NUMBEROFFILES}}</div>files</div><!--
 
 --><div class="doorswiki-editors-links">[[Project:Rules|Wiki Rules]][[Project:Manual of Style|Manual of Style]][[Project:Policies|Wiki Policies]]</div><!--
---></div>
+--></div><!--
+
+--><choose>
+<option>{{#vardefine: mp-quote | {{#floatingui:new wiki is fire|Retrieved from [https://ptb.discord.com/channels/458441314023899159/1006982064458960916/1545718774265552896 #doors-spoilers @ LSPLASH official server]}} }}
+{{#vardefine: mp-quote-author | [[jasper_creations]] }}</option>
+
+<option>{{#vardefine: mp-quote | Stop asking about neko seek}}
+{{#vardefine: mp-quote-author | [[User:Aeywoo|Aeywoo]] }}</option>
+
+<option>{{#vardefine: mp-quote | {{#floatingui:DOORS Wiki I love you so much I want to marry you
+|Retrieved from [https://twitter.com/AMIGhostler/status/2101322963643453653 a Twitter reply]}} }}
+{{#vardefine: mp-quote-author | @AMIGhostler on Twitter }}</option>
+
+<option>{{#vardefine: mp-quote | {{#floatingui:...genuinely one of the most beautiful wikis ive ever seen...
+|Retrieved from [https://twitter.com/Lunar_CamXD/status/2095510443423084972 a Twitter reply]}} }}
+{{#vardefine: mp-quote-author | @Lunar_CamXD on Twitter }}</option>
+
+<option>{{#vardefine: mp-quote | {{#floatingui:Damn the doors wiki has renders for everything
+|Retrieved from [https://twitter.com/Zeus_404_/status/2094020965252608048 a Twitter reply]}} }}
+{{#vardefine: mp-quote-author | @Zeus_404_ on Twitter }}</option>
+</choose><!--
+--><div class="doorswiki-quote-container"><div class="doorswiki-quote">{{#var: mp-quote}}</div><div class="doorswiki-quote-author">{{#var: mp-quote-author}}</div></div>
 
 <!-- [[w:Help:Magic words]] -->
 __NOTOC__

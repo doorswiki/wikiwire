@@ -371,7 +371,7 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 
 .home-card__label {
     color: var(--color-base);
-    opacity: 90%;
+    opacity: 0.9;
     font-size: var(--font-size-small);
 }
 
@@ -426,4 +426,37 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
     position: absolute;
     inset: 0;
     z-index: 0;
+}
+
+.doorswiki-quote-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	position: relative;
+	margin: 6rem 0 1rem;
+}
+
+.doorswiki-quote-container::before {
+	content: "\201C";
+    position: absolute;
+    top: -0.28em;
+	width: 100%;
+	text-align: center;
+    font-size: 130px;
+    font-weight: 800;
+    line-height: 1;
+    font-family: sans-serif;
+	opacity: 0.1;
+	color: var(--color-link);
+    pointer-events: none;
+}
+
+.doorswiki-quote {
+	font-size: var(--font-size-xxx-large);
+	font-weight: bold;
+}
+
+.doorswiki-quote-author {
+	color: var(--color-subtle);
 }

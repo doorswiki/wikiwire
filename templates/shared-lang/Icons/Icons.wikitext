@@ -72,7 +72,7 @@
 | rift        = Rift icon, monochrome.svg
 | robux       = Robux icon.svg
 | saves       = Savesicon.svg
-| settings    = Settings icon.png
+| settings    = Settings icon.svg
 | skip        = Skip icon.png
 | speech      = Speech icon.png
 | speed       = Speedboosticonicon.png
