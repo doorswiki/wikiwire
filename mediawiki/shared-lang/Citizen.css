@@ -777,6 +777,12 @@ body.page-DOORS_Wiki {
     }
 }
 
+.mw-portlet-views .citizen-menu__heading,
+#p-associated-pages .citizen-menu__heading,
+#ca-simpleblogpage-create {
+	display: none;
+}
+
 .ns-talk #ca-edit,
 .ns-talk #ca-edit-sticky-header,
 .ns-talk #ca-talk-sticky-header {
@@ -824,6 +830,25 @@ body.page-DOORS_Wiki {
     img {
         opacity: var(--opacity-icon-base);
     }
+}
+
+/* bucket icon */
+#n-bucket a {
+	position: relative;
+	padding-left: calc(20px + var(--space-md) + var(--space-sm));
+	
+	&::before {
+		content: '';
+		position: absolute;
+		left: var(--space-md);
+		width: 20px;
+		height: 20px;
+		mask-image: url(https://static.wikitide.net/stackdwiki/d/d3/weird_gloop_icon.webp);
+		mask-size: contain;
+		mask-repeat: no-repeat;
+		mask-position: center;
+		background: currentcolor;
+	}
 }
 
 .wikitable {
