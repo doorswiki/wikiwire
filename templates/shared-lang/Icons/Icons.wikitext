@@ -21,7 +21,7 @@
 | door        = Doors no tilt icon.png
 | elevator    = ElevatorIcon.png
 | energy      = Icons energyicon.png
-| entities    = ENTITIES.png
+| entities    = Entities icon new.svg
 | events      = Events icon.png
 | exchange    = Exchange.png
 | exclamation = SpoilerIcon.png
@@ -65,6 +65,7 @@
 | paintbrush  = Paintbrush monochrome icon.svg
 | positive    = Positive icon.png
 | prosandcons = PROSANDCONS.png
+| push        = Push icon.svg
 | puzzles     = Puzzle icon.svg
 | question    = QuestionMark.png
 | references  = REFERENCES.png
@@ -73,6 +74,7 @@
 | robux       = Robux icon.svg
 | saves       = Savesicon.svg
 | settings    = Settings icon.svg
+| sit         = Sit icon.svg
 | skip        = Skip icon.png
 | speech      = Speech icon.png
 | speed       = Speedboosticonicon.png

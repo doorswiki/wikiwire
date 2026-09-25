@@ -108,7 +108,7 @@ Sometimes, if a player is temporarily caught in a [[Snare]] trap in [[The Greenh
 </option>
 
 <option>
-[[File:Dreadd.webp|250px|center|link=Dread|class=notpageimage]]
+[[File:Dread sprite.png|250px|center|link=Dread|class=notpageimage]]
 [[Dread]] was previously a secret [[List of Entities|entity]] that could be encountered after one real-life hour had passed (at midnight in-game). Secondly, Door 13 had to be opened, whilst Door 14 remained unopened. When these requirements were met Dread would spawn, behaving as it does currently.
 </option>
 
@@ -178,7 +178,7 @@ Before its removal, [[A-120]] would sometimes rebound. This made it the second e
 </option>
 
 <option>
-[[File:Jeffy.png|250px|center|link=2023 April Fools Event|center|class=notpageimage]]
+[[File:SuperHardModeIcon.png|250px|center|link=2023 April Fools Event|center|class=notpageimage]]
 In [[2023 April Fools Event|SUPER HARD MODE!!!]], players needed to collect 15 books in [[The Library]]. This caused [[Figure]] to move much faster than usual. Figure could also have been killed by a [[Holy Hand Grenade]], which would produce this sound:<br>[[File:FigDeath in-game fixed.mp3]]<small>(Warning: LOUD)</small>
 </option>
 
