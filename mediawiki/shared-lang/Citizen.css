@@ -785,7 +785,8 @@ body.page-DOORS_Wiki {
 
 .ns-talk #ca-edit,
 .ns-talk #ca-edit-sticky-header,
-.ns-talk #ca-talk-sticky-header {
+.ns-talk #ca-talk-sticky-header,
+.ns-talk .mw-editsection {
     display: none;
 }
 .ns-talk #ca-addsection { order: 1 }
