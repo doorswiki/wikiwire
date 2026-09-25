@@ -1,5 +1,4 @@
 == utilities ==
-* BetterUpload[ResourceLoader|type=general|default]|BetterUpload.js
 * RefRevision[ResourceLoader|type=general]|RefRevision.js
 == visual ==
 * NoEditSections[ResourceLoader|type=styles]|NoEditSections.css

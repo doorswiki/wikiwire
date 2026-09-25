@@ -61,7 +61,7 @@
 | overview    = Eye icon.png
 | pencil      = PencilGrayscale.svg
 | placeholder = Placeholder.png
-| player      = Player icon.png
+| player      = Player icon new.svg
 | paintbrush  = Paintbrush monochrome icon.svg
 | positive    = Positive icon.png
 | prosandcons = PROSANDCONS.png
