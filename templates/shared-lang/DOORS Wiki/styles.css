@@ -90,16 +90,23 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 .home-nav,
 .home-container,
 .doorswiki-spotlight {
-	border: var(--border-width-thick, .4em) solid var(--border-color-accent);
 	background: var(--color-surface-3);
 	margin: 1rem 0;
+	outline: var(--border-width-thick, .4em) solid transparent;
+	transition: .25s outline-color;
+}
+
+.home-nav:hover,
+.home-container:hover,
+.doorswiki-spotlight:hover {
+	outline-color: var(--border-color-accent);
 }
 
 @media screen and (max-width: 800px) {
 	.home-nav,
 	.home-container,
 	.doorswiki-spotlight {
-		border-color: oklch(from var(--border-color-accent) l c h / 0.8);
+		outline-color: oklch(from var(--border-color-accent) l c h / 0.8);
 	}
 }
 
@@ -281,7 +288,7 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 }
 
 .doorswiki-floors-container {
-	border: unset!important;
+	outline: unset!important;
 	padding: unset!important;
 	background: unset!important;
 }
@@ -310,9 +317,9 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
     overflow: hidden;
     border-radius: var(--border-radius-medium);
     color: #eee;
-    outline: var(--border-width-thick, .4em) solid var(--floor-border-color, var(--border-color-accent));
+    outline: var(--border-width-thick, .4em) solid transparent;
     outline-offset: 0px;
-    transition-property: outline-offset;
+    transition-property: outline-offset, outline-color;
     transition-duration: .25s;
 }
 
@@ -336,6 +343,7 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 }
 
 .doorswiki-floors-floor:hover {
+	outline-color: var(--floor-border-color, var(--border-color-accent));
     outline-offset: 6px;
 }
 
