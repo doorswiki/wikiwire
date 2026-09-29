@@ -52,7 +52,7 @@
 | lock        = Lock icon.svg
 | lotus       = Lotus Revive icon.svg
 | mines       = ICON MINES.svg
-| miscellaneous = Miscellaneous icon.png
+| miscellaneous = Miscellaneous icon.svg
 | modifiers   = Modifiers monochrome icon.png
 | moonlight   = Moonlight monochrome icon.svg
 | negative    = Negative icon.png
@@ -72,6 +72,7 @@
 | revive      = Revive icon, monochrome.png
 | rift        = Rift icon, monochrome.svg
 | robux       = Robux icon.svg
+| rooms       = Rooms icon.svg
 | saves       = Savesicon.svg
 | settings    = Settings icon.svg
 | sit         = Sit icon.svg
