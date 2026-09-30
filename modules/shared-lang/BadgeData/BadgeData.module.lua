@@ -377,7 +377,7 @@ General = {
 {
 	title = 'Paperclip Challenge',
 	text = 'Think I can buy a house with this?',
-	directions = 'Use a Depot to earn some [[Gold]]',
+	directions = 'Use a [[Depot]] to earn some [[Gold]].',
 	tutorial = 'Hold out an [[Items|item]] and interact with a Depot in [[The Stairwell]].',
 	references = nil,
 	rewards = nil,
@@ -1638,7 +1638,7 @@ Challenges = {
 {
 	title = 'Storage Wars',
 	text = 'A thousand is the best I can do.',
-	directions = 'Make 1000+ Gold at a [[Depot]] in just one deposit.',
+	directions = 'Make 1000+ [[Gold]] at a [[Depot]] in just one deposit.',
 	tutorial = 'At the [[Stairwell]], begin steering a shopping cart at the first Landing. Pick up every trash item you see and put it in the cart. At 40 or more trash, deposit all the items into a [[Depot]] at once, earning you {{Gold|1000+}}. It is recommended to do this in Singleplayer, as the [[Gold]] splits across multiple players unreliably.',
 	references = 'The name is a reference to a reality TV show of the same name.',
 	rewards = nil,
