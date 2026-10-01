@@ -126,6 +126,9 @@
 <option>{{#vardefine: mp-quote | {{#floatingui:Damn the doors wiki has renders for everything
 |Retrieved from [https://twitter.com/Zeus_404_/status/2094020965252608048 a Twitter reply]}} }}
 {{#vardefine: mp-quote-author | @Zeus_404_ on Twitter }}</option>
+
+<option>{{#vardefine: mp-quote | {{#floatingui:this wiki is very well designed and it functions really nice (actually true)|Retrieved from [https://twitter.com/TheGarretthandy/status/2105430091308097638 a Twitter tweet]}} }}
+{{#vardefine: mp-quote-author | @TheGarretthandy on Twitter }}</option>
 </choose><!--
 --><div class="doorswiki-quote-container"><div class="doorswiki-quote">{{#var: mp-quote}}</div><div class="doorswiki-quote-author">{{#var: mp-quote-author}}</div></div>
 
