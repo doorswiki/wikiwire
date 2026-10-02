@@ -26,3 +26,9 @@ id = "fr"
 host = "fr.doorsgame.wiki"
 api = "https://fr.doorsgame.wiki/w/api.php"
 shared_groups = ["lang"]
+
+[[sites]]
+id = "pl"
+host = "pl.doorsgame.wiki"
+api = "https://pl.doorsgame.wiki/w/api.php"
+shared_groups = ["lang"]
