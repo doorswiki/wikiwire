@@ -501,46 +501,11 @@ body.page-DOORS_Wiki {
     }
 }
 
-.citizen-preferences-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    
-    .citizen-preferences-card__preview {
-        aspect-ratio: unset;
-        width: auto;
-        border-bottom: unset;
-    
-        .cdx-icon {
-            width: 1rem;
-            height: 1rem;
-        }
-    }
-}
-
-.citizen-preferences-radio {
-    .cdx-radio__wrapper:has(input.cdx-radio__input[value="day"][name="skin-theme"]),
-    .cdx-radio__wrapper:has(input.cdx-radio__input[value="night"][name="skin-theme"]) {
-        .citizen-preferences-card__preview .cdx-icon {
-            background: var(--icon-image);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            filter: var(--filter-invert);
-    
-            svg {
-                display: none;
-            }
-        }
-    }
-    
-    .cdx-radio__wrapper:has(input.cdx-radio__input[value="day"][name="skin-theme"]) {
-        --icon-image: url(https://upload.wikimedia.org/wikipedia/commons/1/15/OOjs_UI_icon_bright.svg);
-    }
-    
-    .cdx-radio__wrapper:has(input.cdx-radio__input[value="night"][name="skin-theme"]) {
-        --icon-image: url(https://upload.wikimedia.org/wikipedia/commons/7/7c/OOjs_UI_icon_moon.svg);
-    }
+@media screen and (max-width: 1119px) {
+	.citizen-preferences {
+		min-width: unset!important;
+		width: 100%!important;
+	}
 }
 
 .citizen-footer {

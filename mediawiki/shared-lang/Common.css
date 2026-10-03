@@ -1010,6 +1010,57 @@ Requires a "data-text" attribute containing the element's text. */
     }
 }
 
+/* built in heading icon! */
+.mw-heading2 {
+    &:has(#Appearance) > #Appearance,
+    &:has(#Trivia) > #Trivia,
+    &:has(#Behavior) > #Behavior,
+    &:has(#Soundtracks) > #Soundtracks,
+    &:has(#Gallery) > #Gallery,
+    &:has(#References) > #References {
+        padding-left: calc(var(--space-xxs) + 34px);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            inset: 0;
+            background: currentcolor;
+            height: 100%;
+            aspect-ratio: 1;
+            mask-image: var(--icon-image);
+            mask-size: 24px;
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
+    }
+    
+    &:has(#Appearance) > #Appearance {
+        --icon-image: url(https://static.wikitide.net/doorswiki/b/b7/DoorsWikiUI_Paintbrush.svg);
+    }
+    
+    &:has(#Trivia) > #Trivia {
+        --icon-image: url(https://static.wikitide.net/doorswiki/9/97/Bulb_icon.png);
+    }
+    
+    &:has(#Behavior) > #Behavior {
+        --icon-image: url(https://static.wikitide.net/doorswiki/f/f6/Skull_icon.png);
+    }
+    
+    &:has(#Soundtracks) > #Soundtracks {
+        --icon-image: url(https://static.wikitide.net/doorswiki/0/0f/Headphones_icon.png);
+    }
+    
+    &:has(#Gallery) > #Gallery {
+        --icon-image: url(https://upload.wikimedia.org/wikipedia/commons/3/34/Codex_icon_imageGallery.svg);
+    }
+    
+    &:has(#References) > #References {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/c/c1/References_icon.png);
+    }
+}
+
 /* make references wrap consistent with navbox design at least */
 .mw-references-wrap {
     background: var(--color-surface-3);

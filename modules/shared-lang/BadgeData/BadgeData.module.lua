@@ -17,7 +17,7 @@ General = {
 {
 	title = 'Group Member',
 	text = 'You\'re one with the cool kids now!',
-	directions = 'Join the [[LSPLASH|LSPLASH group]] (ancd get a free [[Revives|revive]])!',
+	directions = 'Join the [[LSPLASH|LSPLASH group]] (and get a free [[Revives|revive]])!',
 	tutorial = 'Join the [LSPLASH|official LSPLASH group] on Roblox.',
 	references = nil,
 	rewards = {
@@ -301,28 +301,41 @@ General = {
 	id = '3444580067085575',
 },
 {
+	title = 'Quick Purchase',
+	text = 'They\'re out of my favorite soda!',
+	directions = 'Use some loose change to purchase a [[Shakelight]].',
+	tutorial = 'Use {{Gold|10}} on a [[Shakelight]] vending machine in [[The Archives]].',
+	references = nil,
+	rewards = nil,
+	secret = false,
+	hidden = true,
+	obtainable = true, 
+	id = '736781288900578',
+},
+{
 	title = 'Paperclip Challenge',
 	text = 'Think I can buy a house with this?',
-	directions = 'Use a [[Depot]] to earn some [[Gold]].',
-	tutorial = 'Hold out an [[Items|item]] and interact with a Depot in [[The Stairwell]].',
+	directions = 'Trade with [[Cobbler|the hooded figure]] in [[The Stairwell]].',
+	tutorial = nil,
 	references = nil,
 	rewards = nil,
 	secret = false,
 	hidden = true,
 	obtainable = true, 
 	id = '1888162062641412',
-},
-{
-	title = 'Fried Mushrooms',
-	text = 'Smells pretty good, actually.',
-	directions = 'Use a [[Fire Sprinklers|Fire Alarm]] to incinerate [[Meld]].',
-	tutorial = 'Use a Fire Alarm and survive it in [[The Stairwell]].',
-	references = nil,
-	rewards = nil,
-	secret = false,
-	hidden = true,
-	obtainable = true, 
-	id = '1685221277396553',
+	oldVersions = {
+		{
+				title = 'Paperclip Challenge',
+				text = 'Think I can buy a house with this?',
+				directions = 'Use a [[Depot]] to earn some [[Gold]].',
+				tutorial = nil,
+				references = nil,
+				rewards = nil,
+				secret = false,
+				hidden = true,
+				obtainable = true, 
+		}
+	}
 },
 {
 	title = 'Rage Room',
@@ -337,16 +350,16 @@ General = {
 	id = '1382129123162095',
 },
 {
-	title = 'Quick Purchase',
-	text = 'They\'re out of my favorite soda!',
-	directions = 'Use some loose change to purchase a [[Shakelight]].',
-	tutorial = 'Use {{Gold|10}} on a [[Shakelight]] vending machine in [[The Archives]].',
+	title = 'Fried Mushrooms',
+	text = 'Smells pretty good, actually.',
+	directions = 'Use a [[Fire Sprinklers|Fire Alarm]] to incinerate [[Meld]].',
+	tutorial = 'Use a Fire Alarm and survive it in [[The Stairwell]].',
 	references = nil,
 	rewards = nil,
 	secret = false,
 	hidden = true,
 	obtainable = true, 
-	id = '736781288900578',
+	id = '1685221277396553',
 },
 {
 	title = 'REDACTED',
@@ -359,7 +372,7 @@ General = {
 	hidden = true,
 	obtainable = true, 
 	id = '4026679950625439',
-		oldVersions = {
+	oldVersions = {
 		{
 			title = 'REDACTED',
 			text = 'REDACTED',
@@ -377,7 +390,7 @@ General = {
 {
     title = 'Second Wind',
     text = 'Down but not out.',
-    directions = 'Survive damage that would normally be lethal to you.',
+    directions = 'Survive [[Damage|damage]] that would normally be lethal to you.',
     tutorial = nil,
     references = nil,
     rewards = nil,
@@ -413,7 +426,7 @@ General = {
 {
     title = 'Clay World',
     text = 'It was a little overdone anyway.',
-    directions = 'Scrap a Ceramic [[Stem]].',
+    directions = 'Scrap a [[Ceramic Stem]].',
     tutorial = nil,
     references = nil,
     rewards = nil,
@@ -1166,7 +1179,7 @@ Items = {
 {
     title = 'Plug & Play',
     text = 'Have you tried turning it off and on again?',
-    directions = 'Install any module into your [[Scanner]].',
+    directions = 'Install any [[Drive|module]] into your [[Scanner]].',
     tutorial = nil,
     references = nil,
     rewards = nil,
@@ -1261,6 +1274,20 @@ Floors = {
 	hidden = true,
 	obtainable = true, 
 	id = '1414411336451656',
+		oldVersions = {
+			{
+			title = 'THE HUNT: First Edition',
+			text = 'Obtained during Roblox\'s THE HUNT: First Edition!',
+			directions = 'Escape [[The Backdoor]] during THE HUNT: First Edition.',
+			tutorial = nil,
+			references = nil,
+			rewards = nil,
+			secret = true,
+			hidden = true,
+			obtainable = false, 
+			id = '2583617475301475',
+		},
+	},
 },
 {
 	title = 'See You Soon',
@@ -1807,8 +1834,8 @@ Challenges = {
 {
 	title = 'Storage Wars',
 	text = 'A thousand is the best I can do.',
-	directions = 'Make 1000+ [[Gold]] at a [[Depot]] in just one deposit.',
-	tutorial = 'At the [[Stairwell]], begin steering a shopping cart at the first Landing. Pick up every trash item you see and put it in the cart. At 40 or more trash, deposit all the items into a [[Depot]] at once, earning you {{Gold|1000+}}. It is recommended to do this in Singleplayer, as the [[Gold]] splits across multiple players unreliably.',
+	directions = 'Bargain 1000 [[Gold]] from [[Cobbler|the hooded figure]] in [[The Stairwell]].',
+	tutorial = nil,
 	references = 'The name is a reference to a reality TV show of the same name.',
 	rewards = nil,
 	secret = true,
@@ -1816,6 +1843,19 @@ Challenges = {
 	obtainable = true, 
 	id = '1616003504792374',
 	oldVersions = {
+		{
+			title = 'Storage Wars',
+			text = 'A thousand is the best I can do.',
+			directions = 'Make 1000+ [[Gold]] at a [[Depot]] in just one deposit.',
+			tutorial = nil,
+			references = nil,
+			image = 'Archives Placeholder Badge.png',
+			rewards = nil,
+			secret = true,
+			hidden = true,
+			obtainable = true, 
+			id = '1616003504792374',	
+		},
 		{
 			title = 'Storage Wars',
 			text = 'A thousand is the best I can do.',
@@ -2622,7 +2662,7 @@ Legacy = {
 },
 {
 	title = 'A-1000',
-	text = 'I can\'t feel my legs.',
+	text = 'This was only obtainable before The Archives update!',
 	directions = 'Reach the end of [[The Rooms]].',
 	tutorial = nil,
 	references = nil,
@@ -2631,6 +2671,18 @@ Legacy = {
 	hidden = true,
 	obtainable = false, 
 	id = '2133603122',
+			oldVersions = {
+		{
+			title = 'A-1000',
+			text = 'I can\'t feel my legs.',
+			directions = 'Reach the end of [[The Rooms]].',
+			tutorial = nil,
+			references = nil,
+			rewards = nil,
+			secret = true,
+			hidden = true,
+		}
+	},
 },
 
 },
@@ -2732,7 +2784,7 @@ Unlisted = {
     rewards = nil,
     secret = true,
     hidden = true,
-    obtainable = false,
+    obtainable = true,
     id = '2385498449030377',
 },
 {
