@@ -1015,6 +1015,7 @@ Requires a "data-text" attribute containing the element's text. */
     &:has(#Appearance) > #Appearance,
     &:has(#Trivia) > #Trivia,
     &:has(#Behavior) > #Behavior,
+    &:has(#Behaviour) > #Behaviour,
     &:has(#Soundtracks) > #Soundtracks,
     &:has(#Gallery) > #Gallery,
     &:has(#References) > #References {
@@ -1044,7 +1045,8 @@ Requires a "data-text" attribute containing the element's text. */
         --icon-image: url(https://static.wikitide.net/doorswiki/9/97/Bulb_icon.png);
     }
     
-    &:has(#Behavior) > #Behavior {
+    &:has(#Behavior) > #Behavior,
+    &:has(#Behaviour) > #Behaviour {
         --icon-image: url(https://static.wikitide.net/doorswiki/f/f6/Skull_icon.png);
     }
     

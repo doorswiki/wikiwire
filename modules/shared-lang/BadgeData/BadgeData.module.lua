@@ -1274,20 +1274,6 @@ Floors = {
 	hidden = true,
 	obtainable = true, 
 	id = '1414411336451656',
-		oldVersions = {
-			{
-			title = 'THE HUNT: First Edition',
-			text = 'Obtained during Roblox\'s THE HUNT: First Edition!',
-			directions = 'Escape [[The Backdoor]] during THE HUNT: First Edition.',
-			tutorial = nil,
-			references = nil,
-			rewards = nil,
-			secret = true,
-			hidden = true,
-			obtainable = false, 
-			id = '2583617475301475',
-		},
-	},
 },
 {
 	title = 'See You Soon',
