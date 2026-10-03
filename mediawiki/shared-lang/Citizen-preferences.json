@@ -14,8 +14,7 @@
 					"value": "black",
 					"labelMsg": "citizen-theme-black-label"
 				}
-			],
-			"columns": 3
+			]
 		},
 		"doorswiki-mood": {
 			"section": "appearance",
@@ -49,7 +48,6 @@
 			"default": "0",
 			"labelMsg": "doorswiki-mood-label",
 			"descriptionMsg": "doorswiki-mood-description"
-		},
-		"citizen-feature-pure-black": null
+		}
 	}
 }
