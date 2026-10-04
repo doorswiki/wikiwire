@@ -102,13 +102,13 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	outline-color: var(--border-color-accent);
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
 	.home-nav,
 	.home-container,
 	.doorswiki-spotlight {
 		outline-color: oklch(from var(--border-color-accent) l c h / 0.8);
 	}
-}
+} */
 
 .doorswiki-logo-container {
     display: flex;
