@@ -3,6 +3,7 @@
     --font-family-citizen-base: "Rubik";
     --font-family-citizen-serif: "Work Sans", "Rubik";
 
+	--color-primary: var(--color-progressive);
 	--color-neutral-1000: var(--color-primary-1000);
 	--border-color-base: oklch(from var(--color-base) l c h / 10%);
 	--border-color-emphasized: oklch(from var(--color-base) l c h / 30%);
@@ -339,7 +340,8 @@ body.page-DOORS_Wiki {
 	.citizen-body,
 	.citizen-page-footer,
 	.citizen-toc,
-	#citizen-page-aside-lastmod {
+	#citizen-page-aside-lastmod,
+	#citizen-page-aside-rcsidebar {
 	    background-color: var(--doorswiki-container-color);
 	    border-radius: 3px;
 	    box-shadow: 0 0 18px 6px rgba(0, 0, 0, .6);
@@ -373,7 +375,9 @@ body.page-DOORS_Wiki {
     margin-top: unset;
     
     @media screen and (min-width: 1119px) {
-	    .citizen-toc, #citizen-page-aside-lastmod {
+	    .citizen-toc,
+	    #citizen-page-aside-lastmod,
+	    #citizen-page-aside-rcsidebar {
 	        padding: var(--space-md);
 	    }
     }

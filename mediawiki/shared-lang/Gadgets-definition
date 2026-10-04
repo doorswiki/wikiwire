@@ -1,5 +1,6 @@
 == utilities ==
 * RefRevision[ResourceLoader|type=general]|RefRevision.js
+* RCSidebar[ResourceLoader|default] | RecentChangesSidebar.js|RecentChangesSidebar.css
 == visual ==
 * NoEditSections[ResourceLoader|type=styles]|NoEditSections.css
 * RecentChangesModern[ResourceLoader|type=styles]|RecentChangesModern.css
