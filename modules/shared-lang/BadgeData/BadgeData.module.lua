@@ -1873,7 +1873,7 @@ Challenges = {
 },
 {
 	title = 'Storage Wars',
-	text = 'A thousand is the best I can do.',
+	text = 'Three thousand is the best I can do.',
 	directions = 'Bargain 3000 [[Gold]] from [[Cobbler|the hooded figure]] in [[The Stairwell]].',
 	tutorial = 'Give [[Cobbler]] 300 [[Salvage Scrap]].',
 	references = 'The name is a reference to a reality TV show of the same name.',
