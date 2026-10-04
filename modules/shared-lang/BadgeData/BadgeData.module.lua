@@ -412,30 +412,6 @@ General = {
     id = '3069200883215187',
 },
 {
-    title = 'Garage Sale',
-    text = 'No refunds.',
-    directions = 'Open a garage with a [[Garage Key]].',
-    tutorial = nil,
-    references = nil,
-    rewards = nil,
-    secret = false,
-    hidden = nil,
-    obtainable = true,
-    id = '2639886537747907',
-},
-{
-    title = 'Clay World',
-    text = 'It was a little overdone anyway.',
-    directions = 'Scrap a [[Ceramic Stem]].',
-    tutorial = 'Get a [[Stem]] to cook via the [[Fire Sprinklers]], and then place it into a scrapper.',
-    references = nil,
-    rewards = nil,
-    secret = false,
-    hidden = nil,
-    obtainable = true,
-    id = '1563321829226488',
-},
-{
 	title = 'Patience',
 	text = 'It\'s a virtue.',
 	directions = 'Walk through the entire queue line in [[the Archives]].',
@@ -470,6 +446,57 @@ General = {
     hidden = true,
     obtainable = true,
     id = '2188278828471393',
+},
+{
+    title = 'Garage Sale',
+    text = 'No refunds.',
+    directions = 'Open a garage with a [[Garage Key]].',
+    tutorial = nil,
+    references = nil,
+    rewards = nil,
+    secret = true,
+    hidden = nil,
+    obtainable = true,
+    id = '2639886537747907',
+    oldVersions = {
+    	{
+    		    title = 'Garage Sale',
+    text = 'No refunds.',
+    directions = 'Open a garage with a [[Garage Key]].',
+    tutorial = nil,
+    references = nil,
+    rewards = nil,
+    secret = false,
+    hidden = nil,
+    obtainable = true,
+    id = '2639886537747907',
+    	}
+    }
+},
+{
+    title = 'Clay World',
+    text = 'It was a little overdone anyway.',
+    directions = 'Scrap a [[Ceramic Stem]].',
+    tutorial = 'Get a [[Stem]] to cook via the [[Fire Sprinklers]], and then place it into a scrapper.',
+    references = nil,
+    rewards = nil,
+    secret = true,
+    hidden = nil,
+    obtainable = true,
+    id = '1563321829226488',
+    oldVersions = {
+    	{    title = 'Clay World',
+    text = 'It was a little overdone anyway.',
+    directions = 'Scrap a [[Ceramic Stem]].',
+    tutorial = 'Get a [[Stem]] to cook via the [[Fire Sprinklers]], and then place it into a scrapper.',
+    references = nil,
+    rewards = nil,
+    secret = false,
+    hidden = nil,
+    obtainable = true,
+    id = '1563321829226488',
+    }
+    }
 },
 {
 	title = 'QA Tester',
@@ -1028,6 +1055,18 @@ Entities = {
 {
     title = 'Conga Line',
     text = 'Hey! Chachacha... Hey!',
+    directions = 'Be followed by 3 instances of [[Noise]] at once.',
+    tutorial = nil,
+    references = nil,
+    rewards = nil,
+    secret = true,
+    hidden = nil,
+    obtainable = true,
+    id = '657088209891725',
+    oldVersions = {
+    	{
+    		    title = 'Conga Line',
+    text = 'Hey! Chachacha... Hey!',
     directions = 'Be followed by 6 instances of [[Noise]] at once.',
     tutorial = nil,
     references = nil,
@@ -1036,6 +1075,8 @@ Entities = {
     hidden = nil,
     obtainable = true,
     id = '657088209891725',
+    	}
+    }
 },
 
 },
@@ -1189,18 +1230,6 @@ Items = {
     id = '3474867782002614',
 },
 {
-    title = 'Flash Point',
-    text = 'That was fire.',
-    directions = 'Successfully light a [[Flare]] in under a second.',
-    tutorial = nil,
-    references = nil,
-    rewards = nil,
-    secret = false,
-    hidden = true,
-    obtainable = true,
-    id = '345152883716556',
-},
-{
     title = 'Emancipation Customization',
     text = 'Four doors and seven knobs ago...',
     directions = 'Place [[Damaged Hat|a peculiar hat]] on [[Creak|a distinguished individual]].',
@@ -1212,7 +1241,32 @@ Items = {
     obtainable = true,
     id = '3542501851954318',
 },
-
+{
+    title = 'Flash Point',
+    text = 'That was fire.',
+    directions = 'Successfully light a [[Flare]] in under a second.',
+    tutorial = nil,
+    references = nil,
+    rewards = nil,
+    secret = true,
+    hidden = true,
+    obtainable = true,
+    id = '345152883716556',
+    oldVersions = {
+    	{
+    		    title = 'Flash Point',
+    text = 'That was fire.',
+    directions = 'Successfully light a [[Flare]] in under a second.',
+    tutorial = nil,
+    references = nil,
+    rewards = nil,
+    secret = false,
+    hidden = true,
+    obtainable = true,
+    id = '345152883716556',
+    	}
+    }
+},
 
 },
 
@@ -1382,7 +1436,7 @@ Floors = {
 {
     title = 'Stair Master',
     text = 'Leg Day never ends...',
-    directions = 'Loop [[The Stairwell]] by using the secret exit found through a vent at Landing 199.',
+    directions = 'Loop [[The Stairwell]].',
     tutorial = nil,
     references = nil,
     rewards = nil,
@@ -1820,8 +1874,8 @@ Challenges = {
 {
 	title = 'Storage Wars',
 	text = 'A thousand is the best I can do.',
-	directions = 'Bargain 1000 [[Gold]] from [[Cobbler|the hooded figure]] in [[The Stairwell]].',
-	tutorial = 'Give the Cobbler 100 [[salvage scrap]].',
+	directions = 'Bargain 3000 [[Gold]] from [[Cobbler|the hooded figure]] in [[The Stairwell]].',
+	tutorial = 'Give [[Cobbler]] 300 [[Salvage Scrap]].',
 	references = 'The name is a reference to a reality TV show of the same name.',
 	rewards = nil,
 	secret = true,
@@ -1829,6 +1883,18 @@ Challenges = {
 	obtainable = true, 
 	id = '1616003504792374',
 	oldVersions = {
+		{
+			title = 'Storage Wars',
+			text = 'A thousand is the best I can do.',
+			directions = 'Bargain 1000 [[Gold]] from [[Cobbler|the hooded figure]] in [[The Stairwell]].',
+			tutorial = nil,
+			references = nil,
+			rewards = nil,
+			secret = true,
+			hidden = true,
+			obtainable = true, 
+			id = '1616003504792374',
+		},
 		{
 			title = 'Storage Wars',
 			text = 'A thousand is the best I can do.',
