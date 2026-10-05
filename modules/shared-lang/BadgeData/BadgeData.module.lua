@@ -1078,6 +1078,18 @@ Entities = {
     	}
     }
 },
+{
+    title = 'Friend Ball',
+    text = 'I... I don\'t really want this.',
+    directions = 'Give [[Cobbler|the hooded figure]] in [[The Stairwell]] a pet.',
+    tutorial = 'Bring a [[Stem]] to the top of [[The Stairwell]] and give it to [[Cobbler]].',
+    references = nil,
+    rewards = nil,
+    secret = true,
+    hidden = true,
+    obtainable = true,
+    id = '2385498449030377',
+},
 
 },
 
@@ -2840,18 +2852,6 @@ Unlisted = {
     hidden = true,
     obtainable = false,
     id = '4122436137612087',
-},
-{
-    title = 'Friend Ball',
-    text = 'N/A',
-    directions = 'N/A',
-    tutorial = 'Method of obtainment is currently unknown.',
-    references = nil,
-    rewards = nil,
-    secret = true,
-    hidden = true,
-    obtainable = true,
-    id = '2385498449030377',
 },
 {
 	title = 'THE TAKEOVER: NOOB',
