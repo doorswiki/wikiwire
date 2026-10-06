@@ -53,7 +53,7 @@ local function buildBadge(badge, currentTitle)
 	local imageHtml =
 		'<div class="badge-image">' ..
 			'<div class="' .. borderClass .. colorClass(badge.color or object.color) .. '"></div>' ..
-			'[[File:' .. (badge.image or object.icon) .. '|140px]]' ..
+			img(badge.image or object.icon, 140) ..
 		'</div>'
 		
 	local link = badge.id and 'https://www.roblox.com/badges/' .. badge.id or false
@@ -135,7 +135,7 @@ local function buildBadge(badge, currentTitle)
 	if badge.tutorial then
 		buttons[#buttons+1] =
 			'<div class="badge-tutorial-button badge-button">' ..
-				'[[File:Bulb icon.png|40px|link=]]' ..
+				img('Trivia', 40) ..
 			'</div>'
 
 		buttons[#buttons+1] =
@@ -150,7 +150,7 @@ local function buildBadge(badge, currentTitle)
 	if badge.references then
 		buttons[#buttons+1] =
 			'<div class="badge-references-button badge-button">' ..
-				'[[File:Hiding icon.png|40px|link=]]' ..
+				img('Hiding', 40) ..
 			'</div>'
 
 		buttons[#buttons+1] =
@@ -165,7 +165,7 @@ local function buildBadge(badge, currentTitle)
 	if badge.oldVersions then
 		buttons[#buttons+1] =
 			'<div class="badge-oldversions-button badge-button">' ..
-				'[[File:Journal icon.svg|40px|link=]]' ..
+				img('Journal', 40)  ..
 			'</div>'
 
 		local oldContent = {}
@@ -416,7 +416,7 @@ local function generateBadgeRewardsCount(frame)
 		return total .. ' Skins'
 	else
 		local total = countBadgeRewards(rewardType, unobtainable)
-		return '[[File:' .. rewardType .. ' icon.png|25px|link=]] ' .. total
+		return img(rewardType) .. ' ' .. total
 	end
 
 	return 'INVALID REWARD'
