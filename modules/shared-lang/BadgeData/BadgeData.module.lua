@@ -403,7 +403,7 @@ General = {
     title = 'Grindset',
     text = 'So we\'re gonna go and do at least ten thousand.',
     directions = 'Grind Salvage into Scrap.',
-    tutorial = 'Pick up a [[Deopt Items|Depot Item]] and place it into a scrapper.',
+    tutorial = 'Pick up a [[Depot Items|Depot Item]] and place it into a [[Depot]].',
     references = nil,
     rewards = nil,
     secret = false,
@@ -439,7 +439,7 @@ General = {
     title = 'Dust To Dust',
     text = 'Straight from the source!',
     directions = 'Obtain [[Stardust]] from a Scrapper.',
-    tutorial = 'Place a [[Starlight Vial]], [[Starlight Bottle]], or [[Starlight Jug]] into a scrapper in [[The Stairwell]].',
+    tutorial = 'Place a [[Starlight Vial]], [[Starlight Bottle]], or [[Starlight Jug]] into a [[Depot]] in [[The Stairwell]].',
     references = nil,
     rewards = nil,
     secret = true,
@@ -451,7 +451,7 @@ General = {
     title = 'Garage Sale',
     text = 'No refunds.',
     directions = 'Open a garage with a [[Garage Key]].',
-    tutorial = 'Purchase a [[Garage Key]] from [[The Stairwell]]\'s [[Pre-Run Shop]], find a garage and unlock it.',
+    tutorial = 'Purchase a [[Garage Key]] from [[The Stairwell]]\'s [[Pre-Run Shop]] or find one naturally. Find a garage door and unlock it with the garage key.',
     references = nil,
     rewards = nil,
     secret = true,
@@ -477,7 +477,7 @@ General = {
     title = 'Clay World',
     text = 'It was a little overdone anyway.',
     directions = 'Scrap a [[Ceramic Stem]].',
-    tutorial = 'Cook a [[Stem]] via the [[Fire Sprinklers]], and then place it into a scrapper.',
+    tutorial = 'Cook a [[Stem]] via the [[Fire Sprinklers]], and then place it into a [[Depot]].',
     references = nil,
     rewards = nil,
     secret = true,
@@ -488,7 +488,7 @@ General = {
     	{    title = 'Clay World',
     text = 'It was a little overdone anyway.',
     directions = 'Scrap a [[Ceramic Stem]].',
-    tutorial = 'Cook a [[Stem]] via the [[Fire Sprinklers]], and then place it into a scrapper.',
+    tutorial = 'Cook a [[Stem]] via the [[Fire Sprinklers]], and then place it into a [[Depot]].',
     references = nil,
     rewards = nil,
     secret = false,
@@ -1904,8 +1904,7 @@ Challenges = {
 			rewards = nil,
 			secret = true,
 			hidden = true,
-			obtainable = true, 
-			id = '1616003504792374',
+			obtainable = true,
 		},
 		{
 			title = 'Storage Wars',
@@ -1917,13 +1916,12 @@ Challenges = {
 			rewards = nil,
 			secret = true,
 			hidden = true,
-			obtainable = true, 
-			id = '1616003504792374',	
+			obtainable = true,
 		},
 		{
 			title = 'Storage Wars',
 			text = 'A thousand is the best I can do.',
-			directions = 'Make 1000+ Gold at a [[Depot]] in just one deposit.',
+			directions = 'Make 1000+ [[Gold]] at a [[Depot]] in just one deposit.',
 			tutorial = nil,
 			references = nil,
 			color = 'Stairwell',
@@ -2268,7 +2266,7 @@ Collab = {
 {
 	title = 'Truer Tower Hero',
 	text = 'Bramble.. more like.. Scramble!',
-	directions = 'Defeat Bramble on Hard Mode in the Tower Heroes x DOORS event.',
+	directions = 'Defeat Bramble on Hard Mode in the [[Tower Heroes Collaboration (2025)|Tower Heroes x DOORS]] event.',
 	tutorial = nil,
 	references = nil,
 	rewards = {
@@ -2283,7 +2281,7 @@ Collab = {
 		{
 			title = 'Truer Tower Hero',
 			text = 'Bramble.. more like.. Scramble!',
-			directions = 'Defeat Bramble on Hard Mode in the Tower Heroes x DOORS event.',
+			directions = 'Defeat Bramble on Hard Mode in the [[Tower Heroes Collaboration (2025)|Tower Heroes x DOORS]] event.',
 			tutorial = nil,
 			references = nil,
 			color = 'THQuest',
@@ -2300,7 +2298,7 @@ Collab = {
 {
 	title = 'We Out Here',
 	text = 'The Outdoors got... out.. floored!',
-	directions = 'Complete The Outdoors Story Quest in the Tower Heroes x DOORS event.',
+	directions = 'Complete The Outdoors Story Quest in the [[Tower Heroes Collaboration (2025)|Tower Heroes x DOORS]] event.',
 	tutorial = nil,
 	references = nil,
 	rewards = {
@@ -2315,7 +2313,7 @@ Collab = {
 {
 	title = 'Tower Hero',
 	text = 'El Goblino meta.',
-	directions = 'Play the Tower Heroes x DOORS event and complete El Goblino\'s Quest.',
+	directions = 'Play the [[Tower Heroes Collaboration (2023)|Tower Heroes x DOORS]] event and complete El Goblino\'s Quest.',
 	tutorial = nil,
 	references = nil,
 	rewards = {
@@ -2330,7 +2328,7 @@ Collab = {
 		{
 			title = 'Tower Hero',
 			text = 'el goblino meta',
-			directions = 'Play the Tower Heroes x DOORS event and complete El Goblino\'s Quest.',
+			directions = 'Play the [[Tower Heroes Collaboration (2023)|Tower Heroes x DOORS]] event and complete El Goblino\'s Quest.',
 			tutorial = nil,
 			references = nil,
 			color = 'THQuest',
@@ -2346,7 +2344,7 @@ Collab = {
 {
 	title = 'True Tower Hero',
 	text = 'I need more mana!',
-	directions = 'Play the Tower Heroes x DOORS event and complete The Library on Hard.',
+	directions = 'Play the [[Tower Heroes Collaboration (2023)|Tower Heroes x DOORS]] event and complete The Library on Hard.',
 	tutorial = nil,
 	references = 'Achievement\'s description references Tower Heroes currency "mana."',
 	rewards = {
@@ -2361,7 +2359,7 @@ Collab = {
 		{
 			title = 'True Tower Hero',
 			text = 'AWESOME!!!',
-			directions = 'Play the Tower Heroes x DOORS event and complete The Library on Hard.',
+			directions = 'Play the [[Tower Heroes Collaboration (2023)|Tower Heroes x DOORS]] event and complete The Library on Hard.',
 			tutorial = nil,
 			references = nil,
 			color = 'THHard',
@@ -2378,7 +2376,7 @@ Collab = {
 {
 	title = 'Hotel Adventurer',
 	text = 'Who needs a crucifix when you have towers!',
-	directions = 'Play the Tower Heroes x DOORS event and complete The Hotel in Adventure Mode.',
+	directions = 'Play the [[Tower Heroes Collaboration (2023)|Tower Heroes x DOORS]] event and complete The Hotel in Adventure Mode.',
 	tutorial = nil,
 	references = nil,
 	rewards = {
@@ -2393,7 +2391,7 @@ Collab = {
 		{
 			title = 'Hotel Adventurer',
 			text = 'i be adventurin... in da hotel...',
-			directions = 'Play the Tower Heroes x DOORS event and complete The Hotel in Adventure Mode.',
+			directions = 'Play the [[Tower Heroes Collaboration (2023)|Tower Heroes x DOORS]] event and complete The Hotel in Adventure Mode.',
 			tutorial = nil,
 			references = nil,
 			color = 'THAdventure',
@@ -2410,7 +2408,7 @@ Collab = {
 {
 	title = 'Void Buster',
 	text = 'I ain\'t afraid of no Void!',
-	directions = 'Play the Tower Heroes x DOORS event and defeat Void.',
+	directions = 'Play the [[Tower Heroes Collaboration (2023)|Tower Heroes x DOORS]] event and defeat Void.',
 	tutorial = nil,
 	references = 'Both achievement\'s name and description is a reference to the song "Ghostbusters" by Ray Parker Jr.',
 	rewards = {
@@ -2830,16 +2828,32 @@ Unlisted = {
     id = '2966650115814843',
 },
 {
-    title = 'Elite Gamer',
-    text = 'N/A',
-    directions = 'N/A',
-    tutorial = 'Method of obtainment is currently unknown.',
-    references = nil,
-    rewards = nil,
-    secret = true,
-    hidden = true,
-    obtainable = false,
-    id = '3706034782299809',
+	title = 'Cracked Gamer',
+	text = 'N/A',
+	directions = 'N/A',
+	tutorial = 'Method of obtainment is currently unknown.',
+	references = nil,
+	rewards = nil,
+	secret = true,
+	hidden = true,
+	obtainable = false, 
+	id = '3706034782299809',
+	oldVersions = {
+		{
+			title = 'Elite Gamer',
+			text = 'N/A',
+			directions = 'N/A',
+			tutorial = 'N/A',
+			references = 'N/A',
+			color = 'Stairwell',
+			image = 'Stairwell Placeholder Badge.png',
+			references = nil,
+			rewards = nil,
+			secret = true,
+			hidden = true,
+			obtainable = false,
+		}
+	}
 },
 {
     title = 'Charles Drowned',
