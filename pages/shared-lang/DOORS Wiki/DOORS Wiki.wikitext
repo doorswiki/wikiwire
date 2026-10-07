@@ -1,25 +1,30 @@
 <div class="doorswiki-logo-container">[[File:DOORS Wiki.png|500px|link=|class=doorswiki-logo]]</div>
 <div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History}} Search {{SITENAME}}...</div> {{Hoverimg|[[File:Roblox_Beige Logo.png|40px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
 {{#invoke:AboutDoors|main
- | title1       = [[File:DOORS Logo.png|100px|link=DOORS]]
- | description1 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].
- | image1       = Hotel_Backroom5.png
- | url1         = DOORS
+ | title1       = <span class="doors-font">[[Access Granted Update|ACCESS GRANTED]]</span>
+ | description1 = The Stairwell has evolved and expanded. See what's new this update.
+ | image1       = AccessGrantedUpdateThumbnailEdited.jpeg
+ | url1         = Access Granted Update
+ 
+ | title2       = [[File:DOORS Logo.png|100px|link=DOORS]]
+ | description2 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].
+ | image2       = Hotel_Backroom5.png
+ | url2         = DOORS
 
- | title2       = <span class="doors-font">[[Entities|ENTITIES]]</span>
- | description2 = While exploring different rooms, look out for entities. Many of them attempt to kill players, аnd they must be faced in order to advance.
- | image2       = AmbushComintoYourFace.png
- | url2         = Entities
+ | title3       = <span class="doors-font">[[Entities|ENTITIES]]</span>
+ | description3 = While exploring different rooms, look out for entities. Many of them attempt to kill players, аnd they must be faced in order to advance.
+ | image3       = AmbushComintoYourFace.png
+ | url3         = Entities
 
- | title3       = <span class="doors-font">[[Items|ITEMS]]</span>
- | description3 = Items are useful tools found throughout any run of any floor. They do not save the next time you enter a run.
- | image3       = JeffShopHotelPlate.png
- | url3         = Items
+ | title4       = <span class="doors-font">[[Items|ITEMS]]</span>
+ | description4 = Items are useful tools found throughout any run of any floor. They do not save the next time you enter a run.
+ | image4       = JeffShopHotelPlate.png
+ | url4         = Items
 
- | title4       = <span class="doors-font">[[Floors|FLOORS]]</span>
- | description4 = Floors are areas that players progress the story in, serving as the 'chapters' for the game. These floors may contain different items and entities from the previous floor, along with brand-new locations.
- | image4       = Gardenentrance.png
- | url4         = Floors
+ | title5       = <span class="doors-font">[[Floors|FLOORS]]</span>
+ | description5 = Floors are areas that players progress the story in, serving as the 'chapters' for the game. These floors may contain different items and entities from the previous floor, along with brand-new locations.
+ | image5       = Gardenentrance.png
+ | url5         = Floors
 
  <!-- |title3=Rush Mode Update
  |description3=Another featured article.

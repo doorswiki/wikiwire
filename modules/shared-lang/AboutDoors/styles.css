@@ -57,7 +57,7 @@
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
-	mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 15%, rgba(0,0,0,0.5), black 100%);
+	mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5), black 100%);
 }
 
 .doorswiki-spotlight__slide-placeholder {
@@ -87,7 +87,7 @@
 	flex-direction: column;
 	justify-content: center;
 	text-align: left;
-	max-width: 55%;
+	max-width: 45%;
 	gap: 0.125rem;
 }
 

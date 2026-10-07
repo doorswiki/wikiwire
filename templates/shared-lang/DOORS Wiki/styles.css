@@ -269,6 +269,12 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 
 @media screen and (max-width: 800px) {
 	.doorswiki-floors {
+		display: none!important;
+	}
+}
+
+/* @media screen and (max-width: 800px) {
+	.doorswiki-floors {
 		display: grid!important;
     	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 	}
@@ -285,7 +291,7 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 		width: 100%!important;
 		height: auto!important;
 	}
-}
+} */
 
 .doorswiki-floors-container {
 	outline: unset!important;
