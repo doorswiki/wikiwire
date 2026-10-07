@@ -1,10 +1,11 @@
-<div class="doorswiki-logo-container">[[File:DOORS Wiki.png|500px|link=|class=doorswiki-logo]]</div>
-<div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History}} Search {{SITENAME}}...</div> {{Hoverimg|[[File:Roblox_Beige Logo.png|40px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
+<div class="doorswiki-logo-container">[[File:DOORS Wiki.png|400px|link=|class=doorswiki-logo]]</div>
+<div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History|size=20x20px}} Search {{SITENAME}}... <kbd>/</kbd></div> {{Hoverimg|[[File:Roblox_Beige Logo.png|30px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
 {{#invoke:AboutDoors|main
  | title1       = <span class="doors-font">[[Access Granted Update|ACCESS GRANTED]]</span>
  | description1 = The Stairwell has evolved and expanded. See what's new this update.
- | image1       = AccessGrantedUpdateThumbnailEdited.jpeg
+ | image1       = Sizzle reel Access Granted Update.mp4
  | url1         = Access Granted Update
+ | duration1    = 15000
  
  | title2       = [[File:DOORS Logo.png|100px|link=DOORS]]
  | description2 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].

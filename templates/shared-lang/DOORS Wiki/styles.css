@@ -96,6 +96,10 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	transition: .25s outline-color;
 }
 
+.doorswiki-spotlight {
+	background: var(--color-surface-0)!important;
+}
+
 .home-nav:hover,
 .home-container:hover,
 .doorswiki-spotlight:hover {
@@ -126,24 +130,40 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: stretch;
 	margin: 1rem 0;
-	gap: 1rem;
+	gap: .5rem;
 }
 
 .doorswiki-searchbar {
-    background-color: var(--color-surface-2);
+    position: relative;
+    width: max-content;
+    min-width: 30vw;
     padding: var(--space-xs) var(--space-md);
+    color: oklch(from var(--color-emphasized) l c h / 0.8);
+    transition: .25s padding, .25s border-radius, .25s font-weight;
+}
+
+.doorswiki-searchbar kbd {
+	background: var(--color-surface-0);
+	padding: 2px 4px;
+	border-radius: var(--border-radius-medium);
+	margin-left: auto;
+}
+
+.doorswiki-searchbar,
+.doorswiki-searchbar-container .hoverimg {
+	background-color: var(--color-surface-1);
     display: inline-flex;
+    align-items: center;
     gap: 1rem;
     border: var(--border-base);
     cursor: pointer;
     border-radius: var(--border-radius-medium);
-    position: relative;
-    width: max-content;
-    min-width: 15vw;
-    color: oklch(from var(--color-emphasized) l c h / 0.8);
-    transition: .25s padding, .25s border-radius, .25s font-weight;
+}
+
+.doorswiki-searchbar-container .hoverimg {
+	padding: var(--space-xs);
 }
 
 @media screen and (max-width: 800px) {

@@ -11,13 +11,21 @@ function p.main(frame)
 		local description = args["description" .. i]
 		local image = args["image" .. i]
 		local url = args["url" .. i]
+		local duration = args["duration" .. i]
 
 		if (title and title ~= "") or description or image or url then
+			local parsedDuration = tonumber(duration)
+
+			if not parsedDuration or parsedDuration <= 0 then
+				parsedDuration = 5000
+			end
+
 			table.insert(slides, {
 				title = title or "",
 				description = description or "",
 				image = image or "",
-				url = url or ""
+				url = url or "",
+				duration = parsedDuration
 			})
 		end
 	end
@@ -30,11 +38,6 @@ function p.main(frame)
 
 	table.insert(html, '<div class="doorswiki-spotlight"><!--')
 	table.insert(html, '--><div class="doorswiki-spotlight__viewport"><!--')
-
-	-- table.insert(
-	-- 	html,
-	-- 	'--><div class="doorswiki-spotlight__chip">SPOTLIGHT</div><!--'
-	-- )
 
 	table.insert(html, '--><div class="doorswiki-spotlight__track"><!--')
 
@@ -53,6 +56,8 @@ function p.main(frame)
 			(i - 1) ..
 			'" data-url="' ..
 			mw.text.encode(slide.url) ..
+			'" data-duration="' ..
+			slide.duration ..
 			'" role="link" tabindex="0"><!--'
 		)
 
@@ -81,15 +86,38 @@ function p.main(frame)
 
 		table.insert(html, '--></div><!--')
 
-
 		if slide.image ~= "" then
-			local file = frame:preprocess(
-				'[[File:' ..
-				slide.image ..
-				'|class=doorswiki-spotlight__slide-media' ..
-				'|link=' .. mw.text.encode(slide.url) ..
-				']]'
-			)
+			local isVideoElement = slide.image:match("<video%s")
+			local isMp4 = slide.image:lower():match("%.mp4%s*$")
+
+			local file
+
+			if isVideoElement then
+				file = slide.image
+					:gsub("<video([^>]*)>", function(attrs)
+						attrs = attrs:gsub("%s+controls%s*=?%s*([\"'][^\"']*[\"']|[^%s>]*)?", "")
+						return '<video' .. attrs .. ' autoplay muted loop>'
+					end)
+
+			elseif isMp4 then
+				file = frame:preprocess(
+					'[[File:' ..
+					slide.image ..
+					'|autoplay|muted|loop|nocontrols' ..
+					'|class=doorswiki-spotlight__slide-media' ..
+					'|link=' .. mw.text.encode(slide.url) ..
+					']]'
+				)
+
+			else
+				file = frame:preprocess(
+					'[[File:' ..
+					slide.image ..
+					'|class=doorswiki-spotlight__slide-media' ..
+					'|link=' .. mw.text.encode(slide.url) ..
+					']]'
+				)
+			end
 
 			table.insert(html, '-->' .. file .. '<!--')
 		else
@@ -111,7 +139,6 @@ function p.main(frame)
 
 	table.insert(html, '--></div><!--')
 
-	
 	table.insert(html, '--><div class="doorswiki-spotlight__nav"><!--')
 
 	table.insert(
@@ -165,8 +192,8 @@ function p.main(frame)
 	table.insert(html, '--></div>')
 
 	return frame:extensionTag{
-        name = 'templatestyles', args = { src = 'Module:AboutDoors/styles.css' }
-    } .. table.concat(html)
+		name = 'templatestyles', args = { src = 'Module:AboutDoors/styles.css' }
+	} .. table.concat(html)
 end
 
 return p
