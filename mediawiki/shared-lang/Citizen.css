@@ -4,6 +4,7 @@
     --font-family-citizen-serif: "Work Sans", "Rubik";
 
 	--color-primary: var(--color-progressive);
+	--color-progressive-oklch__h: var(--color-primary-oklch__h);
 	--color-neutral-1000: var(--color-primary-1000);
 	--border-color-base: oklch(from var(--color-base) l c h / 10%);
 	--border-color-emphasized: oklch(from var(--color-base) l c h / 30%);
@@ -52,11 +53,15 @@
     );
 
     --doorswiki-container-color: var(--doorswiki-container-color-original);
+    
+    --light-bg: url("https://static.wikitide.net/doorswiki/b/be/Rooms_Hallway1.png");
+    --dark-bg: url("https://static.wikitide.net/stackdwiki/5/5a/DOORS_Site-background-dark.webp");
+    --black-bg: url(https://static.wikitide.net/doorswiki/8/81/Chasm_up.png);
 
     /* Background image */
     --bg: light-dark(
-        url("https://static.wikitide.net/doorswiki/b/be/Rooms_Hallway1.png"),
-        url("https://static.wikitide.net/stackdwiki/5/5a/DOORS_Site-background-dark.webp")
+        var(--light-bg),
+        var(--dark-bg)
     );
 }
 
@@ -68,6 +73,7 @@
     --color-link: var(--color-link-original);
 
     --border-color-accent: var(--doors-light-accent);
+    --bg: var(--light-bg);
 }
 
 /* Night theme */
@@ -78,6 +84,7 @@
     --color-link: var(--color-link-original);
 
     --border-color-accent: var(--doors-dark-accent);
+    --bg: var(--dark-bg);
 }
 
 /* Black theme */
@@ -99,8 +106,9 @@
 :root.skin-theme-clientpref-black {
 	--doorswiki-container-color-original: rgba(0, 0, 0, 0.6);
 	--doorswiki-container-color: var(--doorswiki-container-color-original);
-	--bg: url(https://static.wikitide.net/doorswiki/8/81/Chasm_up.png);
+	
     --border-color-accent: var(--border-color-subtle);
+    --bg: var(--black-bg);
 }
 
 :root.client-js.doorswiki-mood-clientpref-0:has(> body.page-DOORS_Wiki) {
@@ -119,54 +127,12 @@ html:not(.doorswiki-mood-clientpref-0) {
 	body::before {
     	filter: blur(6px);
 	}
-	
-	/* &.skin-theme-clientpref-day {
-        --doorswiki-brightasf: oklch(from var(--color-primary) .5 .4 h);
-    }
-    
-    &.skin-theme-clientpref-night {
-        --doorswiki-brightasf: oklch(from var(--color-primary) .6 .3 h)
-    } */
     
     &.skin-theme-clientpref-black {
     	.mw-logo-icon {
     		filter: grayscale(1);
     	}
     }
-    
-    /* &:not(.skin-theme-clientpref-black) {
-    	.mw-logo {
-	        position: relative;
-	        
-	        &::after {
-	            content: '';
-	            position: absolute;
-	            inset: 0;
-	            z-index: 2;
-	            mask-image: url(https://static.wikitide.net/doorswiki/e/e6/Site-logo.png);
-	            mask-size: 32px;
-	            mask-repeat: no-repeat;
-	            mask-position: center;
-	            background: var(--doorswiki-brightasf);
-	            transition-duration: .5s;
-	            transition-property: color, transform, opacity;
-	        }
-	        
-	        &:hover:has(> .mw-logo-icon)::after {
-	            transition-duration: var(--transition-duration-medium);
-	            transform: rotate(360deg);
-	            opacity: 0;
-	        }
-	        
-	        .mw-logo-icon {
-	            opacity: 0;
-	        }
-	        
-	        &.citizen-drawer__logo::after {
-	            mask-size: 80px!important;
-	        }
-    	}
-    } */
 }
 
 :root:not(.doorswiki-mood-clientpref-0)[class*="skin-theme-clientpref-"] {
@@ -192,17 +158,9 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 240!important;
     }
     
-    &.skin-theme-clientpref-day {
-        --bg: url(https://static.wikitide.net/doorswiki/6/64/LotusSpawnMINESB.png);
-    }
-    
-    &.skin-theme-clientpref-night {
-        --bg: url(https://static.wikitide.net/doorswiki/6/63/Mines_Flooded1.png);
-    }
-    
-    &.skin-theme-clientpref-black {
-        --bg: url(https://static.wikitide.net/doorswiki/8/8a/Mines_MTHallway1.png);
-    }
+    --light-bg: url(https://static.wikitide.net/doorswiki/6/64/LotusSpawnMINESB.png);
+    --dark-bg: url(https://static.wikitide.net/doorswiki/6/63/Mines_Flooded1.png);
+    --black-bg: url(https://static.wikitide.net/doorswiki/8/8a/Mines_MTHallway1.png);
 }
 
 /* The Outdoors theme */
@@ -211,32 +169,16 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 140!important;
     }
     
-    &.skin-theme-clientpref-day {
-        --bg: url(https://static.wikitide.net/doorswiki/c/c6/Garden_Straight1.png);
-    }
-    
-    &.skin-theme-clientpref-night {
-        --bg: url(https://static.wikitide.net/doorswiki/5/5c/Gardenentrance.png);
-    }
-    
-    &.skin-theme-clientpref-black {
-        --bg: url(https://static.wikitide.net/doorswiki/b/b3/Garden_WaterTower.png);
-    }
+    --light-bg: url(https://static.wikitide.net/doorswiki/c/c6/Garden_Straight1.png);
+    --dark-bg: url(https://static.wikitide.net/doorswiki/5/5c/Gardenentrance.png);
+    --black-bg: url(https://static.wikitide.net/doorswiki/b/b3/Garden_WaterTower.png);
 }
 
 /* The Backdoor theme */
 :root.doorswiki-mood-clientpref-3 {
-    &.skin-theme-clientpref-day {
-        --bg: url(https://static.wikitide.net/doorswiki/c/cc/The_Backdoor.png);
-    }
-    
-    &.skin-theme-clientpref-night {
-        --bg: url(https://static.wikitide.net/doorswiki/5/5e/The_BackDoor_Final.png);
-    }
-    
-    &.skin-theme-clientpref-black {
-        --bg: url(https://static.wikitide.net/doorswiki/c/c2/The_Several_Gates_Room.png);
-    }
+    --light-bg: url(https://static.wikitide.net/doorswiki/c/cc/The_Backdoor.png);
+    --dark-bg: url(https://static.wikitide.net/doorswiki/5/5e/The_BackDoor_Final.png);
+    --black-bg: url(https://static.wikitide.net/doorswiki/c/c2/The_Several_Gates_Room.png);
 }
 
 /* The Archives theme */
@@ -245,17 +187,11 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 280!important;
     }
     
-    &.skin-theme-clientpref-day {
-        --bg: url(https://static.wikitide.net/doorswiki/2/27/Z50ArchivesExit.png);
-    }
-    
-    &.skin-theme-clientpref-night {
-        --bg: url(https://static.wikitide.net/doorswiki/0/02/MailRoom2.png);
-    }
+    --light-bg: url(https://static.wikitide.net/doorswiki/2/27/Z50ArchivesExit.png);
+    --dark-bg: url(https://static.wikitide.net/doorswiki/0/02/MailRoom2.png);
+    --black-bg: url(https://static.wikitide.net/doorswiki/6/6d/StairwellEntrance.png);
     
     &.skin-theme-clientpref-black {
-        --bg: url(https://static.wikitide.net/doorswiki/6/6d/StairwellEntrance.png);
-        
         > body::before {
         	opacity: 0.4;
         }
@@ -268,17 +204,9 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 260!important;
     }
     
-    &.skin-theme-clientpref-day {
-        --bg: url(https://static.wikitide.net/doorswiki/6/64/The_Stairwell_screengrab_2.jpg);
-    }
-    
-    &.skin-theme-clientpref-night {
-        --bg: url(https://static.wikitide.net/doorswiki/b/b2/The_Stairwell_screengrab_1.jpg);
-    }
-    
-    &.skin-theme-clientpref-black {
-        --bg: url(https://static.wikitide.net/doorswiki/1/16/StairwellThumbnail2.png);
-    }
+    --light-bg: url(https://static.wikitide.net/doorswiki/6/64/The_Stairwell_screengrab_2.jpg);
+    --dark-bg: url(https://static.wikitide.net/doorswiki/b/b2/The_Stairwell_screengrab_1.jpg);
+    --black-bg: url(https://static.wikitide.net/doorswiki/1/16/StairwellThumbnail2.png);
 }
 
 .citizen-preferences-themepicker {
@@ -369,6 +297,22 @@ body.page-DOORS_Wiki {
 			background-color: var(--doorswiki-container-color);
 		}
 	}
+}
+
+kbd {
+    border-radius: 4px;
+    background: var(--color-surface-1);
+    border: 2px solid var(--border-color-subtle);
+    border-bottom-color: var(--dropshadow);
+    padding: 2px 4px;
+    font-family: "Cascadia Code", var(--font-family-monospace);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-small);
+	--dropshadow: oklch(from var(--color-surface-1) calc(l - 0.2) c h);
+
+    .skin-theme-clientpref-night & {
+	    --dropshadow: oklch(from var(--color-surface-1) calc(l + 0.2) c h);
+    }
 }
 
 .citizen-page-aside {
@@ -705,7 +649,8 @@ body.page-DOORS_Wiki {
 
 .mw-portlet-views .citizen-menu__heading,
 #p-associated-pages .citizen-menu__heading,
-#ca-simpleblogpage-create {
+#ca-simpleblogpage-create,
+#pt-betafeatures {
 	display: none;
 }
 
@@ -778,6 +723,114 @@ body.page-DOORS_Wiki {
 	}
 }
 
+/* theme picker */
+@media screen and (max-width: 1119px) {
+	.citizen-preferences {
+		min-width: unset!important;
+		width: 100%!important;
+	}
+}
+
+.citizen-preferences-themepicker__grid {
+	> * {
+		flex: 1;
+		
+		* {
+			width: 100%;
+		}
+	}
+	
+	.cdx-radio__wrapper:has(input.cdx-radio__input[name="skin-theme"]) {
+        &:has([value="day"]) {
+			--icon-image: url(https://upload.wikimedia.org/wikipedia/commons/1/15/OOjs_UI_icon_bright.svg);
+			--themecircle-background: var(--light-bg);
+		}
+		
+		&:has([value="night"]) {
+			--icon-image: url(https://upload.wikimedia.org/wikipedia/commons/a/a1/OOjs_UI_icon_halfBright.svg);
+			--themecircle-background: var(--dark-bg);
+		}
+		
+		&:has([value="black"]) {
+			--icon-image: url(https://upload.wikimedia.org/wikipedia/commons/7/7c/OOjs_UI_icon_moon.svg);
+			--themecircle-background: var(--black-bg); /* #333; */
+		}
+    }
+	
+	.cdx-radio__icon {
+		width: 100%;
+		height: 100%;
+		background: transparent!important;
+		border: unset!important;
+		box-shadow: unset!important;
+		display: block;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			border: unset!important;
+			height: calc(100% - 1rem);
+			aspect-ratio: 1;
+			mask-image: var(--icon-image);
+			mask-size: contain;
+			mask-repeat: no-repeat;
+			mask-position: center;
+			mix-blend-mode: difference;
+			background: white;
+			inset: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 10;
+			pointer-events: none;
+		}
+	}
+	
+	.cdx-radio__input {
+		margin: 0!important;
+	}
+	
+	.cdx-radio__wrapper .cdx-label.cdx-radio__label {
+		padding: unset!important;
+	}
+	
+	.citizen-preferences-themecircle {
+		background: var(--themecircle-background, var(--color-progressive));
+		background-size: cover;
+		border-radius: var(--border-radius-large)!important;
+		transition: var(--transition-duration-medium) background;
+	}
+}
+
+/* minor adjustments */
 .wikitable {
 	background: var(--color-surface-3);
+}
+
+#p-personal .citizen-menu__content-list {
+	display: flex;
+	flex-direction: column;
+	
+	#pt-simpleblog_myblog {
+		order: -1;
+		
+		a::before {
+			display: block;
+			width: 20px;
+			height: 20px;
+			content: '';
+			background-color: currentcolor;
+			mask-image: url(https://static.wikitide.net/doorswiki/6/68/Journal_icon.svg);
+			mask-size: contain;
+		}
+	}
+}
+
+@media screen and (min-width: 800px) {
+	.citizen-userInfo-usergroups {
+		display: flex;
+		flex-direction: column;
+		
+		> li + li::before {
+			display: none;
+		}
+	}
 }
