@@ -65,6 +65,7 @@
 	left: 0;
 	top: 50%;
 	transform: translateY(-50%);
+    object-fit: cover;
 }
 
 .doorswiki-spotlight__slide-media img,

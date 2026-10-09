@@ -405,7 +405,8 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 .doorswiki-floors-floor--video video {
 	width: 100%!important;
 	height: 100%!important;
-	filter: blur(2px)
+	filter: blur(2px);
+    object-fit: cover;
 }
 
 .doors-featured {
