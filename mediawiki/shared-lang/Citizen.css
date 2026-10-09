@@ -504,6 +504,7 @@ kbd {
 	margin-bottom: 0;
 	padding-bottom: 0;
 }
+
 .mw-portlet-External {
 	position: sticky;
 	bottom: 0;
@@ -516,16 +517,20 @@ kbd {
 	grid-column: 1 / -1;
 	white-space: nowrap
 }
+
 .mw-portlet-External .citizen-menu__heading {
 	display: none;
 }
+
 .mw-portlet-External ul {
 	display: flex;
 	overflow: auto;
 }
+
 .mw-portlet-External .mw-list-item a {
 	gap: 0;
 }
+
 .citizen-drawer__menu [id^="n-sidebar-label-"] a {
 	pointer-events: none;
 	margin-left: var(--space-xs);
@@ -537,40 +542,48 @@ kbd {
 	font-weight: var(--font-weight-normal);
 	color: var(--color-subtle) !important
 }
+
 .citizen-drawer__menu [id^="n-sidebar-icon-"] a {
 	font-size: 0;
 	content-visibility: auto;
 }
+
 .citizen-drawer__menu [id^="n-sidebar-icon-"] a::before {
 	display: block;
 	content: "";
 	width: var(--size-icon);
 	height: var(--size-icon);
-	background-color: currentColor;
+	background-color: var(--color-subtle);
 	mask-size: contain;
 	mask-repeat: no-repeat;
 	mask-position: center;
 }
+
 #n-sidebar-icon-discord a::before {
 	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/7/77/Discord_-_Simple_Icons.svg");
 			mask-image: url("https://static.wikitide.net/doorswiki/7/77/Discord_-_Simple_Icons.svg");
 }
+
 #n-sidebar-icon-twitter a::before {
 	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/6/6a/Twitter_-_Simple_Icons.svg");
 			mask-image: url("https://static.wikitide.net/doorswiki/6/6a/Twitter_-_Simple_Icons.svg");
 }
+
 #n-sidebar-icon-bluesky a::before {
 	-webkit-mask-image: url("https://static.wikitide.net/utgwiki/2/2f/Social_icon_Bluesky.svg");
 			mask-image: url("https://static.wikitide.net/utgwiki/2/2f/Social_icon_Bluesky.svg");
 }
+
 #n-sidebar-icon-github a::before {
 	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/d/dd/GitHub_-_Simple_Icons.svg");
 			mask-image: url("https://static.wikitide.net/doorswiki/d/dd/GitHub_-_Simple_Icons.svg");
 }
+
 #n-sidebar-icon-reddit a::before {
 	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/e/e8/Reddit_-_Simple_Icons.svg");
 			mask-image: url("https://static.wikitide.net/doorswiki/e/e8/Reddit_-_Simple_Icons.svg");
 }
+
 #n-sidebar-icon-roblox a::before {
 	-webkit-mask-image: url("https://static.wikitide.net/doorswiki/3/3c/Roblox_-_Simple_Icons.svg");
 			mask-image: url("https://static.wikitide.net/doorswiki/3/3c/Roblox_-_Simple_Icons.svg");
@@ -814,14 +827,24 @@ kbd {
 		
 		a::before {
 			display: block;
-			width: 20px;
-			height: 20px;
+			width: var(--size-icon);
+			height: var(--size-icon);
 			content: '';
 			background-color: currentcolor;
 			mask-image: url(https://static.wikitide.net/doorswiki/6/68/Journal_icon.svg);
 			mask-size: contain;
 		}
 	}
+}
+
+#n-Recent-files a::before {
+	display: block;
+	width: var(--size-icon);
+	height: var(--size-icon);
+	content: '';
+	background-color: currentcolor;
+	mask-image: url(https://upload.wikimedia.org/wikipedia/commons/3/34/Codex_icon_imageGallery.svg);
+	mask-size: contain;
 }
 
 @media screen and (min-width: 800px) {
