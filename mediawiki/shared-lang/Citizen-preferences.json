@@ -21,6 +21,10 @@
 			"type": "select",
 			"options": [
 				{
+					"value": 10,
+					"label": "Trick or Treat (Seasonal)"
+				},
+				{
 					"value": 0,
 					"label": "Default"
 				},
@@ -45,7 +49,7 @@
 					"label": "Stairwell"
 				}
 			],
-			"default": "0",
+			"default": "10",
 			"labelMsg": "doorswiki-mood-label",
 			"descriptionMsg": "doorswiki-mood-description"
 		}

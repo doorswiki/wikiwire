@@ -111,7 +111,7 @@
     --bg: var(--black-bg);
 }
 
-:root.client-js.doorswiki-mood-clientpref-0:has(> body.page-DOORS_Wiki) {
+:root.client-js.doorswiki-mood-clientpref-0:has(> body.page-DOORS_Wiki):not(.skin-theme-clientpref-black) {
     --bg: url(https://static.wikitide.net/doorswiki/a/a0/Hotel_Start.png);
 }
 
@@ -209,6 +209,22 @@ html:not(.doorswiki-mood-clientpref-0) {
     --black-bg: url(https://static.wikitide.net/doorswiki/1/16/StairwellThumbnail2.png);
 }
 
+/* Seasonal theme */
+:root.doorswiki-mood-clientpref-10 {
+	&[class*="skin-theme-clientpref-"] {
+        --color-primary-oklch__h: 10!important;
+    }
+    
+	--light-bg: url(https://static.wikitide.net/doorswiki/c/c0/2025TrickOrTreatPromoImage.png);
+	--dark-bg: url(https://static.wikitide.net/doorswiki/9/98/GrampySonny%26Sallys.png);
+	--black-bg: url(https://static.wikitide.net/doorswiki/a/a1/Doors_inside_the_Haunt.png);
+	
+	body::before {
+		opacity: 0.25;
+		filter: grayscale(0.6);
+	}
+}
+
 .citizen-preferences-themepicker {
 	--citizen-preview-color-primary-oklch__h: var(--color-primary-oklch__h)!important;
     --citizen-preview-color-neutral-oklch__h: var(--color-primary-oklch__h)!important;
@@ -243,9 +259,11 @@ body {
 }
 
 body.page-DOORS_Wiki {
-	&::before {
-	    filter: blur(6px);
-	    opacity: .6;
+	html:not(.skin-theme-clientpref-black) & {
+		&::before {
+		    filter: blur(6px);
+		    opacity: .6;
+		}
 	}
 	
 	.skin-theme-clientpref-day &::before {
