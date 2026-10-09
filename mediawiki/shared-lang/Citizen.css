@@ -24,12 +24,12 @@
 
     --doorswiki-surface-3: light-dark(
         rgba(255, 255, 255, 0.3),
-        rgba(0, 0, 0, 0.3)
+        rgba(0, 0, 0, 0.7)
     );
 
     --doorswiki-surface-4: light-dark(
         rgba(231, 219, 200, 0.3),
-        rgba(47, 27, 21, 0.3)
+        rgba(47, 27, 21, 0.5)
     );
 
     --color-surface-1: var(--doorswiki-surface-1);
@@ -97,13 +97,11 @@
     --color-surface-0: #000;
     --color-surface-1: #181818;
     --color-surface-2: #222;
-    --color-surface-3: #292929;
-    --color-surface-4: #303030;
+    --color-surface-3: var(--doorswiki-surface-3);
+    --color-surface-4: oklch(from #303030 l c h / 0.5);
 
     --border-color-accent: var(--doors-dark-accent);
-}
-
-:root.skin-theme-clientpref-black {
+    
 	--doorswiki-container-color-original: rgba(0, 0, 0, 0.6);
 	--doorswiki-container-color: var(--doorswiki-container-color-original);
 	

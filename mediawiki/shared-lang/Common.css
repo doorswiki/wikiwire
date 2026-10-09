@@ -38,7 +38,7 @@ MISC: Miscellaneous CSS
 /** Font Imports **/
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Yellowtail&display=swap");
 
-/* thank you Cool Leaf https://da.gd/3Wjbx */
+/* thank you https://doorsrevampedfont.straw.page/ */
 @font-face {
   font-family: 'doorsfont';
   src: url('https://static.wikitide.net/stackdwiki/c/ce/Doors-Regular.ttf') format('truetype');
@@ -1012,12 +1012,17 @@ Requires a "data-text" attribute containing the element's text. */
 
 /* built in heading icon! */
 .mw-heading2 {
+	&:has(#Overview) > #Overview,
+	&:has(#Entities) > #Entities,
     &:has(#Appearance) > #Appearance,
     &:has(#Trivia) > #Trivia,
     &:has(#Behavior) > #Behavior,
     &:has(#Behaviour) > #Behaviour,
     &:has(#Soundtracks) > #Soundtracks,
     &:has(#Gallery) > #Gallery,
+    &:has(#Journal) > #Journal,
+    &:has(#My_Journal) > #My_Journal,
+    &:has(#Bugs) > #Bugs,
     &:has(#References) > #References {
         padding-left: calc(var(--space-xxs) + 34px);
         position: relative;
@@ -1035,6 +1040,14 @@ Requires a "data-text" attribute containing the element's text. */
             mask-repeat: no-repeat;
             mask-position: center;
         }
+    }
+    
+    &:has(#Overview) > #Overview {
+        --icon-image: url(https://static.wikitide.net/doorswiki/e/ed/Eye_icon.png);
+    }
+    
+    &:has(#Entities) > #Entities {
+        --icon-image: url(https://static.wikitide.net/doorswiki/d/df/Entities_icon.png);
     }
     
     &:has(#Appearance) > #Appearance {
@@ -1056,6 +1069,15 @@ Requires a "data-text" attribute containing the element's text. */
     
     &:has(#Gallery) > #Gallery {
         --icon-image: url(https://upload.wikimedia.org/wikipedia/commons/3/34/Codex_icon_imageGallery.svg);
+    }
+    
+    &:has(#Journal) > #Journal,
+    &:has(#My_Journal) > #My_Journal {
+        --icon-image: url(https://static.wikitide.net/doorswiki/6/68/Journal_icon.svg);
+    }
+    
+    &:has(#Bugs) > #Bugs {
+        --icon-image: url(https://static.wikitide.net/doorswiki/f/f8/Bug_icon.svg);
     }
     
     &:has(#References) > #References {

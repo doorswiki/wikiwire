@@ -384,6 +384,30 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
     filter: drop-shadow(0 0 5px black);
 }
 
+.doorswiki-floors-floor--video .embedvideo-localEmbedStyle {
+	display: none;
+}
+
+.doorswiki-floors-floor--video {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	z-index: 0;
+	opacity: 0;
+	transition: .25s opacity;
+}
+
+.doorswiki-floors-floor:hover .doorswiki-floors-floor--video {
+	opacity: 1;
+}
+
+.doorswiki-floors-floor--video video {
+	width: 100%!important;
+	height: 100%!important;
+	filter: blur(2px)
+}
+
 .doors-featured {
     overflow: hidden;
 }
