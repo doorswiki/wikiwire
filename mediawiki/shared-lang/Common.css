@@ -521,6 +521,17 @@ table.diff [class*="mw-diff-inline-"] {
 	color: var(--color-emphasized);
 }
 
+.notice-compact-template {
+    background-color: rgba(106,33,33,0.3); 
+    border:3px solid #7F644B; 
+    border-radius: .7em!important; 
+    width: fit-content; 
+    padding: 5px 8px!important; 
+    font-size: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .wds-button:not(:has(> a)), 
 .wds-button:has(> a) > a,
 .doors-button:not(:has(> a)), 
@@ -1020,6 +1031,7 @@ Requires a "data-text" attribute containing the element's text. */
     &:has(#Behaviour) > #Behaviour,
     &:has(#Soundtracks) > #Soundtracks,
     &:has(#Gallery) > #Gallery,
+    &:has(#Media) > #Media,
     &:has(#Journal) > #Journal,
     &:has(#My_Journal) > #My_Journal,
     &:has(#Bugs) > #Bugs,
@@ -1067,8 +1079,9 @@ Requires a "data-text" attribute containing the element's text. */
         --icon-image: url(https://static.wikitide.net/doorswiki/0/0f/Headphones_icon.png);
     }
     
-    &:has(#Gallery) > #Gallery {
-        --icon-image: url(https://upload.wikimedia.org/wikipedia/commons/3/34/Codex_icon_imageGallery.svg);
+    &:has(#Gallery) > #Gallery,
+    &:has(#Media) > #Media {
+        --icon-image: url(https://static.wikitide.net/doorswiki/6/60/Gallery_icon.svg);
     }
     
     &:has(#Journal) > #Journal,
