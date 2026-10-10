@@ -202,7 +202,7 @@ local function generateBadgeList()
 		'<div class="badge-list-wrapper">',
 		'<div class="badge-list">',
 		'<span class="badge-list-page-actions">',
-			'[[Achievements/List|view]] • [[Talk:Achievements/List|talk]] • [https://doorsgame.wiki/wiki/Module:BadgeList source] • [https://doorsgame.wiki/wiki/Module:BadgeData data]',
+			'[[Achievements/List|view]] • [[Talk:Achievements/List|talk]] • [[Module:BadgeList|source]] • [[Module:BadgeData|data]]',
 		'</span>',
 		'<div class="badge-list-header">',
 			'<div class="badge-list-header-title">',
