@@ -3,7 +3,7 @@
 {{#invoke:AboutDoors|main
  | title1       = <span class="doors-font">[[Access Granted Update|ACCESS GRANTED]]</span>
  | description1 = The Stairwell has evolved and expanded. See what's new this update.
- | image1       = Sizzle reel Access Granted Update.mp4
+ | image1       = Sizzle reel Stairwell.mp4
  | url1         = Access Granted Update
  | duration1    = 15000
  
@@ -38,13 +38,13 @@
 
 --><div class="doorswiki-floors-floor" style="--floor-border-color: #BDAA96">
 <div class="doorswiki-floors-floor--image">[[File:Hotel Background.png|200px|link=The Hotel]]</div>
-<div class="doorswiki-floors-floor--video">[[File:DOORS TEASER TRAILER.mp4|muted|loop|nocontrols]]</div>
+<div class="doorswiki-floors-floor--video">[[File:Sizzle reel Hotel.mp4|muted|loop|nocontrols]]</div>
 <div class="doorswiki-floors-floor--logo">[[File:The Hotel wordmark.png|150px|link=]]</div>
 </div><!--
 
 --><div class="doorswiki-floors-floor" style="--floor-border-color: #C3C4CD">
 <div class="doorswiki-floors-floor--image">[[File:Mines_Background.png|200px|link=The Mines]]</div>
-<div class="doorswiki-floors-floor--video">[[File:DOORS- FLOOR 2 FULL TRAILER.mp4|muted|loop|nocontrols]]</div>
+<div class="doorswiki-floors-floor--video">[[File:Sizzle reel Mines.mp4|muted|loop|nocontrols]]</div>
 <div class="doorswiki-floors-floor--logo">[[File:The Mines wordmark.png|150px|link=]]</div>
 </div><!--
 
@@ -57,19 +57,19 @@
 
 --><div class="doorswiki-floors-floor">
 <div class="doorswiki-floors-floor--image">[[File:ArchivesIconGame.webp|200px|link=The Archives]]</div>
-<div class="doorswiki-floors-floor--video">[[File:DOORS- THE ARCHIVES TRAILER.mp4|muted|loop|nocontrols]]</div>
+<div class="doorswiki-floors-floor--video">[[File:Sizzle reel Archives.mp4|muted|loop|nocontrols]]</div>
 <div class="doorswiki-floors-floor--logo">[[File:The Archives wordmark.png|150px|link=]]</div>
 </div><!--
 
 --><div class="doorswiki-floors-floor" style="--floor-border-color: #BBCEAA">
 <div class="doorswiki-floors-floor--image">[[File:Outdoors_Background.png|200px|link=The Outdoors]]</div>
-<div class="doorswiki-floors-floor--video">[[File:DOORS- THE GREAT OUTDOORS - TRAILER.mp4|muted|loop|nocontrols]]</div>
+<div class="doorswiki-floors-floor--video">[[File:Sizzle reel Outdoors.mp4|muted|loop|nocontrols]]</div>
 <div class="doorswiki-floors-floor--logo">[[File:The Outdoors wordmark.png|150px|link=]]</div>
 </div><!--
 
 --><div class="doorswiki-floors-floor">
 <div class="doorswiki-floors-floor--image">[[File:StairwellThumbnail2.png|200px|link=The Stairwell]]</div>
-<div class="doorswiki-floors-floor--video">[[File:Sizzle reel Access Granted Update.mp4|muted|loop|nocontrols]]</div>
+<div class="doorswiki-floors-floor--video">[[File:Sizzle reel Stairwell.mp4|muted|loop|nocontrols]]</div>
 <div class="doorswiki-floors-floor--logo">[[File:The Stairwell wordmark.png|150px|link=]]</div>
 </div><!--
 
