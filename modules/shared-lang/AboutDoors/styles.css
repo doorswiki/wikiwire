@@ -59,18 +59,33 @@
 	object-position: center;
 }
 
+.doorswiki-spotlight__slide .embedvideo-wrapper {
+	width: 100%;
+	height: 100%;
+}
+
 .doorswiki-spotlight__slide video {
 	width: 100%!important;
 	position: absolute;
-	left: 0;
 	top: 50%;
-	transform: translateY(-50%);
+	left: 50%;
+	transform: translate(-50%, -50%) !important;
     object-fit: cover;
+    opacity: 0;
+    transition: .25s opacity;
+}
+
+.doorswiki-spotlight__slide video.is-loaded {
+    opacity: 1;
 }
 
 .doorswiki-spotlight__slide-media img,
 .doorswiki-spotlight__slide video {
 	mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5), black 100%);
+}
+
+.doorswiki-spotlight__slide .embedvideo-localEmbedStyle {
+	display: none!important;
 }
 
 .doorswiki-spotlight__slide-placeholder {

@@ -1,3 +1,4 @@
+* Countdown[ResourceLoader|default|hidden|type=general]|Countdown.js
 == utilities ==
 * RefRevision[ResourceLoader|type=general]|RefRevision.js
 * RCSidebar[ResourceLoader|default] | RecentChangesSidebar.js|RecentChangesSidebar.css

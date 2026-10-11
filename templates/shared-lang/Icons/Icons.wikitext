@@ -3,6 +3,7 @@
 | archives    = Icon ARCHIVES.png
 | backdoor    = Icon BACKDOOR.png
 | backpack    = BackpackIcon.svg
+| battle mode = BATTLE Mode icon.png
 | behavior    = Skull icon, monochrome.png
 | bell        = DoorsWikiUI Bell.svg
 | bugs        = Bug icon.svg
@@ -21,12 +22,12 @@
 | door        = Doors no tilt icon.png
 | elevator    = ElevatorIcon.png
 | energy      = Icons energyicon.png
-| entities    = Entities icon new.svg
+| entities    = Entities icon.svg
 | events      = Events icon.png
 | exchange    = Exchange.png
 | exclamation = SpoilerIcon.png
 | exit        = MergeIcon.png
-| exploiting  = Doors exploiting icon.png
+| exploiting  = Script icon.png
 | fire        = Fire icon.png
 | floor       = Stair icon.png
 | friends     = Friends icon.png
@@ -69,10 +70,12 @@
 | puzzles     = Puzzle icon.svg
 | question    = QuestionMark.png
 | references  = REFERENCES.png
+| retro mode  = Retro Mode icon.svg
 | revive      = Revive icon, monochrome.png
 | rift        = Rift icon, monochrome.svg
 | robux       = Robux icon.svg
 | rooms       = Rooms icon.svg
+| rush mode   = Rush Mode icon.png
 | saves       = Savesicon.svg
 | settings    = Settings icon.svg
 | sit         = Sit icon.svg
@@ -82,6 +85,8 @@
 | stairwell   = Icon STAIRWELL.png
 | star        = Star icon.png
 | starlight   = Starlight monochrome icon.svg
+| streak      = Streak icon.png
+| super hard mode = Super Hard Mode icon.svg
 | trash       = IconUnused.png
 | trivia      = Bulb icon.png
 | trolley     = Trolley icon.svg
