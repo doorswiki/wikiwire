@@ -1,3 +1,4 @@
+
 -- [[Module:BadgeList]]
 
 -- Used for:
@@ -5,6 +6,7 @@
 -- extracting individual badge counts, used via [[Template:BadgeCount]]
 -- extracting individual badge reward counts, used via [[Template:BadgeRewardsCount]]
 -- generating individual badge lists, used via [[Template:BadgeAuto]]
+-- generating a progression-only badge list via on [[Achievements/Progression]]
 
 -- Operates completely under [[Module:BadgeData]]
 
@@ -44,7 +46,7 @@ end
 
 local function buildBadge(badge, currentTitle)
 	local object = objectData[badge.title] or {}
-	
+
 	local borderClass = 'badge-border '
 	if badge.secret then
 		borderClass = borderClass .. 'badge-border-secret '
@@ -55,23 +57,23 @@ local function buildBadge(badge, currentTitle)
 			'<div class="' .. borderClass .. colorClass(badge.color or object.color) .. '"></div>' ..
 			img(badge.image or object.icon, 140) ..
 		'</div>'
-		
+
 	local link = badge.id and 'https://www.roblox.com/badges/' .. badge.id or false
 	local titleHtml =
 		'<div class="badge-title">' ..
 			color(currentTitle or badge.title, {text=badge.title, link=link}) ..
 		'</div>'
-		
+
 	local tags = {}
 	if badge.secret then tags[#tags+1] = 'SECRET' end
 	if badge.hidden then tags[#tags+1] = 'HIDDEN' end
 	if not badge.obtainable then tags[#tags+1] = 'UNOBTAINABLE' end
-	
+
 	local tagsHtml = ''
 	if #tags > 0 then
 		tagsHtml = '<div class="badge-tags">' .. table.concat(tags, ', ') .. '</div>'
 	end
-	
+
 	-- Wiki is limited to 99 'expensive parser function' calls
 	-- Unfortunately only first 99 badges will have owners shown
 	-- The only thing remains is to wait for 'badges' api call to get added
@@ -165,7 +167,7 @@ local function buildBadge(badge, currentTitle)
 	if badge.oldVersions then
 		buttons[#buttons+1] =
 			'<div class="badge-oldversions-button badge-button">' ..
-				img('Journal', 40)  ..
+				img('Journal', 40) ..
 			'</div>'
 
 		local oldContent = {}
@@ -253,7 +255,7 @@ local function generateBadgeList()
 			'Total: \'\'\'' .. total .. '\'\'\'' ..
 		'</span>' ..
 		'<span class="badge-list-progression">' ..
-			'Progression: \'\'\'' .. progression .. '\'\'\'' ..
+			'[[Achievements/Progression|Progression]]: \'\'\'' .. progression .. '\'\'\'' ..
 		'</span>' ..
 		'</div>'
 
@@ -440,5 +442,78 @@ function p.main(frame)
 
 	return frame:preprocess(generateBadgeList())
 end
+
+
+function p.BadgeProgression(frame)
+	local out = {
+		'<templatestyles src="Badge/styles.css" />',
+		'<div class="badge-list-wrapper">',
+			'<div class="badge-list">',
+				'<span class="badge-list-page-actions">',
+					'[[Talk:Achievements/List|talk]] • [[Module:BadgeList|source]] • [[Module:BadgeData|data]]',
+				'</span>',
+			'<div class="badge-list-header">',
+				'<div class="badge-list-header-title">',
+					obj('Achievements', { size=35 }),
+				'</div>',
+				'<div class="badge-list-header-subtitle">',
+					'Below is a list of all current progression achievements',
+				'</div>',
+			'</div>',
+			'<div class="badge-list-badges">',
+				'<tabber>',
+	}
+
+	local total = 0
+
+	for _, badgeType in ipairs(order) do
+		local badges = badgeData[badgeType] or {}
+		local progressionBadges = {}
+	
+		for _, badge in ipairs(badges) do
+			if not badge.secret then
+				progressionBadges[#progressionBadges+1] = badge
+			end
+		end
+	
+		if #progressionBadges > 0 then
+			total = total + #progressionBadges
+	
+			out[#out+1] =
+				'|-|' .. badgeType .. '=' ..
+				'<div class="badge-list-badges-title">' ..
+					string.upper(badgeType) .. ' (' .. #progressionBadges .. ')' ..
+				'</div>' ..
+				'<div class="badge-list-badges-wrapper">' ..
+					'<div class="badge-list-badges-type">'
+	
+			for _, badge in ipairs(progressionBadges) do
+				out[#out+1] = buildBadge(badge)
+			end
+	
+			out[#out+1] =
+					'</div>' ..
+				'</div>'
+		end
+	end
+
+	out[#out+1] =
+				'</tabber>' ..
+				'</div>' ..
+			'</div>' ..
+		'</div>'
+
+	local totalsHtml =
+		'<div class="badge-list-totals">' ..
+			'<span class="badge-list-total">' ..
+				'Total: \'\'\'' .. total .. '\'\'\'' ..
+			'</span>' ..
+		'</div>'
+
+	table.insert(out, 2, totalsHtml)
+
+	return frame:preprocess(table.concat(out, '\n'))
+end
+
 
 return p
