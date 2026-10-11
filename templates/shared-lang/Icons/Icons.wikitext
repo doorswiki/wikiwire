@@ -30,7 +30,7 @@
 | fire        = Fire icon.png
 | floor       = Stair icon.png
 | friends     = Friends icon.png
-| gallery     = Gallery icon.png
+| gallery     = Gallery icon.svg
 | gift        = Gifting icon.png
 | glitch      = Glitchicon.png
 | hazards     = Hazards icon.png

@@ -1033,8 +1033,15 @@ Requires a "data-text" attribute containing the element's text. */
     &:has(#Gallery) > #Gallery,
     &:has(#Media) > #Media,
     &:has(#Journal) > #Journal,
-    &:has(#My_Journal) > #My_Journal,
     &:has(#Bugs) > #Bugs,
+    &:has(#History) > #History,
+    &:has(#Achievements) > #Achievements,
+    &:has(#Modifiers) > #Modifiers,
+    &:has(#Notes) > #Notes,
+    &:has(#Abilities) > #Abilities,
+    &:has(#Strategy) > #Strategy,
+    &:has(#Puzzles) > #Puzzles,
+    &:has(#Rooms) > #Rooms,
     &:has(#References) > #References {
         padding-left: calc(var(--space-xxs) + 34px);
         position: relative;
@@ -1084,13 +1091,44 @@ Requires a "data-text" attribute containing the element's text. */
         --icon-image: url(https://static.wikitide.net/doorswiki/6/60/Gallery_icon.svg);
     }
     
-    &:has(#Journal) > #Journal,
-    &:has(#My_Journal) > #My_Journal {
+    &:has(#Journal) > #Journal {
         --icon-image: url(https://static.wikitide.net/doorswiki/6/68/Journal_icon.svg);
     }
     
     &:has(#Bugs) > #Bugs {
         --icon-image: url(https://static.wikitide.net/doorswiki/f/f8/Bug_icon.svg);
+    }
+    
+    &:has(#History) > #History {
+        --icon-image: url(https://static.wikitide.net/doorswiki/9/9f/Magnifier_icon.png);
+    }
+    
+    &:has(#Achievements) > #Achievements {
+        --icon-image: url(https://static.wikitide.net/doorswiki/5/5c/Achievements_icon.svg);
+    }
+    
+    &:has(#Modifiers) > #Modifiers {
+        --icon-image: url(https://static.wikitide.net/doorswiki/1/14/Modifiers_monochrome_icon.png);
+    }
+    
+    &:has(#Notes) > #Notes {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/a/aa/Credits_icon.svg);
+    }
+    
+    &:has(#Abilities) > #Abilities {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/f/f1/Hiding_icon.png);
+    }
+    
+    &:has(#Strategy) > #Strategy {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/6/6d/Crucifix_wiki_icon.png);
+    }
+    
+    &:has(#Puzzles) > #Puzzles {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/4/47/Puzzle_icon.svg);
+    }
+    
+    &:has(#Rooms) > #Rooms {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/8/80/Enter_icon.png);
     }
     
     &:has(#References) > #References {

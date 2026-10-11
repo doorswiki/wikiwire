@@ -1,4 +1,4 @@
-<!--
+ <!--
 - Documentation template
 - A template used to show the contents of a documentation subpage
 - Note: Comments (<!-- --.>) are often used to avoid unnecessary line breaks or spaces.
@@ -7,12 +7,7 @@
 - Pre-defined variables
 --><!--
 -->{{#vardefine: base page |
-  {{{page|
-    {{#ifeq: {{SUBPAGENAME}} | sandbox
-    | {{NAMESPACE}}:{{BASEPAGENAME}}
-    | {{FULLPAGENAME}}
-    }}
-  }}}
+  {{{page|{{FULLPAGENAME}}}}}
 }}<!--
 
 -->{{#vardefine: current page | {{FULLPAGENAME}}}}<!--
@@ -38,17 +33,6 @@
   {{{preload|Template:Documentation/preload}}}&summary={{urlencode:Create /doc subpage for [[{{#var: base page}}]]}}&editintro=Template:Documentation/editintro-doc
 }}<!--
 
--->{{#vardefine: preload-sandbox | 
-  {{{preload-sandbox|Template:Documentation/preload-sandbox}}}&summary={{urlencode:Create sandbox subpage for experimenting on template [[{{#var: base page}}]]}}
-}}<!--
-
--->{{#vardefine: sandbox |
-  {{#if: {{{page|}}}
-  | {{{page}}}/sandbox
-  | {{{sandbox|{{#var: base page}}/sandbox}}}
-  }}
-}}<!--
-
 -->{{#vardefine: page text | 
   {{#switch: {{#var: namespace}}
   | {{ns:Template}} = template
@@ -68,15 +52,6 @@
       }}
     }}.svg|70px|link=|alt=|class=nomobile]]&nbsp;
   }}
-}}<!--
--
-- Sandbox header
--
--->{{#ifeq: {{SUBPAGENAMEE}} | sandbox
-   | <div class="article-table documentation"
-style="padding:1.5em; margin:auto; border:1px solid #5556; border-bottom:1px solid #5556; width:75%"><!--
-  -->This is a template sandbox subpage for [[{{#var: base page}}]]. <!--
- --></div>
 }}<!--
 
 --><div class="template-documentation" style="clear:both; border:1px solid #5556; margin:1em"><!--
@@ -125,49 +100,14 @@ style="padding:1.5em; margin:auto; border:1px solid #5556; border-bottom:1px sol
 -->{{#if: {{{content|}}}
    | <!-- do not show -->
    | {{#ifexist: {{#var: doc page}}
-     | {{#ifeq: {{SUBPAGENAME}} | sandbox
-       | This is the sandbox subpage of [[{{#var: base page}}]];
-       | The above
-       }}&nbsp;[[w:Help:Template documentation|documentation]] is [[mw:Help:Transclusion|transcluded]] from [[{{#var: doc page}}]]. <small>([[Special:EditPage/{{#var: doc page}}|edit]] &#124; [[Special:PageHistory/{{#var: doc page}}|history]])</small><br/>
+     | The above&nbsp;[[w:Help:Template documentation|documentation]] is [[mw:Help:Transclusion|transcluded]] from [[{{#var: doc page}}]]. <small>([[Special:EditPage/{{#var: doc page}}|edit]] &#124; [[Special:PageHistory/{{#var: doc page}}|history]])</small><br/>
    
      | {{#ifeq: {{#var: namespace}} | {{ns:Module}}
-       | You might want to [{{fullurl:{{FULLPAGENAMEE:{{#var: doc page}}}}|action=edit&preload={{#var: preload}} }} create documentation] for this [[w:Help:Lua|Scribuntu module]]. <br/>
+       | You might want to [{{fullurl:{{FULLPAGENAMEE:{{#var: doc page}}}}|action=edit&preload={{#var: preload}} }} create documentation] for this [[w:Help:Lua|Scribunto module]]. <br/>
        | [{{fullurl:{{FULLPAGENAMEE:{{#var: doc page}}}}|action=edit&preload={{#var: preload}} }} Create documentation] for this template. <br/>
        }}
      }}
    }}<!--
-   -
-   - Sandboxes.
-   -
-   - NOTE: THIS WILL CREATE MANY (yes, MANY) REDLINKS (IF YOU DIDN'T MAKE THE /sandbox PAGE). IF YOU DONT WANT THE LINKS, PLEASE REPLACE THE CODE BELOW WITH:
-   <
-     Editors can experiment in the page's [{{fullurl: {{#var: sandbox}}}} sandbox] page.
-   >
-   -
-   --><!--
---><!-- CHANGE START --><!--
--->Editors can experiment in this {{#var: page text}}'s <!--
-   -
--->{{#ifexist: {{#var: sandbox}}
-   | [[{{#var: sandbox}}|sandbox]] <!--
-   --><small>(<!--
-     -->[[Special:EditPage/{{#var: sandbox}}|edit]] &#124; <!--
-     -->[{{fullurl: Special:ComparePages
-         | page1={{FULLPAGENAMEE:{{#var: base page}}}}&page2={{FULLPAGENAMEE:{{#var: current page}}}}
-         }} diff]<!--
-   -->)</small>
-      
-   | sandbox <small>(<!--
-   -->[{{fullurl: {{FULLPAGENAMEE:{{#var: sandbox}}}}
-     | action=edit&preload={{#var: preload-sandbox}}
-     }} create] &#124; [{{fullurl: {{FULLPAGENAMEE:{{#var: sandbox}}}}
-     | action=edit&preload={{FULLPAGENAMEE:{{#var: base page}}}}
-     }} mirror]<!--
-   -->)</small>
-   
-   }}<!--
-   --> page.<br/><!--
-   --><!-- CHANGE END --><!--
    -
    - Category addition text & subpages text.
    -

@@ -859,7 +859,7 @@ kbd {
 	height: var(--size-icon);
 	content: '';
 	background-color: currentcolor;
-	mask-image: url(https://upload.wikimedia.org/wikipedia/commons/3/34/Codex_icon_imageGallery.svg);
+	mask-image: url(https://static.wikitide.net/doorswiki/6/60/Gallery_icon.svg);
 	mask-size: contain;
 }
 
@@ -872,4 +872,8 @@ kbd {
 			display: none;
 		}
 	}
+}
+
+.page-DOORS_Wiki .mwe-popups {
+	display: none!important;
 }
