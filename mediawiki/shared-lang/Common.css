@@ -1030,7 +1030,6 @@ Requires a "data-text" attribute containing the element's text. */
     &:has(#Behavior) > #Behavior,
     &:has(#Behaviour) > #Behaviour,
     &:has(#Soundtracks) > #Soundtracks,
-    &:has(#Gallery) > #Gallery,
     &:has(#Media) > #Media,
     &:has(#Journal) > #Journal,
     &:has(#Bugs) > #Bugs,
@@ -1042,6 +1041,8 @@ Requires a "data-text" attribute containing the element's text. */
     &:has(#Strategy) > #Strategy,
     &:has(#Puzzles) > #Puzzles,
     &:has(#Rooms) > #Rooms,
+    &:has(#Usage) > #Usage,
+    &:has(#Item_Skins) > #Item_Skins,
     &:has(#References) > #References {
         padding-left: calc(var(--space-xxs) + 34px);
         position: relative;
@@ -1086,7 +1087,6 @@ Requires a "data-text" attribute containing the element's text. */
         --icon-image: url(https://static.wikitide.net/doorswiki/0/0f/Headphones_icon.png);
     }
     
-    &:has(#Gallery) > #Gallery,
     &:has(#Media) > #Media {
         --icon-image: url(https://static.wikitide.net/doorswiki/6/60/Gallery_icon.svg);
     }
@@ -1129,6 +1129,14 @@ Requires a "data-text" attribute containing the element's text. */
     
     &:has(#Rooms) > #Rooms {
     	--icon-image: url(https://static.wikitide.net/doorswiki/8/80/Enter_icon.png);
+    }
+    
+    &:has(#Usage) > #Usage {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/2/26/Lighter_button_icon.png);
+    }
+    
+    &:has(#Item_Skins) > #Item_Skins {
+    	--icon-image: url(https://static.wikitide.net/doorswiki/5/51/Backpack_icon.svg);
     }
     
     &:has(#References) > #References {

@@ -75,6 +75,7 @@ General = {
 			rewards = nil,
 			secret = false,
 			hidden = true,
+			obtainable = true
 		}
 	},
 },
@@ -165,6 +166,7 @@ General = {
 			rewards = nil,
 			secret = false,
 			hidden = true,
+			obtainable = true
 		}
 	},
 },
@@ -325,15 +327,15 @@ General = {
 	id = '1888162062641412',
 	oldVersions = {
 		{
-				title = 'Paperclip Challenge',
-				text = 'Think I can buy a house with this?',
-				directions = 'Use a [[Depot]] to earn some [[Gold]].',
-				tutorial = nil,
-				references = nil,
-				rewards = nil,
-				secret = false,
-				hidden = true,
-				obtainable = true, 
+			title = 'Paperclip Challenge',
+			text = 'Think I can buy a house with this?',
+			directions = 'Use a [[Depot]] to earn some [[Gold]].',
+			tutorial = nil,
+			references = nil,
+			rewards = nil,
+			secret = false,
+			hidden = true,
+			obtainable = true, 
 		}
 	}
 },
@@ -384,6 +386,7 @@ General = {
 			rewards = nil,
 			secret = false,
 			hidden = true,
+			obtainable = true
 		}
 	},
 },
@@ -460,16 +463,15 @@ General = {
     id = '2639886537747907',
     oldVersions = {
     	{
-    		    title = 'Garage Sale',
-    text = 'No refunds.',
-    directions = 'Open a garage with a [[Garage Key]].',
-    tutorial = nil,
-    references = nil,
-    rewards = nil,
-    secret = false,
-    hidden = nil,
-    obtainable = true,
-    id = '2639886537747907',
+    		title = 'Garage Sale',
+		    text = 'No refunds.',
+		    directions = 'Open a garage with a [[Garage Key]].',
+		    tutorial = nil,
+		    references = nil,
+		    rewards = nil,
+		    secret = false,
+		    hidden = nil,
+		    obtainable = true,
     	}
     }
 },
@@ -485,17 +487,17 @@ General = {
     obtainable = true,
     id = '1563321829226488',
     oldVersions = {
-    	{    title = 'Clay World',
-    text = 'It was a little overdone anyway.',
-    directions = 'Scrap a [[Ceramic Stem]].',
-    tutorial = 'Cook a [[Stem]] via the [[Fire Sprinklers]], and then place it into a [[Depot]].',
-    references = nil,
-    rewards = nil,
-    secret = false,
-    hidden = nil,
-    obtainable = true,
-    id = '1563321829226488',
-    }
+    	{    
+    		title = 'Clay World',
+		    text = 'It was a little overdone anyway.',
+		    directions = 'Scrap a [[Ceramic Stem]].',
+		    tutorial = 'Cook a [[Stem]] via the [[Fire Sprinklers]], and then place it into a [[Depot]].',
+		    references = nil,
+		    rewards = nil,
+		    secret = false,
+		    hidden = nil,
+		    obtainable = true,
+    	},
     }
 },
 {
@@ -521,6 +523,7 @@ General = {
 			rewards = nil,
 			secret = false,
 			hidden = true,
+			obtainable = true
 		}
 	},
 },
@@ -815,6 +818,7 @@ Entities = {
 			rewards = nil,
 			secret = false,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -841,6 +845,7 @@ Entities = {
 			rewards = nil,
 			secret = true,
 			hidden = true,
+			obtainable = true
 		},
 		{
 			title = 'Trial and Error',
@@ -856,7 +861,6 @@ Entities = {
 			secret = false,
 			hidden = false,
 			obtainable = true, 
-	id = '3994503755162324',
 		},
 	},
 },
@@ -1065,16 +1069,15 @@ Entities = {
     id = '657088209891725',
     oldVersions = {
     	{
-    		    title = 'Conga Line',
-    text = 'Hey! Chachacha... Hey!',
-    directions = 'Be followed by 6 instances of [[Noise]] at once.',
-    tutorial = 'Get 6 instances of [[Noise]] to follow you.',
-    references = nil,
-    rewards = nil,
-    secret = true,
-    hidden = nil,
-    obtainable = true,
-    id = '657088209891725',
+			title = 'Conga Line',
+		    text = 'Hey! Chachacha... Hey!',
+		    directions = 'Be followed by 6 instances of [[Noise]] at once.',
+		    tutorial = 'Get 6 instances of [[Noise]] to follow you.',
+		    references = nil,
+		    rewards = nil,
+		    secret = true,
+		    hidden = nil,
+		    obtainable = true,
     	}
     }
 },
@@ -1154,6 +1157,7 @@ Items = {
 			rewards = nil,
 			secret = true,
 			hidden = true,
+			obtainable = true
 		}
 	},
 },
@@ -1308,16 +1312,15 @@ Items = {
     id = '345152883716556',
     oldVersions = {
     	{
-    		    title = 'Flash Point',
-    text = 'That was fire.',
-    directions = 'Successfully light a [[Flare]] in under a second.',
-    tutorial = nil,
-    references = nil,
-    rewards = nil,
-    secret = false,
-    hidden = true,
-    obtainable = true,
-    id = '345152883716556',
+    		title = 'Flash Point',
+		    text = 'That was fire.',
+		    directions = 'Successfully light a [[Flare]] in under a second.',
+		    tutorial = nil,
+		    references = nil,
+		    rewards = nil,
+		    secret = false,
+		    hidden = true,
+		    obtainable = true,
     	}
     }
 },
@@ -1587,6 +1590,7 @@ Crucifix = {
 			rewards = nil,
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -1769,6 +1773,7 @@ Crucifix = {
 			rewards = nil,
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -1983,6 +1988,7 @@ Challenges = {
 			rewards = nil,
 			secret = false,
 			hidden = true,
+			obtainable = true
 		}
 	},
 },
@@ -2046,6 +2052,7 @@ Battle = {
 			},
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 		{
 			title = 'In Plain Sight 2',
@@ -2060,6 +2067,7 @@ Battle = {
 			},
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2249,6 +2257,7 @@ Visions = {
 			},
 			secret = false,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2309,6 +2318,7 @@ Visions = {
 			},
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2346,6 +2356,7 @@ Collab = {
 			},
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2392,6 +2403,7 @@ Collab = {
 			},
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2424,6 +2436,7 @@ Collab = {
 			},
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2456,6 +2469,7 @@ Collab = {
 			},
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2532,7 +2546,7 @@ Events = {
 			rewards = nil,
 			secret = false,
 			hidden = false,
-			id = '1561848305836932',
+			obtainable = true
 		},
 	},
 },
@@ -2562,7 +2576,7 @@ Events = {
 			rewards = nil,
 			secret = false,
 			hidden = false,
-			id = '2373489378718790',
+			obtainable = true
 		},
 	},
 },
@@ -2682,6 +2696,7 @@ Events = {
 			rewards = nil,
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2720,6 +2735,7 @@ Events = {
 			rewards = nil,
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2775,6 +2791,7 @@ Legacy = {
 			rewards = nil,
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },
@@ -2811,6 +2828,7 @@ Legacy = {
 			rewards = nil,
 			secret = true,
 			hidden = true,
+			obtainable = true
 		}
 	},
 },
@@ -2842,6 +2860,7 @@ Unlisted = {
 			rewards = nil,
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 		{
 			title = 'Double Feature',
@@ -2854,6 +2873,7 @@ Unlisted = {
 			rewards = nil,
 			secret = true,
 			hidden = false,
+			obtainable = true
 		},
 	},
 },	
