@@ -1,31 +1,37 @@
 <div class="doorswiki-logo-container">[[File:DOORS Wiki.png|400px|link=|class=doorswiki-logo]]</div>
 <div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History|size=20x20px}} Search {{SITENAME}}... <kbd>/</kbd></div> {{Hoverimg|[[File:Roblox_Beige Logo.png|30px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
 {{#invoke:AboutDoors|main
- | title1       = <span class="doors-font">[[Access Granted Update|ACCESS GRANTED]]</span>
- | description1 = The Stairwell has evolved and expanded. See what's new this update.
- | image1       = Sizzle reel Stairwell.webm
- | url1         = Access Granted Update
- | duration1    = 15000
+ | title1       = <span class="doors-font">[[Candy Vault 2026|CANDY VAULT 2026]]</span>
+ | description1 = The Candy Vault event begins {{Countdown|1792692000}}. Get notified [https://www.roblox.com/events/1798388131439968912 here].
+ | image1       = Candy Vault removed watermark.png
+ | url1         = Candy Vault 2026
+ | duration1    = 10000
+
+ | title2       = <span class="doors-font">[[Access Granted Update|ACCESS GRANTED]]</span>
+ | description2 = The Stairwell has evolved and expanded. See what's new this update.
+ | image2       = Sizzle reel Stairwell.webm
+ | url2         = Access Granted Update
+ | duration2    = 10000
  
- | title2       = [[File:DOORS Logo.png|100px|link=DOORS]]
- | description2 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].
- | image2       = Hotel_Backroom5.png
- | url2         = DOORS
+ | title3       = [[File:DOORS Logo.png|100px|link=DOORS]]
+ | description3 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].
+ | image3       = Hotel_Backroom5.png
+ | url3         = DOORS
 
- | title3       = <span class="doors-font">[[Entities|ENTITIES]]</span>
- | description3 = While exploring different rooms, look out for entities. Many of them attempt to kill players, аnd they must be faced in order to advance.
- | image3       = AmbushComintoYourFace.png
- | url3         = Entities
+ | title4       = <span class="doors-font">[[Entities|ENTITIES]]</span>
+ | description4 = While exploring different rooms, look out for entities. Many of them attempt to kill players, аnd they must be faced in order to advance.
+ | image4       = AmbushComintoYourFace.png
+ | url4         = Entities
 
- | title4       = <span class="doors-font">[[Items|ITEMS]]</span>
- | description4 = Items are useful tools found throughout any run of any floor. They do not save the next time you enter a run.
- | image4       = JeffShopHotelPlate.png
- | url4         = Items
+ | title5       = <span class="doors-font">[[Items|ITEMS]]</span>
+ | description5 = Items are useful tools found throughout any run of any floor. They do not save the next time you enter a run.
+ | image5       = JeffShopHotelPlate.png
+ | url5         = Items
 
- | title5       = <span class="doors-font">[[Floors|FLOORS]]</span>
- | description5 = Floors are areas that players progress the story in, serving as the 'chapters' for the game. These floors may contain different items and entities from the previous floor, along with brand-new locations.
- | image5       = Gardenentrance.png
- | url5         = Floors
+ | title6       = <span class="doors-font">[[Floors|FLOORS]]</span>
+ | description6 = Floors are areas that players progress the story in, serving as the 'chapters' for the game. These floors may contain different items and entities from the previous floor, along with brand-new locations.
+ | image6       = Gardenentrance.png
+ | url6         = Floors
 
  <!-- |title3=Rush Mode Update
  |description3=Another featured article.
