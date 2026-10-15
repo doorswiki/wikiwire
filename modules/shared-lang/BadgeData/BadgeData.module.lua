@@ -975,7 +975,7 @@ Entities = {
 {
 	title = 'Fih Are Friends',
 	text = 'Women fear me.',
-	directions = 'Fead the [[Fih]].',
+	directions = 'Feed the [[Fih]].',
 	tutorial = 'Use [[Fih Food]] on a Fih tank in [[The Archives]].',
 	references = 'The title is likely a reference to the quote "Fish are friends, not food," from the movie Finding Nemo. The description is also likely a reference to the meme "Fish want me, Women fear me."',
 	rewards = nil,
