@@ -744,6 +744,49 @@ kbd {
     }
 }
 
+/* New file version upload button on file pages */
+#mw-imagepage-reupload-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    padding: 0.4em 0.7em;
+    background: var(--color-surface-3);
+    border: 1px solid var(--color-surface-2);
+    border-radius: var(--border-radius-pill);
+    font-weight: 500;
+    transition: .1s ease-in-out;
+    
+	&::before {
+	    content: "";
+	    width: 24px;
+	    height: 24px;
+	    background-color: currentColor;
+	    mask: url("https://static.wikitide.net/doorswiki/1/10/DoorsWikiUI_Upload.svg") center / contain no-repeat;
+	    transition: .1s ease-in-out;
+	}
+	
+	&:hover {
+	    border-color: var(--accent-color-base);
+	}
+
+	&:hover::before {
+	    transform: translateY(-2px);
+	}
+	
+	a {
+	    text-decoration: unset;
+	
+		&::after {
+		    content: "";
+		    position: absolute;
+		    inset: -1px;
+		    margin: 0;
+		}
+	}
+}
+
 /* bucket icon */
 #n-bucket a {
 	position: relative;
@@ -887,4 +930,16 @@ kbd {
 
 .page-DOORS_Wiki .mwe-popups {
 	display: none!important;
+}
+
+.doorswiki-page-actions {
+	width: fit-content;
+	margin-left: auto;
+	margin-right: 10px;
+	padding: var(--space-xs);
+    background: oklch(from var(--color-surface-2) l c h / 50%);
+	border: var(--border-base);
+	border-bottom: 0;
+	border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+	line-height: 1;
 }

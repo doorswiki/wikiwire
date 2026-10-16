@@ -343,7 +343,7 @@ local function generateBadgeAuto(frame)
 
 	local out = {
 		'<templatestyles src="Color/styles.css" /><templatestyles src="Badge/styles.css" />',
-		'<div class="badge-auto-edit">' ..
+		'<div class="doorswiki-page-actions">' ..
 			'[[Module:BadgeList|source]] • [[Module:BadgeData|data]]' ..
 		'</div>' ..
 		'<div class="badge-list-wrapper">' ..
