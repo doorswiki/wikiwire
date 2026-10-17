@@ -1275,9 +1275,9 @@ Items = {
 	directions = 'Start and beat [[Charles|Egg]] during any chase sequence.',
 	tutorial = 'Trade any [[Scanner Module]] with Louie to get the EGG Module, and complete it entirely within a chase sequence.',
 	references = nil,
-			rewards = {
-            'CrackedGamerBadgeAward.png',
-			},
+	rewards = {
+    	'Scanner icon.png', -- placeholder until the media exists
+	},
 	secret = true,
 	hidden = true,
 	obtainable = true, 
