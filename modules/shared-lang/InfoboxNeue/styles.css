@@ -34,7 +34,7 @@
 	position: relative;
 }
 
-.infobox[open]::before, .infobox__open::before {
+/* .infobox[open]::before, .infobox__open::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -46,7 +46,7 @@
     user-select: none;
     border-radius: inherit;
     mask-image: linear-gradient(to bottom, transparent 40%, black 100%);
-}
+} */
 
 .infobox__content {
 	position: relative;

@@ -413,6 +413,44 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
     overflow: hidden;
 }
 
+.doorswiki-recent-discussions,
+.doorswiki-recent-edits {
+	text-align: left!important;
+	position: relative;
+	overflow: hidden;
+}
+
+.doorswiki-recent-discussions::before,
+.doorswiki-recent-edits::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 45%;
+	height: 100%;
+	aspect-ratio: 1;
+	z-index: -1;
+	background: var(--color-base);
+	opacity: 0.3;
+	mask-size: auto 90%;
+	mask-position: center center;
+	mask-repeat: no-repeat;
+}
+
+.doorswiki-recent-edits::before {
+	mask-image: url(https://static.wikitide.net/doorswiki/2/25/PencilGrayscale.svg);
+}
+
+.doorswiki-recent-discussions::before {
+	mask-image: url(https://upload.wikimedia.org/wikipedia/commons/6/68/Codex_icon_speechBubbles.svg);
+}
+
+.doorswiki-recent-fade {
+	max-height: 300px; 
+	overflow: hidden auto; 
+	mask-image: linear-gradient(to bottom, black 80%, transparent); 
+	padding-bottom: 2rem;
+}
+
 .imagecard {
 	mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%); 
 	position: absolute; 

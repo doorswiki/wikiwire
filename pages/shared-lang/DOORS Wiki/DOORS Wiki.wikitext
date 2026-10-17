@@ -100,9 +100,10 @@
 
 -->{{DOORS Wiki/Socials}}<!--
 
---><div class="home-container" style="text-align: left">
+--><div class="doors-gridlayout"><!--
+--><div class="home-container doorswiki-recent-discussions">
 <div class="home-container--title">RECENT DISCUSSIONS</div>
-<div style="max-height: 300px; overflow: hidden auto; mask-image: linear-gradient(to bottom, black 80%, transparent); padding-bottom: 2rem;">
+<div class="doorswiki-recent-fade">
 {{#dpl:
   | namespace    = Talk
   | ordermethod  = lastedit
@@ -114,8 +115,25 @@
   | userdateformat = M d, Y
   | format     = {¦ class="timeline" ,¶¦-¶¦[[%PAGE%|%TITLE%]]¶¦[[User:%USER%|%USER%]] • %DATE%,,¶¦}
 }}</div>
-{{timeline styles}}
 </div><!--
+
+--><div class="home-container doorswiki-recent-edits">
+<div class="home-container--title">RECENT EDITS</div>
+<div class="doorswiki-recent-fade">
+{{#dpl:
+  | namespace    = 
+  | ordermethod  = lastedit
+  | order        = descending
+  | count        = 10
+  | mode          = userformat
+  | addeditdate = true
+  | adduser = true
+  | userdateformat = M d, Y
+  | format     = {¦ class="timeline" ,¶¦-¶¦[[%PAGE%|%TITLE%]]¶¦[[User:%USER%|%USER%]] • %DATE%,,¶¦}
+}}</div>
+</div><!--
+
+-->{{timeline styles}}</div><!--
 
 --><div class="home-container doorswiki-editors"><div><div class="doorswiki-editors-heading">Come edit the DOORS Wiki!</div>The wiki is made possible with your help and contributions.</div><!--
 

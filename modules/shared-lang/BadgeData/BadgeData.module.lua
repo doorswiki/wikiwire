@@ -1457,7 +1457,7 @@ Floors = {
 {
 	title = 'Z-50',
 	text = 'Better than using the treadmill.',
-	directions = 'Escape [[The Archives]] at Z-50',
+	directions = 'Escape [[The Archives]] at Z-50.',
 	tutorial = 'Reach Z-50 in [[The Archives]] and interact with the exit.',
 	references = nil,
 	rewards = nil,
