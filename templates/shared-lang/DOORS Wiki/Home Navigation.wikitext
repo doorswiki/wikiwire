@@ -1,7 +1,7 @@
 <div class="home-container doors-navigation">
 
 {{DOORS_Wiki/Home_Navigation/item
-|image=Doors icon, monochrome.png
+|image=Doors monochrome icon.png
 |link=DOORS
 |label=[[DOORS|DOORS]]
 }}
@@ -24,13 +24,13 @@
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
-|image=DoorsWikiUI Stair.png
+|image=Stair icon.png
 |link=Floors
 |label=[[Floors|FLOORS]]
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
-|image=Modifiers icon, monochrome.png
+|image=Modifiers monochrome icon.png
 |link=Modifiers
 |label=[[Modifiers|MODIFIERS]]
 }}
@@ -66,7 +66,7 @@
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
-|image=Shops icon.png
+|image=Trolley icon.svg
 |link=Shops
 |label=[[Shops|SHOPS]]
 }}

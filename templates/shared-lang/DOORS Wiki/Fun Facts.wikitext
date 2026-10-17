@@ -4,12 +4,12 @@
 |title=<span>Fun Facts</span>
 |body=<includeonly><choose uncached></includeonly><span>
 <option>
-[[File:Ambush2.png|250px|center|link=Ambush|class=notpageimage|Ambush]]
+[[File:Ambush sprite.png|250px|center|link=Ambush|class=notpageimage|Ambush]]
 [[Ambush]] is a very persistent [[List of Entities|entity]], unlike [[Rush]], if it encounters a room with a blocked/locked door it will phase through the door, nothing can stop the power of Ambush tripping up the [[player]], take care.
 </option>
 
 <option>
-[[File:TimothyRender2.0.png|250px|center|link=Timothy|class=notpageimage|Timothy]]
+[[File:Timothy render.png|250px|center|link=Timothy|class=notpageimage|Timothy]]
 [[Timothy]] is one of the smallest [[List of Entities|entities]] in ''[[DOORS]]'', due to its size it is smaller than every furniture item within the game, which allows it to hide in [[containers]] among [[Gold]] and [[items]].
 </option>
 
@@ -33,7 +33,7 @@ The [[Eyes]] are known to be able to spawn in certain rooms that none of the oth
 </option>
 
 <option>
-[[File:Screech2.png|250px|center|link=Screech|class=notpageimage]]
+[[File:Screech render.png|250px|center|link=Screech|class=notpageimage]]
 The 'Psst!' sound [[Screech]] vocalizes does not indicate its appearance in the room, but rather when it will attack a [[player]]. Also, some instances of this sound may be falsified, being played solely to startle the player. Pay attention to the volume, as the fake one is quieter.
 </option>
 
@@ -48,7 +48,7 @@ This was one of [[Figure]]'s earliest models, during the game's early developmen
 </option>
 
 <option>
-[[File:Goblinov3.png|250px|center|link=El Goblino|class=notpageimage]]
+[[File:El Goblino render.png|250px|center|link=El Goblino|class=notpageimage]]
 [[El Goblino]] is the [[List of Entities|entity]] responsible for generating various ambient noises by thumping on walls and doors in [[The Hotel]]. It does this in order to scare humans for its own amusement, though it does not mean any harm as seen with its amiable behavior.
 </option>
 
@@ -73,22 +73,22 @@ The [[Crucifix]] and [[Skeleton Key]] were both initially intended to be added i
 </option>
 
 <option>
-[[File:Herbwitoutout.png|200px|center|link=Green_Herb|class=notpageimage]]
+[[File:Green Herb icon.png|200px|center|link=Green_Herb|class=notpageimage]]
 The [[Green Herb]] is the first object in the game to give [[Player|players]] a passive [[Status Effects|effect]] upon interacting with it. Previously, interacting with it and entering a sub-floor (at the time only [[The Rooms]]) would remove this effect, but it has since been patched.
 </option>
 
 <option>
-[[File:NewBob.png|200px|center|link=Bob|class=notpageimage]]
+[[File:Bob hotel render.png|200px|center|link=Bob|class=notpageimage]]
 It is heavily implied that [[Bob]] isn't alive, and is just a pile of bones. [[El Goblino]] has mentioned that Bob got in a fight with [[Rush]] after accidentally stepping on [[Snare]], which is implied to have lead to his death. El Goblino also implies that Bob has recently died of starvation, mentioning that he looks like a "...real bag of bones."
 </option>
 
 <option>
-[[File:VoidRenderReal.png|200px|center|link=Void|class=notpageimage]]
+[[File:Void render.png|200px|center|link=Void|class=notpageimage]]
 When [[The Hotel+ Update]] released, [[Void]] was used to replace [[Glitch]]'s function to teleport [[Player|players]] ahead when they were left behind in an unloading room and Glitch was changed to only be a failsafe, but in [[Floors#Subfloors|subfloors]] Glitch still carries its old function due to Void being absent.
 </option>
 
 <option>
-[[File:GuidingLightRender3.png|250px|center|link=Guiding Light|class=notpageimage]]
+[[File:Moonlight render.png|250px|center|link=Guiding Light|class=notpageimage]]
 [[Moonlight]] is present throughout the majority of ''[[DOORS]]'', assisting the [[player]] in several different ways, however, in [[The Archives]], [[The Backdoor]], [[The Outdoors]] and the [[The Stairwell]], Moonlight is completely absent and its related [[items]] don't function, supposedly feeling "lighter" than usual when held. [[Starlight]] takes Moonlight's place in these subfloors, and is much less reliable than her.
 </option>
 
@@ -98,7 +98,7 @@ While it was still available, entering [[The Rooms]] would play a special sound 
 </option>
 
 <option>
-[[File:A-60_DOORS.png|250px|center|link=A-60|class=notpageimage]]
+[[File:A-60 sprite.png|250px|center|link=A-60|class=notpageimage]]
 [[A-60]] was the first [[List of Entities|entity]] in ''[[DOORS]]'' to make an appearance before officially being implemented into the game, as during one of [https://www.youtube.com/c/KreekCraft KreekCraft's] streams before the [[Update Logs|Hotel+ Update]] released a variant of [[A-60]] was activated as a troll entity to mess with Kreek.
 </option>
 
@@ -113,7 +113,7 @@ Sometimes, if a player is temporarily caught in a [[Snare]] trap in [[The Greenh
 </option>
 
 <option>
-[[File:Lookman with eyes.png|250px|center|link=The_Backdoor#The_Lookman|class=notpageimage]]
+[[File:Lookman sprite.png|250px|center|link=The_Backdoor#The_Lookman|class=notpageimage]]
 [[The_Backdoor#The_Lookman|The Lookman]] is similar to [[Eyes]] in several ways, as not only does it hurt you when looked at, but its name is the previous name of Eyes, along with aspects of its design, such as its glowing eyes, resembling Eyes' old design!
 </option>
 
@@ -141,7 +141,7 @@ Unlike normal [[Grumbles]], the [[Queen Grumble]] has extra buffs. Her movement 
 </option>
 
 <option>
-[[File:NewGloom2.png|250px|link=Gloombats|center|class=notpageimage]] 
+[[File:Gloombat render.png|250px|link=Gloombats|center|class=notpageimage]] 
 [[Gloombats]] have eggs, and when stepped on, they will get hurt and more Gloombats will spawn. If a [[player]] dies by the Gloombats, they will lay eggs on the corpse.
 </option>
 
@@ -163,7 +163,7 @@ The reason for the sound changes is because, when The Mines Update released, the
 </option>
 
 <option>
-[[File:Seek2.png|250px|center|link=The Rooms|center|class=notpageimage]]
+[[File:Seek render.png|250px|center|link=The Rooms|center|class=notpageimage]]
 Most entities were named by the player, rather then having their own names. Though, this does not include [[Moonlight]] and [[Starlight]], subfloor entities, the [[Jeff Shop]] trio entities, and [[Timothy]]. This may or may not include Louie or Sally. 
 </option>
 
@@ -173,7 +173,7 @@ Most entities were named by the player, rather then having their own names. Thou
 </option>
 
 <option>
-[[File:A-120 IDLE.png|250px|center|link=The Rooms|center|class=notpageimage]]
+[[File:A-120 sprite.png|250px|center|link=The Rooms|center|class=notpageimage]]
 Before its removal, [[A-120]] would sometimes rebound. This made it the second entity to (intentionally) rebound, with the first being [[Ambush]].
 </option>
 
