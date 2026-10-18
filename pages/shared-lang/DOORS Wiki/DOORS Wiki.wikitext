@@ -1,10 +1,10 @@
 <div class="doorswiki-logo-container">[[File:DOORS Wiki.png|400px|link=|class=doorswiki-logo]]</div>
 <div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History|size=20x20px}} Search {{SITENAME}}... <kbd>/</kbd></div> {{Hoverimg|[[File:Roblox_Beige Logo.png|30px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
 {{#invoke:AboutDoors|main
- | title1       = <span class="doors-font">[[Candy Vault 2026|CANDY VAULT 2026]]</span>
- | description1 = The Candy Vault event begins {{Countdown|1792692000}}. Get notified [https://www.roblox.com/events/1798388131439968912 here].
+ | title1       = <span class="doors-font">[[The Candy Vault|THE CANDY VAULT]]</span>
+ | description1 = DOORS is in The Hallow. Get notified [https://www.roblox.com/events/1798388131439968912 here].
  | image1       = Candy Vault removed watermark.png
- | url1         = Candy Vault 2026
+ | url1         = The Candy Vault
  | duration1    = 10000
 
  | title2       = <span class="doors-font">[[Access Granted Update|ACCESS GRANTED]]</span>

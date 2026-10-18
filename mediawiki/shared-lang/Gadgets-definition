@@ -1,7 +1,8 @@
-* Countdown[ResourceLoader|default|hidden|type=general]|Countdown.js
+* Countdown[ResourceLoader|hidden|type=general]|Countdown.js
 == utilities ==
 * RefRevision[ResourceLoader|type=general]|RefRevision.js
 * RCSidebar[ResourceLoader|default] | RecentChangesSidebar.js|RecentChangesSidebar.css
+* AudioPlayer[ResourceLoader|default|hidden|type=general]|AudioPlayer.js|AudioPlayer.css
 == visual ==
 * NoEditSections[ResourceLoader|type=styles]|NoEditSections.css
 * RecentChangesModern[ResourceLoader|type=styles]|RecentChangesModern.css
