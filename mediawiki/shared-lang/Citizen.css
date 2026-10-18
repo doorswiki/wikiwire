@@ -883,6 +883,21 @@ kbd {
 	}
 }
 
+/* Add transition to details content */
+details::details-content {
+	opacity: 0;
+	block-size: 0;
+	transition: content-visibility var(--transition-duration-medium)
+			allow-discrete,
+		opacity var(--transition-duration-medium),
+		block-size var(--transition-duration-medium);
+}
+
+details[open]::details-content {
+	block-size: auto;
+	opacity: 1;
+}
+
 /* minor adjustments */
 .wikitable {
 	background: var(--color-surface-3);
