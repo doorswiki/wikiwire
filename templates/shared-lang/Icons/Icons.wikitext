@@ -6,18 +6,20 @@
 | battle mode = BATTLE Mode icon.png
 | behavior    = Skull icon.png
 | bell        = DoorsWikiUI Bell.svg
+| block       = Block icon.svg
 | bugs        = Bug icon.svg
 | chroma      = Chroma icon.svg
 | clock       = ClockIconTry2.svg
 | codes       = Codes icon.png
 | confusion   = Confusion monochrome icon.png
 | container   = Container icon.png
-| conversion  = MoveIcon.png
+| conversion  = Loop icon.svg
 | credits     = Credits Icon.svg
 | crucifix    = Crucifix wiki icon.png
 | currency    = Currency icon.png
 | damage      = Damage icon, simplified.png
 | development = Development icon.png
+| disc        = Disc insert icon.png
 | donation    = Donate icon.png
 | door        = Doors no tilt icon.png
 | elevator    = Elevator icon.png
@@ -52,6 +54,7 @@
 | lever       = Lever icon.png
 | lock        = Lock icon.svg
 | lotus       = Lotus Revive icon.svg
+| microphone  = Microphone icon.png
 | mines       = The Mines icon.svg
 | miscellaneous = Miscellaneous icon.svg
 | modifiers   = Modifiers monochrome icon.png
@@ -65,7 +68,7 @@
 | player      = Player icon.svg
 | paintbrush  = Paintbrush monochrome icon.svg
 | positive    = Positive icon.png
-| prosandcons = PROSANDCONS.png
+| pros and cons = PROSANDCONS.png
 | push        = Push icon.svg
 | puzzles     = Puzzle icon.svg
 | question    = QuestionMark.png
@@ -80,7 +83,7 @@
 | settings    = Settings icon.svg
 | sit         = Sit icon.svg
 | skip        = Skip icon.png
-| speech      = Speech icon.png
+| speech      = Speech icon.svg
 | speed       = Speedboosticonicon.png
 | stairwell   = The Stairwell icon.png
 | star        = Star icon.png
@@ -92,6 +95,8 @@
 | trolley     = Trolley icon.svg
 | usage       = Lighter button icon.png
 | upcoming    = Upcoming icon.png
+| volume play = Volume play icon.svg
+| volume mute = Volume mute icon.svg
 | warning     = Warning icon.svg
 | waterdrops  = Wet monochrome icon.png
 | wrench      = Wrench icon.png
