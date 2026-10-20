@@ -11,9 +11,11 @@
 | chroma      = Chroma icon.svg
 | clock       = ClockIconTry2.svg
 | codes       = Codes icon.png
+| coins       = Coins icon.png
 | confusion   = Confusion monochrome icon.png
 | container   = Container icon.png
 | conversion  = Loop icon.svg
+| creak       = Creak icon.png
 | credits     = Credits Icon.svg
 | crucifix    = Crucifix wiki icon.png
 | currency    = Currency icon.png
@@ -33,6 +35,7 @@
 | fire        = Fire icon.png
 | floor       = Stair icon.png
 | friends     = Friends icon.png
+| fire escape = Fire Escape icon.png
 | gallery     = Gallery icon.svg
 | gift        = Gift icon.png
 | glitch      = Strobing icon.png
@@ -51,6 +54,7 @@
 | items       = Items icon.svg
 | journal     = Journal icon.svg
 | ladder      = Ladder icon.png
+| left arrow  = Left arrow icon.png
 | lever       = Lever icon.png
 | lock        = Lock icon.svg
 | lotus       = Lotus Revive icon.svg
@@ -59,6 +63,7 @@
 | miscellaneous = Miscellaneous icon.svg
 | modifiers   = Modifiers monochrome icon.png
 | moonlight   = Moonlight monochrome icon.svg
+| modifiers glow = Red Light monochrome icon.svg
 | negative    = Negative icon.png
 | options     = DoorsWikiUI Preferences.svg
 | outdoors    = The Outdoors icon.png
@@ -76,7 +81,8 @@
 | retro mode  = Retro Mode icon.svg
 | revive      = Revive monochrome icon.png
 | rift        = Rift monochrome icon.svg
-| robux       = Robux icon.svg
+| right arrow = Right arrow icon.png
+| robux       = Robux icon doorsified.svg
 | rooms       = The Rooms icon.svg
 | rush mode   = Rush Mode icon.png
 | saves       = Saves icon.svg
@@ -88,6 +94,7 @@
 | stairwell   = The Stairwell icon.png
 | star        = Star icon.png
 | starlight   = Starlight monochrome icon.svg
+| storage     = Storage interact icon.png
 | streak      = Streak icon.png
 | super hard mode = Super Hard Mode icon.svg
 | trash       = IconUnused.png
