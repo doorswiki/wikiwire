@@ -1114,7 +1114,7 @@ Items = {
 	title = 'Improvise',
 	text = 'I... guess that works.',
 	directions = 'Shove a [[Lockpick]] in a [[Generator]] and call it a day.',
-	tutorial = 'Use a [[Lockpick]] or a [[Multitool]] on a [[Generator]] instead of a [[Fuse]].',
+	tutorial = 'Use a [[Lockpick]] on a [[Generator]] instead of a [[Fuse]].',
 	references = nil,
 	rewards = nil,
 	secret = false,
@@ -1276,7 +1276,7 @@ Items = {
 	tutorial = 'Trade any [[Scanner Module]] with Louie to get the EGG Module, and complete it entirely within a chase sequence.',
 	references = nil,
 	rewards = {
-    	'Scanner icon.png', -- placeholder until the media exists
+    	'Scanner skin NVCS-3000 icon.png', -- placeholder until the media exists
 	},
 	secret = true,
 	hidden = true,
