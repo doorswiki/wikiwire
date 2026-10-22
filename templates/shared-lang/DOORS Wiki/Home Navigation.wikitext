@@ -7,7 +7,7 @@
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
-|image=Entities icon.png
+|image=Entities icon.svg
 |link=List of Entities
 |label=[[Entities|ENTITIES]]
 }}
