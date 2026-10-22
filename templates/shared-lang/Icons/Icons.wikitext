@@ -54,10 +54,11 @@
 | items       = Items icon.svg
 | journal     = Journal icon.svg
 | ladder      = Ladder icon.png
-| left arrow  = Left arrow icon.png
 | lever       = Lever icon.png
 | lock        = Lock icon.svg
 | lotus       = Lotus Revive icon.svg
+| left arrow  = Left arrow icon.png
+| left hand hold = Left hand holding icon.png
 | microphone  = Microphone icon.png
 | mines       = The Mines icon.svg
 | miscellaneous = Miscellaneous icon.svg
@@ -81,10 +82,11 @@
 | retro mode  = Retro Mode icon.svg
 | revive      = Revive monochrome icon.png
 | rift        = Rift monochrome icon.svg
-| right arrow = Right arrow icon.png
 | robux       = Robux icon doorsified.svg
 | rooms       = The Rooms icon.svg
 | rush mode   = Rush Mode icon.png
+| right arrow = Right arrow icon.png
+| right hand hold = Right hand holding icon.png
 | saves       = Saves icon.svg
 | settings    = Settings icon.svg
 | sit         = Sit icon.svg
