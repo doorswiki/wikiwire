@@ -51,11 +51,12 @@ local function buildBadge(badge, currentTitle)
 	if badge.secret then
 		borderClass = borderClass .. 'badge-border-secret '
 	end
-
+	
+	local image = badge.image or object.icon
 	local imageHtml =
 		'<div class="badge-image">' ..
 			'<div class="' .. borderClass .. colorClass(badge.color or object.color) .. '"></div>' ..
-			img(badge.image or object.icon, 140) ..
+			img(image, 140, '-1') ..
 		'</div>'
 
 	local link = badge.id and 'https://www.roblox.com/badges/' .. badge.id or false
@@ -77,7 +78,7 @@ local function buildBadge(badge, currentTitle)
 	-- Wiki is limited to 99 'expensive parser function' calls
 	-- Unfortunately only first 99 badges will have owners shown
 	-- The only thing remains is to wait for 'badges' api call to get added
-	-- Which would allow to grab all badges tied to a universe id in one call
+	-- Which would allow to grab up to 100 badges tied to a universe id in one call
 	local ownerHtml
 	if badge.id then
 		ownerHtml =
