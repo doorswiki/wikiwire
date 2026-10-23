@@ -1992,6 +1992,18 @@ Challenges = {
 		}
 	},
 },
+{
+	title = 'Taking Candy From Abe',
+	text = '-aby! Eh? Kinda worked!',
+	directions = 'Rack up 10 thousand total Candy from [[Sir Abe C. II|Sir Abe]]\'s Candy Vault.',
+	tutorial = nil,
+	references = nil,
+	rewards = nil,
+	secret = true,
+	hidden = false,
+	obtainable = true, 
+	id = '942682578235567',
+},
 
 },
 
@@ -2508,6 +2520,18 @@ Collab = {
 
 Events = {
 
+{
+	title = 'Sweet Deceit',
+	text = 'Aw, come on. That\'ll buff right out!',
+	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s Candy Vault during [https://roblox.fandom.com/wiki/The_Hollow Roblox\'s THE HOLLOW].',
+	tutorial = 'Complete [[The Candy Vault (vision)|The Candy Vault]] vision during [https://roblox.fandom.com/wiki/The_Hollow The Hollow event].',
+	references = nil,
+	rewards = nil,
+	secret = true,
+	hidden = false,
+	obtainable = true, 
+	id = '1035315791189379',
+},
 {
 	title = 'CERTIFIED RUSH FAN',
 	text = 'Okay you can leave now',
