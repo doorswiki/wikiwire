@@ -2521,18 +2521,6 @@ Collab = {
 Events = {
 
 {
-	title = 'Sweet Deceit',
-	text = 'Aw, come on. That\'ll buff right out!',
-	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s Candy Vault during [https://roblox.fandom.com/wiki/The_Hollow Roblox\'s THE HOLLOW].',
-	tutorial = 'Complete [[The Candy Vault (vision)|The Candy Vault]] vision during [https://roblox.fandom.com/wiki/The_Hollow The Hollow event].',
-	references = nil,
-	rewards = nil,
-	secret = true,
-	hidden = false,
-	obtainable = true, 
-	id = '1035315791189379',
-},
-{
 	title = 'CERTIFIED RUSH FAN',
 	text = 'Okay you can leave now',
 	directions = 'Beat [[Rush Mode|RUSH MODE]]!! Made by me ItsThump!!',
@@ -2696,6 +2684,18 @@ Events = {
 	hidden = true,
 	obtainable = false, 
 	id = '446899243741856',
+},
+{
+	title = 'Sweet Deceit',
+	text = 'Aw, come on. That\'ll buff right out!',
+	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s Candy Vault during [https://roblox.fandom.com/wiki/The_Hollow Roblox\'s THE HOLLOW].',
+	tutorial = 'Complete [[The Candy Vault (vision)|The Candy Vault]] vision during [https://roblox.fandom.com/wiki/The_Hollow The Hollow event].',
+	references = nil,
+	rewards = nil,
+	secret = true,
+	hidden = false,
+	obtainable = true, 
+	id = '1035315791189379',
 },
 {
 	title = 'THE HUNT: First Edition',
