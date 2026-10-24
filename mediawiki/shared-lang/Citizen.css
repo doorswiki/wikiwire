@@ -210,16 +210,27 @@ html:not(.doorswiki-mood-clientpref-0) {
 /* Seasonal theme */
 :root.doorswiki-mood-clientpref-10 {
 	&[class*="skin-theme-clientpref-"] {
-        --color-primary-oklch__h: 10!important;
+        --color-primary-oklch__h: 20!important;
     }
+
+    &.skin-theme-clientpref-day {
+        --color-link-original: #2a327a!important;
+    }
+
+    &.skin-theme-clientpref-night,
+    &.skin-theme-clientpref-black {
+        --color-link-original: #939efa!important;
+    }
+
+    --color-link: var(--color-link-original)!important;
     
-	--light-bg: url(https://static.wikitide.net/doorswiki/c/c0/2025TrickOrTreatPromoImage.png);
-	--dark-bg: url(https://static.wikitide.net/doorswiki/9/98/GrampySonny%26Sallys.png);
-	--black-bg: url(https://static.wikitide.net/doorswiki/a/a1/Doors_inside_the_Haunt.png);
+	--light-bg: url(https://static.wikitide.net/doorswiki/8/80/The_Estate_elevator.png);
+	--dark-bg: url(https://static.wikitide.net/doorswiki/d/de/The_Estate_exterior.png);
+	--black-bg: url(https://static.wikitide.net/doorswiki/a/a7/The_Estate_main_lobby.png);
 	
 	body::before {
-		opacity: 0.25;
-		filter: grayscale(0.6);
+		opacity: 0.3;
+		filter: grayscale(0.4);
 	}
 }
 
