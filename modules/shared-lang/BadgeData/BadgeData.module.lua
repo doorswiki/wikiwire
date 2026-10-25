@@ -291,6 +291,18 @@ General = {
 	id = '136346866966212',
 },
 {
+	title = 'Content Creator',
+	text = 'Hello once again, audience!',
+	directions = 'Be part of the DOORS Content Creator program. <3',
+	tutorial = 'Become a content creator for the game by uploading media of DOORS on a social media platform.',
+	references = nil,
+	rewards = nil,
+	secret = true,
+	hidden = true,
+	obtainable = true, 
+	id = nil,
+},
+{
 	title = 'Unpatched Dupe Glitch',
 	text = 'Quick! Before it\'s patched!',
 	directions = 'Use a printer to scan and print an item.',
@@ -526,18 +538,6 @@ General = {
 			obtainable = true
 		}
 	},
-},
-{
-	title = 'Content Creator',
-	text = 'Hello once again, audience!',
-	directions = 'Be part of the DOORS Content Creator program. <3',
-	tutorial = 'Become a content creator for the game by uploading media of DOORS on a social media platform.',
-	references = nil,
-	rewards = nil,
-	secret = true,
-	hidden = true,
-	obtainable = true, 
-	id = nil,
 },
 
 },
@@ -1943,6 +1943,18 @@ Challenges = {
 	id = '2112578033808227',
 },
 {
+	title = 'Taking Candy From Abe',
+	text = '-aby! Eh? Kinda worked!',
+	directions = 'Rack up 10 thousand total Candy from [[Sir Abe C. II|Sir Abe]]\'s Candy Vault.',
+	tutorial = nil,
+	references = nil,
+	rewards = nil,
+	secret = true,
+	hidden = false,
+	obtainable = true, 
+	id = '942682578235567',
+},
+{
 	title = 'Storage Wars',
 	text = 'Three thousand is the best I can do.',
 	directions = 'Bargain 3000 [[Gold]] from [[Cobbler|the hooded figure]] in [[The Stairwell]].',
@@ -1991,18 +2003,6 @@ Challenges = {
 			obtainable = true
 		}
 	},
-},
-{
-	title = 'Taking Candy From Abe',
-	text = '-aby! Eh? Kinda worked!',
-	directions = 'Rack up 10 thousand total Candy from [[Sir Abe C. II|Sir Abe]]\'s Candy Vault.',
-	tutorial = nil,
-	references = nil,
-	rewards = nil,
-	secret = true,
-	hidden = false,
-	obtainable = true, 
-	id = '942682578235567',
 },
 
 },
@@ -2689,7 +2689,7 @@ Events = {
 	title = 'Sweet Deceit',
 	text = 'Aw, come on. That\'ll buff right out!',
 	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s Candy Vault during [https://roblox.fandom.com/wiki/The_Hollow Roblox\'s THE HOLLOW].',
-	tutorial = 'Complete [[The Candy Vault (vision)|The Candy Vault]] vision during [https://roblox.fandom.com/wiki/The_Hollow The Hollow event].',
+	tutorial = 'Complete [[The Candy Vault]] vision during [https://roblox.fandom.com/wiki/The_Hollow The Hollow event].',
 	references = nil,
 	rewards = nil,
 	secret = true,

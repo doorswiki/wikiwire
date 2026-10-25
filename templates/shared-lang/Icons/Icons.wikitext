@@ -47,6 +47,7 @@
 | history     = Magnifier icon.svg
 | hotel       = The Hotel icon.svg
 | hourglass   = Hourglass icon.svg
+| inspect     = Inspect icon.svg
 | instakill   = Skull red icon.png
 | interact    = Interact icon.png
 | interacted  = Interact icon.png
