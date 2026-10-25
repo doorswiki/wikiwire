@@ -488,3 +488,35 @@ mw.hook('wikipage.content').add(function ($content) {
 		startAutoplay();
 	});
 });
+
+// thank you Miraheze Developers Wiki! https://dev.miraheze.org/wiki/Template:Choose
+(function () {
+    function weightedChoose(container) {
+        const options = [...container.querySelectorAll(".gadget-choose-option")];
+        if (options.length === 0) {
+            return;
+        }
+
+        const weights = options.map(el => {
+            const w = parseFloat(el.dataset.weight !== undefined ? el.dataset.weight : 1);
+            return w > 0 ? w : 1;
+        });
+        const total = weights.reduce((sum, w) => sum + w, 0);
+
+        let random = Math.random() * total;
+        const chosen = options.find((_el, i) => (random -= weights[i]) < 0) || options[options.length - 1];
+
+        options.forEach(el => el.style.display = "none");
+        chosen.style.display = "";
+    }
+
+    function run() {
+        document.querySelectorAll(".gadget-choose").forEach(weightedChoose);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", run);
+    } else {
+        run();
+    }
+})();

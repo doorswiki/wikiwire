@@ -1,37 +1,43 @@
 <div class="doorswiki-logo-container">[[File:DOORS Wiki.png|400px|link=|class=doorswiki-logo]]</div>
-<div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">{{Icons|History|size=20x20px}} Search {{SITENAME}}... <kbd>/</kbd></div> {{Hoverimg|[[File:Roblox_Beige Logo.png|30px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
+<div class="doorswiki-searchbar-container" style="margin-bottom: 3rem"><div class="citizen-search-trigger doorswiki-searchbar">
+{{Choose
+| {{Icons|History|size=20x20px}}
+| {{Icons|Overview|size=20x20px}}
+| {{Icons|Backpack|size=20x20px}}
+| {{Icons|Elevator|size=20x20px}}
+| {{Icons|Starlight|size=20x20px}}
+| {{Icons|Inspect|size=20x20px}}
+| {{Icons|Confusion|size=20x20px}}
+| {{Icons|Bugs|size=20x20px}}
+| [[File:Pumpkin lights on.png|20x20px|link=]]
+| weight9 = 15
+}} Search {{SITENAME}}... <kbd>/</kbd></div> {{Hoverimg|[[File:Roblox_Beige Logo.png|30px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game|class=invertinvert]]}}</div>
 {{#invoke:AboutDoors|main
  | title1       = <span class="doors-font">[[The Candy Vault|THE CANDY VAULT]]</span>
  | description1 = Sir Abraham Creakstopher II's waiting for your arrival. Take a look at the new additions this update.
  | image1       = The_Candy_Vault_promotional_thumbnail_no_frame_no_logo.png
  | url1         = The Candy Vault
- | duration1    = 10000
-
- | title2       = <span class="doors-font">[[Access Granted Update|ACCESS GRANTED]]</span>
- | description2 = The Stairwell has evolved and expanded. See what's new this update.
- | image2       = Sizzle reel Stairwell.webm
- | url2         = Access Granted Update
- | duration2    = 10000
+ | duration1    = 5000
  
- | title3       = [[File:DOORS Logo.png|100px|link=DOORS]]
- | description3 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].
- | image3       = Hotel_Backroom5.png
- | url3         = DOORS
+ | title2       = [[File:DOORS Logo.png|100px|link=DOORS]]
+ | description2 = ''[[DOORS]]'' is a multiplayer Roblox horror game developed by [[Lightning Splash|LSPLASH]] and [[RediblesQW]].
+ | image2       = Hotel_Backroom5.png
+ | url2         = DOORS
 
- | title4       = <span class="doors-font">[[Entities|ENTITIES]]</span>
- | description4 = While exploring different rooms, look out for entities. Many of them attempt to kill players, аnd they must be faced in order to advance.
- | image4       = AmbushComintoYourFace.png
- | url4         = Entities
+ | title3       = <span class="doors-font">[[Entities|ENTITIES]]</span>
+ | description3 = While exploring different rooms, look out for entities. Many of them attempt to kill players, аnd they must be faced in order to advance.
+ | image3       = AmbushComintoYourFace.png
+ | url3         = Entities
 
- | title5       = <span class="doors-font">[[Items|ITEMS]]</span>
- | description5 = Items are useful tools found throughout any run of any floor. They do not save the next time you enter a run.
- | image5       = JeffShopHotelPlate.png
- | url5         = Items
+ | title4       = <span class="doors-font">[[Items|ITEMS]]</span>
+ | description4 = Items are useful tools found throughout any run of any floor. They do not save the next time you enter a run.
+ | image4       = JeffShopHotelPlate.png
+ | url4         = Items
 
- | title6       = <span class="doors-font">[[Floors|FLOORS]]</span>
- | description6 = Floors are areas that players progress the story in, serving as the 'chapters' for the game. These floors may contain different items and entities from the previous floor, along with brand-new locations.
- | image6       = Gardenentrance.png
- | url6         = Floors
+ | title5       = <span class="doors-font">[[Floors|FLOORS]]</span>
+ | description5 = Floors are areas that players progress the story in, serving as the 'chapters' for the game. These floors may contain different items and entities from the previous floor, along with brand-new locations.
+ | image5       = Gardenentrance.png
+ | url5         = Floors
 
  <!-- |title3=Rush Mode Update
  |description3=Another featured article.
@@ -144,28 +150,28 @@
 --><div class="doorswiki-editors-links">[[Project:Rules|Wiki Rules]][[Project:Manual of Style|Manual of Style]][[Project:Policies|Wiki Policies]]</div><!--
 --></div><!--
 
---><choose>
-<option>{{#vardefine: mp-quote | {{#floatingui:new wiki is fire|Retrieved from [https://ptb.discord.com/channels/458441314023899159/1006982064458960916/1545718774265552896 #doors-spoilers @ LSPLASH official server]}} }}
-{{#vardefine: mp-quote-author | [[jasper_creations]] }}</option>
+-->{{Choose
+| 1= {{#vardefine: mp-quote | {{#floatingui:new wiki is fire|Retrieved from [https://ptb.discord.com/channels/458441314023899159/1006982064458960916/1545718774265552896 #doors-spoilers @ LSPLASH official server]}} }}
+{{#vardefine: mp-quote-author | [[jasper_creations]] }}
 
-<option>{{#vardefine: mp-quote | Stop asking about neko seek}}
-{{#vardefine: mp-quote-author | [[User:Aeywoo|Aeywoo]] }}</option>
+| 2= {{#vardefine: mp-quote | Stop asking about neko seek}}
+{{#vardefine: mp-quote-author | [[User:Aeywoo|Aeywoo]] }}
 
-<option>{{#vardefine: mp-quote | {{#floatingui:DOORS Wiki I love you so much I want to marry you
+| 3= {{#vardefine: mp-quote | {{#floatingui:DOORS Wiki I love you so much I want to marry you
 |Retrieved from [https://twitter.com/AMIGhostler/status/2101322963643453653 a Twitter reply]}} }}
-{{#vardefine: mp-quote-author | @AMIGhostler on Twitter }}</option>
+{{#vardefine: mp-quote-author | @AMIGhostler on Twitter }}
 
-<option>{{#vardefine: mp-quote | {{#floatingui:...genuinely one of the most beautiful wikis ive ever seen...
+| 4= {{#vardefine: mp-quote | {{#floatingui:...genuinely one of the most beautiful wikis ive ever seen...
 |Retrieved from [https://twitter.com/Lunar_CamXD/status/2095510443423084972 a Twitter reply]}} }}
-{{#vardefine: mp-quote-author | @Lunar_CamXD on Twitter }}</option>
+{{#vardefine: mp-quote-author | @Lunar_CamXD on Twitter }}
 
-<option>{{#vardefine: mp-quote | {{#floatingui:Damn the doors wiki has renders for everything
+| 5= {{#vardefine: mp-quote | {{#floatingui:Damn the doors wiki has renders for everything
 |Retrieved from [https://twitter.com/Zeus_404_/status/2094020965252608048 a Twitter reply]}} }}
-{{#vardefine: mp-quote-author | @Zeus_404_ on Twitter }}</option>
+{{#vardefine: mp-quote-author | @Zeus_404_ on Twitter }}
 
-<option>{{#vardefine: mp-quote | {{#floatingui:this wiki is very well designed and it functions really nice (actually true)|Retrieved from [https://twitter.com/TheGarretthandy/status/2105430091308097638 a Twitter tweet]}} }}
-{{#vardefine: mp-quote-author | @TheGarretthandy on Twitter }}</option>
-</choose><!--
+| 6= {{#vardefine: mp-quote | {{#floatingui:this wiki is very well designed and it functions really nice (actually true)|Retrieved from [https://twitter.com/TheGarretthandy/status/2105430091308097638 a Twitter tweet]}} }}
+{{#vardefine: mp-quote-author | @TheGarretthandy on Twitter }}
+}}<!--
 --><div class="doorswiki-quote-container"><div class="doorswiki-quote">{{#var: mp-quote}}</div><div class="doorswiki-quote-author">{{#var: mp-quote-author}}</div></div>
 
 <!-- [[w:Help:Magic words]] -->
