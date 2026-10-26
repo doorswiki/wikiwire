@@ -1945,7 +1945,7 @@ Challenges = {
 {
 	title = 'Taking Candy From Abe',
 	text = '-aby! Eh? Kinda worked!',
-	directions = 'Rack up 10 thousand total Candy from [[Sir Abe C. II|Sir Abe]]\'s Candy Vault.',
+	directions = 'Rack up 10 thousand total [[Candy]] from [[Sir Abe C. II|Sir Abe]]\'s [[Candy Vault]].',
 	tutorial = nil,
 	references = nil,
 	rewards = nil,
@@ -2611,7 +2611,7 @@ Events = {
 {
 	title = 'Sugar Rush',
 	text = 'WHOOO!!!',
-	directions = 'Eat 100 Candy during the 2024 Trick Or Treat.',
+	directions = 'Eat 100 [[Candy]] during the 2024 Trick Or Treat.',
 	tutorial = nil,
 	references = nil,
 	rewards = {
@@ -2626,7 +2626,7 @@ Events = {
 {
 	title = 'Sugar Crash',
 	text = 'Maybe I\'ve had too much... What do you think?',
-	directions = 'Eat 500 Candy during the 2024 Trick or Treat.',
+	directions = 'Eat 500 [[Candy]] during the 2024 Trick or Treat.',
 	tutorial = nil,
 	references = 'Achievement\'s description could be a reference to the [https://gravityfalls.fandom.com/wiki/Gravity_Falls_(TV_series) Gravity Falls] episode, [https://gravityfalls.fandom.com/wiki/The_Inconveniencing The Inconveniencing]. [https://gravityfalls.fandom.com/wiki/Mabel_Pines Mabel Pines], after eating too much of the sugar from [https://gravityfalls.fandom.com/wiki/Smile_Dip Smile Dip], starts hallucinating and says "Maybe I\'ve had too much. What do you think?"',
 	rewards = {
@@ -2688,7 +2688,7 @@ Events = {
 {
 	title = 'Sweet Deceit',
 	text = 'Aw, come on. That\'ll buff right out!',
-	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s Candy Vault during [https://roblox.fandom.com/wiki/The_Hollow Roblox\'s THE HOLLOW].',
+	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s [[Candy Vault]] during [https://roblox.fandom.com/wiki/The_Hollow Roblox\'s THE HOLLOW].',
 	tutorial = 'Complete [[The Candy Vault]] vision during [https://roblox.fandom.com/wiki/The_Hollow The Hollow event].',
 	references = nil,
 	rewards = nil,

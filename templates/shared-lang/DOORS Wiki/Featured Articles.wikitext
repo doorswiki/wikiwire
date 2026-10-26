@@ -1,13 +1,13 @@
-<choose>
-<option>{{#vardefine: doorsfeatured-image | Hotel Image1.png}} {{#vardefine:doorsfeatured-link | Hotel}}</option>
-<option>{{#vardefine: doorsfeatured-image | TheMinesFeaturedArticles.png}} {{#vardefine:doorsfeatured-link | The Mines}}</option>
-<option>{{#vardefine: doorsfeatured-image | Entities icon.png}} {{#vardefine:doorsfeatured-link | List of Entities}}</option>
-<option>{{#vardefine: doorsfeatured-image | Dresser.png}} {{#vardefine:doorsfeatured-link | Containers}}</option>
-<option>{{#vardefine: doorsfeatured-image | LSPLASH Icon.png}} {{#vardefine:doorsfeatured-link | LSPLASH}}</option>
-<option>{{#vardefine: doorsfeatured-image | Doors Soundtrack.jpg}} {{#vardefine:doorsfeatured-link | Soundtrack}}</option>
-<option>{{#vardefine: doorsfeatured-image | Items icon.svg}} {{#vardefine:doorsfeatured-link | Items}}</option>
-<option>{{#vardefine: doorsfeatured-image | Crucifix icon.png}} {{#vardefine:doorsfeatured-link | Crucifix}}</option>
-</choose><!--
+{{Choose
+| {{#vardefine: doorsfeatured-image | Hotel Image1.png}} {{#vardefine:doorsfeatured-link | Hotel}}
+| {{#vardefine: doorsfeatured-image | TheMinesFeaturedArticles.png}} {{#vardefine:doorsfeatured-link | The Mines}}
+| {{#vardefine: doorsfeatured-image | Entities icon.png}} {{#vardefine:doorsfeatured-link | List of Entities}}
+| {{#vardefine: doorsfeatured-image | Dresser.png}} {{#vardefine:doorsfeatured-link | Containers}}
+| {{#vardefine: doorsfeatured-image | LSPLASH Icon.png}} {{#vardefine:doorsfeatured-link | LSPLASH}}
+| {{#vardefine: doorsfeatured-image | Doors Soundtrack.jpg}} {{#vardefine:doorsfeatured-link | Soundtrack}}
+| {{#vardefine: doorsfeatured-image | Items icon.svg}} {{#vardefine:doorsfeatured-link | Items}}
+| {{#vardefine: doorsfeatured-image | Crucifix icon.png}} {{#vardefine:doorsfeatured-link | Crucifix}}
+}}<!--
 
 --><div class="home-container doors-featured" style="position: relative; min-height: 200px">
 <div class="imagecard">[[File:{{#var:doorsfeatured-image}}|600px|link={{#var:doorsfeatured-link}}|class=featuredimg|alt=Featured image]]</div>
