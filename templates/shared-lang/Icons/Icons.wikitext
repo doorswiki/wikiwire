@@ -16,7 +16,8 @@
 | container   = Container icon.png
 | conversion  = Loop icon.svg
 | creak       = Creak icon.png
-| credits     = Credits Icon.svg
+| credits     = Credits icon.svg
+| crouching   = Dude crouching.png
 | crucifix    = Crucifix wiki icon.png
 | currency    = Currency icon.png
 | damage      = Damage icon, simplified.png
@@ -50,10 +51,11 @@
 | inspect     = Inspect icon.svg
 | instakill   = Skull red icon.png
 | interact    = Interact icon.png
-| interacted  = Interact icon.png
+| interacted  = Interacted icon.png
 | invincibility = Invincibility monochrome icon.png
 | items       = Items icon.svg
 | journal     = Journal icon.svg
+| jumping     = Dude jumping.png
 | ladder      = Ladder icon.png
 | lever       = Lever icon.png
 | lock        = Lock icon.svg
@@ -94,7 +96,9 @@
 | skip        = Skip icon.png
 | speech      = Speech icon.svg
 | speed       = Speedboosticonicon.png
+| sprinting   = Dude running.png
 | stairwell   = The Stairwell icon.png
+| standing    = Dude standing.png
 | star        = Star icon.png
 | starlight   = Starlight monochrome icon.svg
 | storage     = Storage interact icon.png
