@@ -4,6 +4,7 @@
 <div class="doorswiki-socials-heading">[[File:Smalllogo doors.png|class=invertinvert|150px|link=DOORS]]</div>
 
 {{Hoverimg|[[File:Roblox_Beige Logo.png|class=invertinvert|50px|link=https://www.roblox.com/games/6516141723/DOORS|Roblox|alt=Roblox game]]}}
+{{Hoverimg|[[File:Discord_Beige Logo.png|class=invertinvert|50px|link=https://discord.gg/lsplash|Discord|alt=Discord]]}}
 {{Hoverimg|[[File:Twitter_Beige Logo.png|class=invertinvert|50px|link=https://twitter.com/@DoorsRoblox|Twitter|alt=DOORS Twitter]]}}
 </div>
 
