@@ -42,6 +42,10 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	margin-bottom: unset!important;
 }
 
+.doors-gridlayout > .gadget-choose {
+	display: none;
+}
+
 @media screen and (max-width: 1119px) {
 	.doors-gridlayout {
 		flex-direction: column!important;
