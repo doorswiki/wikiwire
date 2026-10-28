@@ -395,15 +395,15 @@ function methodtable.renderHeader( self, data )
 
 	local titleItem = mw.html.create( 'div' ):addClass( 'infobox__item' )
 
-	titleItem:tag( 'div' )
-		:addClass( 'infobox__title' )
-		:wikitext( data['title'] )
-
 	if data['subtitle'] then
 		titleItem:tag( 'div' )
 			:addClass( 'infobox__subtitle infobox__data' )
 			:wikitext( data['subtitle'] )
 	end
+	
+	titleItem:tag( 'div' )
+		:addClass( 'infobox__title' )
+		:wikitext( data['title'] )
 
 	html:node( titleItem )
 
@@ -828,7 +828,8 @@ function InfoboxNeue.fromArgs( frame )
             table.insert(infoboxPlan[currentSectionIndex].content, {
                 type = 'item',
                 label = args['label' .. i],
-                data  = args['content' .. i]
+                data  = args['content' .. i],
+                class = args ['itemClass' .. i]
             })
         end
 
@@ -857,13 +858,15 @@ function InfoboxNeue.fromArgs( frame )
         if block.type == 'section' and #block.content > 0 then
             local items = {}
             for _, item in ipairs(block.content) do
-                table.insert(items, instance:renderItem({
-                    label = item.label,
-                    data = item.data,
-                    row = (block.layout == 'row'),
-                    spacebetween = (block.layout == 'row')
-                }))
+			    table.insert(items, instance:renderItem({
+			        label = item.label,
+			        data = item.data,
+			        class = item.class,
+			        row = (block.layout == 'row'),
+			        spacebetween = (block.layout == 'row')
+			    }))
             end
+		
             instance:renderSection({
                 title = block.title,
                 subtitle = block.subtitle,
