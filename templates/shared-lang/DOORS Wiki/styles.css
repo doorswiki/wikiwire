@@ -93,6 +93,7 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 
 .home-nav,
 .home-container,
+.irwa-navigation,
 .doorswiki-spotlight {
 	background: var(--color-surface-3);
 	margin: 1rem 0;
@@ -106,6 +107,7 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 
 .home-nav:hover,
 .home-container:hover,
+.irwa-navigation:hover,
 .doorswiki-spotlight:hover {
 	outline-color: var(--border-color-accent);
 }
@@ -560,4 +562,82 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 
 .doorswiki-quote-author {
 	color: var(--color-subtle);
+}
+
+/*** irwa styling ***/
+.irwa-navigation {
+	--irwa-navigation-background: var(--color-surface-3)!important;
+	--irwa-members-background: transparent!important;
+	--irwa-members-border-color: unset!important;
+	--irwa-header-link-border-color: var(--border-color-subtle)!important;
+	--irwa-header-link-background: var(--color-surface-2)!important;
+	
+	max-width: unset!important;
+	padding: var(--space-md)!important;
+	border-radius: var(--border-radius-medium)!important;
+	position: relative;
+	background-image: unset!important;
+}
+
+.irwa-navigation::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	mask-image: url(https://static.wikitide.net/commonswiki/e/e0/IRWA_Logo_Black.svg);
+    mask-size: auto 125%;
+    mask-position: 15% center;
+    mask-repeat: no-repeat;
+	background: var(--color-base);
+	opacity: .15;
+	z-index: -1;
+}
+
+.irwa-title {
+	display: block;
+	line-height: var(--line-height-xxx-large);
+}
+
+.irwa-members {
+	justify-content: end!important;
+	gap: 4px!important;
+}
+
+.irwa-member {
+	background: var(--background-color-interactive);
+	padding: var(--space-xxs) var(--space-sm);
+	border-radius: var(--border-radius-medium);
+	border: var(--border-subtle);
+}
+
+.irwa-member:hover {
+	background: var(--background-color-interactive--hover)
+}
+
+.irwa-member.irwa-doors {
+	background: var(--background-color-interactive--active);
+}
+
+.irwa-member.irwa-doors a {
+	color: var(--color-emphasized);
+	font-weight: bold;
+	pointer-events: none;
+}
+
+.irwa-member.irwa-doors a::after {
+	display: none;
+}
+
+.irwa-navigation .irwa-header p {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.irwa-navigation .irwa-header a {
+	border: unset!important;
+	padding: var(--space-xs) var(--space-md)!important;
+	color: var(--color-emphasized)!important;
+	border-radius: var(--border-radius-medium)!important;
 }

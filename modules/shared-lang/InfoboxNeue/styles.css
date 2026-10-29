@@ -281,7 +281,7 @@
 
 .infobox__title {
     font-size: var(--font-size-xx-large); 
-    font-weight: 800; 
+    /*font-weight: 800; */
 }
 
 .infobox__sectionSubtitle {

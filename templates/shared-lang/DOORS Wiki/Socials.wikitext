@@ -14,9 +14,11 @@
 {{Hoverimg|[[File:Discord_Beige Logo.png|class=invertinvert|50px|link=https://discord.gg/SpKAgJDuVn|Discord|alt=Discord]]}}
 {{Hoverimg|[[File:Twitter_Beige Logo.png|class=invertinvert|50px|link=https://twitter.com/@DoorsWiki|Twitter|alt=DOORS Wiki Twitter]]}}
 {{Hoverimg|[[File:Github Biege.svg|class=invertinvert|50px|link=https://github.com/doorswiki|GitHub|alt=DOORS Wiki GitHub]]}}
-</div>
+</div><!--
 
-<!--<div class="doorswiki-socials">
+
+
+--><!--<div class="doorswiki-socials">
 <div class="doorswiki-socials-heading">[[File:LSPLASH Text.png|class=invertinvert|200px|link=Lightning_Splash]]</div>
 
 {{Hoverimg|[[File:Roblox_Beige Logo.png|class=invertinvert|50px|link=https://www.roblox.com/users/8645047/profile|Roblox Profile]]}}
