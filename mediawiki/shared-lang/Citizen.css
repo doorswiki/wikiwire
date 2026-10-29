@@ -122,9 +122,9 @@
 }
 
 html:not(.doorswiki-mood-clientpref-0) {
-	body::before {
+	/* body::before {
     	filter: blur(6px);
-	}
+	} */
     
     &.skin-theme-clientpref-black {
     	.mw-logo-icon {
@@ -270,7 +270,7 @@ body {
 body.page-DOORS_Wiki {
 	html:not(.skin-theme-clientpref-black) & {
 		&::before {
-		    filter: blur(6px);
+		    /* filter: blur(6px); */
 		    opacity: .6;
 		}
 	}
