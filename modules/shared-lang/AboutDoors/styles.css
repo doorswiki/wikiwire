@@ -39,6 +39,7 @@
 	display: block;
 	text-decoration: none;
 	overflow: hidden;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .doorswiki-spotlight__slide:hover,
@@ -81,7 +82,7 @@
 
 .doorswiki-spotlight__slide-media img,
 .doorswiki-spotlight__slide video {
-	mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5), black 100%);
+	mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), black, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .doorswiki-spotlight__slide .embedvideo-localEmbedStyle {

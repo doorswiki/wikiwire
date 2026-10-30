@@ -745,3 +745,68 @@
 	padding-left: 0;
 	padding-right: 0;
 }
+
+/* For previous and next items */
+.infobox__item.infobox__prev,
+.infobox__item.infobox__next {
+	position: relative;
+	align-content: center;
+	margin-top: calc(var(--space-sm) * -1);
+	padding-top: var(--space-xs);
+	padding-bottom: var(--space-xs);
+}
+
+.infobox__item.infobox__prev {
+	padding-left: calc(1rem + var(--space-sm));
+	padding-right: var(--space-sm);
+}
+
+.infobox__item.infobox__next {
+	padding-right: calc(1rem + var(--space-sm));
+	padding-left: var(--space-sm);
+}
+
+.infobox__item.infobox__prev:hover,
+.infobox__item.infobox__next:hover {
+	background: var(--background-color-interactive--hover);
+	border-radius: var(--border-radius-medium)
+}
+
+.infobox__item.infobox__prev .infobox__label,
+.infobox__item.infobox__next .infobox__label {
+	display: none
+}
+
+.infobox__item.infobox__prev:hover::before {
+	left: 5px;
+	background: var(--color-progressive);
+}
+
+.infobox__item.infobox__next:hover::before {
+	right: 5px;
+	background: var(--color-progressive);
+}
+
+.infobox__item.infobox__prev::before,
+.infobox__item.infobox__next::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	width: 1rem;
+	background: var(--color-subtle);
+	mask-size: 1rem;
+	mask-repeat: no-repeat;
+	mask-position: center;
+	z-index: 0;
+	transition: .25s left, .25s right
+}
+
+.infobox__item.infobox__prev::before {
+	mask-image: url(https://upload.wikimedia.org/wikipedia/commons/8/84/Codex_icon_previous.svg);
+}
+
+.infobox__item.infobox__next::before {
+	mask-image: url(https://upload.wikimedia.org/wikipedia/commons/b/b2/Codex_icon_next.svg);
+	right: 0;
+	left: unset;
+}
