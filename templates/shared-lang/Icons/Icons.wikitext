@@ -71,7 +71,7 @@
 | negative    = Negative icon.png
 | options     = DoorsWikiUI Preferences.svg
 | outdoors    = The Outdoors icon.png
-| overview    = Eye icon.png
+| overview    = Overview icon.svg
 | pencil      = PencilGrayscale.svg
 | placeholder = Placeholder.png
 | player      = Player icon.svg
