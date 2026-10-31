@@ -2128,7 +2128,7 @@ Battle = {
 {
 	title = 'Party Wipe',
 	text = 'But when I... win a 7v1.',
-	directions = 'Eliminate 7 players in a [[BATTLE Mode round]]. Assists count.',
+	directions = 'Eliminate 7 players in a [[BATTLE Mode]] round. Assists count.',
 	tutorial = 'Kill or assist in a kill against 7 other players in one [[Battle Mode]] round.',
 	references = 'Achievement\'s description references 20v1 meme.',
 	rewards = {
