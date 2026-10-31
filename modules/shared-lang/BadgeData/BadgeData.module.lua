@@ -2528,7 +2528,7 @@ Events = {
 	references = nil,
 	rewards = nil,
 	secret = true,
-	hidden = false,
+	hidden = true,
 	obtainable = false, 
 	id = '2004308386837501',
 },
