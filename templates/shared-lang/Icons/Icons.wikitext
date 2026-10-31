@@ -7,6 +7,7 @@
 | behavior    = Skull icon.png
 | bell        = DoorsWikiUI Bell.svg
 | block       = Block icon.svg
+| box         = Storage Box puzzle icon.png
 | bugs        = Bug icon.svg
 | chroma      = Chroma icon.svg
 | clock       = ClockIconTry2.svg
