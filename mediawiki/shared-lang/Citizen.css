@@ -274,17 +274,6 @@ body {
 }
 
 body.page-DOORS_Wiki {
-	html:not(.skin-theme-clientpref-black) & {
-		&::before {
-		    /* filter: blur(6px); */
-		    opacity: .6;
-		}
-	}
-	
-	.skin-theme-clientpref-day &::before {
-	    opacity: .3!important;
-	}
-	
 	@media screen and (min-width: 1119px) {
 	    .citizen-body {
 	        background: transparent;
