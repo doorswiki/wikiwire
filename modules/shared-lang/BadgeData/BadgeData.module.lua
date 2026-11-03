@@ -2686,7 +2686,7 @@ Events = {
 	id = '446899243741856',
 },
 {
-	title = 'Sweet Deceit',
+	title = 'THE HOLLOW: Sweet Deceit',
 	text = 'Aw, come on. That\'ll buff right out!',
 	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s [[Candy Vault]] during [https://roblox.fandom.com/wiki/The_Hollow Roblox\'s THE HOLLOW].',
 	tutorial = 'Complete [[The Candy Vault]] vision during [https://roblox.fandom.com/wiki/The_Hollow The Hollow event].',
@@ -2696,6 +2696,18 @@ Events = {
 	hidden = false,
 	obtainable = true, 
 	id = '1035315791189379',
+},
+{
+	title = 'Sweet Deceit',
+	text = 'Aw, come on. That\'ll buff right out!',
+	directions = 'Escape [[Sir Abe C. II|Sir Abe]]\'s [[Candy Vault]].',
+	tutorial = 'Complete [[The Candy Vault]] vision.',
+	references = nil,
+	rewards = nil,
+	secret = true,
+	hidden = false,
+	obtainable = true, 
+	id = '1253918446997249',
 },
 {
 	title = 'THE HUNT: First Edition',
