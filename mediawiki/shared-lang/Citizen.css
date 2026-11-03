@@ -258,7 +258,8 @@ body {
         transition: .25s background;
     }
     
-    html:not(.doorswiki-mood-clientpref-0) & {
+    html:not(.doorswiki-mood-clientpref-0) &,
+    html.doorswiki-mood-clientpref-0 &.page-DOORS_Wiki {
 		&::before {
 			opacity: .25;
 		}
