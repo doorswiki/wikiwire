@@ -21,10 +21,6 @@
 			"type": "select",
 			"options": [
 				{
-					"value": 10,
-					"label": "The Candy Vault (Seasonal)"
-				},
-				{
 					"value": 0,
 					"label": "Default"
 				},
@@ -49,7 +45,7 @@
 					"label": "Stairwell"
 				}
 			],
-			"default": "10",
+			"default": "0",
 			"labelMsg": "doorswiki-mood-label",
 			"descriptionMsg": "doorswiki-mood-description"
 		}
