@@ -1840,7 +1840,7 @@ Crucifix = {
 {
 	title = 'Annihilation',
 	text = 'It reacted to me...',
-	directions = 'Banish [[Portrait]] with a [[Crucifix]]',
+	directions = 'Banish [[Portrait]] with a [[Crucifix]].',
 	tutorial = 'Bring Portrait out of [[The Archives]], then attempt to duplicate a [[Crucifix]].',
 	references = nil,
 	rewards = nil,
