@@ -36,7 +36,7 @@ MISC: Miscellaneous CSS
 /** Local Imports **/
 @import url("https://doorsgame.wiki/w/index.php?title=MediaWiki:Profiles.css&action=raw&ctype=text/css");
 /** Font Imports **/
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Yellowtail&family=Finger+Paint&family=Marhey:wght@300..700&family=Unica+One&display=swap");
 
 /* thank you https://doorsrevampedfont.straw.page/ */
 @font-face {
@@ -1167,4 +1167,10 @@ Requires a "data-text" attribute containing the element's text. */
     font-style: italic;
     padding-left: 2rem;
     margin: .5rem
+}
+
+/* temp styling */
+.mw-logo-icon {
+	transform: matrix(1, 2, 1, 0.5, 0, 0);
+	opacity: .05;
 }
