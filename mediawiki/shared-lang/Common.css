@@ -36,7 +36,7 @@ MISC: Miscellaneous CSS
 /** Local Imports **/
 @import url("https://doorsgame.wiki/w/index.php?title=MediaWiki:Profiles.css&action=raw&ctype=text/css");
 /** Font Imports **/
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Caveat:wght@400..700&family=Yellowtail&family=Finger+Paint&family=Marhey:wght@300..700&family=Unica+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Damion&family=Finger+Paint&family=Fondamento:ital@0;1&family=Inconsolata:wght@200..900&family=Marhey:wght@300..700&family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Unica+One&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Yellowtail&display=swap");
 
 /* thank you https://doorsrevampedfont.straw.page/ */
 @font-face {
@@ -554,72 +554,63 @@ table.diff [class*="mw-diff-inline-"] {
 /*** convert mastoblox section to roblox users. that's fun ***/
 /* https://dev.miraheze.org/wiki/bloxshare */
 .profile-externalLinks {
-    .external-link.tooltip,
-	> a[href^="https://www.roblox.com"],
-    > a[href^="https://x.com"] {
-        &:hover::after {
-            font-size: var(--font-size-small);
-            margin-top: .25rem;
-        }
-    }
-	
-	> a[href^="https://www.roblox.com"]:hover::after,
-	> a[href^="https://x.com"]:hover::after {
-	    position: absolute;
-	    padding: 5px;
-        color: var(--color-emphasized, inherit);
-        background: var(--color-surface-2);
-        border: var(--border-subtle);
-        border-radius: var(--border-radius-base, 3px);
-	    white-space: nowrap;
-	    z-index: 1000;
-	    transform: translate(-50%, 100%);
-	}
-	
-	> a[href^="https://x.com"],
-	> a[href^="https://www.roblox.com"],
-	> span[title="Discord"] {
+	> .ext-floatingui-reference {
         position: relative;
         display: inline-block;
         aspect-ratio: 1;
         height: 100%;
         width: auto!important;
-        
-        &::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--color-base);
-            mask-size: 24px auto;
-            mask-position: center;
-            mask-repeat: no-repeat;
-        }
+		background: var(--color-base);
+		mask-size: 24px auto;
+		mask-position: center;
+		mask-repeat: no-repeat;
 	}
 	
-	> a[href^="https://x.com"]::before {
+	> .externalLink-twitter {
 	    mask-image: url(https://static.wikitide.net/utgwiki/b/ba/Social_icon_Twitter.png)
 	}
 	
-	> a[href^="https://www.roblox.com"]::before {
+	> .externalLink-roblox {
 	    mask-image: url(https://static.wikitide.net/utgwiki/c/c0/Social_icon_Roblox.svg)
 	}
 	
-	> span[title="Discord"]::before {
-	    mask-image: url(https://static.wikitide.net/utgwiki/7/72/Social_icon_Discord.svg);
-	}
-	
+	> .externalLink-discord {
+        mask-image: url(https://static.wikitide.net/utgwiki/7/72/Social_icon_Discord.svg)
+    }
+
 	svg,
 	> a[href^="https://mastodon.social"] {
 		visibility: hidden
 	}
+	
+	/* shifted to using FloatingUI */
+	a[data-username]::after,
+	.tooltip::after,
+	.ext-floatingui-content {
+    	content: none !important;
+    	display: none !important;
+	}
 }
 
 .profile-avatar-edit-button {
-    background: var(--color-progressive, #333)!important;
-}
-
-.profile-avatar-edit-action svg {
-    filter: invert(1)!important;
+    background: var(--background-color-progressive, #333)!important;
+	position: relative;
+	
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		mask-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8a/OOjs_UI_icon_edit-ltr.svg);
+		background: var(--color-inverted-fixed, #fff);
+		mask-size: 50%;
+		mask-position: center;
+		mask-repeat: no-repeat;
+		
+	}
+	
+	svg {
+		display: none;
+	}
 }
 
 /* original idea from m6ga on discord. tabber styling */
@@ -1167,10 +1158,4 @@ Requires a "data-text" attribute containing the element's text. */
     font-style: italic;
     padding-left: 2rem;
     margin: .5rem
-}
-
-/* temp styling */
-.mw-logo-icon {
-	transform: matrix(1, 2, 1, 0.5, 0, 0);
-	opacity: .05;
 }
