@@ -515,7 +515,7 @@ table.diff [class*="mw-diff-inline-"] {
 .notice-template {
 	border-radius: var(--border-radius-medium);
 	box-shadow: 0 4px 6px rgba(0,0,0,.4);
-	margin: 10px 5px 15px 5px; 
+	margin: 10px 0 15px 0; 
 	text-align: center;
 	padding: var(--space-xs, 5px);
 	color: var(--color-emphasized);
@@ -806,6 +806,9 @@ Requires a "data-text" attribute containing the element's text. */
     -webkit-user-drag: none;
     -moz-user-drag: none;
     user-drag: none;
+    
+    max-height: 50svh;
+    object-fit: contain;
 }
 
 .infobox__carousel-btn {
