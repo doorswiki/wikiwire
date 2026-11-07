@@ -319,6 +319,44 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	}
 } */
 
+.doorswiki-banner-wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: var(--space-md);
+	margin: 1rem 0;
+}
+
+@media screen and (max-width: 1119px) {
+	.doorswiki-banner-wrapper {
+		flex-direction: column;
+	}
+}
+
+.doorswiki-banner-wrapper > div {
+	margin: unset!important;
+}
+
+.doorswiki-mp--ongoing {
+	flex: 1;
+}
+
+.doorswiki-spotlight {
+	flex: 2;
+}
+
+.doorswiki-mp--ongoing .t-card__media-body {
+	justify-content: center;
+	gap: var(--space-xxs)!important;
+}
+
+.doorswiki-mp--ongoing .t-card__foot {
+	margin-top: unset;
+}
+
+.doorswiki-mp--ongoing .t-card__title {
+	font-size: var(--font-size-x-large)!important;
+}
+
 .doorswiki-floors-container {
 	outline: unset!important;
 	padding: unset!important;

@@ -10,7 +10,7 @@
 .doorswiki-spotlight__viewport {
 	position: relative;
 	width: 100%;
-	height: 250px;
+	height: 100%; /* 250px; */
 	overflow: hidden;
 }
 
@@ -82,7 +82,7 @@
 
 .doorswiki-spotlight__slide-media img,
 .doorswiki-spotlight__slide video {
-	mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), black, rgba(0, 0, 0, 0.5) 100%);
+	mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5), black, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .doorswiki-spotlight__slide .embedvideo-localEmbedStyle {
@@ -116,7 +116,7 @@
 	flex-direction: column;
 	justify-content: center;
 	text-align: left;
-	max-width: 45%;
+	max-width: 50%;
 	gap: 0.125rem;
 }
 
