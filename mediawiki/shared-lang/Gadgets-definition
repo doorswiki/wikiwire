@@ -1,5 +1,6 @@
 * Countdown[ResourceLoader|hidden|type=general]|Countdown.js
 == utilities ==
+* instantDiffs [ResourceLoader | default | dependencies=site, mediawiki.api, mediawiki.util, mediawiki.storage, mediawiki.notification, mediawiki.Title, oojs] | instantDiffs.js
 * RefRevision[ResourceLoader|type=general]|RefRevision.js
 * RCSidebar[ResourceLoader|default] | RecentChangesSidebar.js|RecentChangesSidebar.css
 * AudioPlayer[ResourceLoader|default|hidden|type=general]|AudioPlayer.js|AudioPlayer.css

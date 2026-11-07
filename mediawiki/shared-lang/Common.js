@@ -33,12 +33,6 @@ $(".copy-button").click(function(e) {
     mw.notify(`Copied ${copyContent} to clipboard!`);
 });
 
-window.instantDiffs = window.instantDiffs || {};
-instantDiffs.settings = instantDiffs.settings || {};
-instantDiffs.settings.enableMobile = false;
-
-mw.loader.load( 'https://www.mediawiki.org/w/index.php?title=User:Serhio_Magpie/instantDiffs.js&action=raw&ctype=text/javascript' );
-
 // snippet from mezoga 
 // Allows for 'resize' to resize past 'max-height' if needed,
 // while allowing for 'height: fit-content' coexistence
