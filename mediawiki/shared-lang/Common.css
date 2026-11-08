@@ -675,9 +675,71 @@ table.diff [class*="mw-diff-inline-"] {
 }
 
 /* [[Template:Color]] stylings */
+/* ==========================================================================
+   Template:Color
+   ========================================================================== */
+
+/* 1. Base class with default stroke */
 .color-template {
-	font-weight: bold;
+    --strokeDefault: #0f0f0f;
+    position: relative;
+    display: inline-block;
+    isolation: isolate;
+    container-type: normal;
+    font-weight: bold;
+
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        color: transparent;
+        -webkit-text-stroke: 0.2em var(--stroke, var(--strokeDefault));
+        user-select: none;
+        pointer-events: none;
+    }
 }
+:where(.color-template) {
+    --gradient: initial;
+    --gradient2: initial;
+    --stroke: initial;
+}
+
+/* 2. Text gradient (applies if --gradient is set) */
+@container style(--gradient) {
+    .color-template-fill {
+        background-image: var(--gradient);
+        background-clip: text;
+        color: var(--color, inherit);
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+/* 3. Stroke gradient (applies if --gradient2 is set) */
+@container style(--gradient2) {
+    .color-template::before {
+        padding: 0.1em;
+        margin: -0.1em;
+        background-image: var(--gradient2);
+        background-clip: text;
+        -webkit-text-stroke: 0.2em transparent;
+    }
+}
+
+/* 4. Restore default link underline on hover */
+a:hover .color-template-fill {
+    text-decoration: underline;
+    text-decoration-color: var(--l1);
+    text-underline-offset: 0.15em;
+}
+
+/* 5. Remove underline on the article's own page */
+a.selflink .color-template-fill {
+    text-decoration: unset;
+    cursor: auto;
+}
+
 /* Given a "--gradient" variable containing a valid gradient,
 clips the element's background image to the text. */
 .background-clip-text {
