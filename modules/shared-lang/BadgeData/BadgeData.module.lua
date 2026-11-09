@@ -1951,7 +1951,7 @@ Challenges = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
-	obtainable = true, 
+	obtainable = false, 
 	id = '942682578235567',
 },
 {
@@ -2694,7 +2694,7 @@ Events = {
 	rewards = nil,
 	secret = true,
 	hidden = false,
-	obtainable = true, 
+	obtainable = false, 
 	id = '1253918446997249',
 },
 {
@@ -2864,8 +2864,8 @@ Legacy = {
 	references = nil,
 	rewards = nil,
 	secret = true,
-	hidden = false,
-	obtainable = true, 
+	hidden = true,
+	obtainable = false, 
 	id = '1035315791189379',
 }
 
