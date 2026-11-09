@@ -495,6 +495,18 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	padding-bottom: 2rem;
 }
 
+@media screen and (max-width: 800px) {
+	.doorswiki-recent-fade {
+		max-height: unset!important;
+		padding-bottom: unset!important;
+		mask-image: unset!important;
+	}
+	
+	.doorswiki-recent-fade tbody tr:nth-child(n+6) {
+		display: none;
+	}
+}
+
 .imagecard {
 	mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 80%); 
 	position: absolute; 
@@ -638,6 +650,9 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 .irwa-members {
 	justify-content: end!important;
 	gap: 4px!important;
+	border: unset!important;
+	margin: unset!important;
+	padding: unset!important;
 }
 
 .irwa-member {
@@ -671,6 +686,12 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	margin: unset!important;
+	gap: var(--space-sm);
+}
+
+.irwa-navigation .irwa-header br {
+	display: none;
 }
 
 .irwa-navigation .irwa-header a {
@@ -678,4 +699,16 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	padding: var(--space-xs) var(--space-md)!important;
 	color: var(--color-emphasized)!important;
 	border-radius: var(--border-radius-medium)!important;
+}
+
+@media screen and (max-width: 800px) {
+	.irwa-members {
+		margin-top: var(--space-md)!important;
+		font-size: var(--font-size-x-small);
+	}
+	
+	.irwa-member {
+		padding: var(--space-xxs) var(--space-xs)!important;
+		flex: 1;
+	}
 }
