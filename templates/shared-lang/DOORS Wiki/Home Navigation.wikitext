@@ -3,7 +3,7 @@
 {{DOORS_Wiki/Home_Navigation/item
 |image=Doors monochrome icon.png
 |link=DOORS
-|label=[[DOORS|DOORS]]
+|label=[[DOORS]]
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
@@ -17,6 +17,7 @@
 |link=List of Hazards
 |label=[[Hazards|HAZARDS]]
 }}
+
 {{DOORS_Wiki/Home_Navigation/item
 |image=Items icon.svg
 |link=Items
@@ -33,6 +34,12 @@
 |image=Modifiers monochrome icon.png
 |link=Modifiers
 |label=[[Modifiers|MODIFIERS]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Enter icon.png
+|link=Locations
+|label=[[Locations|LOCATIONS]]
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
@@ -75,6 +82,12 @@
 |image=Codes icon.png
 |link=Codes
 |label=[[Codes|CODES]]
+}}
+
+{{DOORS_Wiki/Home_Navigation/item
+|image=Development icon.png
+|link=Update Logs
+|label=[[Update Logs|UPDATE LOGS]]
 }}
 
 {{DOORS_Wiki/Home_Navigation/item
