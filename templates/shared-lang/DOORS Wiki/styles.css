@@ -442,6 +442,13 @@ html.skin-theme-clientpref-day .doorswiki-start-image {
 	transition: .25s opacity;
 }
 
+@media screen and (max-width: 1119px) {
+	.doorswiki-floors-floor--video {
+		display: none!important;
+		visibility: hidden;
+	}
+}
+
 .doorswiki-floors-floor:hover .doorswiki-floors-floor--video {
 	opacity: 1;
 }

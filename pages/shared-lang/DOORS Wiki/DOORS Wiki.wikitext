@@ -9,7 +9,5 @@
 | description = The official wiki for DOORS, the Roblox horror game by LSPLASH and RediblesQW.
 }}
 <div style="display: none">
-[[pt-br:DOORS Wiki]] 
 [[zh:DOORS Wiki]]
-[[fr:DOORS Wiki]]
 </div>
