@@ -144,6 +144,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # let the incremental sync see the before commit
       - uses: obbywiki/wikiwire@latest # WikWire is pre-v1 software, consider tethering your workflow to the current latest release to avoid breaking changes
         with:
           username: WikiWireBot@BotPasswordNameHere # replace with your bot user and bot password
@@ -469,7 +471,12 @@ Please note that WikiWire is currently a BETA and this shouldn't be required in 
 
 `dark_lua_compat` was removed in WikiWire v0.3.0, and supplying it as a parameter will produce an error.
 
-Use a workflow `permissions` block with at least `contents: read` so the default `GITHUB_TOKEN` can call the compare API.
+Incremental syncs on `push` events compute the file list from the local git history, so they work with a plain `actions/checkout@v4` and need no secret at all — as long as the checkout contains the pushed base commit (`fetch-depth: 0`, or at least enough history to include the `before` SHA). With a shallow `fetch-depth: 1` checkout, the previous commit may not be present and the action falls back to the GitHub API, which requires the repository's built-in `GITHUB_TOKEN` — available in workflows as `${{ github.token }}` with no secret to create (GitHub forbids secret names starting with `GITHUB_`, and you must not create one). If you depend on that fallback, pass it to the step via `env:` (the action reads it from the environment, not from an input):
+
+```yaml
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+```
 
 Every site that performs a real (non-dry-run) sync must resolve to a username and password: either the global inputs or a matching entry in `site_credentials`.
 
@@ -497,6 +504,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: obbywiki/wikiwire@latest
         with:
           username: WikiWireBot@BotPasswordNameHere
@@ -507,7 +516,8 @@ jobs:
 
 - **Deletes:** Off by default. With `delete_removed` enabled (wikiwire.toml or action input), removing an individual file deletes the corresponding wiki page. Removing a whole site or shared directory (e.g. `modules/<host>/` or `templates/shared/`) is treated as a reorganization and does **not** mass-delete wiki pages. `sync_all` never deletes.
 - **Renames:** Treated as deletes + adds, if enabled. Does not add a redirect.
-- **Initial push:** When GitHub sends an all-zero `before` SHA, the action uses the single `push` head commit’s file list instead of `compareCommits`.
+- **Initial push:** When GitHub sends an all-zero `before` SHA, the action uses the single head commit's file list (from the local git history) instead of `compareCommits`.
+- **Incremental sync:** Push-triggered syncs read the local git history instead of the GitHub API, so the workflow needs to check out with `fetch-depth: 0` (or deep enough to contain the `before` commit). With a shallow clone the action falls back to the API and needs the built-in `GITHUB_TOKEN` (`${{ github.token }}`, no secret to create). Scheduled and dispatch runs use `sync_all: override` and never call the API.
 - **Branches:** Use per-site `default_branch` or workflow `on.push.branches` to avoid syncing from unintended branches.
 
 ## Importing from an upstream wiki (this repository)

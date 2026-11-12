@@ -177,6 +177,6 @@ With the config above, content under `modules/shared-lang/`, `templates/shared-l
 
 `dark_lua_compat` was removed in WikiWire v0.3.0, and supplying it as a parameter will produce an error.
 
-Use a workflow `permissions` block with at least `contents: read` so the default `GITHUB_TOKEN` can call the compare API.
+Incremental syncs on `push` events compute the file list from the local git history, so the checkout must contain the `before` commit (use `fetch-depth: 0` or at least enough history). No custom secret is needed — the repository's built-in `GITHUB_TOKEN` (available as `${{ github.token }}`) is only a fallback for shallow checkouts, so do not create a secret for it; GitHub forbids secret names starting with `GITHUB_`.
 
 Every site that performs a real (non-dry-run) sync must resolve to a username and password: either the global inputs or a matching entry in `site_credentials`.

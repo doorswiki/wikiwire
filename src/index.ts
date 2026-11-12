@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import ignore from 'ignore';
 
 import { load_config, type site_config } from './config';
@@ -252,6 +253,84 @@ function filter_reorg_deletes(delete_files : string[], workspace : string) : str
     return kept;
 };
 
+// run git in the repo, returning stdout on success and null on any failure
+function run_git(args : string[], cwd : string) : string | null {
+    try {
+        return execFileSync('git', args, {
+            cwd,
+            encoding: 'utf8',
+            windowsHide: true,
+            stdio: ['ignore', 'pipe', 'pipe'],
+            maxBuffer: 64 * 1024 * 1024,
+        });
+    } catch {
+        return null;
+    };
+};
+
+const GIT_STATUS_MAP : Record<string, git_status> = {
+    A: 'added',
+    M: 'modified',
+    T: 'changed',
+    R: 'renamed',
+    C: 'copied',
+    D: 'removed',
+};
+
+// parse `git diff --name-status -z` output into the gh_file shape used by changes_from_gh_files
+function parse_git_diff_z(output : string) : gh_file[] {
+    const tokens = output.split('\0').filter(Boolean);
+    const out : gh_file[] = [];
+
+    let i = 0;
+    while (i < tokens.length) {
+        const raw = tokens[i];
+        const letter = raw.charAt(0);
+        i += 1;
+
+        const status = GIT_STATUS_MAP[letter] ?? 'unknown';
+
+        if (letter === 'R' || letter === 'C') {
+            const previous_filename = tokens[i];
+            const filename = tokens[i + 1];
+            out.push({ filename, status, previous_filename });
+            i += 2;
+            continue;
+        };
+
+        out.push({ filename: tokens[i], status });
+        i += 1;
+    };
+
+    return out;
+};
+
+// compute the list of changed files from local git history (works without any GitHub token or permissions)
+function list_changed_paths_local(workspace : string, before : string, after : string) : gh_file[] | null {
+    const inside = run_git(['rev-parse', '--is-inside-work-tree'], workspace);
+    if (!inside || inside.trim() !== 'true') return null;
+
+    const after_sha = run_git(['rev-parse', '--verify', '--quiet', `${after}^{commit}`], workspace)?.trim();
+    if (!after_sha) return null;
+
+    if (is_zero_sha(before)) {
+        const out = run_git(['diff-tree', '--no-commit-id', '--name-status', '-r', '-M', '-z', '--root', after_sha], workspace);
+        return out === null ? null : parse_git_diff_z(out);
+    };
+
+    const before_sha = run_git(['rev-parse', '--verify', '--quiet', `${before}^{commit}`], workspace)?.trim();
+    if (!before_sha) return null;
+
+    // compare against the merge-base so non-fast-forward pushes still report files that changed since the common ancestor
+    const merge_base = run_git(['merge-base', before_sha, after_sha], workspace)?.trim();
+    const args = merge_base
+        ? ['diff', '--name-status', '-M', '-z', merge_base, after_sha]
+        : ['diff', '--name-status', '-M', '-z', before_sha, after_sha];
+
+    const out = run_git(args, workspace);
+    return out === null ? null : parse_git_diff_z(out);
+};
+
 async function list_changed_paths(opts : { workspace : string; sync_all : boolean; ign : Ignore; delete_removed : boolean }) : Promise<path_change[]> {
     const { workspace, sync_all, ign, delete_removed } = opts;
 
@@ -267,29 +346,38 @@ async function list_changed_paths(opts : { workspace : string; sync_all : boolea
             .map((file) => ({ file, kind: 'edit' as const, git_status: 'unknown' as const }));
     };
 
-    const token = process.env.GITHUB_TOKEN;
-
-    if (!token) { throw new Error('WikiWire parameters error: GITHUB_TOKEN is missing'); };
-
-    const octokit = github.getOctokit(token);
     const { owner, repo } = github.context.repo;
     const payload = github.context.payload as push_payload;
     const after = payload.after ?? github.context.sha;
     const before = payload.before ?? '';
 
-    let gh_files : gh_file[] = [];
+    // prefer local git history — no token or extra permissions needed
+    const local_files = list_changed_paths_local(workspace, before, after);
+    let gh_files : gh_file[];
 
-    if (is_zero_sha(before)) {
-        const { data } = await octokit.rest.repos.getCommit({ owner, repo, ref: after });
-        gh_files = data.files ?? [];
+    if (local_files !== null) {
+        gh_files = local_files;
     } else {
-        const { data } = await octokit.rest.repos.compareCommits({
-            owner,
-            repo,
-            base: before,
-            head: after,
-        });
-        gh_files = data.files ?? [];
+        const token = process.env.GITHUB_TOKEN;
+
+        if (!token) {
+            throw new Error( 'WikiWire parameters error: GITHUB_TOKEN is missing and the previous revision is not available in the local git history. Check out the repository with fetch-depth: 0 (full history), or pass env GITHUB_TOKEN with contents: read for this step.' );
+        };
+
+        const octokit = github.getOctokit(token);
+
+        if (is_zero_sha(before)) {
+            const { data } = await octokit.rest.repos.getCommit({ owner, repo, ref: after });
+            gh_files = data.files ?? [];
+        } else {
+            const { data } = await octokit.rest.repos.compareCommits({
+                owner,
+                repo,
+                base: before,
+                head: after,
+            });
+            gh_files = data.files ?? [];
+        };
     };
 
     let changes = changes_from_gh_files(gh_files, delete_removed);
@@ -405,9 +493,26 @@ async function run() : Promise<void> {
     const base_octokit = !sync_all && process.env.GITHUB_TOKEN ? github.getOctokit(process.env.GITHUB_TOKEN) : null;
     const base_content_cache = new Map<string, string | null>();
 
+    // Prefer local git history — needs no GitHub token nor extra API permissions.
+    const base_local = (file : string) : string | null => {
+        if (!base_ref || is_zero_sha(base_ref)) return null;
+
+        return run_git(['show', `${base_ref}:${file}`], workspace);
+    };
+
     async function read_base_content(file : string) : Promise<string | null> {
-        if (!base_octokit || !base_ref || is_zero_sha(base_ref)) { return null };
+        if (!base_ref || is_zero_sha(base_ref)) { return null };
         if (base_content_cache.has(file)) { return base_content_cache.get(file) ?? null };
+
+        // 1. Local git (no token needed — the checkout needs to contain base_ref)
+        const local = base_local(file);
+        if (local !== null) {
+            base_content_cache.set(file, local);
+            return local;
+        };
+
+        // 2. Fall back to the GitHub API when a token is passed
+        if (!base_octokit) return null;
 
         const { owner, repo } = github.context.repo;
         let content : string | null = null;

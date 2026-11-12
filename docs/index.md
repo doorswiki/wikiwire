@@ -147,6 +147,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # let the incremental sync see the before commit
       - uses: obbywiki/wikiwire@latest # WikWire is pre-v1 software, consider tethering your workflow to the current latest release to avoid breaking changes
         with:
           username: WikiWireBot@BotPasswordNameHere # replace with your bot user and bot password
