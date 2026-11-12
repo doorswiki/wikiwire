@@ -1,0 +1,11 @@
+.tier-list--parent .tier-list--tier {
+	cursor: text;
+}
+
+body:has(.tier-list--row.dragged), .tier-list--row.dragged .tier-list--option a {
+	cursor: grabbing;
+}
+
+.oo-ui-tier-settings .oo-ui-messageDialog-message .oo-ui-labelElement.oo-ui-labelElement-label {
+	line-height: 2.5em;
+}

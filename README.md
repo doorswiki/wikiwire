@@ -257,6 +257,26 @@ WikiWire waits and retries on HTTP 429/502/503/504, network timeouts, and MediaW
 
 For additional details, see the specification here.
 
+## Merging with on-wiki edits
+
+Many wikis accept edits made directly on the wiki by users, and those edits should not be undone by the next Git sync. WikiWire therefore never blindly overwrites a page: before uploading, it merges the repo content with the current on-wiki content.
+
+When the previously synced revision of the file is available (the action fetches it from the commit just before the pushed one), a three-way, line-by-line merge is used, with the previous repo revision as the common base:
+
+| Change | Result on the wiki |
+|--------|--------------------|
+| Only the repo changed those lines (edited, deleted, or appended after unchanged lines) | The repo's revision wins, including deletions |
+| Only the wiki changed those lines | The wiki's revision is kept |
+| Both sides changed the same lines | The wiki's revision is kept |
+| Both sides added content at the same place | Both are kept (the repo's lines come first) |
+| Neither side changed | Keeps as is |
+
+Because WikiWire diffs against the previous repo state instead of just the current one, a line that the repo edits or deletes is followed even if that line still exists unchanged on the wiki — as long as the wiki never touched it. Line endings (`\r\n` vs `\n`) are normalized before merging.
+
+This is a line-based merge, not a semantic one: large pieces of a page that are changed by both sides in overlapping ways are resolved whole-block in the wiki's favor. Keep large generated blocks identical on both sides, or leave them out of sync, rather than expecting a character-level merge.
+
+When the previous base cannot be determined (first push of the repo, a file added this push, or `sync_all`), WikiWire falls back to a conservative two-way merge: it only replaces on-wiki lines with identical repo lines, keeps any on-wiki line that differs, and incorporates repo additions. In that mode, repo-side deletions and edits of lines that the wiki also reworded are not propagated.
+
 ## Path to wiki title mapping
 
 | Root | Repository path | Wiki title | Content model |
@@ -332,7 +352,7 @@ Some wikis may reject certain content models on `Template:` subpages; in that ca
 
 ### Content models (non-special files under `mediawiki/`)
 
-The main page is a flat file at `mediawiki/<path_segment>/<page>.<ext>` (or extensionless `<page>` for wikitext). Content model is inferred from the file name: `.wikitext` or extensionless -> `wikitext`; page names ending in `.js` -> `javascript`; `.css` -> per-site `css_content_model`; `.json` -> `json`.
+The main page is a flat file at `mediawiki/<path_segment>/<page>.<ext>` (or extensionless `<page>` for wikitext). Content model is inferred from the file name: `.wikitext` or extensionless -> `wikitext`; page names ending in `.js` -> `javascript`; `.css` -> per-site `css_content_model`; `.json` -> `json`. Files under `Gadgets/` (for example `mediawiki/<path_segment>/Gadgets/audio.json`) are created with the `GadgetDefinition` content model, which the gadget system expects; other `.json` files are `json`. Note that the content model is used when a page is created — an existing page keeps whatever model it already has on the wiki.
 
 | Pattern | Content model |
 |---------|----------------|
@@ -342,6 +362,7 @@ The main page is a flat file at `mediawiki/<path_segment>/<page>.<ext>` (or exte
 | `*.wikitext` | `wikitext` |
 | `*.js` | `javascript` |
 | `*.css` | Per-site `css_content_model` in `wikiwire.toml` (default `sanitized-css`) |
+| `Gadgets/<name>.json` | `GadgetDefinition` |
 | `*.json` | `json` |
 | Extensionless basename (e.g. `ja`) | `wikitext` |
 | Anything else | Error: unsupported extension (skipped when `ignore_content_model_errors = true`) |
@@ -489,6 +510,31 @@ jobs:
 - **Initial push:** When GitHub sends an all-zero `before` SHA, the action uses the single `push` head commit’s file list instead of `compareCommits`.
 - **Branches:** Use per-site `default_branch` or workflow `on.push.branches` to avoid syncing from unintended branches.
 
-## Releases/Builds
+## Importing from an upstream wiki (this repository)
+
+This repository imports a set of pages from an upstream wiki (doorsgame.wiki), commits them to this repository, and then syncs this repository to every configured site. The import is intended for fork wikis that should stay byte-identical to the upstream pages, and for wikis that should receive automatically imported patches to shared infrastructure.
+
+## The import pipeline
+
+* `scripts/pages.json` — the manifest. A JSON object whose keys are upstream page titles (`"MediaWiki:Common.css"`, `"Module:AboutDoors"`, ...) and whose values are repository paths. Every key must map to a path under `modules/`, `templates/`, `mediawiki/`, `pages/`, `users/`, or `user_talk/` so the result is syncable by WikiWire.
+* `scripts/sync-upstream.mjs` — reads the manifest, fetches every listed page from the upstream API (MediaWiki Action API), and updates the repository files to match. It is idempotent: pages whose content has not changed produce no diff and no commit.
+* The workflow `.github/workflows/wikiwire.yml` runs the importer every four hours, and after it, the push itself triggers WikiWire to deploy the changes to the configured sites.
+
+## What the importer does with each page
+
+* **Page exists and is identical** — no change; nothing is committed.
+* **Page exists but its content changed** — the file is updated (the diff appears in the auto "chore(sync): update upstream wiki pages" commit).
+* **Page was renamed upstream** — WikiWire keeps the repo copy and rewrites it to hold the exact upstream redirect wikitext (e.g. the old page stays as `#REDIRECT [[New page]]`), so forks stay identical to upstream, including the redirect itself.
+* **Page was deleted upstream (or its redirect was removed)** — the repo copy is removed, the entry is dropped from `scripts/pages.json`, and the removal is committed.
+
+## How the move/delete gets onto the wikis
+
+When a push-triggered run deletes a repo file (a deletion from the importer), the deploy step runs with `delete_removed: true` and deletes the corresponding on-wiki pages on every configured site with deletion permission. Likewise, a rename is pushed as a new page and the old page is deleted. On the scheduled and `workflow_dispatch` runs the deploy step performs a single `sync_all: override` sync instead and deletes nothing.
+
+To add a page to the import, add `"Upstream title": "repo/path"` to `scripts/pages.json` — its presence in the file is enough; the next run fetches it. To stop importing a page, remove its entry from the manifest; to remove a page entirely, delete its entry and its file (or just delete the entry and let the upstream removal workflow run).
+
+If the upstream page is moved or deleted while the import is running, behavior is exactly the same: existence and redirect detection is part of the fetch, so nothing is silently left stale. For debugging or a locally simulated run, set `SYNC_UPSTREAM_DRY_RUN=1` to log what would change without writing anything.
+
+# Releases/Builds
 
 Contributors to WikiWire must run `pnpm install` and `pnpm build` to build the `dist/index.js` release files via esbuild.

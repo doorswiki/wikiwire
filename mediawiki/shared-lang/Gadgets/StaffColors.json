@@ -1,0 +1,12 @@
+{
+	"settings": {
+		"section": "visual",
+		"default": true
+	},
+	"module": {
+		"pages": [
+			"staffColors.css"
+		],
+		"dependencies": []
+	}
+}

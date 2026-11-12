@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add modules/ templates/ mediawiki/ pages/ users/ user_talk/
+          git add modules/ templates/ mediawiki/ pages/ users/ user_talk/ scripts/pages.json
           if git diff --staged --quiet; then
             echo "No upstream changes detected in repository."
           else
@@ -56,7 +56,21 @@ jobs:
             git push
           fi
 
-      - name: Sync files to production MediaWiki
+      # push events: incremental sync with deletion handling. The sync above commits
+      # the move/delete follow-through, so this push sees the files that disappeared
+      # and `delete_removed: true` removes the matching fork pages.
+      - name: Sync files to production MediaWiki (changed files, follows deletions)
+        if: github.event_name == 'push'
+        uses: doorswiki/wikiwire@main
+        with:
+          delete_removed: true
+          username: DoorsWiki@WikiWire
+          password: ${{ secrets.WIKI_PASSWORD }}
+
+      # Scheduled / manual runs have no commit diff, so do a full sync instead;
+      # deletions are propagated by the push-triggered run the sync above creates.
+      - name: Sync files to production MediaWiki (full sync)
+        if: github.event_name != 'push'
         uses: doorswiki/wikiwire@main
         with:
           sync_all: override

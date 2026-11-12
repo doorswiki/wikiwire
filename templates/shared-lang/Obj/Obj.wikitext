@@ -1,0 +1,1 @@
+<includeonly>{{#invoke:Object|main}}</includeonly><noinclude>{{Documentation}}</noinclude>

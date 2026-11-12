@@ -1,0 +1,15 @@
+{
+	"settings": {
+		"section": "",
+		"default": true,
+		"hidden": true
+	},
+	"module": {
+		"pages": [
+			"InteractiveModifiers.js"
+		],
+		"dependencies": [
+			"mediawiki.util"
+		]
+	}
+}

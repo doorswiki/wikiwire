@@ -1,0 +1,26 @@
+<noinclude>{{Documentation subpage}}</noinclude>
+{{Lua|module=ItemSkins|data=ItemSkinsData}}
+;Description
+:Generates complete skins list for a given item.
+
+; Usage
+: <code><nowiki>{{ItemSkins | <1> }}</nowiki></code>
+
+; Parameters
+: <code>1</code> Exact item name as present in data.
+
+;Example
+<pre>
+{{ItemSkins|Alarm Clock}}
+</pre>
+
+;Output
+{{ItemSkins|Alarm Clock}}
+
+;Example
+<pre>
+{{ItemSkins|Flashlight}}
+</pre>
+
+;Output
+{{ItemSkins|Flashlight}}

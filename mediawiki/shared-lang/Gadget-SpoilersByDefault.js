@@ -1,18 +1,10 @@
 function toggleSpoilers( enabled ) {
     console.log( 'toggleSpoilers:', enabled );
 
-    if ( !enabled ) {
-        return;
-    }
+    if ( !enabled ) { return; }
 
-    $( '.mw-customtoggle-HideSpoiler' ).each( function () {
-        var $toggle = $( this );
-        var $spoiler = $( '#mw-customcollapsible-ToggleSpoilers' );
-
-        if ( $spoiler.hasClass( 'mw-collapsed' ) ) {
-            $toggle.trigger( 'click' );
-        }
-    } );
+    $( '.spoiler-wrapper' ).attr( 'open', true );
+    $( '.spoiler-header' ).css( 'display', 'none' );
 }
 
 // Register the preference

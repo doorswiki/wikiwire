@@ -1,0 +1,676 @@
+/*                  RecentChangesModern
+ *  Description:  Makes Special:RecentChanges more readable.
+ *  Author:       Sociophobia.
+ *  Check out dev.wikia.com/wiki/RecentChangesModern for more info.
+ */
+
+.mw-special-Recentchanges {
+	--main-color: #FEAF09;
+	--user-color: #9943FF;
+	--project-color: #FF8300;
+	--file-color: #52C12A;
+	--mediawiki-color: #BD202D;
+	--template-color: #941347;
+	--help-color: #5DD8D8;
+	--category-color:  #B76801;
+	--blog-color: silver;
+	
+	--new-color: deepskyblue;
+	--delete-color: #B30000;
+	--move-page-color: #E0E02A;
+	--protect-color: #B2D401;
+	
+	--default-color: #B9B9B9;
+}
+
+.mw-rcfilters-ui-filterWrapperWidget-top,
+.mw-rcfilters-ui-filterTagMultiselectWidget,
+.mw-rcfilters-ui-changesListWrapperWidget-highlighted .mw-rcfilters-ui-highlights,
+.ooui-theme-fandom .mw-rcfilters-ui-changesListWrapperWidget .mw-changeslist-legend,
+table.mw-enhanced-rc abbr.newpage,
+span.mw-changeslist-line-inner-separatorAfterLinks,
+span.mw-changeslist-line-inner-logLink,
+table.mw-enhanced-rc.mw-collapsible .mw-changeslist-line-inner .mw-changeslist-separator {
+	display: none;
+}
+
+.rcfilters-head {
+	min-height: auto !important;
+}
+
+.mw-special-Recentchanges span.comment {
+	word-break: break-word;
+	width: 99% !important;
+}
+
+table.mw-enhanced-rc.mw-collapsible span.mw-rc-unwatched {
+	font-size: 0;
+	font-weight: bold;
+	margin-top: 5px;
+	display: block;
+}
+
+table.mw-enhanced-rc.mw-collapsible span.mw-rc-unwatched a {
+	font-size: 14px;
+}
+
+.client-js .mw-changeslist ul, .client-js .mw-changeslist table.mw-enhanced-rc {
+	margin-left: 0;
+}
+
+table.mw-enhanced-rc {
+	margin: 10px 0;
+	border-left: 6px solid;
+	border-color: var(--default-color);
+	position: relative;
+	width: 100%;
+	padding: 5px 15px 5px 0;
+}
+
+.mw-rcfilters-ui-changesListWrapperWidget {
+	font-family: Rubik;
+}
+
+table.mw-enhanced-rc::before {
+	content: "";
+	width: 20px;
+	height: 20px;
+	left: 20px;
+	top: 12px;
+	position: absolute;
+}
+
+table.mw-enhanced-rc tr {
+	display: flex;
+	/*width: 100%;*/
+}
+
+span.mw-changeslist-line-inner-historyLink {
+	position: absolute;
+	right: 70px;
+	top: 5px;
+	line-height: 21px;
+	font-size: 12px;
+}
+
+span.mw-changeslist-line-inner-articleLink {
+	display: block;
+	margin-bottom: 15px;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+span.mw-changeslist-line-inner-separatorAftercharacterDiff {
+	display: block;
+	line-height: 1px;
+	visibility: hidden;
+}
+
+span.mw-changeslist-line-inner-comment {
+	display: block;
+	width: 100%;
+	opacity: .7;
+	word-break: break-word;
+}
+
+span.mw-changeslist-line-inner-tags {
+	display: block;
+	text-align: right;
+}
+
+td.mw-enhanced-rc {
+	order: 2;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-upload tr .mw-changeslist-line-inner .mw-changeslist-line-inner-logEntry {
+	display: flex;
+	line-height: 1px;
+	flex-direction: column;
+	flex-wrap: wrap;
+	color: transparent;
+}
+
+table.mw-enhanced-rc .mw-changeslist-line-inner {
+	width: 100%;
+	/*order: 1;*/
+	padding-left: 50px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-upload tr .mw-changeslist-line-inner .mw-changeslist-line-inner-logEntry a:nth-child(3) {
+	order: -1;
+	margin-bottom: 15px;
+	margin-top: 5px;
+	font-weight: bold;
+	width: max-content;
+	line-height: 21px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-upload tr .mw-changeslist-line-inner .mw-changeslist-line-inner-logEntry .mw-changeslist-links {
+	line-height: 21px;
+	color: var(--themed-text-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-upload tr .mw-changeslist-line-inner .mw-changeslist-line-inner-logEntry a.mw-userlink {
+	line-height: 21px;
+	width: max-content;
+}
+
+span.mw-collapsible-toggle.mw-collapsible-arrow.mw-enhancedchanges-arrow.mw-enhancedchanges-arrow-space.mw-collapsible-toggle-expanded {
+	transform: rotate(180deg);
+}
+
+table.mw-enhanced-rc.mw-collapsible .mw-changeslist-line-inner .mw-title {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 15px;
+	margin-top: 5px;
+}
+
+table.mw-enhanced-rc.mw-collapsible .mw-changeslist-line-inner .mw-changeslist-links {
+	position: absolute;
+	right: 70px;
+	top: 10px;
+	line-height: 21px;
+	font-size: 12px;
+}
+
+table.mw-enhanced-rc.mw-collapsible .mw-changeslist-line-inner .changedby {
+	display: block;
+}
+
+table.mw-enhanced-rc.mw-collapsible .mw-changeslist-line-inner {
+	margin-left: 15px;
+}
+
+table.mw-enhanced-rc.mw-collapsible tr:not(:first-of-type) {
+	margin-top: 10px;
+	margin-left: 15px;
+	width: 90%;
+}
+
+.mw-special-Recentchanges abbr.minoredit {
+	position: absolute;
+	right: 10px;
+	top: 15px;
+}
+
+.mw-special-Recentchanges .unpatrolled {
+	position: absolute;
+	right: 10px;
+	top: 32px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-rights .mw-changeslist-line-inner-logEntry {
+	display: flex;
+	flex-direction: column;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-rights .mw-changeslist-line-inner-logEntry > * {
+	width: max-content;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete .mw-changeslist-line-inner-logEntry {
+	display: flex;
+	visibility: hidden;
+	flex-direction: column;
+	font-size: 0;
+	line-height: 0;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete .mw-changeslist-line-inner-logEntry > a:nth-child(3) {
+	order: 1;
+	width: max-content;
+	margin-top: 5px;
+	visibility: visible;
+	margin-bottom: 15px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete .mw-changeslist-line-inner-logEntry span.comment {
+	opacity: .7;
+	visibility: visible;
+	font-size: 14px;
+	order: 4;
+	line-height: 21px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete .mw-changeslist-line-inner-logEntry a.mw-userlink {
+	order: 2;
+	visibility: visible;
+	width: max-content;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete .mw-changeslist-line-inner-logEntry .mw-changeslist-links {
+	order: 3;
+	visibility: visible;
+	width: max-content;
+	line-height: 21px;
+	font-size: 14px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move .mw-changeslist-line-inner-logEntry {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move .mw-changeslist-line-inner-logEntry .mw-userlink {
+	order: 98;
+	width: -webkit-fill-available;
+	line-height: 21px;
+	width: -moz-available;
+	width: fill-available;
+	font-size: 14px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move .mw-changeslist-line-inner-logEntry .mw-changeslist-links {
+	order: 99;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move .mw-changeslist-line-inner-logEntry > a:nth-child(3) {
+	font-size: 14px;
+	line-height: 28px;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move .mw-changeslist-line-inner-logEntry > a:nth-child(4) {
+	font-size: 14px;
+	line-height: 28px;
+	padding-left: 15px;
+	font-weight: bold;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move .mw-changeslist-line-inner-logEntry > a:nth-child(3)::after {
+	content: ">";
+	color: var(--themed-text-color);
+	margin-left: 15px;
+	pointer-events: none;
+	user-select: none;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-protect td.mw-enhanced-rc {
+	top: 0;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-protect::before {
+	top: 5px;
+}
+ 
+.mw-special-Recentchanges .mw-icon-arrow-collapsed, .mw-special-Recentchanges .mw-collapsible-arrow.mw-collapsible-toggle-collapsed,
+.mw-special-Recentchanges span.mw-collapsible-toggle.mw-collapsible-arrow.mw-enhancedchanges-arrow.mw-enhancedchanges-arrow-space.mw-collapsible-toggle-expanded {
+	background-image: none;
+}
+ 
+.mw-changeslist .mw-rcfilters-highlight-color-c1 tr:first-child,
+.mw-changeslist .mw-rcfilters-highlight-color-c2 tr:first-child,
+.mw-changeslist .mw-rcfilters-highlight-color-c3 tr:first-child,
+.mw-changeslist .mw-rcfilters-highlight-color-c4 tr:first-child,
+.mw-changeslist .mw-rcfilters-highlight-color-c5 tr:first-child {
+	background-color: transparent;
+}
+ 
+.mw-rcfilters-ui-changesListWrapperWidget li.mw-rcfilters-highlight-color-c1, .mw-rcfilters-ui-changesListWrapperWidget .mw-rcfilters-highlight-color-c1 tr:first-child, .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c1.mw-rcfilters-ui-highlights-enhanced-toplevel:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+2)), .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c1.mw-rcfilters-ui-highlights-enhanced-nested:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+4)),
+.mw-rcfilters-ui-changesListWrapperWidget li.mw-rcfilters-highlight-color-c2, .mw-rcfilters-ui-changesListWrapperWidget .mw-rcfilters-highlight-color-c2 tr:first-child, .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c2.mw-rcfilters-ui-highlights-enhanced-toplevel:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+2)), .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c2.mw-rcfilters-ui-highlights-enhanced-nested:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+4)),
+.mw-rcfilters-ui-changesListWrapperWidget li.mw-rcfilters-highlight-color-c3, .mw-rcfilters-ui-changesListWrapperWidget .mw-rcfilters-highlight-color-c3 tr:first-child, .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c3.mw-rcfilters-ui-highlights-enhanced-toplevel:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+2)), .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c3.mw-rcfilters-ui-highlights-enhanced-nested:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+4)),
+.mw-rcfilters-ui-changesListWrapperWidget li.mw-rcfilters-highlight-color-c4, .mw-rcfilters-ui-changesListWrapperWidget .mw-rcfilters-highlight-color-c4 tr:first-child, .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c4.mw-rcfilters-ui-highlights-enhanced-toplevel:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+2)), .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c4.mw-rcfilters-ui-highlights-enhanced-nested:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+4)),
+.mw-rcfilters-ui-changesListWrapperWidget li.mw-rcfilters-highlight-color-c5, .mw-rcfilters-ui-changesListWrapperWidget .mw-rcfilters-highlight-color-c5 tr:first-child, .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c5.mw-rcfilters-ui-highlights-enhanced-toplevel:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+2)), .mw-rcfilters-ui-changesListWrapperWidget tr.mw-rcfilters-highlight-color-c5.mw-rcfilters-ui-highlights-enhanced-nested:not(.mw-rcfilters-ui-changesListWrapperWidget-enhanced-grey) td:not(:nth-child(-n+4)) {
+	background-color: transparent;
+}
+
+.mw-enhanced-rc a:empty::after {
+	content: "";
+	margin-top: 5px;
+	width: 16px;
+	display: inline-block;
+	height: 16px;
+	-webkit-mask-image: url(/resources-ucp/v2/dist/svg/wds-icons-link-tiny.svg);
+	mask-image: url(/resources-ucp/v2/dist/svg/wds-icons-link-tiny.svg);
+	background-color: var(--themed-link-color);
+	transition: background-color 300ms;
+}
+
+.mw-enhanced-rc .mw-title a:empty:hover::after {
+	background-color: var(--themed-link-color--hover);
+}
+
+/* COLORS */
+table.mw-enhanced-rc::before,
+.mw-collapsible-toggle {
+	background-color: var(--default-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-0:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns0-"], table[class^="mw-changeslist-ns0-"],
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-1:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns1-"], table[class^="mw-changeslist-ns1-"] {
+	border-color: var(--main-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-0:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns0-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns0-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns0-"]::before, table[class^="mw-changeslist-ns0-"]::before,
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-1:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns1-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns1-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns1-"]::before, table[class^="mw-changeslist-ns1-"]::before {
+	background-color: var(--main-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-2:not(.mw-changeslist-src-mw-new)::before, 
+table[class*=" mw-changeslist-ns2-"] .mw-collapsible-toggle, 
+table[class^="mw-changeslist-ns2-"] .mw-collapsible-toggle, 
+table[class*=" mw-changeslist-ns2-"]::before, table[class^="mw-changeslist-ns2-"]::before,
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-3:not(.mw-changeslist-src-mw-new)::before, 
+table[class*=" mw-changeslist-ns3-"] .mw-collapsible-toggle, 
+table[class^="mw-changeslist-ns3-"] .mw-collapsible-toggle, 
+table[class*=" mw-changeslist-ns3-"]::before, table[class^="mw-changeslist-ns3-"]::before,
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-1202:not(.mw-changeslist-src-mw-new)::before, 
+table[class*=" mw-changeslist-ns1202-"] .mw-collapsible-toggle, 
+table[class^="mw-changeslist-ns1202-"] .mw-collapsible-toggle, 
+table[class*=" mw-changeslist-ns1202-"]::before, table[class^="mw-changeslist-ns1202-"]::before,
+table.mw-enhanced-rc.mw-changeslist-log-rights::before {
+	background-color: var(--user-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-2:not(.mw-changeslist-src-mw-new):not(.mw-collapsible):not(.mw-changeslist-log-block),
+table[class*=" mw-changeslist-ns2-"], table[class^="mw-changeslist-ns2-"],
+table.mw-enhanced-rc.mw-changeslist-ns-3:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns3-"], table[class^="mw-changeslist-ns3-"],
+table.mw-enhanced-rc.mw-changeslist-ns-1202:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns1202-"], table[class^="mw-changeslist-ns1202-"] {
+	border-color: var(--user-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-4:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns4-"], table[class^="mw-changeslist-ns4-"],
+table.mw-enhanced-rc.mw-changeslist-ns-5:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns5-"], table[class^="mw-changeslist-ns5-"] {
+	border-color: var(--project-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-4:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns4-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns4"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns4-"]::before, table[class^="mw-changeslist-ns4-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-5:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns5-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns5-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns5-"]::before, table[class^="mw-changeslist-ns5-"]::before {
+	background-color: var(--project-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-6,
+table[class*=" mw-changeslist-ns6-"], table[class^="mw-changeslist-ns6-"],
+table.mw-enhanced-rc.mw-changeslist-ns-7,
+table[class*=" mw-changeslist-ns7-"], table[class^="mw-changeslist-ns7-"],
+table.mw-enhanced-rc.mw-changeslist-log-upload {
+	border-color: var(--file-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-6::before,
+table[class*=" mw-changeslist-ns6-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns6-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns6-"]::before, table[class^="mw-changeslist-ns6-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-7::before,
+table[class*=" mw-changeslist-ns7-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns7-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns7-"]::before, table[class^="mw-changeslist-ns7-"]::before,
+table.mw-enhanced-rc.mw-changeslist-log-upload::before,
+table.mw-enhanced-rc.mw-changeslist-log-upload .mw-collapsible-toggle {
+	background-color: var(--file-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-8:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns8-"], table[class^="mw-changeslist-ns8-"],
+table.mw-enhanced-rc.mw-changeslist-ns-9:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns9-"], table[class^="mw-changeslist-ns9-"] {
+	border-color: var(--mediawiki-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-8:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns8-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns8"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns8-"]::before, table[class^="mw-changeslist-ns8-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-9:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns9-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns9-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns9-"]::before, table[class^="mw-changeslist-ns9-"]::before {
+	background-color: var(--mediawiki-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-10:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns10-"], table[class^="mw-changeslist-ns10-"],
+table.mw-enhanced-rc.mw-changeslist-ns-11:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns11-"], table[class^="mw-changeslist-ns11-"],
+table.mw-enhanced-rc.mw-changeslist-ns-828:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns828-"], table[class^="mw-changeslist-ns828-"],
+table.mw-enhanced-rc.mw-changeslist-ns-829:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns1829-"], table[class^="mw-changeslist-ns829-"] {
+	border-color: var(--template-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-10:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns10-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns10-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns10-"]::before, table[class^="mw-changeslist-ns10"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-11:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns11-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns11-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns11-"]::before, table[class^="mw-changeslist-ns11-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-828:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns828-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns828-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns828-"]::before, table[class^="mw-changeslist-ns828-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-829:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns829-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns829-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns829-"]::before, table[class^="mw-changeslist-ns829-"]::before {
+	background-color: var(--template-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-12:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns12-"], table[class^="mw-changeslist-ns12" ],
+table.mw-enhanced-rc.mw-changeslist-ns-13:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns13-"], table[class^="mw-changeslist-ns13-"] {
+	border-color: var(--help-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-12:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns12-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns12-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns12-"]::before, table[class^="mw-changeslist-ns12-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-13:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns13-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns13-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns13-"]::before, table[class^="mw-changeslist-ns13-"]::before {
+	background-color: var(--help-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-14:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns14-"], table[class^="mw-changeslist-ns14-"],
+table.mw-enhanced-rc.mw-changeslist-ns-15:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns15-"], table[class^="mw-changeslist-ns15-"] {
+	border-color: var(--category-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-14:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns14-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns14-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns14-"]::before, table[class^="mw-changeslist-ns14-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-15:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns15-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns15-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns15-"]::before, table[class^="mw-changeslist-ns15-"]::before {
+	background-color: var(--category-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-500:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns500-"], table[class^="mw-changeslist-ns500-"],
+table.mw-enhanced-rc.mw-changeslist-ns-501:not(.mw-changeslist-src-mw-new):not(.mw-collapsible),
+table[class*=" mw-changeslist-ns501-"], table[class^="mw-changeslist-ns501-"] {
+	border-color: var(--blog-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-500:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns500-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns500"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns500-"]::before, table[class^="mw-changeslist-ns500-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-501:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns501-"] .mw-collapsible-toggle, table[class^="mw-changeslist-ns501-"] .mw-collapsible-toggle,
+table[class*=" mw-changeslist-ns501-"]::before, table[class^="mw-changeslist-ns501-"]::before {
+	background-color: var(--blog-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-src-mw-new {
+	border-color: var(--new-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-src-mw-new::before,
+table.mw-enhanced-rc.mw-changeslist-src-mw-new .mw-collapsible-toggle {
+	background-color: var(--new-color);
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete,
+table.mw-enhanced-rc.mw-changeslist-log-block {
+	border-color: var(--delete-color) !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete::before,
+table.mw-enhanced-rc.mw-changeslist-log-delete .mw-collapsible-toggle,
+table.mw-enhanced-rc.mw-changeslist-log-block::before,
+table.mw-enhanced-rc.mw-changeslist-log-block .mw-collapsible-toggle {
+	background-color: var(--delete-color) !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move {
+	border-color: var(--move-page-color) !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move::before,
+table.mw-enhanced-rc.mw-changeslist-log-move .mw-collapsible-toggle {
+	background-color: var(--move-page-color) !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-protect {
+	border-color: var(--protect-color) !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-protect::before,
+table.mw-enhanced-rc.mw-changeslist-log-protect .mw-collapsible-toggle {
+	background-color: var(--protect-color) !important;
+}
+
+/* ICONS */
+table.mw-enhanced-rc::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-wikis-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-wikis-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-0:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns0-"]::before, table[class^="mw-changeslist-ns0-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-pencil-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-pencil-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-2:not(.mw-changeslist-src-mw-new)::before, 
+table[class*=" mw-changeslist-ns2-"]::before, table[class^="mw-changeslist-ns2-"]::before,
+table.mw-enhanced-rc.mw-changeslist-log-rights::before,
+table.mw-enhanced-rc.mw-changeslist-edit.mw-changeslist-ns-1202:not(.mw-changeslist-src-mw-new)::before, 
+table[class*=" mw-changeslist-ns1202-"]::before, table[class^="mw-changeslist-ns1202-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-avatar-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-avatar-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-4:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns4-"]::before, table[class^="mw-changeslist-ns4-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-users-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-users-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-6::before,
+table[class*=" mw-changeslist-ns6-"]::before, table[class^="mw-changeslist-ns6-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-video-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-video-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-8:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns8-"]::before, table[class^="mw-changeslist-ns8-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-dashboard-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-dashboard-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-10:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns10-"]::before, table[class^="mw-changeslist-ns10-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-828:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns828-"]::before, table[class^="mw-changeslist-ns828-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-gear-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-gear-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-12:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns12-"]::before, table[class^="mw-changeslist-ns12-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-question-small.svg") !impoortant;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-question-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-14:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns14-"]::before, table[class^="mw-changeslist-ns14-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-tag-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-tag-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-500:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns500-"]::before, table[class^="mw-changeslist-ns500-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-bubble-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-bubble-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-src-mw-new::before,
+table.mw-enhanced-rc.mw-changeslist-log-upload::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-add-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-add-small.svg") !important;
+}
+
+.mw-special-Recentchanges span.mw-collapsible-toggle.mw-collapsible-arrow.mw-enhancedchanges-arrow.mw-enhancedchanges-arrow-space.mw-collapsible-toggle-expanded,
+.mw-special-Recentchanges .mw-icon-arrow-collapsed, .mw-special-Recentchanges .mw-collapsible-arrow.mw-collapsible-toggle-collapsed {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-dropdown-small.svg") !important;
+	position: absolute;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-dropdown-small.svg") !important;
+	top: 15px;
+	left: 45px;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-delete::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-trash-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-trash-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-move::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-pages-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-pages-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-block::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-avatar-small.svg"), url("/resources-ucp/dist/svg/wds-icons-close.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-avatar-small.svg"), url("/resources-ucp/dist/svg/wds-icons-close.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-log-protect::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-lock-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-lock-small.svg") !important;
+}
+
+table.mw-enhanced-rc.mw-changeslist-ns-1:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns1-"]::before, table[class^="mw-changeslist-ns1-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-3:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns3-"]::before, table[class^="mw-changeslist-ns3-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-5:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns5-"]::before, table[class^="mw-changeslist-ns5-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-7:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns7-"]::before, table[class^="mw-changeslist-ns7-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-9:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns9-"]::before, table[class^="mw-changeslist-ns9-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-11:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns11-"]::before, table[class^="mw-changeslist-ns11-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-13:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns13-"]::before, table[class^="mw-changeslist-ns13-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-15:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns15-"]::before, table[class^="mw-changeslist-ns15-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-111:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns111-"]::before, table[class^="mw-changeslist-ns111-"]::before,
+table.mw-enhanced-rc.mw-changeslist-ns-829:not(.mw-changeslist-src-mw-new)::before,
+table[class*=" mw-changeslist-ns829-"]::before, table[class^="mw-changeslist-ns829-"]::before {
+	-webkit-mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-comment-small.svg") !important;
+	mask-image: url("/resources-ucp/v2/dist/svg/wds-icons-comment-small.svg") !important;
+}

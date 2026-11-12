@@ -1,0 +1,33 @@
+== Data Structure Overview ==
+'''Scribunto''' module (data base) for storing and configuring all possible entries (objects) for:
+* [[Template:Obj]] (combines color & icon)
+* [[Template:Color]] (color/classes related, text & link parameters)
+* [[Template:I]] (icon parameter)
+Object's existence is required within this module (for organization and other purposes) for it to work with the templates above<br>
+To add color stylings, visit [[Template:Color/styles.css]]<br>
+To add an entry to the data base, enter editing mode and add the following entry to appropriate location within the table (look for comments, they start with <code>--</code>):
+<syntaxhighlight lang=lua>
+["<Entry (object name)>"] = {
+	"<Parameter (key)>" = "<Value>",
+	...
+},
+</syntaxhighlight>
+<Parameter> can be some or all of the following lines:<br>
+<small>(ONLY PUT A VALUE IN IF IT'S REQUIRED FOR THE OBJECT)</small>
+* <code>icon = <string>/false</code>
+** Replaces the default '<object name>_Icon.png' file to the desired media
+** '''false''' disables icon completely
+* <code>link = <string>/false</code>
+** Replaces the default object hyperlink (which is the object name itself) with <string>
+** '''false''' removes hyperlink completely
+* <code>plural = <string></code>
+** provides plural form for the object template.
+* <code>text = <string></code>
+** Replaces object's name with a custom provided text by default
+*** Can be used for objects with identical names or objects with unique symbols that can't be typed from standard US keyboard or any similar cases (e.g., Singularity (Layer) -> Singularity, Jalabono -> Jalaboño)
+* <code>extraClass = <string></code>
+** If color requires additional css classes, put any classes in a row separated by space
+* <code>color = <string>/false</code>
+** Applies (reuses) color of the specified object to that entry
+*** Inherits "extraClass" and CSS variables
+** '''false''' prevents any color classes from getting added

@@ -1,0 +1,36 @@
+.gadget-gif-hover-clientpref-1 {
+	.gif-hover-wrapper {
+	    position: relative;
+	    display: inline-block;
+	    max-width: 100%;
+	    cursor: pointer;
+	    vertical-align: middle;
+	}
+	
+	.gif-hover-wrapper img {
+	    visibility: hidden;
+	}
+	
+	.gif-hover-wrapper.playing img {
+	    visibility: visible;
+	}
+	
+	.gif-hover-indicator {
+	    position: absolute;
+	    inset: 0;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    background: oklch(from var(--background-color-interactive--subtle));
+	    color: var(--color-emphasized);
+	    font-weight: 600;
+	    border-radius: inherit;
+	    opacity: 1;
+	    transition: opacity 0.25s ease;
+	    pointer-events: none;
+	}
+	
+	.gif-hover-wrapper.playing .gif-hover-indicator {
+	    opacity: 0;
+	}
+}

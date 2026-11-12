@@ -1,0 +1,710 @@
+/* Necessary fixes */
+#community-navigation.is-visible[inert="true"] {display: none;}
+.wikiEditor-ui-bottom { position: relative; }
+.wikiEditor-ui-top {min-height: 58px !important;}
+.wikiEditor-ui .wikiEditor-ui-toolbar { border-bottom: 1px solid var(--theme-border-color); }
+.oo-ui-icon-squote { mask: url("/resources-ucp/mw143/dist/svg/wds-icons-quote-small.svg") no-repeat center; }
+.cdx-button {text-transform: uppercase;}
+
+.cm-editor {
+	.cm-mw-panel--search-panel .cdx-toggle-button--toggled-on {
+		/* !important as default styles have way too much specificity */
+		background-color: var(--theme-accent-color) !important;
+		border-color: var(--theme-accent-color) !important;
+		color: var(--theme-accent-label-color) !important;
+	}
+	.cm-scroller {
+		resize: vertical;
+		min-height: 300px;
+		overflow-x: hidden;
+		padding-right: 1px;
+	}
+	.cm-panels .cm-mw-panel,
+	.cm-scroller {
+		border-left: 1px solid var(--theme-border-color);
+		border-right: 1px solid var(--theme-border-color);
+	}
+}
+
+.cm-linksuggest {
+	font-size: 14px;
+	padding: 0;
+	z-index: 500;
+	margin-top: 21px;
+	position: absolute;
+
+	&:not(:has(> .oo-ui-popupWidget-popup > div)) {
+		display: none;
+		pointer-events: none;
+	}
+	> .oo-ui-popupWidget-popup {
+		padding: 0;
+		width: 320px;
+		height: auto;
+	}
+	.cm-linksuggest-suggest {
+		box-sizing: border-box;
+		display: flex;
+		margin: 0 9px;
+		padding: 8px 6px;
+		cursor: pointer;
+	}
+	.cm-linksuggest-suggest:hover,
+	.cm-linksuggest-selected {
+		background-color: rgba(var(--theme-link-color--rgb), .15);
+		color: var(--theme-link-color);
+	}
+}
+
+
+
+/* The following css has been taken from the following URL (and the code beautified by Stylus for readability)
+ the bottom rules that affect content unrelated to the editor have been removed
+ `https://dev.fandom.com/load.php?lang=en&only=styles&skin=fandomdesktop&modules=ext.fandom.wikiEditor.codeMirrorTheming.css|ext.fandom.wikiEditorFandomDesktop.css`
+*/
+html:not(.ve-active) .cm-content .cm-line {
+	line-height: inherit;
+	padding: 0;
+	white-space-collapse: preserve
+}
+.skin-fandomdesktop .ext-codemirror-wrapper {
+	min-height: inherit
+}
+.skin-fandomdesktop div.cm-editor {
+	height: 100%
+}
+.skin-fandomdesktop div.cm-editor .cm-selectionBackground {
+	background: #6da9f780!important
+}
+.skin-fandomdesktop div.cm-editor .cm-panels {
+	background-color: var(--theme-page-background-color--secondary);
+	color: var(--theme-page-text-color);
+	font-family: rubik, helvetica, arial, sans-serif
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel {
+	border-bottom-color: var(--theme-border-color)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel-close > span {
+	background-color: var(--theme-page-text-color)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-text-input > input {
+	background-color: var(--theme-page-background-color--secondary);
+	border: none;
+	border-bottom: 1px solid var(--theme-border-color);
+	color: var(--theme-page-text-color)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-text-input > input:focus {
+	border-color: var(--theme-link-color);
+	box-shadow: none
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-text-input > input::placeholder {
+	color: var(--theme-page-text-color--hover)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button {
+	background: none;
+	border-color: var(--theme-page-text-color);
+	border-radius: 3px;
+	color: var(--theme-page-text-color);
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	transition: background-color .3s, color .3s, border-color .3s
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button > span,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button > span {
+	background-color: var(--theme-page-text-color)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button:active,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button:active {
+	background: none
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button:focus,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button:hover,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button:focus,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button:hover {
+	box-shadow: none
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button:hover,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button:hover {
+	border-color: var(--theme-page-text-color--hover);
+	color: var(--theme-page-text-color--hover)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button:hover > span,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button:hover > span {
+	background-color: var(--theme-page-text-color--hover)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button:focus,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button:focus {
+	background-color: var(--theme-accent-color);
+	border-color: var(--theme-accent-color);
+	color: var(--theme-accent-label-color)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-button:focus > span,
+.skin-fandomdesktop div.cm-editor .cm-panels .cm-mw-panel--search-panel .cdx-toggle-button:focus > span {
+	background-color: var(--theme-accent-label-color)
+}
+.skin-fandomdesktop div.cm-editor .cm-panels .cdx-field {
+	margin-top: 24px
+}
+.skin-fandomdesktop div.cm-editor .cm-gutters {
+	background-color: var(--theme-page-background-color--secondary);
+	border-right-color: var(--theme-border-color);
+	color: var(--theme-page-text-color);
+	margin-right: 3px;
+	padding-right: 6px
+}
+.skin-fandomdesktop div.cm-editor .cm-cursor {
+	border-left-color: var(--theme-page-text-color)
+}
+.skin-fandomdesktop div.cm-editor .cm-foldPlaceholder,
+.skin-fandomdesktop div.cm-editor .cm-tooltip {
+	background-color: var(--theme-page-background-color--secondary);
+	border: 1px solid var(--theme-border-color);
+	color: var(--theme-page-text-color)
+}
+.skin-fandomdesktop .cm-searchMatch {
+	background-color: rgba(59, 255, 0, .412);
+	border: 1px solid rgba(59, 255, 0, .412);
+	border-radius: 3px;
+	padding: 1px
+}
+.skin-fandomdesktop .cm-searchMatch-selected {
+	background-color: rgba(255, 106, 0, .541);
+	border: 2px solid rgba(255, 106, 0, .541);
+	border-radius: 3px
+}
+.skin-fandomdesktop .cm-scroller {
+	overflow: hidden;
+	resize: none
+}
+.skin-fandomdesktop .cm-focused {
+	outline: none
+}
+.skin-fandomdesktop .cm-lineNumbers {
+	color: rgba(var(--theme-page-text-color--rgb), .6)
+}
+.skin-fandomdesktop .cm-content {
+	caret-color: auto
+}
+.skin-fandomdesktop .cm-keyword {
+	color: var(--codemirror-purple)
+}
+.skin-fandomdesktop .cm-def {
+	color: var(--codemirror-blue)
+}
+.skin-fandomdesktop .cm-comment {
+	color: var(--codemirror-yellow)
+}
+.skin-fandomdesktop .cm-variable-2 {
+	color: var(--codemirror-light-blue)
+}
+.skin-fandomdesktop .cm-string {
+	color: var(--codemirror-red)
+}
+.skin-fandomdesktop .cm-atom {
+	color: var(--codemirror-pink)
+}
+.skin-fandomdesktop .cm-number {
+	color: var(--codemirror-green)
+}
+.skin-fandomdesktop .cm-mw-matching {
+	background-color: var(--codemirror-yellow)
+}
+.skin-fandomdesktop .cm-mw-skipformatting {
+	background-color: var(--codemirror-light-blue)
+}
+.skin-fandomdesktop .cm-mw-list {
+	color: var(--codemirror-blue)
+}
+.skin-fandomdesktop .cm-mw-doubleUnderscore,
+.skin-fandomdesktop .cm-mw-hr,
+.skin-fandomdesktop .cm-mw-signature {
+	background-color: var(--theme-page-background-color--secondary);
+	color: var(--codemirror-blue)
+}
+.skin-fandomdesktop .cm-mw-indenting {
+	color: var(--codemirror-blue)
+}
+.skin-fandomdesktop .cm-mw-mnemonic {
+	color: var(--codemirror-green)
+}
+.skin-fandomdesktop .cm-mw-comment {
+	color: var(--codemirror-gray)
+}
+.skin-fandomdesktop .cm-mw-apostrophes-bold,
+.skin-fandomdesktop .cm-mw-apostrophes-italic,
+.skin-fandomdesktop .cm-mw-section-header {
+	color: var(--codemirror-blue)
+}
+.skin-fandomdesktop .cm-mw-template,
+.skin-fandomdesktop .cm-mw-template-argument-name,
+.skin-fandomdesktop .cm-mw-template-bracket,
+.skin-fandomdesktop .cm-mw-template-delimiter,
+.skin-fandomdesktop .cm-mw-template-name {
+	color: var(--codemirror-purple)
+}
+.skin-fandomdesktop .cm-mw-templatevariable,
+.skin-fandomdesktop .cm-mw-templatevariable-bracket,
+.skin-fandomdesktop .cm-mw-templatevariable-delimiter,
+.skin-fandomdesktop .cm-mw-templatevariable-name {
+	color: var(--codemirror-red)
+}
+.skin-fandomdesktop .cm-mw-parserfunction-bracket,
+.skin-fandomdesktop .cm-mw-parserfunction-delimiter,
+.skin-fandomdesktop .cm-mw-parserfunction-name {
+	color: var(--codemirror-dark-red)
+}
+.skin-fandomdesktop .cm-mw-exttag-attribute,
+.skin-fandomdesktop .cm-mw-exttag-bracket,
+.skin-fandomdesktop .cm-mw-exttag-name,
+.skin-fandomdesktop .cm-mw-htmltag-attribute,
+.skin-fandomdesktop .cm-mw-htmltag-bracket,
+.skin-fandomdesktop .cm-mw-htmltag-name {
+	color: var(--codemirror-green)
+}
+.skin-fandomdesktop .cm-mw-link,
+.skin-fandomdesktop .cm-mw-link-pagename {
+	color: var(--theme-link-color)
+}
+.skin-fandomdesktop .cm-mw-link-tosection {
+	color: var(--codemirror-blue)
+}
+.skin-fandomdesktop .cm-mw-extlink,
+.skin-fandomdesktop .cm-mw-extlink-bracket,
+.skin-fandomdesktop .cm-mw-extlink-protocol,
+.skin-fandomdesktop .cm-mw-free-extlink,
+.skin-fandomdesktop .cm-mw-free-extlink-protocol,
+.skin-fandomdesktop .cm-mw-link-bracket,
+.skin-fandomdesktop .cm-mw-link-delimiter {
+	color: var(--theme-link-color)
+}
+.skin-fandomdesktop .cm-mw-table-bracket,
+.skin-fandomdesktop .cm-mw-table-definition,
+.skin-fandomdesktop .cm-mw-table-delimiter {
+	color: var(--codemirror-pink)
+}
+.skin-fandomdesktop.theme-fandomdesktop-dark .cm-matchingBracket,
+.skin-fandomdesktop.theme-fandomdesktop-dark .cm-mw-matchingbracket {
+	background-color: var(--theme-page-background-color--secondary)!important;
+	box-shadow: inset 0 0 1px 1px var(--theme-border-color)!important
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar {
+	background-color: var(--theme-page-background-color--secondary);
+	background-image: none;
+	border-color: var(--theme-border-color);
+	border-radius: 3px 3px 0 0;
+	border-style: solid;
+	border-width: 1px 1px 0;
+	padding: 9px 6px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group {
+	border-color: var(--theme-border-color);
+	margin: 3px;
+	padding-right: 6px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group span.label {
+	display: inline-block;
+	float: none;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select {
+	background: none;
+	border: none
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .label {
+	background-image: none;
+	color: var(--theme-page-text-color);
+	display: inline-flex;
+	gap: 6px;
+	padding-right: 0
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .label:after {
+	background-color: rgba(var(--theme-page-text-color--rgb), .6);
+	background-image: none;
+	-webkit-mask: url(/resources-ucp/mw143/dist/svg/wds-icons-menu-control-tiny.svg?c6ecf) no-repeat center;
+	mask: url(/resources-ucp/mw143/dist/svg/wds-icons-menu-control-tiny.svg?c6ecf) no-repeat center;
+	position: unset;
+	width: 12px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .menu .options {
+	background-color: var(--theme-page-background-color--secondary);
+	border: none;
+	box-shadow: 0 3px 12px #0000004d
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .menu .options .option {
+	color: var(--theme-page-text-color)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .tool-select .menu .options .option:hover {
+	background-color: rgba(var(--theme-link-color--rgb), .15)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group-insert {
+	border-right: 0;
+	margin-right: 0;
+	padding-right: 0
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group-codemirror {
+	margin-right: 0;
+	padding-left: 6px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group-search {
+	padding-left: 6px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool {
+	border-radius: 3px;
+	padding: 2px 6px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool.oo-ui-buttonElement-frameless.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
+	opacity: 1
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs {
+	font-size: 12px;
+	font-weight: 700;
+	margin: 3px 0 0 6px;
+	text-transform: uppercase
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a,
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a:visited {
+	border-radius: 3px;
+	color: var(--theme-page-text-color);
+	padding: 0 12px 1px 18px;
+	position: relative
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a.current,
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a.current:visited {
+	background-color: var(--theme-page-background-color--secondary);
+	color: var(--theme-page-text-color)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a.current:before,
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a.current:visited:before {
+	transform: rotate(90deg)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tabs span.tab a:before {
+	background-color: rgba(var(--theme-page-text-color--rgb), .6);
+	background-image: none;
+	-webkit-mask: url(/resources-ucp/mw143/dist/svg/wds-icons-menu-control-tiny.svg?c6ecf) no-repeat center;
+	mask: url(/resources-ucp/mw143/dist/svg/wds-icons-menu-control-tiny.svg?c6ecf) no-repeat center;
+	width: 12px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .sections .section {
+	background-color: var(--theme-page-background-color--secondary);
+	border-color: var(--theme-border-color);
+	margin-top: 12px;
+	padding-top: 12px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-characters {
+	box-sizing: unset;
+	margin-top: 0
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .group .label,
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-characters div span,
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-table td,
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-table th {
+	border-color: var(--theme-border-color);
+	color: var(--theme-page-text-color);
+	transition: background-color .3s
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .page-characters div span:hover {
+	background-color: var(--theme-page-background-color);
+	border-color: var(--theme-border-color)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .booklet .index .current {
+	background-color: rgba(var(--theme-link-color--rgb), .15)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .booklet .index div {
+	color: var(--theme-link-color)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .booklet .index :hover {
+	background-color: rgba(var(--theme-link-color--rgb), .15)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .booklet .pages {
+	background-color: var(--theme-page-background-color--secondary)
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .ve-init-mw-editSwitch {
+	display: none
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool-button,
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool.oo-ui-buttonElement-frameless.oo-ui-iconElement > .oo-ui-buttonElement-button {
+	border: 0;
+	padding: 4px 3px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool-button > .oo-ui-iconElement-icon,
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool.oo-ui-buttonElement-frameless.oo-ui-iconElement > .oo-ui-buttonElement-button > .oo-ui-iconElement-icon {
+	height: 20px;
+	margin: 0;
+	min-height: 20px;
+	min-width: 20px;
+	width: 20px
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool-button.tool-active,
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool.oo-ui-buttonElement-frameless.oo-ui-iconElement:hover,
+.wikiEditor-ui .wikiEditor-ui-toolbar .tool.tool-active.oo-ui-buttonElement-frameless.oo-ui-iconElement {
+	background: rgba(var(--theme-link-color--rgb), .15);
+	box-shadow: none;
+	outline: none
+}
+.wikiEditor-ui .wikiEditor-ui-toolbar #wikiEditor-section-secondary > .group {
+	display: none
+}
+.wikiEditor-ui #msupload-container {
+	align-content: center
+}
+.wikiEditor-ui #msupload-div {
+	background: var(--theme-page-background-color--secondary);
+	border-color: var(--theme-border-color);
+	border-radius: 0 0 3px 3px;
+	box-sizing: unset;
+	padding: 3px
+}
+.wikiEditor-ui #msupload-list .file {
+	background: var(--theme-page-background-color);
+	border-top-color: var(--theme-border-color)
+}
+.wikiEditor-ui #msupload-list .file:first-child {
+	border-top-width: 0
+}
+.wikiEditor-ui #msupload-list .file .file-size {
+	color: rgba(var(--theme-page-text-color--rgb), .4)
+}
+.wikiEditor-ui #msupload-list .file .file-name:hover {
+	background: none;
+	opacity: .7;
+	padding: 3px
+}
+.wikiEditor-ui #msupload-list .file .file-cancel {
+	background-color: currentColor;
+	background-image: none;
+	-webkit-mask: url(/resources-ucp/mw143/dist/svg/wds-icons-close.svg?074b6) no-repeat center;
+	mask: url(/resources-ucp/mw143/dist/svg/wds-icons-close.svg?074b6) no-repeat center;
+	padding: 0 7px
+}
+.wikiEditor-ui #msupload-bottom {
+	text-shadow: none
+}
+.wikiEditor-ui #msupload-bottom a {
+	color: var(--theme-page-text-color)
+}
+.wikiEditor-ui #msupload-bottom #msupload-files {
+	background: none;
+	padding: 0
+}
+.wikiEditor-ui #msupload-bottom #msupload-files:before {
+	background-color: currentColor;
+	content: "";
+	display: inline-block;
+	height: 20px;
+	margin-right: 6px;
+	-webkit-mask: url(/resources-ucp/mw143/dist/fandom-oojs-ui/themes/wikimediaui/images/icons/upload.svg?0f25c) left no-repeat;
+	mask: url(/resources-ucp/mw143/dist/fandom-oojs-ui/themes/wikimediaui/images/icons/upload.svg?0f25c) left no-repeat;
+	vertical-align: text-bottom;
+	width: 20px
+}
+.wikiEditor-ui #msupload-select {
+	background-color: var(--theme-page-text-color);
+	background-image: none;
+	-webkit-mask: url(/resources-ucp/mw143/dist/fandom-oojs-ui/themes/wikimediaui/images/icons/upload.svg?0f25c) no-repeat center;
+	mask: url(/resources-ucp/mw143/dist/fandom-oojs-ui/themes/wikimediaui/images/icons/upload.svg?0f25c) no-repeat center
+}
+.wikiEditor-ui #msupload-dropzone {
+	border-color: rgba(var(--theme-page-text-color--rgb), .6);
+	color: var(--theme-page-text-color);
+	height: auto;
+	margin: 0
+}
+.wikiEditor-toolbar-dialog.ui-dialog {
+	border-color: var(--theme-border-color);
+	font-family: rubik, helvetica, arial, sans-serif;
+	padding: 0
+}
+.wikiEditor-toolbar-dialog.ui-dialog,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-buttonpane {
+	background: var(--theme-page-background-color--secondary)
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-titlebar-close {
+	color: var(--theme-page-text-color)
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-titlebar-close.ui-state-active,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-titlebar-close.ui-state-focus,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-titlebar-close.ui-state-hover {
+	background: none;
+	border: none;
+	color: var(--theme-page-text-color--hover)
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+	background-color: currentColor;
+	background-image: none;
+	-webkit-mask: url(/resources-ucp/mw143/dist/svg/wds-icons-close-small.svg?62c80) no-repeat center;
+	mask: url(/resources-ucp/mw143/dist/svg/wds-icons-close-small.svg?62c80) no-repeat center
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-state-default,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-widget-content,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-widget-header {
+	background: none;
+	border-color: var(--theme-border-color);
+	color: var(--theme-page-text-color)
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-widget {
+	font-family: inherit
+}
+.wikiEditor-toolbar-dialog.ui-dialog button,
+.wikiEditor-toolbar-dialog.ui-dialog input,
+.wikiEditor-toolbar-dialog.ui-dialog select,
+.wikiEditor-toolbar-dialog.ui-dialog textarea {
+	font-family: inherit;
+	margin-top: 6px
+}
+.wikiEditor-toolbar-dialog.ui-dialog input[type=text]::placeholder {
+	color: rgba(var(--theme-page-text-color--rgb), .4)
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-button {
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 7px 15px;
+	text-transform: uppercase;
+	transition: background-color .3s, color .3s, border-color .3s
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-button.ui-state-active,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-button.ui-state-focus,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-button.ui-state-hover {
+	color: var(--theme-page-text-color--hover);
+	outline: none
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-button.ui-button-text-only .ui-button-text {
+	padding: 0
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-buttonset .ui-button:first-child {
+	background: var(--theme-accent-color);
+	border-color: var(--theme-accent-color);
+	color: var(--theme-accent-label-color)
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-buttonset .ui-button:first-child.ui-state-active,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-buttonset .ui-button:first-child.ui-state-focus,
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-buttonset .ui-button:first-child.ui-state-hover {
+	background: var(--theme-accent-color--hover);
+	border-color: var(--theme-accent-color--hover);
+	color: var(--theme-page-text-color)
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-titlebar {
+	background: none;
+	border-radius: 0;
+	border-width: 0 0 1px;
+	text-align: center
+}
+.wikiEditor-toolbar-dialog.ui-dialog .ui-dialog-title {
+	float: none
+}
+.wikiEditor-toolbar-dialog.ui-dialog + .ui-widget-overlay {
+	background: #ffffff80;
+	opacity: 1
+}
+.wikiEditor-ui .wikiEditor-ui-linkSuggest {
+	font-size: 14px;
+	padding: 0;
+	z-index: 500
+}
+.wikiEditor-ui .wikiEditor-ui-linkSuggest-suggestion.oo-ui-optionWidget-highlighted,
+.wikiEditor-ui .wikiEditor-ui-linkSuggest-suggestion:hover {
+	background-color: rgba(var(--theme-link-color--rgb), .15);
+	color: var(--theme-link-color)
+}
+.wikiEditor-ui .wikiEditor-ui-linkSuggest-suggestion span.oo-ui-labelElement-label {
+	white-space: pre-wrap
+}
+.wikiEditor-ui .wikiEditor-ui-linkSuggest-popup {
+	padding: 0
+}
+.mw-editform .mw-scribunto-console-fieldset {
+	background: none;
+	color: var(--theme-page-text-color)
+}
+.mw-editform .mw-scribunto-console-fieldset input[type=button] {
+	background-color: var(--theme-accent-color);
+	border: 1px solid var(--theme-accent-color);
+	border-radius: 3px;
+	color: var(--theme-accent-label-color);
+	cursor: pointer;
+	font-weight: 700;
+	letter-spacing: .15px;
+	min-height: 34px;
+	padding: 7px 15px;
+	text-transform: uppercase
+}
+.mw-editform .mw-scribunto-console-fieldset input[type=button]:hover {
+	background-color: var(--theme-accent-color--hover);
+	border-color: var(--theme-accent-color--hover)
+}
+.mw-editform .mw-scribunto-message {
+	background: none;
+	color: var(--theme-message-color)
+}
+.mw-editform #mw-scribunto-input {
+	background: none;
+	border: 1px solid var(--theme-border-color);
+	padding: 6px
+}
+.mw-editform .mw-scribunto-input {
+	color: var(--theme-success-color)
+}
+.mw-editform .mw-scribunto-error {
+	background: none;
+	color: var(--theme-alert-color)
+}
+.WikiaPageContentWrapper .mw-editform > textarea#wpTextbox1 {
+	margin-top: 103px
+}
+.WikiaPageContentWrapper .mw-editform .wikiEditor-ui-text > #wpTextbox1 {
+	margin-top: 0
+}
+#wpTextbox1 {
+	border: none;
+	padding: 0
+}
+.wikiEditor-ui .wikiEditor-ui-view.wikiEditor-ui-view-wikitext {
+	border: solid var(--theme-border-color);
+	border-width: 0 0 1px
+}
+.wikiEditor-ui .wikiEditor-ui-view.wikiEditor-ui-view-wikitext .wikiEditor-ui-top {
+	border-bottom: none;
+	min-height: 103px
+}
+.wikiEditor-ui .codeEditor-status,
+.wikiEditor-ui .ext-WikiEditor-ResizingDragBar {
+	background-color: var(--theme-page-background-color--secondary);
+	border-color: var(--theme-border-color)
+}
+.wikiEditor-ui .wikiEditor-ui-text .CodeMirror,
+.wikiEditor-ui .wikiEditor-ui-text .ace_editor,
+.wikiEditor-ui .wikiEditor-ui-text .cm-scroller {
+	font: 14px Consolas, Eupheima UCAS, Monaco, Menlo, monospace
+}
+.wikiEditor-ui .wikiEditor-ui-text .CodeMirror,
+.wikiEditor-ui .wikiEditor-ui-text .cm-editor {
+	padding: 0
+}
+.wikiEditor-ui .wikiEditor-ui-text .CodeMirror .cm-scroller,
+.wikiEditor-ui .wikiEditor-ui-text .cm-editor .cm-scroller {
+	overflow: auto
+}
+.wikiEditor-ui .ui-resizable-handle {
+	z-index: 201!important
+}
+.wikiEditor-ui .oo-ui-icon-gotoLine,
+.wikiEditor-ui .oo-ui-icon-pilcrow,
+.wikiEditor-ui .oo-ui-icon-wrapping {
+	background-image: none
+}
+.wikiEditor-ui .oo-ui-icon-pilcrow {
+	-webkit-mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctitle%3E pilcrow %3C/title%3E%3Cpath d='M7.388 2h9.278v2h-2v14h-2V4H9.333v14h-2V9.99c-1.626-.106-3.114-.508-4.006-1.202Q2 7.738 2 5.995q0-1.8 1.475-2.897Q4.949 2 7.388 2'/%3E%3C/svg%3E") no-repeat center;
+	mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctitle%3E pilcrow %3C/title%3E%3Cpath d='M7.388 2h9.278v2h-2v14h-2V4H9.333v14h-2V9.99c-1.626-.106-3.114-.508-4.006-1.202Q2 7.738 2 5.995q0-1.8 1.475-2.897Q4.949 2 7.388 2'/%3E%3C/svg%3E") no-repeat center
+}
+.wikiEditor-ui .oo-ui-icon-wrapping {
+	-webkit-mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctitle%3E wrapping %3C/title%3E%3Cpath d='M1 5v2h14c1.125 0 2 .875 2 2s-.875 2-2 2h-1V9l-3 3 3 3v-2h1c2.199 0 4-1.801 4-4s-1.801-4-4-4zM1 13h8v2H1Z'/%3E%3Cpath d='M1 9h8v2H1Z'/%3E%3C/svg%3E") no-repeat center;
+	mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctitle%3E wrapping %3C/title%3E%3Cpath d='M1 5v2h14c1.125 0 2 .875 2 2s-.875 2-2 2h-1V9l-3 3 3 3v-2h1c2.199 0 4-1.801 4-4s-1.801-4-4-4zM1 13h8v2H1Z'/%3E%3Cpath d='M1 9h8v2H1Z'/%3E%3C/svg%3E") no-repeat center
+}
+.wikiEditor-ui .oo-ui-icon-gotoLine {
+	-webkit-mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctitle%3E go to line %3C/title%3E%3Cpath d='M2 6h1V1H1v1h1zm-1 9h2v1H2v1h1v1H1v1h3v-5H1Zm2.5-7H1v1h2v1H1.5a.5.5 0 0 0-.5.5V13h3v-1H2v-1h1.5a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5M10 7.5 6 10l4 2.5V11h9V9h-9z'/%3E%3C/svg%3E") no-repeat center;
+	mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ctitle%3E go to line %3C/title%3E%3Cpath d='M2 6h1V1H1v1h1zm-1 9h2v1H2v1h1v1H1v1h3v-5H1Zm2.5-7H1v1h2v1H1.5a.5.5 0 0 0-.5.5V13h3v-1H2v-1h1.5a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5M10 7.5 6 10l4 2.5V11h9V9h-9z'/%3E%3C/svg%3E") no-repeat center
+}

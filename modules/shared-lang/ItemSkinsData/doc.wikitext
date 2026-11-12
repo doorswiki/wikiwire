@@ -1,0 +1,115 @@
+<div style="border: 1px solid; border-radius: 5px; padding: 0 5px;">
+<div style="line-height: 1; border-bottom: 1px solid #5556">
+<span style="font-size: 1.5em">[[File:Documentation_icon.svg|70px|link=|alt=|class=nomobile]] '''Module Documentation'''</span>
+<span style="float: right">&#x5b;[[Module:ItemSkinsData/doc|view]] &#124; [[Module talk:ItemSkinsData/doc|talk]] &#124; [[Special:EditPage/Module:ItemSkinsData/doc|edit]] &#124; [[Special:PageHistory/Module:ItemSkinsData/doc|history]] &#124; [[Special:Purge/Module:ItemSkinsData/doc|purge]]&#x5d;</span>
+</div>
+<div style="padding: .5em; margin: 0">
+:This is the documentation for [[Module:ItemSkinsData]]
+
+'''Data Structure and Fields'''
+<syntaxhighlight lang=lua style="margin: 0">
+-- Display order of the item tabs
+-- Every item in 'data' must appear here, and vice versa
+local order = {
+	'Item Name 1',
+	'Item Name 2',
+	'Item Name 3',
+	...
+}
+
+local data = {
+
+['Item Name'] = { -- Item section; key is the exact item name
+
+	{ -- Skin entry
+
+		-- Exact skin name; used in file names and the tab title
+		name = '3rd Anniversary',
+
+		-- Default skin price; specify exactly one of the following
+		--   <knobs>       -> number
+		--   <robux>       -> number
+		--   <candy>       -> number
+		--   <achievement> -> full achievement name
+		--   <other>       -> custom text
+		-- For skins present in bundles, use non-bundle price if available
+		knobs = 3,
+
+		-- Bundle name or nil
+		bundle = '3rd Anniversary',
+
+		-- Whether the skin is obtainable
+		-- Set to false to display the name in red with the unobtainable icon
+		obtainable = true,
+
+		-- Exact quote displayed in-game
+		text = 'Happy 3rd!',
+
+		-- Additional description displayed alongside the quote, or nil
+		-- Not limited to include only in-game description
+		-- Any extra description details are accepted
+		-- Especially if item originally misses description in-game
+		description = 'Beams out the number 3. Sound effects are celebration\'y.',
+
+		-- Designer name; nil renders as "Unknown"
+		designer = 'Lightning_Splash',
+
+		-- Chroma variant data, or nil if the skin has no chroma
+		chroma = {
+			-- Chroma price in Stardust; 0 renders as "Free"
+			stardust = 20,
+
+			-- Chroma variants in display order
+			variants = {
+				{
+					-- Variant name, used in the variant tab
+					name = 'Chocolate',
+
+					-- Variant color, specified as a valid HEX
+					-- Use color picker in-game to obtain the color
+					color = '#796353',
+
+					-- Description displayed when the variant is active, or nil
+					-- Custom description is welcome, just like the default one
+					description = nil,
+				},
+				... -- continue adding variants in display order
+			},
+		},
+
+		-- Media entries; each defines an animation, a sound, or both
+		-- Every entry must enable at least one of <animation/sound>
+		-- <animation/sound> parameters accept:
+		--   nil       -> default file: "<Item> skin <Skin> animation/sound <name>.gif/ogg"
+		--   false     -> omit the element
+		--   'default' -> sound only; uses "<Item> sound <name>.ogg"
+		--   string    -> exact file name, without the 'File:' prefix
+		-- Omit <animation/sound> parameters to use their default files
+		media = {
+			{ name = 'Equip' }, -- Animation and Sound added with MOS standard names
+			{ name = 'Turn on', animation = false }, -- Sound only
+			{ name = 'Turn off', sound = false }, -- Animation only
+			{ name = 'Toggle', sound = 'default' }, -- Default item sound
+			
+			-- Custom files
+			-- Reserved for edge cases, all file names must follow MOS,
+			-- Which default names already do
+			{ name = 'Inspect 999', animation = 'Custom Anim.gif', sound = 'Custom Sound.ogg' }, 
+			...
+		},
+
+	}, -- Skin entry
+
+	... -- continue adding skins in display order
+
+}, -- Item section
+
+... -- continue adding items
+
+}
+</syntaxhighlight>
+
+</div>
+
+<div class="article-table documentation" style="padding: .5em; border-top: 1px solid #5556">The data above is used by [[Module:ItemSkins]] to generate the item skins tabber on [[Item Skins]]</div>
+</div>

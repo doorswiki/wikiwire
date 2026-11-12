@@ -1,0 +1,600 @@
+/*
+[[MediaWiki:Gadget-AudioPlayer.css]]
+Replaces native browser audio player with a custom one
+JS - [[MediaWiki:AudioPlayer.js]]
+Used via - [[Template:ap]]
+*/
+
+/* ============================================================
+   1. Shared
+   ============================================================ */
+
+.ap-ui {
+	font-size: .75em;
+
+	* {
+		transition: .1s;
+		user-select: none;
+	}
+
+	img {
+		background: transparent !important;
+		filter: brightness(0);
+
+		:is(.skin-theme-clientpref-night, .skin-theme-clientpref-black) & {
+			filter: brightness(0) invert(1);
+		}
+	}
+
+	[hidden] {
+		display: none !important;
+	}
+}
+
+/* Sliders */
+
+.ap-slider {
+	height: 6px;
+	border: 0;
+	border-radius: var(--border-radius-medium);
+	background-image: linear-gradient(
+		to right,
+		var(--color-progressive),
+		var(--color-link) var(--fill, 0%),
+		var(--color-surface-2) var(--fill, 0%),
+		var(--color-surface-2)
+	);
+	background-clip: content-box;
+	appearance: none;
+	cursor: pointer;
+	direction: ltr;
+
+	&:disabled {
+		opacity: .5;
+		cursor: default;
+	}
+
+	&::-webkit-slider-thumb {
+		width: 12px;
+		height: 12px;
+		border: 0;
+		border-radius: var(--border-radius-pill);
+		background: var(--color-progressive);
+		appearance: none;
+	}
+
+	&::-moz-range-thumb {
+		width: 12px;
+		height: 12px;
+		border: 0;
+		border-radius: var(--border-radius-pill);
+		background: var(--color-progressive);
+	}
+}
+
+.ap-timeline {
+	flex: 1;
+	width: 0;
+	min-width: 0;
+}
+
+/* Volume and speed text */
+
+.ap-value {
+	flex: 1;
+	font-family: monospace;
+	font-size: 1.1em;
+	text-align: right;
+	color: var(--color-subtle);
+}
+
+/* Time display */
+
+.ap-time-display {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+	gap: 3px;
+	font-family: monospace;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+/* ============================================================
+   2. Player
+   ============================================================ */
+
+.audio-player {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	container-type: inline-size;
+	width: 100%;
+	max-width: 300px;
+	min-width: 41px;
+	min-height: 41px;
+	margin-top: 2px;
+	padding: var(--space-xs);
+	outline: 1px solid transparent;
+	border-radius: var(--border-radius-medium);
+	color: var(--color-base);
+	line-height: 1em;
+	background: var(--color-surface-3);
+	cursor: pointer;
+
+	&:hover {
+		outline-color: var(--border-color-base);
+	}
+
+	/* Reserve height */
+	&:not([data-initialized])::after {
+		content: '';
+		display: block;
+		flex-shrink: 0;
+		height: 25px;
+	}
+
+	.ap-caption {
+		flex: 0 0 auto;
+		min-width: 0;
+		max-width: 100%;
+		padding: 0 2px 2px;
+		font-weight: 500;
+		white-space: normal;
+		overflow-wrap: anywhere;
+		user-select: text;
+		cursor: text;
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	.ap-main {
+		display: flex;
+		align-items: center;
+		flex: 1 1 auto;
+		justify-content: space-between;
+		gap: 3px;
+		min-height: 0;
+
+		&:has(.ap-status:not([hidden])) .ap-timeline {
+			display: none;
+		}
+	}
+
+	.ap-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 25px;
+		height: 25px;
+		border-radius: var(--border-radius-medium);
+		background: transparent;
+		cursor: pointer;
+		opacity: var(--opacity-icon-base);
+
+		&:hover {
+			opacity: var(--opacity-icon-base--selected);
+			background: var(--color-surface-2);
+		}
+
+		&:disabled {
+			opacity: var(--opacity-icon-base--disabled);
+			cursor: wait;
+		}
+
+		&:focus {
+			opacity: var(--opacity-icon-base--selected);
+		}
+
+		img {
+			width: 15px;
+			height: 15px;
+		}
+	}
+
+	.ap-settings-btn img {
+		transition: .35s cubic-bezier(.34, 1.56, .64, 1);
+	}
+
+	&.is-open .ap-settings-btn {
+		background: var(--color-surface-2);
+
+		img {
+			transform: rotate(90deg);
+		}
+	}
+
+	.ap-status {
+		flex: 1 1 auto;
+		min-width: 0;
+		color: var(--color-subtle);
+
+		&.ap-error {
+			color: var(--color-syntax-red);
+			margin-left: 4px;
+
+			span {
+				display: block;
+				width: fit-content;
+				max-width: 100%;
+				overflow: hidden;
+				line-height: 1.2;
+				white-space: pre;
+				text-overflow: ellipsis;
+				user-select: all;
+
+				&:hover {
+					position: relative;
+					z-index: 5;
+					width: max-content;
+					max-width: none;
+					margin: -2px -4px;
+					padding: 2px 4px;
+					overflow: visible;
+					border-radius: var(--border-radius-base);
+					text-overflow: clip;
+					background: var(--color-surface-1);
+					box-shadow: 0 2px 6px rgb(0 0 0 / 30%);
+				}
+			}
+		}
+	}
+
+	&.is-error {
+		cursor: default;
+
+		.ap-time-display,
+		.ap-volume-wrap {
+			display: none;
+		}
+
+		.ap-play-btn {
+			cursor: default;
+
+			&:hover {
+				background: transparent;
+			}
+
+			&.is-upload {
+				background: var(--color-surface-2);
+				cursor: pointer;
+
+				&:hover {
+					background: var(--color-surface-3);
+				}
+			}
+		}
+	}
+
+	/* Style variants */
+
+	&[data-style="full"] {
+		max-width: none;
+	}
+
+	&[data-style="medium"] {
+		max-width: 200px;
+	}
+
+	&[data-style="small"] {
+		max-width: 150px;
+	}
+
+	/* Fixed-size variants */
+	&:is(
+		[data-style^="compact"],
+		[data-style^="mini"],
+		[data-style^="micro"],
+		[data-style="play"]
+	) {
+		container-type: normal;
+		width: max-content;
+
+		.ap-timeline {
+			display: none;
+		}
+	}
+
+	&:is([data-style="small"], [data-style^="mini"]) :is(
+		.ap-time-duration,
+		.ap-time-separator
+	),
+	&[data-style^="micro"] .ap-time-display {
+		display: none;
+	}
+
+	&:is(
+		[data-style="compact"],
+		[data-style="mini"],
+		[data-style="micro"]
+	) .ap-volume-wrap,
+	&:is(
+		[data-style="compact2"],
+		[data-style="mini2"],
+		[data-style="micro2"]
+	) .ap-settings-btn {
+		display: none;
+	}
+
+	&[data-style="play"] {
+		.ap-caption,
+		.ap-time-display,
+		.ap-status,
+		.ap-volume-wrap,
+		.ap-settings-btn {
+			display: none;
+		}
+	}
+
+	/* Responsive */
+
+	@container (max-width: 185px) {
+		.ap-time-duration,
+		.ap-time-separator {
+			display: none;
+		}
+	}
+
+	@container (max-width: 140px) {
+		.ap-timeline {
+			display: none;
+		}
+	}
+
+	@container (max-width: 100px) {
+		.ap-time-display {
+			display: none;
+		}
+	}
+
+	@container (max-width: 80px) {
+		.ap-volume-wrap {
+			display: none;
+		}
+	}
+
+	@container (max-width: 60px) {
+		.ap-settings-btn {
+			display: none;
+		}
+	}
+}
+
+/* ============================================================
+   3. Volume popup
+   ============================================================ */
+
+.ap-volume-popup {
+	position: fixed;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: 150px;
+	max-width: calc(100vw - 8px);
+	height: 20px;
+	padding: 0 6px;
+	border: 1px solid var(--color-surface-2);
+	border-radius: var(--border-radius-medium);
+	color: var(--color-base);
+	background: var(--color-surface-1);
+	box-shadow: 0 0 5px 1px var(--color-surface-3);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .1s, visibility .1s;
+
+	::before {
+		position: absolute;
+		content: '';
+		inset: 0;
+		clip-path: polygon(0 0, 100% 0, 50% 100%);
+		transform: translateY(60%);
+		z-index: -100;
+	}
+
+	&.is-visible {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.ap-volume-arrow {
+		position: absolute;
+		top: 100%;
+		border: 5px solid transparent;
+		border-top-color: var(--color-surface-2);
+		transition: none;
+	}
+
+	.ap-volume-value {
+		width: 40px;
+		font-family: monospace;
+		font-size: 1.1em;
+		color: var(--color-subtle);
+	}
+
+	.ap-slider {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+}
+
+/* ============================================================
+   4. Settings panel
+   ============================================================ */
+
+.ap-settings-panel {
+	position: fixed;
+	z-index: 10;
+	display: none;
+	flex-direction: column;
+	width: 185px;
+	max-width: calc(100vw - 8px);
+	padding: var(--space-xs);
+	border: var(--border-base);
+	border-radius: var(--border-radius-medium);
+	color: var(--color-base);
+	background: oklch(from var(--color-surface-1) l c h / 80%);
+	backdrop-filter: var(--backdrop-filter-frosted-glass);
+	box-shadow: 0 0 5px 1px var(--color-surface-3);
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: inherit;
+		background: url(https://static.wikitide.net/doorswiki/b/b7/Wooden_texture_overlay.png);
+		background-size: 75% auto;
+		opacity: .2;
+		mix-blend-mode: overlay;
+	}
+
+	&.is-open {
+		display: flex;
+	}
+
+	img {
+		width: 14px;
+		height: 14px;
+		opacity: var(--opacity-icon-base);
+		transition: .1s opacity;
+	}
+
+	&:hover img {
+		opacity: var(--opacity-icon-base--selected);
+	}
+
+	.ap-menu-btn {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 4px 5px;
+		border: 0;
+		border-radius: var(--border-radius-base);
+		font-family: inherit;
+		font-size: 1em;
+		text-align: left;
+		color: var(--color-base);
+		background: transparent;
+		text-decoration: none;
+		cursor: pointer;
+
+		&:hover {
+			background: var(--color-surface-2);
+		}
+
+		&:disabled {
+			opacity: .5;
+			cursor: wait;
+		}
+
+		&.ap-filename {
+			padding: 2px;
+			font-weight: 500;
+			white-space: normal;
+			overflow-wrap: anywhere;
+		}
+	}
+
+	.ap-menu-separator {
+		width: 100%;
+		height: 1px;
+		margin: 1px 0;
+		border: 0;
+		background: var(--border-color-base);
+	}
+
+	.ap-time-display {
+		color: var(--color-subtle);
+	}
+
+	.ap-meta {
+		margin-left: auto;
+		font-size: .8em;
+		color: var(--color-subtle);
+	}
+
+	.ap-setting {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		width: 100%;
+		padding: 4px 5px;
+	}
+
+	.ap-setting-label {
+		display: inline-flex;
+		flex: 1;
+		gap: 6px;
+	}
+
+	.ap-speed,
+	.ap-panel-volume {
+		width: 60px;
+	}
+
+	.ap-loop-row {
+		cursor: pointer;
+	}
+
+	.ap-loop {
+		position: relative;
+		width: 26px;
+		height: 14px;
+		border: 0;
+		border-radius: var(--border-radius-pill);
+		background: var(--color-surface-3);
+		appearance: none;
+		cursor: pointer;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 10px;
+			height: 10px;
+			border-radius: var(--border-radius-pill);
+			background: var(--color-base);
+			transition: .15s cubic-bezier(.34, 1.56, .64, 1);
+		}
+
+		&:hover {
+			background: var(--color-surface-2);
+		}
+
+		&:checked {
+			background: var(--color-progressive);
+
+			&::after {
+				background: var(--color-inverted);
+				transform: translateX(12px);
+			}
+		}
+	}
+}
+
+/* ============================================================
+   5. Tooltip
+   ============================================================ */
+
+.ap-tooltip {
+	position: fixed;
+	z-index: 11;
+	max-width: min(260px, calc(100vw - 8px));
+	padding: 4px 8px;
+	border-radius: var(--border-radius-medium);
+	font-family: monospace;
+	font-size: .9em;
+	line-height: 1.2;
+	overflow-wrap: anywhere;
+	background: var(--color-surface-2);
+	box-shadow: 0 2px 6px var(--color-surface-3);
+	pointer-events: none;
+	text-align: center;
+	white-space: normal;
+	min-width: 0;
+}

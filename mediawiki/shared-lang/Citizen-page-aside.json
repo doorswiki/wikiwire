@@ -1,0 +1,10 @@
+{
+	"panels": {
+		"rcsidebar": {
+			"module": "ext.gadget.RCSidebar",
+			"labelMsg": "recentchanges",
+			"placement": "flow",
+			"order": 15
+		}
+	}
+}

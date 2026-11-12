@@ -1,0 +1,16 @@
+{
+	"settings": {
+		"section": "visual",
+		"default": true,
+		"skins": [
+			"citizen"
+		]
+	},
+	"module": {
+		"pages": [
+			"hoverToPlayGif.js",
+			"hoverToPlayGif.css"
+		],
+		"dependencies": []
+	}
+}

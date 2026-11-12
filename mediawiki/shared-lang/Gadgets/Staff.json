@@ -1,0 +1,19 @@
+{
+	"settings": {
+		"section": "staff",
+		"rights": [
+			"block"
+		],
+		"default": true
+	},
+	"module": {
+		"pages": [
+			"staff.js"
+		],
+		"dependencies": [
+			"mediawiki.util",
+			"mediawiki.api",
+			"mediawiki.user"
+		]
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"settings": {
+		"section": "visual",
+		"default": true,
+		"skins": [
+			"citizen"
+		]
+	},
+	"module": {
+		"pages": [
+			"spoilersByDefault.js"
+		],
+		"dependencies": []
+	}
+}

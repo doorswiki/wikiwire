@@ -22,6 +22,7 @@ type path_change = {
     file : string;
     kind : 'edit' | 'delete';
     git_status : git_status;
+    base_file ?: string;
 };
 
 type sync_job = {
@@ -30,6 +31,7 @@ type sync_job = {
     site_cfg : site_config;
     kind : 'edit' | 'delete';
     git_status : git_status;
+    base_file ?: string;
 };
 
 type gh_file = {
@@ -199,11 +201,16 @@ function changes_from_gh_files(files : gh_file[], delete_removed : boolean) : pa
                 out.push({ file: f.previous_filename, kind: 'delete', git_status: 'removed' });
             };
 
-            out.push({ file: filename, kind: 'edit', git_status: 'renamed' });
+            out.push({ file: filename, kind: 'edit', git_status: 'renamed', base_file: f.previous_filename ?? filename });
             continue;
         };
 
-        out.push({ file: filename, kind: 'edit', git_status });
+        out.push({
+            file: filename,
+            kind: 'edit',
+            git_status,
+            base_file: status === 'added' ? undefined : (f.previous_filename ?? filename),
+        });
     };
 
     return out;
@@ -365,7 +372,7 @@ async function run() : Promise<void> {
                     continue;
                 };
 
-                jobs.push({ file, mapped, site_cfg, kind, git_status: change.git_status });
+                jobs.push({ file, mapped, site_cfg, kind, git_status: change.git_status, base_file: change.base_file });
             };
 
             continue;
@@ -386,10 +393,45 @@ async function run() : Promise<void> {
             continue;
         };
 
-        jobs.push({ file, mapped, site_cfg, kind, git_status: change.git_status });
+        jobs.push({ file, mapped, site_cfg, kind, git_status: change.git_status, base_file: change.base_file });
     };
 
     if (jobs.length === 0) { core.info('WikiWire: nothing to sync'); return };
+
+    // The previous revision of each file is the common ancestor for the merge.
+    // Without it we cannot tell a repo-side edit/deletion from a wiki-side edit.
+    const push_data = github.context.payload as push_payload;
+    const base_ref = sync_all ? '' : (push_data.before ?? '');
+    const base_octokit = !sync_all && process.env.GITHUB_TOKEN ? github.getOctokit(process.env.GITHUB_TOKEN) : null;
+    const base_content_cache = new Map<string, string | null>();
+
+    async function read_base_content(file : string) : Promise<string | null> {
+        if (!base_octokit || !base_ref || is_zero_sha(base_ref)) { return null };
+        if (base_content_cache.has(file)) { return base_content_cache.get(file) ?? null };
+
+        const { owner, repo } = github.context.repo;
+        let content : string | null = null;
+
+        try {
+            const { data } = await base_octokit.rest.repos.getContent({ owner, repo, path: file, ref: base_ref });
+
+            if (!Array.isArray(data) && data.type === 'file') {
+                if (typeof data.content === 'string' && data.content.length > 0) {
+                    content = Buffer.from(data.content, 'base64').toString('utf8');
+                } else if (data.sha) {
+                    // Files above the contents API size limit need the blob API.
+                    const blob = await base_octokit.rest.git.getBlob({ owner, repo, file_sha: data.sha });
+                    content = Buffer.from(blob.data.content, 'base64').toString('utf8');
+                };
+            };
+        } catch {
+            content = null;
+        };
+
+        base_content_cache.set(file, content);
+
+        return content;
+    };
 
     function credentials_for_site(site_id : string) {
         const per_site = site_creds_map.get(site_id);
@@ -489,7 +531,13 @@ async function run() : Promise<void> {
                     const remote_content = await session.get_page_content(job.mapped.title);
                     if (remote_content !== null) {
                         page_exists_on_wiki = true;
-                        const merged_text = merge_preserving_wiki_edits(text, remote_content);
+
+                        let base_content = job.base_file ? await read_base_content(job.base_file) : null;
+                        if (base_content !== null && job.mapped.content_model === 'wikitext') {
+                            base_content = transform_interwiki_tags(base_content, job.site_cfg.id, job.site_cfg.host, all_site_keys);
+                        };
+
+                        const merged_text = merge_preserving_wiki_edits(text, remote_content, base_content);
                         if (merged_text !== text) {
                             sync_log(`merged line-by-line with ${job.site_cfg.id} (preserved wiki modifications/additions)`);
                         };

@@ -71,20 +71,168 @@ export function diff_lines(a : string[], b : string[]) : diff_chunk[] {
     return chunks;
 };
 
+type merge_hunk = {
+    start : number;
+    length : number;
+    lines : string[];
+};
+
+function diff_hunks(base : string[], side : string[]) : merge_hunk[] {
+    const chunks = diff_lines(base, side);
+    const hunks : merge_hunk[] = [];
+    let base_pos = 0;
+
+    for (const chunk of chunks) {
+        if (chunk.type === 'equal') {
+            base_pos += 1;
+            continue;
+        };
+
+        hunks.push({ start: base_pos, length: chunk.a.length, lines: chunk.b });
+        base_pos += chunk.a.length;
+    };
+
+    return hunks;
+};
+
+function same_lines(a : string[], b : string[]) : boolean {
+    if (a.length !== b.length) return false;
+
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) return false;
+    };
+
+    return true;
+};
+
+function normalize_newlines(text : string) : string {
+    return text.replace(/\r\n/g, '\n');
+};
+
 /**
- * Merge repository content with live wiki content line-by-line:
- * - Checks line-by-line between repo (a) and wiki (b).
- * - If there is a difference or wiki has added stuff, DO NOT TOUCH (preserve wiki lines).
- * - If there is no difference (equal line), keep/override that line only.
- * - If repo has newly added lines (not in wiki), append them.
+ * Three-way line merge: base is the repository revision that was last synced,
+ * repo is the current repository content and wiki is the live wiki content.
+ *
+ * - Lines only changed in the repo follow the repo (including deletions).
+ * - Lines only changed on the wiki stay as the wiki has them.
+ * - Lines changed on both sides are left alone (wiki wins).
+ * - Additions at the same spot are combined so both sides keep their new content.
  */
-export function merge_preserving_wiki_edits(repo_text : string, wiki_text : string | null | undefined) : string {
-    if (!wiki_text || wiki_text === repo_text) {
+export function merge_three_way(base_text : string, repo_text : string, wiki_text : string) : string {
+    const base = base_text.split('\n');
+    const repo = repo_text.split('\n');
+    const wiki = wiki_text.split('\n');
+
+    const repo_hunks = diff_hunks(base, repo);
+    const wiki_hunks = diff_hunks(base, wiki);
+    const result : string[] = [];
+
+    let cursor = 0;
+    let repo_index = 0;
+    let wiki_index = 0;
+
+    while (repo_index < repo_hunks.length || wiki_index < wiki_hunks.length) {
+        const next_repo = repo_index < repo_hunks.length ? repo_hunks[repo_index].start : Number.POSITIVE_INFINITY;
+        const next_wiki = wiki_index < wiki_hunks.length ? wiki_hunks[wiki_index].start : Number.POSITIVE_INFINITY;
+        const region_start = Math.min(next_repo, next_wiki);
+
+        while (cursor < region_start) {
+            result.push(base[cursor]);
+            cursor += 1;
+        };
+
+        // Group hunks from both sides that overlap the same base region.
+        let region_end = region_start;
+        const repo_group : merge_hunk[] = [];
+        const wiki_group : merge_hunk[] = [];
+
+        let expanded = true;
+        while (expanded) {
+            expanded = false;
+
+            if (repo_index < repo_hunks.length && (repo_hunks[repo_index].start === region_start || repo_hunks[repo_index].start < region_end)) {
+                const hunk = repo_hunks[repo_index];
+                repo_group.push(hunk);
+                region_end = Math.max(region_end, hunk.start + hunk.length);
+                repo_index += 1;
+                expanded = true;
+            };
+
+            if (wiki_index < wiki_hunks.length && (wiki_hunks[wiki_index].start === region_start || wiki_hunks[wiki_index].start < region_end)) {
+                const hunk = wiki_hunks[wiki_index];
+                wiki_group.push(hunk);
+                region_end = Math.max(region_end, hunk.start + hunk.length);
+                wiki_index += 1;
+                expanded = true;
+            };
+        };
+
+        const repo_lines = repo_group.flatMap((hunk) => hunk.lines);
+        const wiki_lines = wiki_group.flatMap((hunk) => hunk.lines);
+
+        if (repo_group.length === 0) {
+            // Only the wiki changed here.
+            result.push(...wiki_lines);
+        } else if (wiki_group.length === 0) {
+            // Only the repo changed here: follow the repo, including deletions.
+            result.push(...repo_lines);
+        } else if (same_lines(repo_lines, wiki_lines)) {
+            result.push(...repo_lines);
+        } else {
+            const repo_insert_only = repo_group.every((hunk) => hunk.length === 0);
+            const wiki_insert_only = wiki_group.every((hunk) => hunk.length === 0);
+
+            if (repo_insert_only || wiki_insert_only) {
+                // Both sides added content at the same place: keep both.
+                result.push(...repo_lines, ...wiki_lines);
+            } else {
+                // Both sides rewrote the same lines: mind our own business and keep the wiki.
+                result.push(...wiki_lines);
+            };
+        };
+
+        cursor = region_end;
+    };
+
+    while (cursor < base.length) {
+        result.push(base[cursor]);
+        cursor += 1;
+    };
+
+    return result.join('\n');
+};
+
+/**
+ * Merge repository content with live wiki content.
+ *
+ * When the previously synced repository revision (base) is known, a three-way
+ * merge is used so repo-side edits and deletions are followed unless the wiki
+ * also touched the same lines. Without a base, fall back to a conservative
+ * two-way merge: equal lines follow the repo, differing wiki lines are kept and
+ * repo additions are incorporated.
+ */
+export function merge_preserving_wiki_edits(repo_text : string, wiki_text : string | null | undefined, base_text ?: string | null) : string {
+    if (wiki_text === null || wiki_text === undefined || wiki_text === repo_text) {
         return repo_text;
     };
 
-    const repo_lines = repo_text.split('\n');
-    const wiki_lines = wiki_text.split('\n');
+    const repo = normalize_newlines(repo_text);
+    const wiki = normalize_newlines(wiki_text);
+
+    if (base_text !== null && base_text !== undefined) {
+        const base = normalize_newlines(base_text);
+
+        // The repo did not change since the last sync: leave the wiki untouched.
+        if (base === repo) return wiki;
+
+        // The wiki did not change since the last sync: take the repo verbatim.
+        if (base === wiki) return repo;
+
+        return merge_three_way(base, repo, wiki);
+    };
+
+    const repo_lines = repo.split('\n');
+    const wiki_lines = wiki.split('\n');
 
     const chunks = diff_lines(repo_lines, wiki_lines);
     const result : string[] = [];

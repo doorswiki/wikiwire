@@ -1,0 +1,43 @@
+{
+	"settings": {
+		"section": "Templates",
+		"default": true,
+		"categories": [
+			"Pages with tier lists"
+		]
+	},
+	"module": {
+		"pages": [
+			"tier-lists.js",
+			"tier-lists.css"
+		],
+		"messages": [
+			"ok",
+			"tier-lists-add-row-above",
+			"tier-lists-add-row-below",
+			"tier-lists-change-color",
+			"tier-lists-delete-row",
+			"tier-lists-emptied-row",
+			"tier-lists-empty-row",
+			"tier-lists-more-operations",
+			"tier-lists-move-row-above",
+			"tier-lists-move-row-below",
+			"tier-lists-only-one-row",
+			"tier-lists-row-already-empty",
+			"tier-lists-save",
+			"tier-lists-saving",
+			"tier-lists-settings"
+		],
+		"dependencies": [
+			"oojs-ui-core",
+			"oojs-ui-windows",
+			"oojs-ui.styles.icons-alerts",
+			"oojs-ui.styles.icons-content",
+			"oojs-ui.styles.icons-editing-advanced",
+			"oojs-ui.styles.icons-interactions",
+			"oojs-ui.styles.icons-moderation",
+			"oojs-ui.styles.icons-movement",
+			"ext.gadget.drag-drop-touch"
+		]
+	}
+}

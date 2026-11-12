@@ -1,61 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const UPSTREAM_API = 'https://doorsgame.wiki/w/api.php';
 const WIKIWIRE_UA = 'WikiWire/1.0 (https://github.com/doorswiki/wikiwire; github-actions; doorswiki)';
 
-const PAGES = {
-  // MediaWiki namespace
-  'MediaWiki:Common.css': 'mediawiki/shared-lang/Common.css',
-  'MediaWiki:Common.js': 'mediawiki/shared-lang/Common.js',
-  'MediaWiki:Citizen.css': 'mediawiki/shared-lang/Citizen.css',
-  'MediaWiki:Citizen-preferences.json': 'mediawiki/shared-lang/Citizen-preferences.json',
-  'MediaWiki:Gadget-SpoilersByDefault': 'mediawiki/shared-lang/Gadget-SpoilersByDefault',
-  'MediaWiki:Gadget-SpoilersByDefault.js': 'mediawiki/shared-lang/Gadget-SpoilersByDefault.js',
-  'MediaWiki:Gadgets-definition': 'mediawiki/shared-lang/Gadgets-definition',
-  'MediaWiki:Welcome-enabled': 'mediawiki/shared-lang/Welcome-enabled',
-  'MediaWiki:Welcome-user-page': 'mediawiki/shared-lang/Welcome-user-page',
-  'MediaWiki:Welcome-user': 'mediawiki/shared-lang/Welcome-user',
-  'MediaWiki:Welcome-message-user': 'mediawiki/shared-lang/Welcome-message-user',
+// Overridable for local testing against a fake MediaWiki instance.
+const UPSTREAM_API = process.env.UPSTREAM_API || 'https://doorsgame.wiki/w/api.php';
+const REPO_ROOT = process.env.SYNC_UPSTREAM_ROOT || process.cwd();
 
-  // Module namespace
-  'Module:Transcluder': 'modules/shared-lang/Transcluder/Transcluder.module.lua',
-  'Module:InfoboxNeue': 'modules/shared-lang/InfoboxNeue/InfoboxNeue.module.lua',
-  'Module:InfoboxNeue/styles.css': 'modules/shared-lang/InfoboxNeue/styles.css',
-  'Module:InfoboxNeue/doc': 'modules/shared-lang/InfoboxNeue/doc.wikitext',
-  'Module:BadgeRenderer': 'modules/shared-lang/BadgeRenderer/BadgeRenderer.module.lua',
-  'Module:BadgeList': 'modules/shared-lang/BadgeList/BadgeList.module.lua',
-  'Module:BadgeData': 'modules/shared-lang/BadgeData/BadgeData.module.lua',
-  'Module:Arguments': 'modules/shared-lang/Arguments/Arguments.module.lua',
-  'Module:AboutDoors': 'modules/shared-lang/AboutDoors/AboutDoors.module.lua',
-  'Module:AboutDoors/styles.css': 'modules/shared-lang/AboutDoors/styles.css',
+// Dry run prints what would change without touching anything.
+const DRY_RUN = process.env.SYNC_UPSTREAM_DRY_RUN === '1';
 
-  // Template namespace
-  'Template:USERNAME': 'templates/shared-lang/USERNAME/USERNAME.wikitext',
-  'Template:Username': 'templates/shared-lang/Username/Username.wikitext',
-  'Template:USERNAME/doc': 'templates/shared-lang/USERNAME/doc.wikitext',
-  'Template:DOORSWiki userpage': 'templates/shared-lang/DOORSWiki userpage/DOORSWiki userpage.wikitext',
-  'Template:Hoverimg': 'templates/shared-lang/Hoverimg/Hoverimg.wikitext',
-  'Template:Icons': 'templates/shared-lang/Icons/Icons.wikitext',
-  'Template:DOORS Wiki/styles.css': 'templates/shared-lang/DOORS Wiki/styles.css',
-  'Template:DOORS Wiki/Home Navigation': 'templates/shared-lang/DOORS Wiki/Home Navigation.wikitext',
-  'Template:DOORS Wiki/Home Navigation/item': 'templates/shared-lang/DOORS Wiki/Home Navigation/item.wikitext',
-  'Template:DOORS Wiki/Featured Articles': 'templates/shared-lang/DOORS Wiki/Featured Articles.wikitext',
-  'Template:DOORS Wiki/Fun Facts': 'templates/shared-lang/DOORS Wiki/Fun Facts.wikitext',
-  'Template:DOORS Wiki/Socials': 'templates/shared-lang/DOORS Wiki/Socials.wikitext',
-  'Template:DOORS Wiki/Container': 'templates/shared-lang/DOORS Wiki/Container.wikitext',
-  'Template:Documentation': 'templates/shared-lang/Documentation/Documentation.wikitext',
-  'Template:Documentation/doc': 'templates/shared-lang/Documentation/doc.wikitext',
-
-  // Main / Article namespace
-  'DOORS Wiki': 'pages/shared-lang/DOORS Wiki/DOORS Wiki.wikitext',
-
-  // User namespace
-  'User:DoorsWiki': 'users/shared-lang/DoorsWiki/DoorsWiki.wikitext',
-
-  // User talk namespace
-  'User talk:DoorsWiki': 'user_talk/shared-lang/DoorsWiki/DoorsWiki.wikitext',
-};
+const PAGES_FILE = path.join(REPO_ROOT, 'scripts', 'pages.json');
 
 class MediaWikiClient {
   constructor(apiUrl, username = '', password = '') {
@@ -153,60 +108,198 @@ class MediaWikiClient {
     }
   }
 
-  async fetchPages(titles) {
-    const data = await this.post({
-      action: 'query',
-      prop: 'revisions',
-      titles,
-      rvprop: 'content',
-      rvslots: '*',
-    });
+  // Batched query; up to 50 titles per request. Resolves redirects when the
+  // caller asks for them. Returns Map<title, {status, content?, to?}>.
+  async fetchPages(titles, { redirects = false } = {}) {
+    const out = new Map();
 
-    const map = {};
-    for (const page of data.query?.pages ?? []) {
-      if (!page.missing) {
-        map[page.title] = page.revisions?.[0]?.slots?.main?.content ?? page.revisions?.[0]?.content ?? '';
+    for (let i = 0; i < titles.length; i += 50) {
+      const chunk = titles.slice(i, i + 50);
+        const params = {
+          action: 'query',
+          prop: 'revisions',
+          rvprop: 'content',
+          rvslots: 'main',
+          titles: chunk.join('|'),
+        };
+        if (redirects) params.redirects = '1';
+        const data = await this.post(params);
+
+      const resolved = new Map((data.query?.redirects ?? []).map((r) => [r.from, r.to]));
+      const byTitle = new Map((data.query?.pages ?? []).map((p) => [p.title, p]));
+
+      for (const title of chunk) {
+        const to = redirects ? resolved.get(title) : undefined;
+
+        if (to !== undefined) {
+          const page = byTitle.get(to);
+          if (!page || page.missing) {
+            out.set(title, { status: 'missing' });
+            continue;
+          }
+          const content = page.revisions?.[0]?.slots?.main?.content ?? page.revisions?.[0]?.content ?? '';
+          out.set(title, { status: 'redirect', to, content });
+          continue;
+        }
+
+        const page = byTitle.get(title);
+        if (!page || page.missing) {
+          out.set(title, { status: 'missing' });
+          continue;
+        }
+        const content = page.revisions?.[0]?.slots?.main?.content ?? page.revisions?.[0]?.content ?? '';
+        out.set(title, { status: 'ok', content });
       }
     }
-    return map;
+
+    return out;
   }
+}
+
+function rel(relPath) {
+  return relPath.split(path.sep).join('/');
+}
+
+function normalizeNewlines(text) {
+  return text.replace(/\r\n/g, '\n');
+}
+
+function loadManifest() {
+  if (!fs.existsSync(PAGES_FILE)) {
+    throw new Error(`WikiWire upstream: import manifest missing: ${PAGES_FILE}`);
+  }
+  const raw = JSON.parse(fs.readFileSync(PAGES_FILE, 'utf8'));
+  if (raw === null || typeof raw !== 'object' || Array.isArray(raw)) {
+    throw new Error(`WikiWire upstream: ${PAGES_FILE} must contain a JSON object of { "Page title": "relative/path" }`);
+  }
+  return { ...raw };
+}
+
+function saveManifest(manifest) {
+  if (DRY_RUN) return;
+  const sorted = {};
+  for (const title of Object.keys(manifest).sort((a, b) => a.localeCompare(b))) {
+    sorted[title] = manifest[title];
+  }
+  fs.writeFileSync(PAGES_FILE, `${JSON.stringify(sorted, null, 2)}\n`, 'utf8');
+}
+
+function writeIfDifferent(filePath, content) {
+  const existing = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : null;
+  if (existing !== null && normalizeNewlines(existing) === normalizeNewlines(content)) {
+    return 'unchanged';
+  }
+  if (DRY_RUN) {
+    console.log(`[DRY-RUN] would write ${rel(path.relative(REPO_ROOT, filePath))} (${existing === null ? 'new file' : 'content changed'})`);
+    return 'updated';
+  }
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, content, 'utf8');
+  return 'updated';
 }
 
 async function main() {
   const username = process.env.WIKI_USERNAME || '';
   const password = process.env.WIKI_PASSWORD || '';
 
-  const upstreamClient = new MediaWikiClient(UPSTREAM_API, username, password);
+  const manifest = loadManifest();
+  const titles = Object.keys(manifest);
 
   console.log(`Connecting to English upstream wiki (${UPSTREAM_API})...`);
   console.log(`User-Agent: ${WIKIWIRE_UA}`);
+  if (DRY_RUN) console.log('Dry run; no files will be written');
+
+  const upstreamClient = new MediaWikiClient(UPSTREAM_API, username, password);
   await upstreamClient.login();
 
-  console.log(`Querying all ${Object.keys(PAGES).length} pages individually...`);
+  console.log(`Querying ${titles.length} pages from upstream (batched)...`);
 
-  let updatedCount = 0;
-  for (const [title, relPath] of Object.entries(PAGES)) {
+  let resolved;
+  try {
+    resolved = await upstreamClient.fetchPages(titles, { redirects: true });
+  } catch (err) {
+    console.warn(`[WARN] Failed to fetch pages from upstream: ${err.message}`);
+    return;
+  }
+
+  // For redirect pages, fetch the raw redirect wikitext so the fork keeps a
+  // redirect exactly like the upstream wiki instead of the target's content.
+  const redirectTitles = titles.filter((title) => resolved.get(title)?.status === 'redirect');
+  let rawRedirects = new Map();
+  if (redirectTitles.length > 0) {
     try {
-      const pageMap = await upstreamClient.fetchPages(title);
-      const upstreamContent = pageMap[title];
-      if (upstreamContent === undefined) {
-        console.warn(`[WARN] Page not found upstream: ${title}`);
-        continue;
-      }
-
-      const dir = path.dirname(relPath);
-      fs.mkdirSync(dir, { recursive: true });
-      fs.writeFileSync(relPath, upstreamContent, 'utf8');
-      updatedCount++;
-
-      console.log(`[SYNCED] ${title} -> ${relPath} (${Buffer.byteLength(upstreamContent, 'utf8')} bytes)`);
+      rawRedirects = await upstreamClient.fetchPages(redirectTitles, { redirects: false });
     } catch (err) {
-      console.warn(`[REQUEST FAILED] ${title}: ${err.message}`);
-      // Continue without stopping!
+      console.warn(`[WARN] Failed to fetch redirect sources: ${err.message}`);
     }
   }
 
-  console.log(`Completed requests across all pages (${updatedCount}/${Object.keys(PAGES).length} succeeded).`);
+  let updated = 0;
+  let unchanged = 0;
+  let mirrored = 0;
+  let removed = 0;
+  let failed = 0;
+
+  for (const title of titles) {
+    const result = resolved.get(title);
+    const relPath = manifest[title];
+    const absPath = path.join(REPO_ROOT, relPath);
+
+    if (!result) {
+      console.warn(`[WARN] No response for ${title}; leaving repo file alone`);
+      failed++;
+      continue;
+    }
+
+    if (result.status === 'missing') {
+      if (fs.existsSync(absPath)) {
+        if (DRY_RUN) {
+          console.log(`[DRY-RUN] would remove ${relPath} (upstream page moved or deleted)`);
+        } else {
+          fs.rmSync(absPath, { force: true });
+        }
+      } else {
+        console.warn(`[MISSING] ${title} not found upstream and ${relPath} is not in the repo`);
+      }
+      delete manifest[title];
+      removed++;
+      console.warn(`[REMOVED] ${title} -> ${relPath} (upstream page moved or deleted; repo copy removed)`);
+      continue;
+    }
+
+    if (result.status === 'redirect') {
+      const raw = rawRedirects.get(title);
+      let outcome;
+      if (raw && raw.status === 'ok') {
+        // Keep the repo copy as the upstream redirect so forks stay in sync.
+        outcome = writeIfDifferent(absPath, raw.content);
+      } else {
+        // The redirect page itself was removed (or no raw content). Treat as deleted.
+        if (fs.existsSync(absPath)) {
+          if (DRY_RUN) {
+            console.log(`[DRY-RUN] would remove ${relPath} (redirect target ${result.to} gone but no redirect source)`);
+          } else {
+            fs.rmSync(absPath, { force: true });
+          }
+        }
+        delete manifest[title];
+        removed++;
+        console.warn(`[REMOVED] ${title} -> ${relPath} (upstream page moved or deleted; repo copy removed)`);
+        continue;
+      }
+      if (outcome === 'updated') updated++; else unchanged++;
+      mirrored++;
+      console.log(`[REDIRECT] ${title} -> ${result.to} (repo copy kept and synced as redirect)`);
+      continue;
+    }
+
+    const outcome = writeIfDifferent(absPath, result.content);
+    if (outcome === 'updated') updated++; else unchanged++;
+  }
+
+  if (!DRY_RUN) saveManifest(manifest);
+
+  console.log(`Done. ${updated} updated, ${unchanged} up to date, ${mirrored} redirects mirrored, ${removed} removed, ${failed} failed (of ${titles.length}).`);
 }
 
 main().catch((err) => {

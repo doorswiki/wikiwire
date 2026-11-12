@@ -1,0 +1,20 @@
+{
+	"settings": {
+		"section": "Templates",
+		"default": true,
+		"actions": [
+			"view",
+			"edit"
+		],
+		"categories": [
+			"Pages using Audio template"
+		]
+	},
+	"module": {
+		"pages": [
+			"audio.js",
+			"audio.css"
+		],
+		"dependencies": []
+	}
+}

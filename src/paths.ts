@@ -354,9 +354,13 @@ export function map_repo_path(relative_path : string, options: { css_content_mod
         };
     }
 
-    const content_model = content_model_for_mediawiki_subfile(rel_under_root, css_content_model, {
-        ignore_content_model_errors,
-    });
+    // MediaWiki:Gadgets/<name>.json are the gadget definition pages of the gadget system
+    const is_gadget_definition = wiki_name.toLowerCase() === 'gadgets' && rel_under_root.toLowerCase().endsWith('.json');
+    const content_model = is_gadget_definition
+        ? 'GadgetDefinition'
+        : content_model_for_mediawiki_subfile(rel_under_root, css_content_model, {
+            ignore_content_model_errors,
+        });
 
     if (content_model === null) { return null };
 

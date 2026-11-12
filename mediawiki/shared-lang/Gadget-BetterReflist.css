@@ -1,0 +1,34 @@
+.references > li {
+	margin-top: 0 !important;
+	> .mw-cite-backlink {
+		position: absolute;
+		margin-top: -2px;
+		margin-left: 2px;
+	}
+	> .mw-cite-backlink:has(>sup) {
+		display: inline-block;
+		color: transparent;
+		margin-top: -8px;
+		+ .reference-text:before {
+			content: '↑ ';
+			position: absolute;
+			left: -10px;
+			top: -2px;
+		}
+	}
+	> .reference-text {
+		display: inline-block;
+		vertical-align: top;
+		margin-left: 12px;
+		position: relative;
+	}
+}
+.references-small {
+	margin-top: 13px;
+	li {
+		margin-bottom: 8px;
+	}
+	li:has(+li>.mw-cite-backlink>sup) {
+		margin-bottom: 15px;
+	}
+}

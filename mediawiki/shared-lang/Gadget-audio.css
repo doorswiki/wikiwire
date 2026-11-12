@@ -1,0 +1,29 @@
+.inline-audio button {
+    appearance: none;
+    border: 0;
+    width: 1.214em;
+    height: 1.214em;
+    margin: 0 3px;
+    transform: scale(1.4) translateY(2px);
+    background: none;
+    background-image: url('https://static.wikitide.net/sewhwiki/thumb/8/8e/Icon_sound.png/24px-Icon_sound.png');
+    background-size: contain;
+    cursor: pointer;
+}
+
+.inline-audio.playing button {
+    opacity: 0.5;
+}
+
+#inline-audio-menu {
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+    align-items: start;
+    padding: 6px 8px;
+    position: absolute;
+    background: var(--color-surface-3);
+    backdrop-filter: var(--backdrop-filter-frosted-glass);
+    font-size: var(--font-size-small);
+    border-radius: var(--border-radius-medium);
+}

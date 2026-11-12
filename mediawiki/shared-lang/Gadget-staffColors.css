@@ -1,0 +1,83 @@
+/* Staff Profile Customization */
+/** Author: @Aeywoo **/
+/*** This script will only be used on Staff Members in the following groups: bot, bureaucrat, sysop/administrator, content-moderator, rollback ***/
+
+:root {
+	--staff-colors-bureaucrats: rgb(255,80,77); /* #FF504D */
+	--staff-colors-developers: rgb(255,211,115); /* #FFD373 */
+	--staff-colors-administrators: rgb(0,205,255); /* #00CDFF */
+	--staff-colors-contentmods: rgb(195,106,215); /* #C36AD7 */
+	--staff-colors-rollbacks: rgb(79,143,252); /* #4F8FFC */
+	--staff-colors-bots: rgb(208,174,130); /* #D0AE82 */
+}
+
+/* Staff User Page Customisation */
+/** Bureaucrats **/
+[href$=":Aeywoo"],
+[href$="/Aeywoo"],
+[href$=":Crystalite13"],
+[href$="/Crystalite13"],
+[href$=":Efflorescized"],
+[href$="/Efflorescized"],
+[href$=":Woowzers"],
+[href$="/Woowzers"] {
+	font-weight: bold;
+	color: var(--staff-colors-bureaucrats) !important;
+	text-shadow: 0 1px 5px rgba(var(--staff-colors-bureaucrats),.3) !important;
+}
+
+/** Developers **/
+[href$=":LSplashYeet"],
+[href$="/LSplashYeet"],
+[href$=":Jasper.creations"],
+[href$="/Jasper.creations"],
+[href$=":Redibles"],
+[href$="/Redibles"] {
+	font-weight: bold;
+	color: var(--staff-colors-developers) !important;
+	text-shadow: 0 1px 5px rgba(var(--staff-colors-developers),.3) !important;
+}
+
+/** Administrators (sysop) **/
+[href$=":RealGravity"],
+[href$="/RealGravity"],
+[href$=":Splatched"],
+[href$="/Splatched"] {
+	font-weight: bold;
+	color: var(--staff-colors-administrators) !important;
+	text-shadow: 0 1px 5px rgba(var(--staff-colors-administrators),.3) !important;
+}
+
+/** Moderators **/
+[href$=":-almondfodder-"],
+[href$="/-almondfodder-"],
+[href$=":Ethanplexx"],
+[href$="/Ethanplexx"],
+[href$=":JaimeGN"],
+[href$="/JaimeGN"],
+[href$=":SnowyyPiranha"],
+[href$="/SnowyyPiranha"],
+[href$=":Wisardknight"],
+[href$="/Wisardknight"] {
+	font-weight: bold;
+	color: var(--staff-colors-contentmods) !important;
+	text-shadow: 0 1px 5px rgba(var(--staff-colors-contentmods),.3) !important;
+}
+
+/** Rollbackers **/
+[href$=":Emmitt"],
+[href$="/Emmitt"],
+[href$=":Noobyguy775"],
+[href$="/Noobyguy775"] {
+	font-weight: bold;
+	color: var(--staff-colors-rollbacks) !important;
+	text-shadow: 0 1px 5px rgba(var(--staff-colors-rollbacks),.3) !important;
+}
+
+/** Bots **/
+[href$=":DoorsWiki"],
+[href$="/DoorsWiki"] {
+	font-weight: bold;
+	color: var(--staff-colors-bots) !important;
+	text-shadow: 0 1px 5px rgba(var(--staff-colors-bots),.3) !important;
+}

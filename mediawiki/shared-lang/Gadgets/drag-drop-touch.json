@@ -1,0 +1,12 @@
+{
+	"settings": {
+		"section": "QOL",
+		"hidden": true
+	},
+	"module": {
+		"pages": [
+			"drag-drop-touch.js"
+		],
+		"dependencies": []
+	}
+}
