@@ -53,56 +53,102 @@ function p.main(frame)
     return p.image(args[1], args[2], args.ilink or args[3])
 end
 
+
 -- Documentation helper --
-
--- Sorted pairs iterator
-local function spairs(t)
-    local keys = {}
-    for k in pairs(t) do
-        keys[#keys+1] = k
-    end
-
-    table.sort(keys, function(a, b)
-        return tostring(a):lower() < tostring(b):lower()
-    end)
-
-    local i = 0
-    return function()
-        i = i + 1
-        if keys[i] then
-            return keys[i], t[keys[i]]
-        end
-    end
-end
-
-function p.docsTable(frame)
+function p.docs(frame)
     local out = {
-        '<div class="mw-collapsible" style="box-shadow: var(--box-shadow-border); border-radius: var(--border-radius-medium); background: var(--color-surface-3); color: var(--color-base);">',
-        '<div style="padding: var(--space-sm); font-weight: bold;">Possible inputs <small style="color: var(--color-subtle); font-weight: normal;">(sorted alphabetically)</small></div>',
-        '<div class="mw-collapsible-content" style="display: flex; flex-wrap: wrap; gap: var(--space-xs); padding: var(--space-sm); border-top: 1px solid var(--border-color-base);">'
+        '<div style="box-shadow: var(--box-shadow-border); border-radius: var(--border-radius-medium); background: var(--color-surface-3); color: var(--color-base);">' ..
+        '<div style="padding: var(--space-sm); font-weight: bold;">Possible inputs <small style="color: var(--color-subtle); font-weight: normal;">(missing images first, then no link and no color, then no color, then no link, then the rest; within each, entries sharing a link are grouped with the largest groups last, then sorted alphabetically) image -> click-copy object name -> link</small></div>' ..
+        '<div style="display: flex; flex-wrap: wrap; gap: var(--space-xs); padding: var(--space-sm); border-top: 1px solid var(--border-color-base); max-height: 75vh; overflow-y: auto;">'
     }
 
-    local items = {}
-    for obj, data in spairs(objectData) do
+    -- Collecting entries into tables
+    local missing, bare, uncolored, unlinked, rest = {}, {}, {}, {}, {}
+    local groupSizes = {}
+    local extCounts = {}
+    local total = 0
+
+    for obj, data in pairs(objectData) do
         local icon = data.icon
+
         if icon ~= false then
-            items[#items+1] = {
+            local link = data.link ~= false and (data.link or obj)
+            local noColor = data.color == false
+
+            local t = missing
+            if frame:preprocess('{{filepath:' .. icon .. '}}') ~= '' then
+                if not link and noColor then
+                    t = bare
+                elseif noColor then
+                    t = uncolored
+                elseif not link then
+                    t = unlinked
+                else
+                    t = rest
+                end
+            end
+
+            local group = link or obj
+            groupSizes[group] = (groupSizes[group] or 0) + 1
+
+            local ext = icon:match('%.(%w+)$')
+            extCounts[ext] = (extCounts[ext] or 0) + 1
+            total = total + 1
+
+            t[#t+1] = {
                 obj = obj,
-                icon = stf('[[File:%s|80px]]', icon)
+                group = group,
+                ext = ext,
+                icon = '[[File:' .. icon .. '|70px]]',
+                link = link
+                    and '<small style="color: var(--color-subtle);">[[' .. link .. ']]</small>'
+                     or ''
             }
         end
     end
 
-    for _, item in ipairs(items) do
-        out[#out+1] = stf(
-            '<div style="flex: 1 1 10em; display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); padding: var(--space-sm); background: var(--color-surface-1); border-radius: var(--border-radius-base); text-align: center;">%s<span>{{copy|%s}}</span></div>',
-            item.icon,
-            item.obj
-        )
+    -- Smaller link groups first, then by link name, then by object name
+    local function compare(a, b)
+        local sizeA, sizeB = groupSizes[a.group], groupSizes[b.group]
+        if sizeA ~= sizeB then
+            return sizeA < sizeB
+        end
+        if a.group ~= b.group then
+            return a.group < b.group
+        end
+        return a.obj < b.obj
+    end
+
+    -- Output entries
+    for _, items in ipairs({missing, bare, uncolored, unlinked, rest}) do
+        table.sort(items, compare)
+
+        for _, item in ipairs(items) do
+            out[#out+1] =
+                '<div style="position: relative; flex: 1 1 8.5em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-xs); padding: var(--space-sm); background: var(--color-surface-1); border-radius: var(--border-radius-base); text-align: center;">' ..
+                    '<span style="position: absolute; top: 0; right: 0; padding: var(--space-xxs); background: var(--color-surface-3); border-radius: 0 var(--border-radius-base) 0 var(--border-radius-base); font-size: .75em; line-height: 1; color: var(--color-subtle); font-family: inconsolata;">' .. item.ext .. '</span>' ..
+                    item.icon ..
+                    '<span>{{copy|' .. item.obj .. '}}</span>' ..
+                    item.link ..
+                '</div>'
+        end
     end
 
     out[#out+1] = '</div>'
-    out[#out+1] = '</div>'
+
+    -- Extension statistics
+    local stats = {}
+    for ext, count in pairs(extCounts) do
+        stats[#stats+1] = ext .. ': ' .. count
+    end
+
+    out[#out+1] =
+        '<div style="display: flex; justify-content: space-between; gap: var(--space-sm); padding: var(--space-sm); border-top: 1px solid var(--border-color-base); font-size: .9em; color: var(--color-subtle);">' ..
+            '<span>Extensions: ' .. table.concat(stats, ', ') .. '</span>' ..
+            '<span>Total: ' .. total .. '</span>' ..
+        '</div>' ..
+    '</div>'
+
     return frame:preprocess(table.concat(out, '\n'))
 end
 
