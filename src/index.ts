@@ -1,4 +1,4 @@
-import * as core from '@actions/core';
+﻿import * as core from '@actions/core';
 import * as github from '@actions/github';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -10,6 +10,43 @@ import { map_repo_path, parse_shared_path_segment, type mapped_path } from './pa
 import { mw_page_error, mw_session, type existence_hint } from './mediawiki';
 import { parse_site_credentials } from './site_credentials';
 import { merge_preserving_wiki_edits, transform_interwiki_tags } from './diff';
+
+// Validate that a Lua module file has correct syntax:
+// - Pattern 1: data-table style (starts with "return {" and ends with "}")
+// - Pattern 2: procedural style (starts with "local p = {}" and has balanced braces)
+export function isValidLuaModule(text : string) : boolean {
+    const trimmed = text.trim();
+    // Pattern 1: data-table style
+    if (trimmed.startsWith('return {')) {
+        if (!trimmed.endsWith('}')) return false;
+        // Count braces - opening and closing must be equal
+        let open = 0;
+        let close = 0;
+        for (const ch of text) {
+            if (ch === '{') open++;
+            if (ch === '}') close++;
+        }
+        if (open !== close) return false;
+        if (!text.includes('[')) return false;
+        return true;
+    }
+    // Pattern 2: procedural style
+    if (trimmed.startsWith('local p = {}')) {
+        // Must have balanced braces for the function body
+        let open = 0;
+        let close = 0;
+        for (const ch of text) {
+            if (ch === '{') open++;
+            if (ch === '}') close++;
+        }
+        if (open !== close) return false;
+        // Must have at least one function definition
+        if (!text.includes('function')) return false;
+        return true;
+    }
+    // Unknown pattern
+    return false;
+};
 
 import type { Ignore } from 'ignore';
 
@@ -107,7 +144,7 @@ function sync_begin(header : string) : void {
 };
 
 function sync_log(message : string) : void {
-    core.info(sync_grouping ? `└─ ${message}` : `WikiWire: ${message}`);
+    core.info(sync_grouping ? `â””â”€ ${message}` : `WikiWire: ${message}`);
 };
 
 function walk_files(dir : string, workspace : string, out : string[]) : void {
@@ -513,7 +550,7 @@ async function run() : Promise<void> {
     const base_octokit = process.env.GITHUB_TOKEN ? github.getOctokit(process.env.GITHUB_TOKEN) : null;
     const base_content_cache = new Map<string, string | null>();
 
-    // Prefer local git history — needs no GitHub token nor extra API permissions.
+    // Prefer local git history â€” needs no GitHub token nor extra API permissions.
     const base_local = (file : string) : string | null => {
         if (!base_ref || is_zero_sha(base_ref)) return null;
 
@@ -524,7 +561,7 @@ async function run() : Promise<void> {
         if (!base_ref || is_zero_sha(base_ref)) { return null };
         if (base_content_cache.has(file)) { return base_content_cache.get(file) ?? null };
 
-        // 1. Local git (no token needed — the checkout needs to contain base_ref)
+        // 1. Local git (no token needed â€” the checkout needs to contain base_ref)
         const local = base_local(file);
         if (local !== null) {
             base_content_cache.set(file, local);
@@ -682,6 +719,13 @@ async function run() : Promise<void> {
                     continue;
                 };
 
+                // Skip editing if the module fails Lua syntax validation
+                if (job.mapped.content_model === 'scribunto' && !isValidLuaModule(text)) {
+                    sync_log(`skipping ${job.mapped.title} on ${job.site_cfg.id}: Lua module syntax invalid (unbalanced braces or missing return block)`);
+                    completed += 1;
+                    continue;
+                };
+
                 const edit_existence = page_exists_on_wiki ? 'assume_exists' : existence;
                 const result = await session.edit( job.mapped.title, text, change_summary('edit', job.file, attribution), job.mapped.content_model, edit_existence );
 
@@ -691,7 +735,7 @@ async function run() : Promise<void> {
                 completed += 1;
             } catch (err : unknown) {
                 const msg = err instanceof Error ? err.message : String(err);
-                core.error(`└─ ${msg} on ${job.site_cfg.id}; continuing remaining jobs`);
+                core.error(`â””â”€ ${msg} on ${job.site_cfg.id}; continuing remaining jobs`);
                 if (err instanceof mw_page_error) {
                     page_failures.push({ error: err, site_id: job.site_cfg.id });
                 } else {
@@ -721,3 +765,4 @@ async function run() : Promise<void> {
 run().catch((err : unknown) => {
     core.setFailed(err instanceof Error ? err.message : String(err));
 });
+
