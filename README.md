@@ -1,7 +1,7 @@
 # WikiWire
 
 > [!IMPORTANT]  
-> WikiWire is currently experimental. Please use cautiously and avoid potentially destructive configurations such as `sync_all` and consider testing your configurations with `dry_run`s first.
+> WikiWire is currently experimental. Please use cautiously and avoid potentially destructive configurations such as `delete_removed` and consider testing your configurations with `dry_run`s first.
 
 WikiWire is a GitHub Action that syncs files under `modules/`, `templates/`, and `mediawiki/` inside your Git repository into a live MediaWiki site via the [MediaWiki Action API](https://www.mediawiki.org/wiki/API:Action_API). WikiWire allows for smooth automated workflows that make your GitHub repository the primary authority over your content and seem less like a backup.
 
@@ -200,7 +200,7 @@ After completing every step above, you should be ready to test WikiWire. Make an
 
 A common pattern is to keep production syncs on `push` to `main`, and run WikiWire with `dry_run: true` on pull requests so contributors can verify routing and titles in CI logs without editing the wiki.
 
-Non-`push` events do not provide commit compare data, so PR jobs must set `sync_all: override`. That walks every file under `modules/`, `templates/`, and `mediawiki/` in the checked-out workspace (not only files changed in the PR). With `dry_run: true`, WikiWire only logs planned edits and does not log in or call `action=edit`, so credentials are optional.
+Non-`push` events do not provide commit compare data, so PR jobs must set `sync_all: override`. That checks every file under `modules/`, `templates/`, `mediawiki/`, `pages/`, `users/`, and `user_talk/` in the checked-out workspace (not only files changed in the PR). With `dry_run: true`, WikiWire only logs planned edits and does not log in or call `action=edit`, so credentials are optional.
 
 Add a second workflow (for example `.github/workflows/wikiwire-dry-run.yml`):
 
@@ -277,7 +277,7 @@ Because WikiWire diffs against the previous repo state instead of just the curre
 
 This is a line-based merge, not a semantic one: large pieces of a page that are changed by both sides in overlapping ways are resolved whole-block in the wiki's favor. Keep large generated blocks identical on both sides, or leave them out of sync, rather than expecting a character-level merge.
 
-When the previous base cannot be determined (first push of the repo, a file added this push, or `sync_all`), WikiWire falls back to a conservative two-way merge: it only replaces on-wiki lines with identical repo lines, keeps any on-wiki line that differs, and incorporates repo additions. In that mode, repo-side deletions and edits of lines that the wiki also reworded are not propagated.
+When the previous base cannot be determined (first push of the repo, a file added this push, or `sync_all` without `base_sha`), WikiWire falls back to a conservative two-way merge: it only replaces on-wiki lines with identical repo lines, keeps any on-wiki line that differs, and incorporates repo additions. In that mode, repo-side deletions and edits of lines that the wiki also reworded are not propagated.
 
 ## Path to wiki title mapping
 
@@ -467,7 +467,7 @@ Please note that WikiWire is currently a BETA and this shouldn't be required in 
 | `ignore_path` | no | `.wikiwireignore` | Path to the ignore file (may be missing). |
 | `dry_run` | no | `false` | If `true`, no edits or deletes are sent (site-level `dry_run` in TOML still applies per site). |
 | `delete_removed` | no | `false` | If `true`, delete on-wiki pages when repo files are removed (also enabled by `delete_removed` in `wikiwire.toml`). Entire-folder removals are skipped. Requires special permissions. |
-| `sync_all` | no | `false` | If set to `'override'`, every file under `modules/`, `templates/`, and `mediawiki/` from the workspace will be synced instead of those that changes per-commit. Requires a prior checkout of the repo. Not recommended as this may potentially be destructive. Previously this parameter accepted `true`, but that was changed in v0.3.0 |
+| `sync_all` | no | `false` | If set to `'override'`, every file under `modules/`, `templates/`, `mediawiki/`, `pages/`, `users/`, and `user_talk/` in the workspace is checked and synced instead of only the files changed per commit. Requires a prior checkout of the repo. Pair with `base_sha` so the previous revision is still used as the three-way merge ancestor and deleted files are detected. Previously this parameter accepted `true`, but that was changed in v0.3.0. |
 | `base_sha` | no | `""` | Base commit for the incremental change list. Defaults to the push event's `before` SHA. Set this when the workflow modifies the repository before deploying (for example, an upstream import commit), so the deploy covers the whole range instead of only the event's original push. Also lets scheduled/manual runs use the diff-based deploy. |
 | `head_sha` | no | `""` | Head commit for the incremental change list. Defaults to the push event's `after` SHA, or to the local `HEAD` when `base_sha` is set. |
 
@@ -516,10 +516,11 @@ jobs:
 
 ## Limitations
 
-- **Deletes:** Off by default. With `delete_removed` enabled (wikiwire.toml or action input), removing an individual file deletes the corresponding wiki page. Removing a whole site or shared directory (e.g. `modules/<host>/` or `templates/shared/`) is treated as a reorganization and does **not** mass-delete wiki pages. `sync_all` never deletes.
+- **Deletes:** Off by default. With `delete_removed` enabled (wikiwire.toml or action input), removing an individual file deletes the corresponding wiki page. Removing a whole site or shared directory (e.g. `modules/<host>/` or `templates/shared/`) is treated as a reorganization and does **not** mass-delete wiki pages. A full sync (`sync_all: override`) also deletes when a `base_sha` is available, using the removed files in `base_sha..HEAD`.
 - **Renames:** Treated as deletes + adds, if enabled. Does not add a redirect.
 - **Initial push:** When GitHub sends an all-zero `before` SHA, the action uses the single head commit's file list (from the local git history) instead of `compareCommits`.
-- **Incremental sync:** Push-triggered syncs read the local git history instead of the GitHub API, so the workflow needs to check out with `fetch-depth: 0` (or deep enough to contain the `before` commit). With a shallow clone the action falls back to the API and needs the built-in `GITHUB_TOKEN` (`${{ github.token }}`, no secret to create). Scheduled and dispatch runs can use the same diff-based deploy by passing `base_sha` (the repository's HEAD before any workflow-side changes); without `base_sha` they still need `sync_all: override`. The bundled workflow passes the `wikiwire-deployed` tag, so scheduled and manual runs automatically cover everything since the last successful deploy.
+- **Incremental sync:** Push-triggered syncs read the local git history instead of the GitHub API, so the workflow needs to check out with `fetch-depth: 0` (or deep enough to contain the `before` commit). With a shallow clone the action falls back to the API and needs the built-in `GITHUB_TOKEN` (`${{ github.token }}`, no secret to create). Scheduled and dispatch runs can use the same diff-based deploy by passing `base_sha` (the repository's HEAD before any workflow-side changes); without `base_sha` they still need `sync_all: override`. The bundled workflow always runs a full sync (`sync_all: override`) and passes the last deployed revision, so every page is checked on every run and fork edits are still merged against a known base.
+- **Full sync:** `sync_all: override` walks every file under `modules/`, `templates/`, `mediawiki/`, `pages/`, `users/`, and `user_talk/` instead of only the changed files. Pages whose merged text already matches the wiki are read once and not written, so a full sync costs one read per page rather than one edit per page.
 - **Branches:** Use per-site `default_branch` or workflow `on.push.branches` to avoid syncing from unintended branches.
 
 ## Importing from an upstream wiki (this repository)
@@ -541,11 +542,11 @@ This repository imports a set of pages from an upstream wiki (doorsgame.wiki), c
 
 ## How the move/delete gets onto the wikis
 
-After a successful deploy, the workflow force-updates the `wikiwire-deployed` tag to the deployed `HEAD`. The next run starts from that tag, so scheduled and `workflow_dispatch` runs also pick up anything committed since the last successful deploy — even when the import commit was pushed by the workflow itself (bot pushes do not trigger a second run) or a previous deploy failed part-way. The deploy step also runs with `delete_removed: true`, so a repo file removed by the importer deletes the corresponding on-wiki pages on every configured site with deletion permission. A rename is pushed as a new page and the old page is deleted.
+After a successful deploy, the workflow saves the deployed `HEAD` as the last deployed revision (in the Actions cache, so the repository keeps no moving git refs). The next run starts from that revision, so scheduled and `workflow_dispatch` runs also pick up anything committed since the last successful deploy — even when the import commit was pushed by the workflow itself (bot pushes do not trigger a second run) or a previous deploy failed part-way. The deploy step runs a full sync with `delete_removed: true`, so every page is checked on every run and a repo file removed by the importer deletes the corresponding on-wiki pages on every configured site with deletion permission. A rename is pushed as a new page and the old page is deleted.
 
-Because the range can span several commits, the three-way merge uses each file's content at the `wikiwire-deployed` tag as the common ancestor. That is what lets an upstream line deletion or edit propagate while fork-local edits are preserved. The tag only advances when every page in the run succeeded; a partial failure leaves the old base in place so the next run retries the failed pages. The workflow also serializes runs with a `concurrency` group so two deploys cannot race the tag or each other.
+Because the range can span several commits, the three-way merge uses each file's content at the last deployed revision as the common ancestor. That is what lets an upstream line deletion or edit propagate while fork-local edits are preserved. The saved revision only advances when every page in the run succeeded; a partial failure leaves the old base in place so the next run retries the failed pages. The workflow also serializes runs with a `concurrency` group so two deploys cannot race the pointer or each other.
 
-To backfill a repository that has no `wikiwire-deployed` tag yet (or to repair a range), dispatch the workflow manually with the `base_sha` input set to the revision the wikis were last synced from. That run deploys `base_sha..HEAD`, then creates the tag.
+To backfill a repository that has no saved deployed revision yet (or to repair a range), dispatch the workflow manually with the `base_sha` input set to the revision the wikis were last synced from. That run deploys `base_sha..HEAD`, then saves the new revision.
 
 To add a page to the import, add `"Upstream title": "repo/path"` to `scripts/pages.json` — its presence in the file is enough; the next run fetches it. To stop importing a page, remove its entry from the manifest; to remove a page entirely, delete its entry and its file (or just delete the entry and let the upstream removal workflow run).
 

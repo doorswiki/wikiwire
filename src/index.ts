@@ -331,6 +331,37 @@ function list_changed_paths_local(workspace : string, before : string, after : s
     return out === null ? null : parse_git_diff_z(out);
 };
 
+// Fetch the changed-file list for a commit range, preferring local git history
+// and falling back to the GitHub API when the checkout is shallow.
+async function list_diff_files(workspace : string, before : string, after : string) : Promise<gh_file[]> {
+    const local_files = list_changed_paths_local(workspace, before, after);
+
+    if (local_files !== null) { return local_files; };
+
+    const { owner, repo } = github.context.repo;
+    const token = process.env.GITHUB_TOKEN;
+
+    if (!token) {
+        throw new Error( 'WikiWire parameters error: GITHUB_TOKEN is missing and the previous revision is not available in the local git history. Check out the repository with fetch-depth: 0 (full history), or pass env GITHUB_TOKEN with contents: read for this step.' );
+    };
+
+    const octokit = github.getOctokit(token);
+
+    if (is_zero_sha(before)) {
+        const { data } = await octokit.rest.repos.getCommit({ owner, repo, ref: after });
+        return data.files ?? [];
+    };
+
+    const { data } = await octokit.rest.repos.compareCommits({
+        owner,
+        repo,
+        base: before,
+        head: after,
+    });
+
+    return data.files ?? [];
+};
+
 async function list_changed_paths(opts : { workspace : string; sync_all : boolean; ign : Ignore; delete_removed : boolean; before : string; after : string }) : Promise<path_change[]> {
     const { workspace, sync_all, ign, delete_removed, before, after } = opts;
 
@@ -341,42 +372,25 @@ async function list_changed_paths(opts : { workspace : string; sync_all : boolea
             walk_files(path.join(workspace, root), workspace, out);
         };
 
-        return out
+        let changes : path_change[] = out
             .filter((f) => !ign.ignores(f))
-            .map((file) => ({ file, kind: 'edit' as const, git_status: 'unknown' as const }));
-    };
+            .map((file) => ({ file, kind: 'edit' as const, git_status: 'unknown' as const, base_file: file }));
 
-    const { owner, repo } = github.context.repo;
+        // The workspace walk only sees files that still exist. When a base is
+        // available, also pick up files removed since then so a full sync can
+        // follow deletions instead of silently leaving the pages behind.
+        if (delete_removed && !is_zero_sha(before) && after) {
+            const diff_files = await list_diff_files(workspace, before, after);
+            const deletes = changes_from_gh_files(diff_files, true)
+                .filter((c) => c.kind === 'delete' && !ign.ignores(c.file));
 
-    // prefer local git history — no token or extra permissions needed
-    const local_files = list_changed_paths_local(workspace, before, after);
-    let gh_files : gh_file[];
-
-    if (local_files !== null) {
-        gh_files = local_files;
-    } else {
-        const token = process.env.GITHUB_TOKEN;
-
-        if (!token) {
-            throw new Error( 'WikiWire parameters error: GITHUB_TOKEN is missing and the previous revision is not available in the local git history. Check out the repository with fetch-depth: 0 (full history), or pass env GITHUB_TOKEN with contents: read for this step.' );
+            changes = changes.concat(deletes);
         };
 
-        const octokit = github.getOctokit(token);
-
-        if (is_zero_sha(before)) {
-            const { data } = await octokit.rest.repos.getCommit({ owner, repo, ref: after });
-            gh_files = data.files ?? [];
-        } else {
-            const { data } = await octokit.rest.repos.compareCommits({
-                owner,
-                repo,
-                base: before,
-                head: after,
-            });
-            gh_files = data.files ?? [];
-        };
+        return changes;
     };
 
+    const gh_files = await list_diff_files(workspace, before, after);
     let changes = changes_from_gh_files(gh_files, delete_removed);
     changes = add_sibling_lua_edits(changes, workspace);
 
@@ -495,8 +509,8 @@ async function run() : Promise<void> {
 
     // The previous revision of each file is the common ancestor for the merge.
     // Without it we cannot tell a repo-side edit/deletion from a wiki-side edit.
-    const base_ref = sync_all ? '' : before_sha;
-    const base_octokit = !sync_all && process.env.GITHUB_TOKEN ? github.getOctokit(process.env.GITHUB_TOKEN) : null;
+    const base_ref = before_sha;
+    const base_octokit = process.env.GITHUB_TOKEN ? github.getOctokit(process.env.GITHUB_TOKEN) : null;
     const base_content_cache = new Map<string, string | null>();
 
     // Prefer local git history — needs no GitHub token nor extra API permissions.
@@ -638,10 +652,12 @@ async function run() : Promise<void> {
                 };
 
                 let page_exists_on_wiki = false;
+                let remote_text : string | null = null;
                 try {
                     const remote_content = await session.get_page_content(job.mapped.title);
                     if (remote_content !== null) {
                         page_exists_on_wiki = true;
+                        remote_text = remote_content;
 
                         let base_content = job.base_file ? await read_base_content(job.base_file) : null;
                         if (base_content !== null && job.mapped.content_model === 'wikitext') {
@@ -656,6 +672,14 @@ async function run() : Promise<void> {
                     };
                 } catch (fetch_err : unknown) {
                     sync_log(`could not fetch remote content for merge check; proceeding with direct edit: ${fetch_err instanceof Error ? fetch_err.message : String(fetch_err)}`);
+                };
+
+                // A full sync visits every file; skip the write when the wiki
+                // already has the merged text so it only costs one read.
+                if (page_exists_on_wiki && remote_text !== null && text.replace(/\r\n/g, '\n') === remote_text.replace(/\r\n/g, '\n')) {
+                    sync_log(`${job.mapped.title} on ${job.site_cfg.id} is already up to date`);
+                    completed += 1;
+                    continue;
                 };
 
                 const edit_existence = page_exists_on_wiki ? 'assume_exists' : existence;

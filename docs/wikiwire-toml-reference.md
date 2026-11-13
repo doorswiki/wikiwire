@@ -40,11 +40,11 @@ ignore_content_model_errors = true
 
 ## delete_removed (boolean)
 
-If true, WikiWire deletes on-wiki pages when the corresponding repo files are removed in a push diff. Also enabled when the GitHub Action input `delete_removed` is `true`. Default false.
+If true, WikiWire deletes on-wiki pages when the corresponding repo files are removed in the commit range. Also enabled when the GitHub Action input `delete_removed` is `true`. Default false.
 
 Removing a whole site or shared directory (`modules/<host>/`, `templates/shared/`, `mediawiki/shared-lang/`, and so on, with no files left under it) is treated as a repository reorganization: those deletes are skipped with a warning. Removing individual files, including the last file of a module or subpage folder, still deletes the corresponding pages.
 
-`sync_all: override` never performs deletes. Ignored paths are never deleted on the wiki.
+A full sync (`sync_all: override`) also deletes: it uses the files removed in `base_sha..HEAD` when a `base_sha` is available. Without a `base_sha` it cannot see removals and only syncs files that still exist. Ignored paths are never deleted on the wiki.
 
 Requires the bot password grant **Delete pages, revisions, and log entries**, and a wiki account with the `delete` right (often `sysop`).
 
@@ -60,7 +60,7 @@ If true, push-diff syncs (any sync job that doesn't use `sync_all`) skip the Med
 - `added` / `renamed` / `copied`: edit with `contentmodel` and `createonly`. If the page already exists, WikiWire retries as a plain edit.
 - Deletes skip the existence probe and treat already-missing pages as a no-op.
 
-`sync_all: override`, sibling `.module.lua` injects, and any path without a known GitHub status still use the `page_exists` probe. Fallback retries are always logged.
+`sync_all: override`, sibling `.module.lua` injects, and any path without a known GitHub status still use the `page_exists` probe. Fallback retries are always logged. A full sync therefore costs one read per page; pages whose merged text already matches the wiki are skipped instead of being written.
 
 ```
 infer_page_existence = true
@@ -173,7 +173,7 @@ With the config above, content under `modules/shared-lang/`, `templates/shared-l
 | `ignore_path` | no | `.wikiwireignore` | Path to the ignore file (may be missing). |
 | `dry_run` | no | `false` | If `true`, no edits or deletes are sent (site-level `dry_run` in TOML still applies per site). |
 | `delete_removed` | no | `false` | If `true`, delete on-wiki pages when repo files are removed (also enabled by `delete_removed` in `wikiwire.toml`). Entire-folder removals are skipped. Requires special permissions. |
-| `sync_all` | no | `false` | If set to `'override'`, every file under `modules/`, `templates/`, and `mediawiki/` from the workspace will be synced instead of those that changes per-commit. Requires a prior checkout of the repo. Not recommended as this may potentially be destructive. Previously this parameter accepted `true`, but that was changed in v0.3.0 |
+| `sync_all` | no | `false` | If set to `'override'`, every file under `modules/`, `templates/`, `mediawiki/`, `pages/`, `users/`, and `user_talk/` in the workspace is checked and synced instead of only the files changed per commit. Requires a prior checkout of the repo. Pair with `base_sha` so the previous revision is still used as the three-way merge ancestor and deleted files are detected. Previously this parameter accepted `true`, but that was changed in v0.3.0. |
 | `base_sha` | no | `""` | Base commit for the incremental change list. Defaults to the push event's `before` SHA. Set this when the workflow modifies the repository before deploying (for example, an upstream import commit), so the deploy covers the whole range. Also lets scheduled/manual runs use the diff-based deploy. |
 | `head_sha` | no | `""` | Head commit for the incremental change list. Defaults to the push event's `after` SHA, or to the local `HEAD` when `base_sha` is set. |
 

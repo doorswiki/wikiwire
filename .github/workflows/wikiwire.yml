@@ -26,12 +26,12 @@ on:
   workflow_dispatch:
     inputs:
       base_sha:
-        description: 'Optional one-off base commit (overrides the wikiwire-deployed tag, e.g. to backfill changes that were committed but never deployed)'
+        description: 'Optional one-off base commit (overrides the saved deployed revision, e.g. to backfill changes that were committed but never deployed)'
         required: false
         default: ''
 
-# Serialize runs: the deploy tag below is force-updated, and two concurrent
-# deploys could otherwise race with each other.
+# Serialize runs: the saved deployed revision is a single moving pointer, and
+# two concurrent deploys could otherwise race with each other.
 concurrency:
   group: wikiwire
   cancel-in-progress: false
@@ -53,35 +53,78 @@ jobs:
         with:
           node-version: 20
 
+      # The last successfully deployed revision is kept in the Actions cache
+      # rather than in a git tag, so the repository has no moving refs.
+      - name: Restore last deployed revision
+        uses: actions/cache/restore@v4
+        with:
+          path: .wikiwire-deployed
+          key: wikiwire-deployed-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            wikiwire-deployed-
+
       # Remember where the deploy should start from before the import below
       # adds its own commit. Prefer the last revision this workflow successfully
-      # deployed (`wikiwire-deployed` tag), so scheduled/manual runs pick up
-      # changes that were committed but never made it to the wikis (for example
-      # after a failed deploy, or when the import commit's push did not trigger
-      # this workflow).
+      # deployed, so scheduled/manual runs pick up changes that were committed
+      # but never made it to the wikis (for example after a failed deploy, or
+      # when the import commit's push did not trigger this workflow).
       - name: Record sync base
         id: sync_base
         env:
           BASE_SHA_INPUT: ${{ inputs.base_sha }}
         run: |
+          set -euo pipefail
+
           override="$BASE_SHA_INPUT"
-          deployed="$(git rev-parse --verify --quiet refs/tags/wikiwire-deployed || true)"
+          deployed="$(cat .wikiwire-deployed 2>/dev/null || true)"
+          if [ -n "$deployed" ] && ! git rev-parse --verify --quiet "${deployed}^{commit}" >/dev/null 2>&1; then
+            echo "::warning::Ignoring invalid deployed-revision state: $deployed"
+            deployed=""
+          fi
+
+          # Bootstrap fallback when no state exists yet: the parent of the most
+          # recent commit that changed synced content. Together with the push
+          # base this covers the changes a first full sync should deploy.
+          last_content="$(git log -1 --no-merges --format=%H -- modules templates mediawiki pages users user_talk 2>/dev/null || true)"
+          bootstrap=""
+          if [ -n "$last_content" ]; then
+            bootstrap="$(git rev-parse --verify --quiet "${last_content}^" || true)"
+          fi
+
+          pick_older() {
+            a="$1"; b="$2"
+            if [ -z "$a" ]; then echo "$b"; return; fi
+            if [ -z "$b" ]; then echo "$a"; return; fi
+            if git merge-base --is-ancestor "$a" "$b"; then echo "$a"; return; fi
+            if git merge-base --is-ancestor "$b" "$a"; then echo "$b"; return; fi
+            echo "$b"
+          }
+
           if [ -n "$override" ]; then
             echo "sha=$override" >> "$GITHUB_OUTPUT"
-            echo "tag_ok=true" >> "$GITHUB_OUTPUT"
-            echo "Deploying the explicit base range starting at $override."
+            echo "Using the explicit base range starting at $override."
           elif [ -n "$deployed" ]; then
             echo "sha=$deployed" >> "$GITHUB_OUTPUT"
-            echo "tag_ok=true" >> "$GITHUB_OUTPUT"
-            echo "Deploying changes since the last successful deploy ($deployed)."
-          elif [ "${{ github.event_name }}" = "push" ]; then
-            echo "sha=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
-            echo "tag_ok=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::No wikiwire-deployed tag found; deploying only this push. Dispatch with base_sha once to backfill older changes and create the tag."
+            echo "Using the last successful deploy ($deployed) as the merge base."
           else
-            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-            echo "tag_ok=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::No wikiwire-deployed tag found; this run has no pending range to deploy. Pass the base_sha input to backfill."
+            event_base=""
+            if [ "${{ github.event_name }}" = "push" ]; then
+              event_base="${{ github.event.before }}"
+            fi
+            if [ -n "$event_base" ] && ! git rev-parse --verify --quiet "${event_base}^{commit}" >/dev/null 2>&1; then
+              event_base=""
+            fi
+
+            base="$(pick_older "$event_base" "$bootstrap")"
+            if [ -z "$base" ]; then
+              # No usable base: leave it empty so the action does a conservative
+              # two-way sync of every page instead of a no-op merge against HEAD.
+              echo "sha=" >> "$GITHUB_OUTPUT"
+              echo "::warning::No deployed-revision state or history found; syncing every page without a merge base."
+            else
+              echo "sha=$base" >> "$GITHUB_OUTPUT"
+              echo "::warning::No deployed-revision state found; bootstrapping from $base."
+            fi
           fi
 
       - name: Fetch and apply upstream pages
@@ -118,35 +161,49 @@ jobs:
           echo "::error::Failed to push the upstream sync commit after 3 attempts."
           exit 1
 
-      # Deploy the whole range from the recorded base to the current HEAD, so
-      # the import commit made above is included and deleted files are seen.
-      # The recorded base is the last successfully deployed revision, so this
-      # also covers work committed by earlier runs or by a failed deploy.
+      # Check and sync every file on every run, not just the files that changed
+      # in the commit range. The recorded base is still used as the three-way
+      # merge ancestor (so fork edits survive) and to find deleted pages.
       - name: Sync files to production MediaWiki
         if: always() && !cancelled()
         uses: doorswiki/wikiwire@main
         with:
+          sync_all: override
           base_sha: ${{ steps.sync_base.outputs.sha }}
           delete_removed: true
           username: DoorsWiki@WikiWire
           password: ${{ secrets.WIKI_PASSWORD }}
 
-      # Only advance the deploy tag when every page in the range succeeded, so a
-      # partial failure is retried by the next run instead of being skipped.
-      # A queued run for an older commit must not move the tag backwards.
+      # Only save the deployed revision when every page succeeded, so a partial
+      # failure is retried by the next run instead of being skipped. A queued
+      # run for an older commit must not move the pointer backwards.
       - name: Record deployed revision
-        if: success() && steps.sync_base.outputs.tag_ok == 'true'
+        id: record_deploy
+        if: success()
         run: |
           set -euo pipefail
           head="$(git rev-parse HEAD)"
-          git fetch --force origin refs/tags/wikiwire-deployed:refs/tags/wikiwire-deployed || true
-          current="$(git rev-parse --verify --quiet refs/tags/wikiwire-deployed || true)"
-          if [ -n "$current" ] && [ "$current" != "$head" ] && git merge-base --is-ancestor "$head" "$current"; then
-            echo "::warning::Not advancing wikiwire-deployed: $head is older than $current."
+          current="$(cat .wikiwire-deployed 2>/dev/null || true)"
+          if [ -n "$current" ] && [ "$current" != "$head" ] && git merge-base --is-ancestor "$head" "$current" 2>/dev/null; then
+            echo "::warning::Not advancing the deployed revision: $head is older than $current."
+            echo "save=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          git tag -f wikiwire-deployed "$head"
-          git push --force origin refs/tags/wikiwire-deployed
+          if [ "$current" = "$head" ]; then
+            echo "Deployed revision $head is already recorded."
+            echo "save=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "$head" > .wikiwire-deployed
+          echo "save=true" >> "$GITHUB_OUTPUT"
+          echo "Recorded deployed revision $head."
+
+      - name: Save deployed revision
+        if: steps.record_deploy.outputs.save == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .wikiwire-deployed
+          key: wikiwire-deployed-${{ github.run_id }}-${{ github.run_attempt }}
 
       # `continue-on-error` keeps the deploy running even when the import or the
       # push fails, but the run must still report that failure.

@@ -34,7 +34,7 @@ inputs:
     required: false
     default: "false"
   sync_all:
-    description: NOT RECOMMENDED FOR MOST USE-CASES! If true ("override"), sync all files under modules/, templates/, and mediawiki/ from the workspace instead of commit diffs (use for workflow_dispatch or full sync)
+    description: If set to "override", check and sync every file under modules/, templates/, mediawiki/, pages/, users/, and user_talk/ from the workspace on every run instead of only the files changed in the commit range. Combine with base_sha so the previous revision can still serve as the three-way merge ancestor and deleted files can be detected. Use for workflow_dispatch, PRs, or periodic full syncs.
     required: false
     default: "false"
   base_sha:
