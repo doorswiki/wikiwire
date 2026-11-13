@@ -110,6 +110,7 @@
   "Template:Hoverimg": "templates/shared-lang/Hoverimg/Hoverimg.wikitext",
   "Template:I": "templates/shared-lang/I/I.wikitext",
   "Template:Icons": "templates/shared-lang/Icons/Icons.wikitext",
+  "Template:Icons/doc": "templates/shared-lang/Icons/doc.wikitext",
   "Template:ItemSkins": "templates/shared-lang/ItemSkins/ItemSkins.wikitext",
   "Template:ItemSkins/doc": "templates/shared-lang/ItemSkins/doc.wikitext",
   "Template:ItemSkins/styles.css": "templates/shared-lang/ItemSkins/styles.css",
