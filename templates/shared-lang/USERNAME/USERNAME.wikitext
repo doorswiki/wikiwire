@@ -1,1 +1,1 @@
-#REDIRECT [[Template:Username]]
+<includeonly>{{tooltip|{{currentloggeduser}}|That's you!}}</includeonly><noinclude>{{Documentation}}</noinclude>
