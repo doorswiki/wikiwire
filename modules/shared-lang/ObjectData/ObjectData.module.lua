@@ -360,7 +360,7 @@ return {
 	color = false
 },
 ['Fire'] = {
-	icon = 'Fire icon.png',
+	icon = 'Fire monochrome icon.png',
 	link = false,
 	color = false
 },
