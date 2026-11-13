@@ -1,1 +1,0 @@
-/* #REDIRECT */mw.loader.load("https://doorsgame.wiki/wiki/MediaWiki:AudioPlayer.js?action=raw&ctype=text/javascript");

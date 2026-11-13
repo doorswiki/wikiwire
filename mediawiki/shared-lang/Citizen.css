@@ -54,9 +54,9 @@
 
     --doorswiki-container-color: var(--doorswiki-container-color-original);
     
-    --light-bg: url("https://static.wikitide.net/doorswiki/b/be/Rooms_Hallway1.png");
-    --dark-bg: url("https://static.wikitide.net/stackdwiki/5/5a/DOORS_Site-background-dark.webp");
-    --black-bg: url(https://static.wikitide.net/doorswiki/c/cf/The_Chasm_location%2C_upper_floor.png);
+    --light-bg: url("https://static.wikitide.net/doorswiki/8/80/Main_theme_light_mode_background.webp"); /* [[File:Main_theme_light_mode_background.webp]] */
+    --dark-bg: url("https://static.wikitide.net/doorswiki/a/a0/Main_theme_dark_mode_background.webp");   /* [[File:Main_theme_dark_mode_background.webp]]  */
+    --black-bg: url("https://static.wikitide.net/doorswiki/b/b8/Main_theme_black_mode_background.webp"); /* [[File:Main_theme_black_mode_background.webp]] */
 
     /* Background image */
     --bg: light-dark(
@@ -110,7 +110,7 @@
 }
 
 :root.client-js.doorswiki-mood-clientpref-0:has(> body.page-DOORS_Wiki):not(.skin-theme-clientpref-black) {
-    --bg: url(https://static.wikitide.net/doorswiki/a/a0/Hotel_Start.png);
+    --bg: url("https://static.wikitide.net/doorswiki/4/4e/Main_theme_main_page_background.webp"); /* [[File:Main_theme_main_page_background.webp]] */
 }
 
 #skin-client-prefs-skin-theme {
@@ -156,9 +156,9 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 240!important;
     }
     
-    --light-bg: url(https://static.wikitide.net/doorswiki/6/64/LotusSpawnMINESB.png);
-    --dark-bg: url(https://static.wikitide.net/doorswiki/6/63/Mines_Flooded1.png);
-    --black-bg: url(https://static.wikitide.net/doorswiki/8/8a/Mines_MTHallway1.png);
+    --light-bg: url("https://static.wikitide.net/doorswiki/b/bd/Mines_theme_light_mode_background.webp"); /* [[File:Mines_theme_light_mode_background.webp]] */
+    --dark-bg: url("https://static.wikitide.net/doorswiki/3/3f/Mines_theme_dark_mode_background.webp");   /* [[File:Mines_theme_dark_mode_background.webp]]  */
+    --black-bg: url("https://static.wikitide.net/doorswiki/2/22/Mines_theme_black_mode_background.webp"); /* [[File:Mines_theme_black_mode_background.webp]] */
 }
 
 /* The Outdoors theme */
@@ -167,16 +167,16 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 140!important;
     }
     
-    --light-bg: url(https://static.wikitide.net/doorswiki/c/c6/Garden_Straight1.png);
-    --dark-bg: url(https://static.wikitide.net/doorswiki/5/5c/Gardenentrance.png);
-    --black-bg: url(https://static.wikitide.net/doorswiki/b/b3/Garden_WaterTower.png);
+    --light-bg: url("https://static.wikitide.net/doorswiki/8/80/Outdoors_theme_light_mode_background.webp"); /* [[File:Outdoors_theme_light_mode_background.webp]] */
+    --dark-bg: url("https://static.wikitide.net/doorswiki/4/4b/Outdoors_theme_dark_mode_background.webp");   /* [[File:Outdoors_theme_dark_mode_background.webp]]  */
+    --black-bg: url("https://static.wikitide.net/doorswiki/5/5f/Outdoors_theme_black_mode_background.webp"); /* [[File:Outdoors_theme_black_mode_background.webp]] */
 }
 
 /* The Backdoor theme */
 :root.doorswiki-mood-clientpref-3 {
-    --light-bg: url(https://static.wikitide.net/doorswiki/c/cc/The_Backdoor.png);
-    --dark-bg: url(https://static.wikitide.net/doorswiki/5/5b/The_Vestibule_location.png);
-    --black-bg: url(https://static.wikitide.net/doorswiki/c/c2/The_Several_Gates_Room.png);
+    --light-bg: url("https://static.wikitide.net/doorswiki/0/0a/Backdoor_theme_light_mode_background.webp"); /* [[File:Backdoor_theme_light_mode_background.webp]] */
+    --dark-bg: url("https://static.wikitide.net/doorswiki/a/a6/Backdoor_theme_dark_mode_background.webp");   /* [[File:Backdoor_theme_dark_mode_background.webp]]  */
+    --black-bg: url("https://static.wikitide.net/doorswiki/f/f3/Backdoor_theme_black_mode_background.webp"); /* [[File:Backdoor_theme_black_mode_background.webp]] */
 }
 
 /* The Archives theme */
@@ -185,9 +185,9 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 280!important;
     }
     
-    --light-bg: url(https://static.wikitide.net/doorswiki/0/04/Z-50_location.png);
-    --dark-bg: url(https://static.wikitide.net/doorswiki/0/02/MailRoom2.png);
-    --black-bg: url(https://static.wikitide.net/doorswiki/6/6d/StairwellEntrance.png);
+    --light-bg: url("https://static.wikitide.net/doorswiki/c/c6/Archives_theme_light_mode_background.webp"); /* [[File:Archives_theme_light_mode_background.webp]] */
+    --dark-bg: url("https://static.wikitide.net/doorswiki/4/47/Archives_theme_dark_mode_background.webp");   /* [[File:Archives_theme_dark_mode_background.webp]]  */
+    --black-bg: url("https://static.wikitide.net/doorswiki/d/d2/Archives_theme_black_mode_background.webp"); /* [[File:Archives_theme_black_mode_background.webp]] */
     
     &.skin-theme-clientpref-black {
         > body::before {
@@ -202,9 +202,9 @@ html:not(.doorswiki-mood-clientpref-0) {
         --color-primary-oklch__h: 260!important;
     }
     
-    --light-bg: url(https://static.wikitide.net/doorswiki/b/ba/LotusSpawnStairwell.png);
-    --dark-bg: url(https://static.wikitide.net/doorswiki/3/3f/Stairwell_CobblerShop.png);
-    --black-bg: url(https://static.wikitide.net/doorswiki/d/d6/Stairwell_StairsLongRight1.png);
+    --light-bg: url("https://static.wikitide.net/doorswiki/6/69/Stairwell_theme_light_mode_background.webp"); /* [[File:Stairwell_theme_light_mode_background.webp]] */
+    --dark-bg: url("https://static.wikitide.net/doorswiki/9/99/Stairwell_theme_dark_mode_background.webp");   /* [[File:Stairwell_theme_dark_mode_background.webp]]  */
+    --black-bg: url("https://static.wikitide.net/doorswiki/9/95/Stairwell_theme_black_mode_background.webp"); /* [[File:Stairwell_theme_black_mode_background.webp]] */
 }
 
 /* Seasonal theme */
@@ -504,7 +504,7 @@ kbd {
         position: absolute;
         inset: 0;
         z-index: -2;
-        background: url(https://static.wikitide.net/doorswiki/b/b7/Wooden_texture_overlay.png);
+        background: url(https://static.wikitide.net/doorswiki/3/3d/Wooden_texture_overlay.webp);
         background-size: 50% auto;
         mix-blend-mode: overlay;
         pointer-events: none;
