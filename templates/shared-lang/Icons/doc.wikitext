@@ -1,0 +1,319 @@
+<noinclude>{{Documentation subpage}}</noinclude>
+;Description
+:This template is used to display informational icons within articles or other templates.
+
+;Syntax
+:Type <code>{{T|Icons|param}}</code> on the page/template.'''
+
+;Additional syntax
+:Type <code><nowiki>|size=</nowiki></code> followed by a size value to modify the size of the icon.
+:Type <code><nowiki>|link=</nowiki></code> followed by a valid name for an existing page/template/category etc.
+:Type <code><nowiki>|caption=</nowiki></code> followed by any text string that will appear when hovering over the icon.
+
+;Available icons
+''Note: The text next to the icon is not included.''
+<div style="overflow-y:scroll; height:320px; width:100%;">
+:{| class="wikitable" cellpadding="1" cellspacing"1"
+! Icons
+! How to Use
+! Icons
+! How to Use
+|-
+| {{Icons|Currency}} Currency
+| <code><nowiki>{{Icons|Currency}}</nowiki></code>
+| {{Icons|Damage}} Damage
+| <code><nowiki>{{Icons|Damage}}</nowiki></code>
+|-
+| {{Icons|Door}} Door
+| <code><nowiki>{{Icons|Door}}</nowiki></code>
+| {{Icons|Behavior}} Behavior
+| <code><nowiki>{{Icons|Behavior}}</nowiki></code>
+|-
+| {{Icons|Gallery}} Gallery
+| <code><nowiki>{{Icons|Gallery}}</nowiki></code>
+| {{Icons|Health}} Health
+| <code><nowiki>{{Icons|Health}}</nowiki></code>
+|-
+| {{Icons|Hiding}} Hiding
+| <code><nowiki>{{Icons|Hiding}}</nowiki></code>
+| {{Icons|Interact}} Interact
+| <code><nowiki>{{Icons|Interact}}</nowiki></code>
+|-
+| {{Icons|Overview}} Overview
+| <code><nowiki>{{Icons|Overview}}</nowiki></code>
+| {{Icons|Player}} Player
+| <code><nowiki>{{Icons|Player}}</nowiki></code>
+|-
+| {{Icons|Puzzles}} Puzzles
+| <code><nowiki>{{Icons|Puzzles}}</nowiki></code>
+| {{Icons|Trivia}} Trivia
+| <code><nowiki>{{Icons|Trivia}}</nowiki></code>
+|-
+| {{Icons|Usage}} Usage
+| <code><nowiki>{{Icons|Usage}}</nowiki></code>
+| {{Icons|Instakill}} Instakill
+| <code><nowiki>{{Icons|Instakill}}</nowiki></code>
+|-
+| {{Icons|Positive}} Positive
+| <code><nowiki>{{Icons|Positive}}</nowiki></code>
+| {{Icons|Negative}} Negative
+| <code><nowiki>{{Icons|Negative}}</nowiki></code>
+|-
+| {{Icons|Achievement}} Achievement
+| <code><nowiki>{{Icons|Achievement}}</nowiki></code>
+| {{Icons|History}} History
+| <code><nowiki>{{Icons|History}}</nowiki></code>
+|-
+| {{Icons|Speech}} Speech
+| <code><nowiki>{{Icons|Speech}}</nowiki></code>
+| {{Icons|Crucifix}} Crucifix
+| <code><nowiki>{{Icons|Crucifix}}</nowiki></code>
+|-
+| {{Icons|Modifiers}} Modifiers
+| <code><nowiki>{{Icons|Modifiers}}</nowiki></code>
+| {{Icons|Journal}} Journal
+| <code><nowiki>{{Icons|Journal}}</nowiki></code>
+|-
+| {{Icons|Hazards}} Hazards
+| <code><nowiki>{{Icons|Hazards}}</nowiki></code>
+| {{Icons|Bugs}} Bugs
+| <code><nowiki>{{Icons|Bugs}}</nowiki></code>
+|-
+| {{Icons|Archives}} Archives
+| <code><nowiki>{{Icons|Archives}}</nowiki></code>
+| {{Icons|Backdoor}} Backdoor
+| <code><nowiki>{{Icons|Backdoor}}</nowiki></code>
+|-
+| {{Icons|Backpack}} Backpack
+| <code><nowiki>{{Icons|Backpack}}</nowiki></code>
+| {{Icons|Chroma}} Chroma
+| <code><nowiki>{{Icons|Chroma}}</nowiki></code>
+|-
+| {{Icons|Clock}} Clock
+| <code><nowiki>{{Icons|Clock}}</nowiki></code>
+| {{Icons|Codes}} Codes
+| <code><nowiki>{{Icons|Codes}}</nowiki></code>
+|-
+| {{Icons|Confusion}} Confusion
+| <code><nowiki>{{Icons|Confusion}}</nowiki></code>
+| {{Icons|Container}} Container
+| <code><nowiki>{{Icons|Container}}</nowiki></code>
+|-
+| {{Icons|Conversion}} Conversion
+| <code><nowiki>{{Icons|Conversion}}</nowiki></code>
+| {{Icons|Credits}} Credits
+| <code><nowiki>{{Icons|Credits}}</nowiki></code>
+|-
+| {{Icons|Development}} Development
+| <code><nowiki>{{Icons|Development}}</nowiki></code>
+| {{Icons|Donation}} Donation
+| <code><nowiki>{{Icons|Donation}}</nowiki></code>
+|-
+| {{Icons|Elevator}} Elevator
+| <code><nowiki>{{Icons|Elevator}}</nowiki></code>
+| {{Icons|Energy}} Energy
+| <code><nowiki>{{Icons|Energy}}</nowiki></code>
+|-
+| {{Icons|Entities}} Entities
+| <code><nowiki>{{Icons|Entities}}</nowiki></code>
+| {{Icons|Events}} Events
+| <code><nowiki>{{Icons|Events}}</nowiki></code>
+|-
+| {{Icons|Exchange}} Exchange
+| <code><nowiki>{{Icons|Exchange}}</nowiki></code>
+| {{Icons|Exclamation}} Exclamation
+| <code><nowiki>{{Icons|Exclamation}}</nowiki></code>
+|-
+| {{Icons|Exit}} Exit
+| <code><nowiki>{{Icons|Exit}}</nowiki></code>
+| {{Icons|Exploiting}} Exploiting
+| <code><nowiki>{{Icons|Exploiting}}</nowiki></code>
+|-
+| {{Icons|Fire}} Fire
+| <code><nowiki>{{Icons|Fire}}</nowiki></code>
+| {{Icons|Floor}} Floor
+| <code><nowiki>{{Icons|Floor}}</nowiki></code>
+|-
+| {{Icons|Friends}} Friends
+| <code><nowiki>{{Icons|Friends}}</nowiki></code>
+| {{Icons|Gift}} Gift
+| <code><nowiki>{{Icons|Gift}}</nowiki></code>
+|-
+| {{Icons|Glitch}} Glitch
+| <code><nowiki>{{Icons|Glitch}}</nowiki></code>
+| {{Icons|Headphones}} Headphones
+| <code><nowiki>{{Icons|Headphones}}</nowiki></code>
+|-
+| {{Icons|Herb}} Herb
+| <code><nowiki>{{Icons|Herb}}</nowiki></code>
+| {{Icons|Hotel}} Hotel
+| <code><nowiki>{{Icons|Hotel}}</nowiki></code>
+|-
+| {{Icons|Hourglass}} Hourglass
+| <code><nowiki>{{Icons|Hourglass}}</nowiki></code>
+| {{Icons|Interacted}} Interacted
+| <code><nowiki>{{Icons|Interacted}}</nowiki></code>
+|-
+| {{Icons|Invincibility}} Invincibility
+| <code><nowiki>{{Icons|Invincibility}}</nowiki></code>
+| {{Icons|Items}} Items
+| <code><nowiki>{{Icons|Items}}</nowiki></code>
+|-
+| {{Icons|Ladder}} Ladder
+| <code><nowiki>{{Icons|Ladder}}</nowiki></code>
+| {{Icons|Lever}} Lever
+| <code><nowiki>{{Icons|Lock}}</nowiki></code>
+|-
+| {{Icons|Lock}} Lock
+| <code><nowiki>{{Icons|Lock}}</nowiki></code>
+| {{Icons|Lotus}} Lotus
+| <code><nowiki>{{Icons|Lotus}}</nowiki></code>
+|-
+| {{Icons|Mines}} Mines
+| <code><nowiki>{{Icons|Mines}}</nowiki></code>
+| {{Icons|Moonlight}} Moonlight
+| <code><nowiki>{{Icons|Moonlight}}</nowiki></code>
+|-
+| {{Icons|Miscellaneous}} Miscellaneous
+| <code><nowiki>{{Icons|Miscellaneous}}</nowiki></code>
+| {{Icons|Outdoors}} Outdoors 
+| <code><nowiki>{{Icons|Outdoors}}</nowiki></code>
+|-
+| {{Icons|Pencil}} Pencil
+| <code><nowiki>{{Icons|Pencil}}</nowiki></code>
+| {{Icons|Placeholder}} Placeholder 
+| <code><nowiki>{{Icons|Placeholder}}</nowiki></code>
+|-
+| {{Icons|Pros and Cons}} Pros and Cons
+| <code><nowiki>{{Icons|Pros and Cons}}</nowiki></code>
+| {{Icons|Puzzles}} Puzzles
+| <code><nowiki>{{Icons|Puzzles}}</nowiki></code>
+|-
+| {{Icons|Question}} Question 
+| <code><nowiki>{{Icons|Question}}</nowiki></code>
+| {{Icons|References}} References
+| <code><nowiki>{{Icons|References}}</nowiki></code>
+|-
+| {{Icons|Revive}} Revive
+| <code><nowiki>{{Icons|Revive}}</nowiki></code>
+| {{Icons|Rift}} Rift
+| <code><nowiki>{{Icons|Rift}}</nowiki></code>
+|-
+| {{Icons|Robux}} Robux
+| <code><nowiki>{{Icons|Robux}}</nowiki></code>
+| {{Icons|Saves}} Saves
+| <code><nowiki>{{Icons|Saves}}</nowiki></code>
+|-
+| {{Icons|Settings}} Settings
+| <code><nowiki>{{Icons|Settings}}</nowiki></code>
+| {{Icons|Skip}} Skip 
+| <code><nowiki>{{Icons|Skip}}</nowiki></code>
+|-
+| {{Icons|Speed}} Speed
+| <code><nowiki>{{Icons|Speed}}</nowiki></code>
+| {{Icons|Stairwell}} Stairwell
+| <code><nowiki>{{Icons|Stairwell}}</nowiki></code>
+|-
+| {{Icons|Star}} Star 
+| <code><nowiki>{{Icons|Star}}</nowiki></code>
+| {{Icons|Starlight}} Starlight
+| <code><nowiki>{{Icons|Starlight}}</nowiki></code>
+|-
+| {{Icons|Trash}} Trash
+| <code><nowiki>{{Icons|Trash}}</nowiki></code>
+| {{Icons|Trolley}} Trolley
+| <code><nowiki>{{Icons|Trolley}}</nowiki></code>
+|-
+| {{Icons|Upcoming}} Upcoming
+| <code><nowiki>{{Icons|Upcoming}}</nowiki></code>
+| {{Icons|Warning}} Warning
+| <code><nowiki>{{Icons|Warning}}</nowiki></code>
+|-
+| {{Icons|Waterdrops}} Waterdrops 
+| <code><nowiki>{{Icons|Waterdrops}}</nowiki></code>
+| {{Icons|Wrench}} Wrench
+| <code><nowiki>{{Icons|Wrench}}</nowiki></code>
+|-
+| {{Icons|X}} X
+| <code><nowiki>{{Icons|X}}</nowiki></code>
+| {{Icons|Bell}} Bell
+| <code><nowiki>{{Icons|Bell}}</nowiki></code>
+|-
+| {{Icons|Options}} Options
+| <code><nowiki>{{Icons|Options}}</nowiki></code>
+| {{Icons|Paintbrush}} Paintbrush
+| <code><nowiki>{{Icons|Paintbrush}}</nowiki></code>
+|-
+| {{Icons|Push}} Push
+| <code><nowiki>{{Icons|Push}}</nowiki></code>
+| {{Icons|Sit}} Sit
+| <code><nowiki>{{Icons|Sit}}</nowiki></code>
+|-
+| {{Icons|Rooms}} Rooms
+| <code><nowiki>{{Icons|Rooms}}</nowiki></code>
+| {{Icons|Battle Mode}} Battle Mode
+| <code><nowiki>{{Icons|Battle Mode}}</nowiki></code>
+|-
+| {{Icons|Retro Mode}} Retro Mode
+| <code><nowiki>{{Icons|Retro Mode}}</nowiki></code>
+| {{Icons|Rush Mode}} Rush Mode
+| <code><nowiki>{{Icons|Rush Mode}}</nowiki></code>
+|-
+| {{Icons|Streak}} Streak
+| <code><nowiki>{{Icons|Streak}}</nowiki></code>
+| {{Icons|Super Hard Mode}} Super Hard Mode
+| <code><nowiki>{{Icons|Super Hard Mode}}</nowiki></code>
+|-
+| {{Icons|Disc}} Disc
+| <code><nowiki>{{Icons|Disc}}</nowiki></code>
+| {{Icons|Microphone}} Microphone
+| <code><nowiki>{{Icons|Microphone}}</nowiki></code>
+|-
+| {{Icons|Block}} Block
+| <code><nowiki>{{Icons|Block}}</nowiki></code>
+| {{Icons|Volume Play}} Volume Play
+| <code><nowiki>{{Icons|Volume Play}}</nowiki></code>
+|-
+| {{Icons|Volume Mute}} Volume Mute
+| <code><nowiki>{{Icons|Volume Mute}}</nowiki></code>
+| {{Icons|Creak}} Creak
+| <code><nowiki>{{Icons|Creak}}</nowiki></code>
+|-
+| {{Icons|Fire Escape}} Fire Escape
+| <code><nowiki>{{Icons|Fire Escape}}</nowiki></code>
+| {{Icons|Left Arrow}} Left Arrow
+| <code><nowiki>{{Icons|Left Arrow}}</nowiki></code>
+|-
+| {{Icons|Storage}} Storage
+| <code><nowiki>{{Icons|Storage}}</nowiki></code>
+| {{Icons|Right Arrow}} Right Arrow
+| <code><nowiki>{{Icons|Right Arrow}}</nowiki></code>
+|-
+| {{Icons|Coins}} Coins
+| <code><nowiki>{{Icons|Coins}}</nowiki></code>
+| {{Icons|Modifiers Glow}} Modifiers Glow
+| <code><nowiki>{{Icons|Modifiers Glow}}</nowiki></code>
+|-
+| {{Icons|Left Hand Hold}} Left Hand Hold
+| <code><nowiki>{{Icons|Left Hand Hold}}</nowiki></code>
+| {{Icons|Right Hand Hold}} Right Hand Hold
+| <code><nowiki>{{Icons|Right Hand Hold}}</nowiki></code>
+|-
+| {{Icons|Inspect}} Inspect
+| <code><nowiki>{{Icons|Inspect}}</nowiki></code>
+| {{Icons|Crouching}} Crouching
+| <code><nowiki>{{Icons|Crouching}}</nowiki></code>
+|-
+| {{Icons|Jumping}} Jumping
+| <code><nowiki>{{Icons|Jumping}}</nowiki></code>
+| {{Icons|Standing}} Standing
+| <code><nowiki>{{Icons|Standing}}</nowiki></code>
+|-
+| {{Icons|Sprinting}} Sprinting
+| <code><nowiki>{{Icons|Sprinting}}</nowiki></code>
+| {{Icons|Box}} Box
+| <code><nowiki>{{Icons|Box}}</nowiki></code>
+|}
+</div>
+
+<includeonly>[[Category:Infoicon templates]]</includeonly>
