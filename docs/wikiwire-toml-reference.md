@@ -174,6 +174,8 @@ With the config above, content under `modules/shared-lang/`, `templates/shared-l
 | `dry_run` | no | `false` | If `true`, no edits or deletes are sent (site-level `dry_run` in TOML still applies per site). |
 | `delete_removed` | no | `false` | If `true`, delete on-wiki pages when repo files are removed (also enabled by `delete_removed` in `wikiwire.toml`). Entire-folder removals are skipped. Requires special permissions. |
 | `sync_all` | no | `false` | If set to `'override'`, every file under `modules/`, `templates/`, and `mediawiki/` from the workspace will be synced instead of those that changes per-commit. Requires a prior checkout of the repo. Not recommended as this may potentially be destructive. Previously this parameter accepted `true`, but that was changed in v0.3.0 |
+| `base_sha` | no | `""` | Base commit for the incremental change list. Defaults to the push event's `before` SHA. Set this when the workflow modifies the repository before deploying (for example, an upstream import commit), so the deploy covers the whole range. Also lets scheduled/manual runs use the diff-based deploy. |
+| `head_sha` | no | `""` | Head commit for the incremental change list. Defaults to the push event's `after` SHA, or to the local `HEAD` when `base_sha` is set. |
 
 `dark_lua_compat` was removed in WikiWire v0.3.0, and supplying it as a parameter will produce an error.
 

@@ -12,6 +12,10 @@ const DRY_RUN = process.env.SYNC_UPSTREAM_DRY_RUN === '1';
 
 const PAGES_FILE = path.join(REPO_ROOT, 'scripts', 'pages.json');
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 class MediaWikiClient {
   constructor(apiUrl, username = '', password = '') {
     this.apiUrl = apiUrl;
@@ -50,34 +54,58 @@ class MediaWikiClient {
       ...params,
     });
 
-    const res = await fetch(this.apiUrl, {
-      method: 'POST',
-      headers: {
-        'User-Agent': WIKIWIRE_UA,
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
-        ...this.getCookieHeader(),
-      },
-      body,
-    });
+    // Network hiccups (and Cloudflare challenges) are common from CI runners.
+    // Retry with backoff, then surface the real error instead of silently
+    // pretending the wiki had no content.
+    let lastError;
 
-    this.mergeCookies(res.headers);
+    for (let attempt = 1; attempt <= 4; attempt++) {
+      try {
+        const res = await fetch(this.apiUrl, {
+          method: 'POST',
+          headers: {
+            'User-Agent': WIKIWIRE_UA,
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json',
+            ...this.getCookieHeader(),
+          },
+          body,
+        });
 
-    if (!res.ok) {
-      const detail = await res.text();
-      const cfRay = res.headers.get('cf-ray');
-      const isCfChallenge = detail.includes('Checking your connection') || detail.includes('Just a moment') || detail.includes('cf-mitigated') || detail.includes('unusual activity');
-      if (isCfChallenge) {
-        throw new Error(
-          `Cloudflare Bot Challenge (HTTP ${res.status}${cfRay ? `; cf-ray=${cfRay}` : ''})`
-        );
+        this.mergeCookies(res.headers);
+
+        if (!res.ok) {
+          const detail = await res.text();
+          const cfRay = res.headers.get('cf-ray');
+          const isCfChallenge = detail.includes('Checking your connection') || detail.includes('Just a moment') || detail.includes('cf-mitigated') || detail.includes('unusual activity');
+          if (isCfChallenge) {
+            throw new Error(
+              `Cloudflare Bot Challenge (HTTP ${res.status}${cfRay ? `; cf-ray=${cfRay}` : ''})`
+            );
+          }
+          throw new Error(
+            `HTTP ${res.status} ${res.statusText}${cfRay ? `; cf-ray=${cfRay}` : ''}: ${detail.slice(0, 150)}`
+          );
+        }
+
+        const data = await res.json();
+
+        if (data && data.error) {
+          throw new Error(`MediaWiki API error: ${data.error.code}: ${data.error.info ?? 'unknown error'}`);
+        }
+
+        return data;
+      } catch (err) {
+        lastError = err;
+        if (attempt < 4) {
+          const wait = attempt * 2000;
+          console.warn(`[WARN] ${this.apiUrl} request failed (attempt ${attempt}/4): ${err.message}; retrying in ${wait / 1000}s`);
+          await sleep(wait);
+        }
       }
-      throw new Error(
-        `HTTP ${res.status} ${res.statusText}${cfRay ? `; cf-ray=${cfRay}` : ''}: ${detail.slice(0, 150)}`
-      );
     }
 
-    return res.json();
+    throw lastError;
   }
 
   async login() {
@@ -89,22 +117,44 @@ class MediaWikiClient {
         type: 'login',
       });
       const loginToken = tokenRes.query?.tokens?.logintoken;
-      if (!loginToken) return;
+      if (!loginToken) {
+        console.warn(`[WARN] Login to ${this.apiUrl} did not return a login token; continuing anonymously`);
+        this.cookies.clear();
+        return;
+      }
 
-      const loginRes = await this.post({
+      let loginRes = await this.post({
         action: 'login',
         lgname: this.username,
         lgpassword: this.password,
         lgtoken: loginToken,
       });
 
+      // Some MediaWiki installs answer the first login attempt with NeedToken
+      // even after fetching a token (usually a cookie/session quirk). Retry
+      // with the token they hand back, like the main action does.
+      let attempts = 0;
+      while (loginRes.login?.result === 'NeedToken' && loginRes.login.token && attempts < 3) {
+        loginRes = await this.post({
+          action: 'login',
+          lgname: this.username,
+          lgpassword: this.password,
+          lgtoken: loginRes.login.token,
+        });
+        attempts += 1;
+      }
+
       if (loginRes.login?.result === 'Success') {
         console.log(`[AUTH] Logged in to ${this.apiUrl} as ${this.username}`);
       } else {
-        console.warn(`[WARN] Login to ${this.apiUrl} returned: ${loginRes.login?.reason ?? loginRes.login?.result}`);
+        console.warn(`[WARN] Login to ${this.apiUrl} returned: ${loginRes.login?.reason ?? loginRes.login?.result}; continuing anonymously`);
+        // Do not keep a half-authenticated session around: a broken session
+        // cookie can make otherwise-public read requests fail.
+        this.cookies.clear();
       }
     } catch (err) {
-      console.warn(`[WARN] Login attempt to ${this.apiUrl} failed: ${err.message}`);
+      console.warn(`[WARN] Login attempt to ${this.apiUrl} failed: ${err.message}; continuing anonymously`);
+      this.cookies.clear();
     }
   }
 
@@ -125,14 +175,23 @@ class MediaWikiClient {
         if (redirects) params.redirects = '1';
         const data = await this.post(params);
 
+      // A missing `query.pages` means the response was not a normal page query
+      // (for example, a blocked request). Never interpret that as "every page
+      // was deleted".
+      if (!data.query || !Array.isArray(data.query.pages)) {
+        throw new Error(`MediaWiki API returned no page data for a batch starting with "${chunk[0]}"`);
+      }
+
       const resolved = new Map((data.query?.redirects ?? []).map((r) => [r.from, r.to]));
+      const normalized = new Map((data.query?.normalized ?? []).map((n) => [n.from, n.to]));
       const byTitle = new Map((data.query?.pages ?? []).map((p) => [p.title, p]));
+      const lookup = (title) => normalized.get(title) ?? title;
 
       for (const title of chunk) {
-        const to = redirects ? resolved.get(title) : undefined;
+        const to = redirects ? (resolved.get(title) ?? resolved.get(lookup(title))) : undefined;
 
         if (to !== undefined) {
-          const page = byTitle.get(to);
+          const page = byTitle.get(lookup(to));
           if (!page || page.missing) {
             out.set(title, { status: 'missing' });
             continue;
@@ -142,7 +201,7 @@ class MediaWikiClient {
           continue;
         }
 
-        const page = byTitle.get(title);
+        const page = byTitle.get(lookup(title));
         if (!page || page.missing) {
           out.set(title, { status: 'missing' });
           continue;
@@ -214,23 +273,19 @@ async function main() {
 
   console.log(`Querying ${titles.length} pages from upstream (batched)...`);
 
-  let resolved;
-  try {
-    resolved = await upstreamClient.fetchPages(titles, { redirects: true });
-  } catch (err) {
-    console.warn(`[WARN] Failed to fetch pages from upstream: ${err.message}`);
-    return;
-  }
+  const resolved = await upstreamClient.fetchPages(titles, { redirects: true });
 
   // For redirect pages, fetch the raw redirect wikitext so the fork keeps a
   // redirect exactly like the upstream wiki instead of the target's content.
   const redirectTitles = titles.filter((title) => resolved.get(title)?.status === 'redirect');
   let rawRedirects = new Map();
+  let redirectSourceFetchFailed = false;
   if (redirectTitles.length > 0) {
     try {
       rawRedirects = await upstreamClient.fetchPages(redirectTitles, { redirects: false });
     } catch (err) {
-      console.warn(`[WARN] Failed to fetch redirect sources: ${err.message}`);
+      redirectSourceFetchFailed = true;
+      console.warn(`[WARN] Failed to fetch redirect sources: ${err.message}; leaving redirect pages alone this run`);
     }
   }
 
@@ -273,6 +328,12 @@ async function main() {
       if (raw && raw.status === 'ok') {
         // Keep the repo copy as the upstream redirect so forks stay in sync.
         outcome = writeIfDifferent(absPath, raw.content);
+      } else if (redirectSourceFetchFailed) {
+        // The redirect-source request failed (network/Cloudflare), not the page.
+        // Leave the repo copy and manifest entry alone rather than deleting.
+        console.warn(`[WARN] No raw redirect source for ${title} because the request failed; leaving repo copy alone`);
+        failed++;
+        continue;
       } else {
         // The redirect page itself was removed (or no raw content). Treat as deleted.
         if (fs.existsSync(absPath)) {
@@ -303,5 +364,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.warn(`[WARN] Process finished: ${err.message}`);
+  console.error(`[ERROR] Upstream sync failed: ${err.stack ?? err.message}`);
+  process.exitCode = 1;
 });

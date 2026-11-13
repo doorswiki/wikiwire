@@ -230,6 +230,16 @@ return {
 	link = false,
 	color = false
 },
+['Pros and Cons'] = {
+	icon = 'Pros and Cons icon.png',
+	link = false,
+	color = false
+},
+['Neutral'] = {
+	icon = 'Pros and Cons icon.png',
+	link = false,
+	color = false
+},
 ['Hourglass'] = {
 	icon = 'Hourglass icon.svg',
 	color = false

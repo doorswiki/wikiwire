@@ -37,6 +37,14 @@ inputs:
     description: NOT RECOMMENDED FOR MOST USE-CASES! If true ("override"), sync all files under modules/, templates/, and mediawiki/ from the workspace instead of commit diffs (use for workflow_dispatch or full sync)
     required: false
     default: "false"
+  base_sha:
+    description: Base commit for the incremental change list. Defaults to the push event's before SHA. Set this when the workflow modifies the repository before deploying (for example, an upstream import commit), so the deploy covers the whole range.
+    required: false
+    default: ""
+  head_sha:
+    description: Head commit for the incremental change list. Defaults to the push event's after SHA, or to the local HEAD when base_sha is set.
+    required: false
+    default: ""
 
 runs:
   using: node20

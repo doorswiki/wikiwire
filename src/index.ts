@@ -331,8 +331,8 @@ function list_changed_paths_local(workspace : string, before : string, after : s
     return out === null ? null : parse_git_diff_z(out);
 };
 
-async function list_changed_paths(opts : { workspace : string; sync_all : boolean; ign : Ignore; delete_removed : boolean }) : Promise<path_change[]> {
-    const { workspace, sync_all, ign, delete_removed } = opts;
+async function list_changed_paths(opts : { workspace : string; sync_all : boolean; ign : Ignore; delete_removed : boolean; before : string; after : string }) : Promise<path_change[]> {
+    const { workspace, sync_all, ign, delete_removed, before, after } = opts;
 
     if (sync_all) {
         const out: string[] = [];
@@ -347,9 +347,6 @@ async function list_changed_paths(opts : { workspace : string; sync_all : boolea
     };
 
     const { owner, repo } = github.context.repo;
-    const payload = github.context.payload as push_payload;
-    const after = payload.after ?? github.context.sha;
-    const before = payload.before ?? '';
 
     // prefer local git history — no token or extra permissions needed
     const local_files = list_changed_paths_local(workspace, before, after);
@@ -395,10 +392,20 @@ async function run() : Promise<void> {
     const input_dry = core.getInput('dry_run') === 'true';
     const input_delete_removed = core.getInput('delete_removed') === 'true';
     const sync_all = core.getInput('sync_all') === 'override';
+    const input_base_sha = core.getInput('base_sha').trim();
+    const input_head_sha = core.getInput('head_sha').trim();
 
-    if (!sync_all && github.context.eventName !== 'push') { throw new Error( 'WikiWire: No context/commit data provideed. Use `sync_all: "override"` when the event is not a `push` (e.g. workflow_dispatch).', ); };
+    if (!sync_all && !input_base_sha && github.context.eventName !== 'push') { throw new Error( 'WikiWire: No context/commit data provideed. Use `sync_all: "override"` when the event is not a `push` (e.g. workflow_dispatch), or pass `base_sha` explicitly.' ); };
 
     const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
+
+    // A workflow may mutate the repository before deploying (for example, an
+    // upstream import commit). `base_sha`/`head_sha` let the deploy describe the
+    // full range it should sync instead of only the event's original push range.
+    const payload = github.context.payload as push_payload;
+    const local_head = run_git(['rev-parse', 'HEAD'], workspace)?.trim() || '';
+    const before_sha = input_base_sha || (payload.before ?? '');
+    const after_sha = input_head_sha || (input_base_sha ? local_head : (payload.after ?? github.context.sha));
     const full_config = path.join(workspace, config_path);
 
     if (!fs.existsSync(full_config)) { throw new Error(`WikiWire config error: config not found: ${full_config}`); };
@@ -419,7 +426,7 @@ async function run() : Promise<void> {
         ign = ign.add(fs.readFileSync(full_ignore, 'utf8'));
     };
 
-    const changed = await list_changed_paths({ workspace, sync_all, ign, delete_removed });
+    const changed = await list_changed_paths({ workspace, sync_all, ign, delete_removed, before: before_sha, after: after_sha });
 
     const delete_candidates = changed.filter((c) => c.kind === 'delete').map((c) => c.file);
     const allowed_deletes = new Set(filter_reorg_deletes(delete_candidates, workspace));
@@ -488,8 +495,7 @@ async function run() : Promise<void> {
 
     // The previous revision of each file is the common ancestor for the merge.
     // Without it we cannot tell a repo-side edit/deletion from a wiki-side edit.
-    const push_data = github.context.payload as push_payload;
-    const base_ref = sync_all ? '' : (push_data.before ?? '');
+    const base_ref = sync_all ? '' : before_sha;
     const base_octokit = !sync_all && process.env.GITHUB_TOKEN ? github.getOctokit(process.env.GITHUB_TOKEN) : null;
     const base_content_cache = new Map<string, string | null>();
 

@@ -38,7 +38,20 @@ jobs:
         with:
           node-version: 20
 
+      # Remember where the deploy should start from before the import below
+      # adds its own commit. Push events include the user's pushed changes;
+      # scheduled/manual runs include whatever the import changes.
+      - name: Record sync base
+        id: sync_base
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "sha=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Fetch and apply upstream pages
+        id: upstream
         continue-on-error: true
         env:
           WIKI_USERNAME: DoorsWiki@WikiWire
@@ -46,35 +59,47 @@ jobs:
         run: node scripts/sync-upstream.mjs
 
       - name: Commit and push changes
+        id: commit
+        if: steps.upstream.outcome == 'success'
         continue-on-error: true
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add modules/ templates/ mediawiki/ pages/ users/ user_talk/ scripts/pages.json
+          git add -A -- modules/ templates/ mediawiki/ pages/ users/ user_talk/ scripts/pages.json
           if git diff --staged --quiet; then
             echo "No upstream changes detected in repository."
-          else
-            git commit -m "chore(sync): update upstream wiki pages"
-            git push
+            exit 0
           fi
+          git commit -m "chore(sync): update upstream wiki pages"
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "Pushed upstream sync commit."
+              exit 0
+            fi
+            echo "Push failed (attempt $attempt/3); rebasing on origin and retrying..."
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}" || { git rebase --abort || true; }
+            sleep $((attempt * 5))
+          done
+          echo "::error::Failed to push the upstream sync commit after 3 attempts."
+          exit 1
 
-      # push events: incremental sync with deletion handling. The sync above commits
-      # the move/delete follow-through, so this push sees the files that disappeared
-      # and `delete_removed: true` removes the matching fork pages.
-      - name: Sync files to production MediaWiki (changed files, follows deletions)
-        if: github.event_name == 'push'
+      # Deploy the whole range from the recorded base to the current HEAD, so
+      # the import commit made above is included and deleted files are seen.
+      # `base_sha` makes this work for scheduled/manual runs too.
+      - name: Sync files to production MediaWiki
+        if: always() && !cancelled()
         uses: doorswiki/wikiwire@main
         with:
+          base_sha: ${{ steps.sync_base.outputs.sha }}
           delete_removed: true
           username: DoorsWiki@WikiWire
           password: ${{ secrets.WIKI_PASSWORD }}
 
-      # Scheduled / manual runs have no commit diff, so do a full sync instead;
-      # deletions are propagated by the push-triggered run the sync above creates.
-      - name: Sync files to production MediaWiki (full sync)
-        if: github.event_name != 'push'
-        uses: doorswiki/wikiwire@main
-        with:
-          sync_all: override
-          username: DoorsWiki@WikiWire
-          password: ${{ secrets.WIKI_PASSWORD }}
+      # `continue-on-error` keeps the deploy running even when the import or the
+      # push fails, but the run must still report that failure.
+      - name: Report upstream sync failures
+        if: steps.upstream.outcome == 'failure' || steps.commit.outcome == 'failure'
+        run: |
+          echo "::error::Upstream import or commit/push failed; see the steps above."
+          exit 1

@@ -468,6 +468,8 @@ Please note that WikiWire is currently a BETA and this shouldn't be required in 
 | `dry_run` | no | `false` | If `true`, no edits or deletes are sent (site-level `dry_run` in TOML still applies per site). |
 | `delete_removed` | no | `false` | If `true`, delete on-wiki pages when repo files are removed (also enabled by `delete_removed` in `wikiwire.toml`). Entire-folder removals are skipped. Requires special permissions. |
 | `sync_all` | no | `false` | If set to `'override'`, every file under `modules/`, `templates/`, and `mediawiki/` from the workspace will be synced instead of those that changes per-commit. Requires a prior checkout of the repo. Not recommended as this may potentially be destructive. Previously this parameter accepted `true`, but that was changed in v0.3.0 |
+| `base_sha` | no | `""` | Base commit for the incremental change list. Defaults to the push event's `before` SHA. Set this when the workflow modifies the repository before deploying (for example, an upstream import commit), so the deploy covers the whole range instead of only the event's original push. Also lets scheduled/manual runs use the diff-based deploy. |
+| `head_sha` | no | `""` | Head commit for the incremental change list. Defaults to the push event's `after` SHA, or to the local `HEAD` when `base_sha` is set. |
 
 `dark_lua_compat` was removed in WikiWire v0.3.0, and supplying it as a parameter will produce an error.
 
@@ -517,7 +519,7 @@ jobs:
 - **Deletes:** Off by default. With `delete_removed` enabled (wikiwire.toml or action input), removing an individual file deletes the corresponding wiki page. Removing a whole site or shared directory (e.g. `modules/<host>/` or `templates/shared/`) is treated as a reorganization and does **not** mass-delete wiki pages. `sync_all` never deletes.
 - **Renames:** Treated as deletes + adds, if enabled. Does not add a redirect.
 - **Initial push:** When GitHub sends an all-zero `before` SHA, the action uses the single head commit's file list (from the local git history) instead of `compareCommits`.
-- **Incremental sync:** Push-triggered syncs read the local git history instead of the GitHub API, so the workflow needs to check out with `fetch-depth: 0` (or deep enough to contain the `before` commit). With a shallow clone the action falls back to the API and needs the built-in `GITHUB_TOKEN` (`${{ github.token }}`, no secret to create). Scheduled and dispatch runs use `sync_all: override` and never call the API.
+- **Incremental sync:** Push-triggered syncs read the local git history instead of the GitHub API, so the workflow needs to check out with `fetch-depth: 0` (or deep enough to contain the `before` commit). With a shallow clone the action falls back to the API and needs the built-in `GITHUB_TOKEN` (`${{ github.token }}`, no secret to create). Scheduled and dispatch runs can use the same diff-based deploy by passing `base_sha` (the repository's HEAD before any workflow-side changes); without `base_sha` they still need `sync_all: override`.
 - **Branches:** Use per-site `default_branch` or workflow `on.push.branches` to avoid syncing from unintended branches.
 
 ## Importing from an upstream wiki (this repository)
@@ -539,11 +541,11 @@ This repository imports a set of pages from an upstream wiki (doorsgame.wiki), c
 
 ## How the move/delete gets onto the wikis
 
-When a push-triggered run deletes a repo file (a deletion from the importer), the deploy step runs with `delete_removed: true` and deletes the corresponding on-wiki pages on every configured site with deletion permission. Likewise, a rename is pushed as a new page and the old page is deleted. On the scheduled and `workflow_dispatch` runs the deploy step performs a single `sync_all: override` sync instead and deletes nothing.
+When the import (or any other workflow step) changes the repository, the deploy step runs with `base_sha` set to the commit recorded before the import and `head_sha` defaulting to the local `HEAD` after it. That makes the change list cover the import commit as well as the original push, so edits and deletions are both deployed — including on scheduled and `workflow_dispatch` runs, where the base is simply the repository's HEAD before the import. The same step runs with `delete_removed: true`, so a repo file removed by the importer deletes the corresponding on-wiki pages on every configured site with deletion permission. A rename is pushed as a new page and the old page is deleted.
 
 To add a page to the import, add `"Upstream title": "repo/path"` to `scripts/pages.json` — its presence in the file is enough; the next run fetches it. To stop importing a page, remove its entry from the manifest; to remove a page entirely, delete its entry and its file (or just delete the entry and let the upstream removal workflow run).
 
-If the upstream page is moved or deleted while the import is running, behavior is exactly the same: existence and redirect detection is part of the fetch, so nothing is silently left stale. For debugging or a locally simulated run, set `SYNC_UPSTREAM_DRY_RUN=1` to log what would change without writing anything.
+If the upstream page is moved or deleted while the import is running, behavior is exactly the same: existence and redirect detection is part of the fetch, so nothing is silently left stale. Transient API/network failures are retried; if the fetch still fails, the run fails loudly instead of silently leaving the repository stale. For debugging or a locally simulated run, set `SYNC_UPSTREAM_DRY_RUN=1` to log what would change without writing anything.
 
 # Releases/Builds
 
