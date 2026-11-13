@@ -1449,7 +1449,7 @@ return {
 	link = 'Evil Dollar'
 },
 ['Gummy Flashlight'] = {
-	icon = 'Gummy Flashlight icon V2.png',
+	icon = 'Gummy Flashlight icon.png',
 	plural = 'Gummy Flashlights',
 	color = false
 },
