@@ -205,11 +205,6 @@ return {
 	icon = 'Interact icon.png',
 	color = false
 },
-['Negative'] = {
-	icon = 'Negative icon.png',
-	link = false,
-	color = false
-},
 ['Overview'] = {
 	icon = 'Overview icon.svg',
 	link = false,
@@ -227,6 +222,11 @@ return {
 },
 ['Positive'] = {
 	icon = 'Positive icon.png',
+	link = false,
+	color = false
+},
+['Negative'] = {
+	icon = 'Negative icon.png',
 	link = false,
 	color = false
 },
@@ -352,6 +352,11 @@ return {
 },
 ['Invincibility'] = {
 	icon = 'Invincibility icon.png',
+	link = false,
+	color = false
+},
+['Invincibility monochrome'] = {
+	icon = 'Invincibility monochrome icon.png',
 	link = false,
 	color = false
 },
