@@ -690,7 +690,7 @@ async function run() : Promise<void> {
             .map((failure) => `${failure.error.action} ${failure.error.title} on ${failure.site_id}: ${failure.error.code}`)
             .join('; ');
 
-        core.warning(`WikiWire: ${page_failures.length} ${noun} failed after completing ${completed}/${jobs.length}: ${details}`);
+        core.setFailed(`WikiWire: ${page_failures.length} ${noun} failed after completing ${completed}/${jobs.length}: ${details}`);
     };
 };
 

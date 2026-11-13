@@ -519,7 +519,7 @@ jobs:
 - **Deletes:** Off by default. With `delete_removed` enabled (wikiwire.toml or action input), removing an individual file deletes the corresponding wiki page. Removing a whole site or shared directory (e.g. `modules/<host>/` or `templates/shared/`) is treated as a reorganization and does **not** mass-delete wiki pages. `sync_all` never deletes.
 - **Renames:** Treated as deletes + adds, if enabled. Does not add a redirect.
 - **Initial push:** When GitHub sends an all-zero `before` SHA, the action uses the single head commit's file list (from the local git history) instead of `compareCommits`.
-- **Incremental sync:** Push-triggered syncs read the local git history instead of the GitHub API, so the workflow needs to check out with `fetch-depth: 0` (or deep enough to contain the `before` commit). With a shallow clone the action falls back to the API and needs the built-in `GITHUB_TOKEN` (`${{ github.token }}`, no secret to create). Scheduled and dispatch runs can use the same diff-based deploy by passing `base_sha` (the repository's HEAD before any workflow-side changes); without `base_sha` they still need `sync_all: override`.
+- **Incremental sync:** Push-triggered syncs read the local git history instead of the GitHub API, so the workflow needs to check out with `fetch-depth: 0` (or deep enough to contain the `before` commit). With a shallow clone the action falls back to the API and needs the built-in `GITHUB_TOKEN` (`${{ github.token }}`, no secret to create). Scheduled and dispatch runs can use the same diff-based deploy by passing `base_sha` (the repository's HEAD before any workflow-side changes); without `base_sha` they still need `sync_all: override`. The bundled workflow passes the `wikiwire-deployed` tag, so scheduled and manual runs automatically cover everything since the last successful deploy.
 - **Branches:** Use per-site `default_branch` or workflow `on.push.branches` to avoid syncing from unintended branches.
 
 ## Importing from an upstream wiki (this repository)
@@ -530,7 +530,7 @@ This repository imports a set of pages from an upstream wiki (doorsgame.wiki), c
 
 * `scripts/pages.json` — the manifest. A JSON object whose keys are upstream page titles (`"MediaWiki:Common.css"`, `"Module:AboutDoors"`, ...) and whose values are repository paths. Every key must map to a path under `modules/`, `templates/`, `mediawiki/`, `pages/`, `users/`, or `user_talk/` so the result is syncable by WikiWire.
 * `scripts/sync-upstream.mjs` — reads the manifest, fetches every listed page from the upstream API (MediaWiki Action API), and updates the repository files to match. It is idempotent: pages whose content has not changed produce no diff and no commit.
-* The workflow `.github/workflows/wikiwire.yml` runs the importer every four hours, and after it, the push itself triggers WikiWire to deploy the changes to the configured sites.
+* The workflow `.github/workflows/wikiwire.yml` runs the importer every four hours and then deploys everything committed since the last successful deploy in the same run. A user push that changes synced content also triggers it.
 
 ## What the importer does with each page
 
@@ -541,7 +541,11 @@ This repository imports a set of pages from an upstream wiki (doorsgame.wiki), c
 
 ## How the move/delete gets onto the wikis
 
-When the import (or any other workflow step) changes the repository, the deploy step runs with `base_sha` set to the commit recorded before the import and `head_sha` defaulting to the local `HEAD` after it. That makes the change list cover the import commit as well as the original push, so edits and deletions are both deployed — including on scheduled and `workflow_dispatch` runs, where the base is simply the repository's HEAD before the import. The same step runs with `delete_removed: true`, so a repo file removed by the importer deletes the corresponding on-wiki pages on every configured site with deletion permission. A rename is pushed as a new page and the old page is deleted.
+After a successful deploy, the workflow force-updates the `wikiwire-deployed` tag to the deployed `HEAD`. The next run starts from that tag, so scheduled and `workflow_dispatch` runs also pick up anything committed since the last successful deploy — even when the import commit was pushed by the workflow itself (bot pushes do not trigger a second run) or a previous deploy failed part-way. The deploy step also runs with `delete_removed: true`, so a repo file removed by the importer deletes the corresponding on-wiki pages on every configured site with deletion permission. A rename is pushed as a new page and the old page is deleted.
+
+Because the range can span several commits, the three-way merge uses each file's content at the `wikiwire-deployed` tag as the common ancestor. That is what lets an upstream line deletion or edit propagate while fork-local edits are preserved. The tag only advances when every page in the run succeeded; a partial failure leaves the old base in place so the next run retries the failed pages. The workflow also serializes runs with a `concurrency` group so two deploys cannot race the tag or each other.
+
+To backfill a repository that has no `wikiwire-deployed` tag yet (or to repair a range), dispatch the workflow manually with the `base_sha` input set to the revision the wikis were last synced from. That run deploys `base_sha..HEAD`, then creates the tag.
 
 To add a page to the import, add `"Upstream title": "repo/path"` to `scripts/pages.json` — its presence in the file is enough; the next run fetches it. To stop importing a page, remove its entry from the manifest; to remove a page entirely, delete its entry and its file (or just delete the entry and let the upstream removal workflow run).
 
