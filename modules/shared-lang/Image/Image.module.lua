@@ -56,10 +56,12 @@ end
 
 -- Documentation helper --
 function p.docs(frame)
+    local copy = require('Module:Copy').copy
+
     local out = {
-        '<div style="box-shadow: var(--box-shadow-border); border-radius: var(--border-radius-medium); background: var(--color-surface-3); color: var(--color-base);">' ..
-        '<div style="padding: var(--space-sm); font-weight: bold;">Possible inputs <small style="color: var(--color-subtle); font-weight: normal;">(missing images first, then no link and no color, then no color, then no link, then the rest; within each, entries sharing a link are grouped with the largest groups last, then sorted alphabetically) image -> click-copy object name -> link</small></div>' ..
-        '<div style="display: flex; flex-wrap: wrap; gap: var(--space-xs); padding: var(--space-sm); border-top: 1px solid var(--border-color-base); max-height: 75vh; overflow-y: auto;">'
+        '<div class="image-docs">' ..
+        '<div class="image-docs-title">Possible inputs <span class="image-docs-caption">(missing images first, then no link and no color, then no color, then no link, then the rest; within each, entries sharing a link are grouped with the largest groups last, then sorted alphabetically) image -> click-copy object name -> link; styles: [[Module:Image/styles.css]]</span></div>' ..
+        '<div class="image-docs-grid">'
     }
 
     -- Collecting entries into tables
@@ -101,7 +103,7 @@ function p.docs(frame)
                 ext = ext,
                 icon = '[[File:' .. icon .. '|70px]]',
                 link = link
-                    and '<small style="color: var(--color-subtle);">[[' .. link .. ']]</small>'
+                    and '<span class="image-docs-link">[[' .. link .. ']]</span>'
                      or ''
             }
         end
@@ -125,10 +127,10 @@ function p.docs(frame)
 
         for _, item in ipairs(items) do
             out[#out+1] =
-                '<div style="position: relative; flex: 1 1 8.5em; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-xs); padding: var(--space-sm); background: var(--color-surface-1); border-radius: var(--border-radius-base); text-align: center;">' ..
-                    '<span style="position: absolute; top: 0; right: 0; padding: var(--space-xxs); background: var(--color-surface-3); border-radius: 0 var(--border-radius-base) 0 var(--border-radius-base); font-size: .75em; line-height: 1; color: var(--color-subtle); font-family: inconsolata;">' .. item.ext .. '</span>' ..
+                '<div class="image-docs-entry">' ..
+                    '<span class="image-docs-ext">' .. item.ext .. '</span>' ..
                     item.icon ..
-                    '<span>{{copy|' .. item.obj .. '}}</span>' ..
+                    copy(item.obj) ..
                     item.link ..
                 '</div>'
         end
@@ -143,13 +145,14 @@ function p.docs(frame)
     end
 
     out[#out+1] =
-        '<div style="display: flex; justify-content: space-between; gap: var(--space-sm); padding: var(--space-sm); border-top: 1px solid var(--border-color-base); font-size: .9em; color: var(--color-subtle);">' ..
+        '<div class="image-docs-footer">' ..
             '<span>Extensions: ' .. table.concat(stats, ', ') .. '</span>' ..
             '<span>Total: ' .. total .. '</span>' ..
         '</div>' ..
     '</div>'
 
-    return frame:preprocess(table.concat(out, '\n'))
+    return frame:extensionTag('templatestyles', '', {src = 'Module:Image/styles.css'}) ..
+        table.concat(out, '\n')
 end
 
 return p

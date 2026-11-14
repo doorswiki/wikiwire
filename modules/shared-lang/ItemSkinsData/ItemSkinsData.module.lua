@@ -5856,6 +5856,22 @@ local data = {
 			{ name = 'Use', sound = false },
 		},
 	},
+	{
+		name = 'Basic Black',
+		knobs = 499,
+		bundle = nil,
+		obtainable = true,
+		text = "Like a shadow in the night!",
+		description = nil,
+		designer = nil,
+		added = nil,
+		chroma = nil,
+		media = {
+			{ name = 'Equip', sound = false },
+			{ name = 'Inspect', sound = false },
+			{ name = 'Use', sound = false },
+		},
+	},
 },
 
 ['Alarm Clock'] = {
