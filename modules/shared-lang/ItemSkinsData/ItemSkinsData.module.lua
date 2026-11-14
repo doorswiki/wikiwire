@@ -6411,56 +6411,56 @@ local data = {
 		designer = nil,
 		added = nil,
 		chroma = {
-			stardust = 20,
+			stardust = 25,
 			variants = {
 				{
 					name = 'Blue Gems',
-					color = '#fff',
+					color = '#7995BE',
 					description = nil
 				},
 				{
 					name = 'Bossfight',
-					color = '#fff',
+					color = '#4F4749',
 					description = nil
 				},
 				{
 					name = 'Green Gems',
-					color = '#fff',
+					color = '#70A172',
 					description = nil
 				},
 				{
 					name = 'Heroic',
-					color = '#fff',
+					color = '#935B49',
 					description = nil
 				},
 				{
 					name = 'Orange Gems',
-					color = '#fff',
+					color = '#CA8F62',
 					description = nil
 				},
 				{
 					name = 'Purple Gems',
-					color = '#fff',
+					color = '#A56DB6',
 					description = nil
 				},
 				{
 					name = 'Rainbow',
-					color = '#fff',
+					color = '#F0E0D8',
 					description = nil
 				},
 				{
 					name = 'Split',
-					color = '#fff',
+					color = '#EC73EF',
 					description = nil
 				},
 				{
 					name = 'Unsocketed',
-					color = '#fff',
+					color = '#AE8E68',
 					description = nil
 				},
 				{
 					name = 'Yellow Gems',
-					color = '#fff',
+					color = '#BCA04A',
 					description = nil
 				},
 			}
@@ -6482,46 +6482,46 @@ local data = {
 		designer = nil,
 		added = nil,
 		chroma = {
-			stardust = 20,
+			stardust = 5,
 			variants = {
 				{
 					name = 'Black',
-					color = '#fff',
+					color = '#746C64',
 					description = nil
 				},
 				{
 					name = 'Coconut',
-					color = '#fff',
+					color = '#775B46',
 					description = nil
 				},
 				{
 					name = 'Green',
-					color = '#fff',
+					color = '#79A469',
 					description = nil
 				},
 				{
 					name = 'Orange',
-					color = '#fff',
+					color = '#DB905B',
 					description = nil
 				},
 				{
 					name = 'Pink',
-					color = '#fff',
+					color = '#CD8FA8',
 					description = nil
 				},
 				{
 					name = 'Purple',
-					color = '#fff',
+					color = '#8B7097',
 					description = nil
 				},
 				{
 					name = 'Red',
-					color = '#fff',
+					color = '#AA675F',
 					description = nil
 				},
 				{
 					name = 'Yellow',
-					color = '#fff',
+					color = '#C5AA73',
 					description = nil
 				},
 			}
