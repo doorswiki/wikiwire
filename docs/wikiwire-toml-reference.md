@@ -118,6 +118,14 @@ Example:
 shared_groups = ["lang", "public"]
 ```
 
+## Language-specific documentation subpages
+
+Before syncing, WikiWire queries each target wiki's content language through `action=query&meta=siteinfo&siprop=general` (the `lang` field, which reflects `$wgPageViewLanguage`).
+
+On Polish wikis (`lang = "pl"`), a page title whose final subpage is `/doc` is synced under `/opis` instead. The repository file name stays the same (for example `templates/shared-lang/Icons/doc.wikitext`); only the wiki title is rewritten. Other wikis keep `/doc`.
+
+No configuration is required. If the language cannot be determined, the title is left unchanged.
+
 ## mediawiki/ layout
 
 Most `MediaWiki:` pages are flat files directly under `mediawiki/<host|id>/`. Use a subdirectory only when a page has subpages.

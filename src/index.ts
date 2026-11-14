@@ -116,6 +116,35 @@ function is_zero_sha(sha : string | undefined) : boolean {
     return !sha || /^0+$/.test(sha);
 };
 
+// Polish wikis (content language "pl") reject documentation subpages named
+// `/doc` and use `/opis` instead. The repo keeps the upstream `doc.wikitext`
+// filename; only the wiki title is rewritten for such wikis.
+const DOC_SUBPAGE_BY_LANGUAGE : Record<string, string> = { pl: 'opis' };
+
+function rewrite_doc_subpage(title : string, language : string | null) : string {
+    const alias = language ? DOC_SUBPAGE_BY_LANGUAGE[language] : undefined;
+    if (!alias) { return title };
+
+    const slash = title.lastIndexOf('/');
+    if (slash === -1) { return title };
+
+    if (title.slice(slash + 1) !== 'doc') { return title };
+
+    return `${title.slice(0, slash + 1)}${alias}`;
+};
+
+async function fetch_site_language(site_cfg : site_config) : Promise<string | null> {
+    try {
+        const session = new mw_session(site_cfg.api, '', '', { site_id: site_cfg.id });
+        return await session.get_site_language();
+    } catch (err : unknown) {
+        core.warning(
+            `WikiWire: could not determine content language for ${site_cfg.id}; leaving /doc titles unchanged: ${err instanceof Error ? err.message : String(err)}`,
+        );
+        return null;
+    };
+};
+
 function push_attribution_suffix() : string {
     if (github.context.eventName !== 'push') { return '' };
 
@@ -540,6 +569,22 @@ async function run() : Promise<void> {
         };
 
         jobs.push({ file, mapped, site_cfg, kind, git_status: change.git_status, base_file: change.base_file });
+    };
+
+    // Documentation subpages are localized per target wiki. Query the content
+    // language only for sites that actually have a `/doc` title in this run.
+    const doc_language_sites = new Map<string, site_config>();
+    for (const job of jobs) {
+        if (job.mapped.title.endsWith('/doc')) { doc_language_sites.set(job.site_cfg.id, job.site_cfg); };
+    };
+
+    const site_languages = new Map<string, string | null>();
+    for (const [site_id, site_cfg] of doc_language_sites) {
+        site_languages.set(site_id, await fetch_site_language(site_cfg));
+    };
+
+    for (const job of jobs) {
+        job.mapped.title = rewrite_doc_subpage(job.mapped.title, site_languages.get(job.site_cfg.id) ?? null);
     };
 
     if (jobs.length === 0) { core.info('WikiWire: nothing to sync'); return };

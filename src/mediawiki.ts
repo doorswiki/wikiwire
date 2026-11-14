@@ -15,6 +15,7 @@ const POST_RATE_LIMIT_GAP_MS = 1000;
 type mw_query = {
     tokens ?: { logintoken ?: string; csrftoken ?: string };
     pages ?: Record<string, { missing ?: boolean }>;
+    general ?: { lang ?: string };
 };
 
 type mw_login = { result ?: string; token ?: string };
@@ -597,6 +598,17 @@ export class mw_session {
         if (!this.csrftoken) { throw new Error('WikiWire API error: could not get CSRF token from MediaWiki'); };
 
         // no return expected
+    };
+
+    // Content / page-view language of the wiki (wgPageViewLanguage), e.g. "pl".
+    // siteinfo is public, so this works before login and during dry runs.
+    async get_site_language() : Promise<string | null> {
+        const data = await this._post({ action: 'query', meta: 'siteinfo', siprop: 'general' });
+        const lang = data.query?.general?.lang;
+
+        if (typeof lang !== 'string' || lang.trim().length === 0) return null;
+
+        return lang.trim().toLowerCase();
     };
 
     // self explanatory
